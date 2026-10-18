@@ -7,7 +7,7 @@ import pandas as pd
 import pytest
 
 from btc_research.kronos_adapter import KronosCandidateSpec, paths_to_probabilities, record_shadow_paths
-from btc_research.phase5 import _select_even, import_colab_results
+from btc_research.phase5 import _same_instants, _select_even, import_colab_results
 from btc_research.prospective import ImmutableLedger
 
 
@@ -35,6 +35,12 @@ def test_phase5_even_selection_is_deterministic_and_ordered():
     assert selected.decision_time.is_monotonic_increasing
     assert selected.decision_time.iloc[0] == frame.decision_time.iloc[0]
     assert selected.decision_time.iloc[-1] == frame.decision_time.iloc[-1]
+
+
+def test_phase5_timestamp_alignment_accepts_equivalent_parquet_units():
+    timestamp = pd.to_datetime(["2026-04-01T00:31:00Z"], utc=True)
+    assert _same_instants(timestamp.as_unit("us"), timestamp.as_unit("ns"))
+    assert not _same_instants(timestamp.as_unit("us"), timestamp.as_unit("ns") + pd.Timedelta(minutes=1))
 
 
 def test_phase5_export_manifest_excludes_consumed_final_period():

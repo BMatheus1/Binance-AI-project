@@ -1,0 +1,16 @@
+{
+  "historical_hashes_preserved": true,
+  "forbidden_final_period_reused": false,
+  "model_download_is_explicit": true,
+  "weights_redistributed": false,
+  "fine_tuning_executed": false,
+  "services_left_running": false,
+  "demo_orders_sent": false,
+  "real_orders_possible": false,
+  "qwen3_loaded_on_cpu": true,
+  "qwen3_structured_smoke_passed": true,
+  "news_120_second_two_cycle_smoke_passed": true,
+  "tests_passed": 123,
+  "compileall_passed": true,
+  "prospective_economic_claim": false
+}

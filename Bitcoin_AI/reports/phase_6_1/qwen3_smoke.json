@@ -1,0 +1,54 @@
+{
+  "executed_at": "2026-10-18T19:22:21.938103+00:00",
+  "model": {
+    "model_id": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "weights_license": "Apache-2.0",
+    "device": "cpu",
+    "parameter_bytes": 2384199680,
+    "fine_tuned_locally": false,
+    "commercial_use_allowed": true,
+    "thinking_enabled": false,
+    "trust_remote_code": false
+  },
+  "result": {
+    "text_sha256": "b3a7eb2c6c0e6297471374c3c722ce53c9f1470042a89a053680f8de7b08cb1a",
+    "analysis": {
+      "sentiment": "neutral",
+      "sentiment_confidence": 0.5,
+      "main_event": "A company disclosed a software update to its Bitcoin custody service",
+      "affected_assets": [
+        "BTCUSDT"
+      ],
+      "impacts": [
+        {
+          "asset": "BTCUSDT",
+          "direction": "neutral",
+          "confidence": 0.5,
+          "rationale": "Short evidence"
+        }
+      ],
+      "source_reliability": "unknown",
+      "novelty": 0.0,
+      "intensity": 0.0,
+      "contradictory_information": false,
+      "contradiction_notes": "",
+      "possibly_priced_in": "unknown",
+      "insufficient_information": true,
+      "hallucination_risk": "low",
+      "prompt_injection_detected": false,
+      "limitations": [],
+      "order_instruction": null
+    },
+    "model_id": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "device": "cpu",
+    "inference_ms": 70127.79790000059,
+    "valid_generation": true,
+    "error_code": null,
+    "cached": false
+  },
+  "structured_output_valid": true,
+  "financial_or_demo_orders": false,
+  "limitation": "Environment smoke only; no claim of predictive or economic value."
+}

@@ -1,0 +1,60 @@
+{
+  "protocol_version": "phase6-v1-frozen-before-prospective-observation",
+  "universe": ["BTCUSDT", "ETHUSDT", "SOLUSDT"],
+  "news_cycle_seconds": 120,
+  "market_stale_after_seconds": 5,
+  "maximum_news_age_minutes": 30,
+  "minimum_quote_volume": 1000000,
+  "minimum_depth_quote": 10000,
+  "maximum_spread_bps": 10,
+  "fee_bps_per_side": 5,
+  "slippage_bps_per_side": 2,
+  "minimum_net_edge_bps": 2,
+  "minimum_holding_minutes": 1,
+  "maximum_planned_holding_minutes": 20,
+  "maximum_extension_minutes": 3,
+  "maximum_absolute_holding_minutes": 23,
+  "maximum_open_positions": 1,
+  "maximum_asset_exposure_quote": 100,
+  "maximum_total_exposure_quote": 200,
+  "maximum_daily_loss_quote": 10,
+  "maximum_drawdown_quote": 20,
+  "maximum_pair_correlation": 0.85,
+  "minimum_prospective_days": 30,
+  "minimum_resolved_trades_per_policy": 200,
+  "news_directional_adjustment_enabled": false,
+  "default_mode": "observation",
+  "demo_orders_enabled": false,
+  "real_trading_supported": false,
+  "evaluation": {
+    "primary_metric": "paired_net_return_difference_after_costs",
+    "policies": ["A_without_news", "B_with_news"],
+    "same_eligible_instants": true,
+    "multiple_testing_correction": "holm",
+    "selection_period_reuse_forbidden": true,
+    "automatic_promotion": false
+  },
+  "sources": [
+    {
+      "id": "federal_reserve_all_press",
+      "url": "https://www.federalreserve.gov/feeds/press_all.xml",
+      "reliability": "official",
+      "minimum_interval_seconds": 120,
+      "content_policy": "RSS title, link and supplied summary only"
+    },
+    {
+      "id": "sec_press_releases",
+      "url": "https://www.sec.gov/news/pressreleases.rss",
+      "reliability": "official",
+      "minimum_interval_seconds": 120,
+      "content_policy": "RSS title, link and supplied summary only"
+    },
+    {
+      "id": "bls_latest_numbers",
+      "url": "https://www.bls.gov/feed/bls_latest.rss",
+      "reliability": "official",
+      "minimum_interval_seconds": 120,
+      "content_policy": "RSS title, link and supplied summary only"
+    }
+  ]
+}

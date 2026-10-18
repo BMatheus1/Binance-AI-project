@@ -1,0 +1,28 @@
+{
+  "phase_1_final_evaluation": {
+    "path": "reports/final_evaluation.json",
+    "sha256": "39297e6ceb3a13cd5b0c5f11e0608fc92cee8a298702124abf408040d722b584"
+  },
+  "phase_2_results": {
+    "path": "reports/phase_2/runs/20261017T223631458343Z-phase2/results.json",
+    "sha256": "85c88261568929c4818d659ac4cb9c66039504f0589468ea4c66cb21a981be37"
+  },
+  "phase_3_results": {
+    "path": "reports/phase_3/runs/20261018T005023721954Z-phase3/results.json",
+    "sha256": "0c7be8224a2256b2d87fb87738228360e9b3ef8552986d5fbd1ee7ba158cee6c"
+  },
+  "phase_4_results": {
+    "path": "reports/phase_4/runs/20261018T013856021255Z-phase4/results.json",
+    "sha256": "3e6876e1362d7cc71b2e74969d503699f9c9aa61b90e8c0c7577d5dce5101c3c"
+  },
+  "phase_5_results": {
+    "path": "reports/phase_5/runs/20261018T152602827075Z-phase5-import/results.json",
+    "sha256": "b7b944e22616c56bf249aa96b055f296ac2c9fa543915407ac46a551ff90126e"
+  },
+  "phase_5_analysis": {
+    "path": "reports/phase_5/full_analysis.json",
+    "sha256": "70bb049d357b19750902178953004b1fa464c38faee499d4d3bcea2c18199f22"
+  },
+  "forbidden_final_period_reused": false,
+  "historical_artifacts_modified": false
+}

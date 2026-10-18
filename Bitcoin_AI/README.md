@@ -1,6 +1,6 @@
 # Bitcoin AI Research
 
-Plataforma local de pesquisa quantitativa para **BTC/USDT Spot**, com previsão probabilística em **1, 5, 15 e 30 minutos**. Python, sem interface web, credenciais de corretora ou envio de ordens. Modelos estimam baixa, empate e alta; uma camada separada pode abster-se.
+Plataforma local de pesquisa quantitativa e observação multiactivos para **BTC/USDT, ETH/USDT e SOL/USDT Spot**, com previsão probabilística em **1, 5, 15 e 30 minutos**. Python, sem dinheiro real. Modelos estimam baixa, empate e alta; uma camada separada pode abster-se.
 
 O projeto organiza dados, formaliza hipóteses, treina modelos e avalia previsões e cenários econômicos hipotéticos. Livros são fontes conceituais, nunca prova de lucratividade. As Fases 3 e 4 adicionam coleta pública, horizontes maiores, ledger prospectivo e observação shadow; nenhum monitor fica ativo por padrão. O README recebido foi preservado em [docs/README_original.md](docs/README_original.md).
 
@@ -11,6 +11,7 @@ O projeto organiza dados, formaliza hipóteses, treina modelos e avalia previsõ
 - [Fase 3 — AggTrades, microestrutura, coleta pública e paper trading](reports/phase_3/README.md).
 - [Fase 4 — horizontes 1/5/15/30m, congelamento e validação prospectiva](reports/phase_4/README.md).
 - [Fase 5 — avaliação do Kronos-mini no Google Colab](reports/phase_5/README.md).
+- [Fase 6 — notícias, seleção multiactivos, risco e simulação](reports/phase_6/README.md).
 - [Plano e progresso](PROGRESS.md).
 - [Catálogo de variáveis](knowledge/feature_catalog.json).
 - [Conceitos e referências verificadas](knowledge/concepts/verified.md).
@@ -48,6 +49,9 @@ python scripts/run_phase4_shadow.py --seconds 370
 python scripts/export_phase5_colab.py
 # Após executar o notebook Colab e extrair o ZIP retornado:
 python scripts/import_phase5_results.py "C:\caminho\phase5_results"
+python scripts/run_phase6.py prepare
+python scripts/run_phase6.py news-once
+python scripts/run_phase6.py observe-market --seconds 30
 ```
 
 Use o executável da `.venv` no lugar de `python` se criou o ambiente acima. Após instalação, `btc-research ingest` equivale ao comando de módulo. Cada etapa é independente. Não remova o registro do teste para reavaliar o mesmo período: novos modelos precisam de outro período futuro independente. Relatórios existentes podem ser regenerados sem novo treinamento.
@@ -144,6 +148,16 @@ Novos dados passam pela mesma validação e experimento versionado. PSI compara 
 
 `run_phase4_shadow.py` usa somente REST/WebSocket públicos, verifica os hashes dos modelos congelados e grava previsão antes do desfecho. O comando não aceita credenciais e os módulos não implementam envio de ordens.
 
-A Fase 5 prepara um pacote causal reduzido e um notebook Colab com Kronos-mini. O importador compara o challenger com XGBoost/CatBoost nas mesmas decisões e bloqueia divergências de tempo, alvo, preços ou revisões. A inferência e um passo de treinamento passaram no smoke local; o experimento GPU completo ainda precisa ser executado no Colab. Kronos não é promovido automaticamente e a abstenção integral permanece ativa.
+A Fase 5 avaliou Kronos-mini no Colab em 4.096 previsões comparáveis. Kronos não superou XGBoost/CatBoost em log loss e todos os cenários Spot permaneceram negativos; não houve promoção.
+
+A Fase 6 adiciona coleta pública simultânea de BTC/ETH/SOL, RSS oficiais a cada 120 segundos, event store causal, políticas pareadas com/sem notícias, seleção por expectativa líquida, risco independente, paper local e um adapter exclusivo para Binance Demo. Observação é o padrão; demo exige configuração e habilitação explícitas. Nenhum endpoint de produção é aceito e nenhum serviço ou ordem inicia automaticamente.
+
+A Fase 6.1 integra Qwen3-0.6B local na revisão fixada e sob Apache 2.0. A saída
+financeira é validada por Pydantic e usada somente como contexto ou veto de risco.
+Inferência roda em fila limitada com cache, timeout e degradação para abstenção. O
+FinBERT permanece experimental, desabilitado e fora do caminho comercial; o Cardiff
+foi catalogado como baseline CC BY 4.0, também desabilitado. O supervisor comprovou
+dois ciclos de notícias em 120 segundos com seis fontes e nenhuma ordem. Consulte
+reports/phase_6_1/README.md.
 
 Não publicar datasets, livros ou credenciais. O `.gitignore` cobre os originais e artefatos grandes. A leitura contextual dos livros foi parcial; consulte todas as pendências do relatório J antes de considerar a fase integralmente concluída.

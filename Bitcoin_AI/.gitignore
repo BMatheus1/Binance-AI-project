@@ -15,6 +15,8 @@ data/phase_4/
 runtime/phase_4/
 data/phase_5/
 runtime/phase_5/
+runtime/phase_6/
+runtime/phase_6_1/
 .tmp_kronos_official/
 knowledge/references/
 tmp/
@@ -26,3 +28,4 @@ build/
 *.joblib
 .env.*
 reports/*.xml
+!.env.example

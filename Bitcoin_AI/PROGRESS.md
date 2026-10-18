@@ -74,4 +74,41 @@ Preparação concluída em 18/10/2026. A implementação oficial foi fixada por 
 
 O exportador produziu candles OHLCVA de treino, calibração e validação, mais 128 decisões de calibração e 256 decisões compartilhadas com XGBoost/CatBoost. Julho–setembro/2026 não foi exportado. O notebook exige GPU, executa primeiro inferência pré-treinada, faz smoke de um passo e deixa o experimento completo atrás de uma opção explícita. O importador verifica hashes, revisões, instantes, alvos, retornos e preços antes de calcular métricas e cenários econômicos.
 
-O smoke local real carregou tokenizer e pesos, gerou duas barras futuras e realizou um passo AdamW finito com alteração dos parâmetros. Isso valida o caminho técnico, sem medir capacidade preditiva. O experimento completo não foi executado e não há resultado de accuracy, log loss ou lucratividade para o Kronos. Após corrigir a compatibilidade do notebook com o runtime Python 3.13 do Colab, foram executados 70 testes com sucesso; a política continua em abstenção integral. Consulte `reports/phase_5/README.md`.
+O smoke local real carregou tokenizer e pesos, gerou duas barras futuras e realizou um passo AdamW finito com alteração dos parâmetros. O smoke também foi executado no Colab com Tesla T4 e importado pelo pipeline local, confirmando a ida e volta de hashes, previsões e checkpoint. Isso validou o caminho técnico sem medir capacidade preditiva. Após corrigir a compatibilidade de timestamps entre Parquets do Colab e locais, foram executados 71 testes com sucesso.
+
+O experimento completo foi posteriormente importado com 4.096 previsões, quatro variantes e 256 decisões comuns por horizonte. O Kronos pré-treinado calibrado foi a melhor variante, porém sua log loss foi superior à Fase 4 em 1/5/15/30m. O fine-tuning de 500 passos piorou ligeiramente a variante calibrada em todos os horizontes. Todos os cenários Spot foram negativos após custos. Um resultado positivo de payout fixo em 15m apareceu em três limiares equivalentes da mesma política raw, no bloco exploratório já consumido e sem correção por múltiplas comparações; não foi promovido. A abstenção integral permanece.
+
+## Fase 6 — multiactivos e inteligência de notícias
+
+Base de engenharia implementada em 18/10/2026. O universo foi congelado em BTCUSDT, ETHUSDT e SOLUSDT. O coletor público da Fase 3 foi composto em três instâncias independentes. Foram adicionados RSS oficiais do Federal Reserve, SEC e BLS, scheduler de 120 segundos, rate limiting, retries, deduplicação, revisões e event store causal.
+
+O classificador conservador produz eventos estruturados, marca prompt injection como conteúdo não confiável e não possui acesso a execução. As políticas A sem notícias e B com notícias recebem os mesmos instantes; inicialmente, notícias só podem acrescentar contexto e veto de risco, pois o ajuste direcional não foi calibrado. Seleção de ativos usa expectativa líquida após spread, taxas e slippage.
+
+Gerenciamento de risco independente cobre exposição, posições, perda diária, drawdown, correlação, spread, liquidez, falha de dados, kill switch e duração. A extensão é limitada a três minutos, apenas com lucro líquido positivo, e o limite absoluto é 23 minutos. Paper broker e ledger encadeado foram implementados.
+
+O adapter Binance Spot Demo aceita somente `demo-api.binance.com`, permanece desabilitado e distingue ordem pendente, parcial, executada e rejeitada. Nenhuma credencial, autenticação ou ordem foi usada nesta entrega. Endpoints reais são rejeitados sem fallback.
+
+Um ciclo público persistiu 45 eventos do Federal Reserve e SEC. O BLS respondeu HTTP 403 e permaneceu sem dados; a falha foi isolada. Um smoke multiactivos de 15 segundos recebeu 1.116 mensagens com os três livros sincronizados, sem reconexões, gaps ou invalidações. Nenhum processo ficou ativo. Não existe resultado econômico da Fase 6. O protocolo requer dados futuros e mantém abstenção integral. Consulte `reports/phase_6/README.md`.
+
+## Fase 6.1 — Deep Learning financeiro e execução persistente
+
+Concluída tecnicamente em 18/10/2026 para observação local. Qwen3-0.6B foi fixado
+na revisão c1899de289a04d12100db370d81485cdf75e47ca, baixado e verificado sob
+Apache 2.0. O smoke real carregou 2.384.199.680 bytes de parâmetros em CPU e
+produziu resposta estruturada válida em 70,1 segundos. O resultado permaneceu
+insuficiente e não gerou ordem.
+
+FinBERT foi isolado e desabilitado por incompatibilidade com uso comercial. Cardiff
+foi registrado como baseline opcional CC BY 4.0, com atribuição obrigatória e
+limitação de domínio. Nenhum dos dois foi instalado.
+
+As políticas A, B, C e D foram implementadas nas mesmas observações. C usa Qwen3
+somente como veto; D também exige confirmação quantitativa posterior ao recebimento.
+Falha, timeout, injeção ou informação insuficiente causa abstenção.
+
+O supervisor completou dois ciclos de notícias com intervalo de 120 segundos,
+seis fontes configuradas, 75 eventos no SQLite, heartbeat, logs rotativos e nenhuma
+falha. A suíte completa passou com 123 testes e compileall. Nenhuma ordem real,
+demo ou paper nova foi enviada. Validação econômica continua pendente por pelo
+menos 30 dias e 200 operações resolvidas por política. Consulte
+reports/phase_6_1/README.md.

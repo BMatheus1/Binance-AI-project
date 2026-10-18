@@ -1,0 +1,14 @@
+{
+  "policies": [
+    "A_quantitative",
+    "B_conservative_news",
+    "C_qwen3_structured_news",
+    "D_event_market_reaction"
+  ],
+  "same_observations_required": true,
+  "engineering_evaluator_tested": true,
+  "prospective_observations": 0,
+  "economic_comparison_available": false,
+  "automatic_promotion": false,
+  "orders_sent": false
+}

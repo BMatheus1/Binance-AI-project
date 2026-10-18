@@ -2,7 +2,7 @@
   "status": "prepared_waiting_for_full_colab_run",
   "tests": {
     "command": "python -m pytest -q --junitxml=reports/tests.xml",
-    "passed": 70,
+    "passed": 71,
     "failed": 0
   },
   "notebook": {
@@ -29,6 +29,18 @@
     "observed_loss": 2.93847393989563,
     "performance_interpretation": false
   },
+  "colab_smoke": {
+    "imported": true,
+    "run_id": "20261018T150416841626Z-phase5-import",
+    "notebook_build": "2026-10-18.3",
+    "environment": "Python 3.13.15, torch 2.11.0+cu130, CUDA 13.0, Tesla T4",
+    "prediction_rows": 8,
+    "decisions_per_horizon": 2,
+    "training_steps": 1,
+    "observed_loss": 2.627445697784424,
+    "round_trip_validation": true,
+    "performance_interpretation": false
+  },
   "export": {
     "archive_integrity": true,
     "member_hashes_valid": true,
@@ -39,8 +51,20 @@
     "validation_comparison_rows": 256,
     "forbidden_final_period_exported": false
   },
-  "full_colab_experiment_executed": false,
-  "kronos_performance_results_available": false,
+  "full_colab_experiment": {
+    "executed": true,
+    "run_id": "20261018T152602827075Z-phase5-import",
+    "prediction_rows": 4096,
+    "observations_per_variant_horizon": 256,
+    "variants": 4,
+    "horizons": [1, 5, 15, 30],
+    "fine_tune_steps": 500,
+    "incremental_predictive_advantage": false,
+    "protocol_economic_filter_passed": true,
+    "economic_evidence_sufficient": false
+  },
+  "full_colab_experiment_executed": true,
+  "kronos_performance_results_available": true,
   "automatic_promotion": false,
   "policy": "abstenção integral"
 }

@@ -10,7 +10,13 @@ Fase 3: [piloto oficial de AggTrades, microestrutura, coletor público, ledger p
 
 Fase 4: [auditoria estatística, modelos congelados, horizontes 1/5/15/30m e observação prospectiva](phase_4/README.md). Julho–setembro/2026 permaneceu vedado; a execução histórica usa somente desenvolvimento anterior a julho e mantém abstenção integral.
 
-Fase 5: [pacote causal, notebook GPU, smoke real e integração auditável do Kronos-mini](phase_5/README.md). O experimento completo depende da execução no Google Colab; nenhum resultado preditivo foi inventado ou promovido.
+Fase 5: [experimento GPU completo e comparação auditável do Kronos-mini](phase_5/README.md). O Kronos não superou os modelos congelados e não foi promovido.
+
+Fase 6: [serviços multiactivos, notícias oficiais, políticas A/B, risco e simulação](phase_6/README.md). A engenharia inicial está pronta em observação; ainda não existem resultados econômicos prospectivos.
+
+Fase 6.1: [Qwen3 local, políticas A/B/C/D, supervisor persistente e auditoria de
+licenças](phase_6_1/README.md). A engenharia passou em 123 testes; a validação
+econômica prospectiva permanece pendente e nenhuma ordem foi enviada.
 
 - 1m: xgboost, accuracy 50.6549%, log loss 0.809687; baseline frequência 0.861573. IC95% da diferença pareada de log loss: [-0.072525, -0.033281]. Valor negativo favorece modelo. Decisão congelada: abstenção integral.
 - 5m: xgboost, accuracy 51.6876%, log loss 0.717344; baseline frequência 0.729788. IC95% da diferença pareada de log loss: [-0.024622, -0.003589]. Valor negativo favorece modelo. Decisão congelada: abstenção integral.

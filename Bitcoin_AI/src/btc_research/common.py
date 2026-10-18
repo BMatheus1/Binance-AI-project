@@ -43,7 +43,8 @@ def config(root: Path = ROOT) -> dict:
 
 def versions() -> dict:
     result = {}
-    for name in ["numpy", "pandas", "pyarrow", "scikit-learn", "xgboost", "catboost", "pypdf", "pytest", "joblib"]:
+    for name in ["numpy", "pandas", "pyarrow", "scikit-learn", "xgboost", "catboost", "pypdf", "pytest", "joblib",
+                 "torch", "transformers", "huggingface_hub", "safetensors", "pydantic"]:
         try:
             result[name] = importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:

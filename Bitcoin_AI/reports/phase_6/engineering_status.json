@@ -1,0 +1,46 @@
+{
+  "phase": 6,
+  "status": "engineering_ready_observation_default",
+  "prepared_at": "2026-10-18T17:15:53.761900+00:00",
+  "versions": {
+    "numpy": "2.4.3",
+    "pandas": "3.0.2",
+    "pyarrow": "23.0.1",
+    "scikit-learn": "1.8.0",
+    "xgboost": "3.2.0",
+    "catboost": "1.2.10",
+    "pypdf": "6.10.2",
+    "pytest": "9.0.3",
+    "joblib": "1.5.3"
+  },
+  "config_sha256": "ca206edbc9f5a3fc90a5b85a1372302999a626622e64e474dae15c3ea7aed9a8",
+  "services": {
+    "multi_asset_market": "implemented_smoke_completed",
+    "news_120_seconds": "implemented_smoke_completed",
+    "event_store": {
+      "status": "implemented",
+      "events": 45,
+      "revisions": 0
+    },
+    "classifier": "deterministic_conservative_baseline",
+    "asset_selector": "implemented",
+    "risk_manager": "implemented",
+    "paper_broker": "implemented",
+    "binance_demo": "implemented_disabled",
+    "paired_experiment": "implemented_awaiting_future_observations"
+  },
+  "universe": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT"
+  ],
+  "news_sources": [
+    "federal_reserve_all_press",
+    "sec_press_releases",
+    "bls_latest_numbers"
+  ],
+  "real_orders": false,
+  "demo_orders": false,
+  "economic_results": null,
+  "abstention_policy": "active"
+}

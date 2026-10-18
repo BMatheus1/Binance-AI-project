@@ -1,0 +1,14 @@
+{
+  "status": "completed",
+  "inserted": 0,
+  "duplicates": 45,
+  "updated": 0,
+  "errors": [
+    {
+      "source": "bls_latest_numbers",
+      "error": "ClientResponseError",
+      "http_status": 403
+    }
+  ],
+  "completed_at": "2026-10-18T17:10:31.906009+00:00"
+}

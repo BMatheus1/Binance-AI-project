@@ -1,0 +1,57 @@
+{
+  "phase": "6.1",
+  "prepared_at": "2026-10-18T19:30:37.806260+00:00",
+  "status": "engineering_ready_observation_default",
+  "config_sha256": "a496735015a3fa79bbf189b9af0573b18052dd58e46fe0cb83b9ee1c10a71e7d",
+  "versions": {
+    "numpy": "2.4.3",
+    "pandas": "3.0.2",
+    "pyarrow": "23.0.1",
+    "scikit-learn": "1.8.0",
+    "xgboost": "3.2.0",
+    "catboost": "1.2.10",
+    "pypdf": "6.10.2",
+    "pytest": "9.0.3",
+    "joblib": "1.5.3",
+    "torch": "2.10.0",
+    "transformers": "4.57.6",
+    "huggingface_hub": "0.36.2",
+    "safetensors": "0.7.0",
+    "pydantic": "2.12.5"
+  },
+  "qwen3_local_snapshot_available": true,
+  "primary_model_id": "Qwen/Qwen3-0.6B",
+  "primary_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "primary_weights_license": "Apache-2.0",
+  "commercial_use_allowed": true,
+  "finbert_experimental_enabled": false,
+  "cardiff_baseline_enabled": false,
+  "models_installed": {
+    "qwen3_0_6b": true,
+    "finbert": false,
+    "cardiff": false
+  },
+  "policies": [
+    "A_quantitative",
+    "B_conservative_news",
+    "C_qwen3_structured_news",
+    "D_event_market_reaction"
+  ],
+  "fine_tuning": false,
+  "news_cycle_seconds": 120,
+  "news_sources": [
+    "federal_reserve_all_press",
+    "sec_press_releases",
+    "bls_latest_numbers",
+    "bitcoin_core_releases",
+    "ethereum_geth_releases",
+    "solana_agave_releases"
+  ],
+  "tests_passed": 123,
+  "compileall_passed": true,
+  "default_mode": "observation",
+  "demo_orders": false,
+  "real_orders": false,
+  "economic_results": null,
+  "abstention_policy": "active"
+}

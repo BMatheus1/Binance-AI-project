@@ -151,6 +151,13 @@ def _economic(frame: pd.DataFrame, p: np.ndarray, horizon: int, cfg: dict) -> li
     return scenarios
 
 
+def _same_instants(left, right) -> bool:
+    """Compara instantes UTC sem exigir a mesma unidade física do Parquet (us/ns)."""
+    a = pd.DatetimeIndex(pd.to_datetime(left, utc=True))
+    b = pd.DatetimeIndex(pd.to_datetime(right, utc=True))
+    return len(a) == len(b) and bool((a == b).all())
+
+
 def import_colab_results(source: Path, root: Path = ROOT) -> Path:
     cfg = config(root)
     source = Path(source)
@@ -209,7 +216,7 @@ def import_colab_results(source: Path, root: Path = ROOT) -> Path:
                 ("entry_price_x", "entry_price_y"),
                 (f"exit_price_{horizon}m", "exit_price"),
             ]
-            aligned = expected_end.equals(observed_end)
+            aligned = _same_instants(expected_end, observed_end)
             aligned = aligned and all(np.allclose(joined[a], joined[b], rtol=1e-12, atol=1e-12)
                                       for a, b in numeric_pairs)
             if not aligned:

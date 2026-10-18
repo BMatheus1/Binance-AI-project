@@ -1,6 +1,6 @@
 # Fase 5 — Kronos no Google Colab
 
-A preparação foi concluída sem alterar os resultados das Fases 1–4. O pacote de dados causal, o notebook GPU, o adaptador probabilístico e o importador local estão prontos. O smoke real de inferência e de um passo de treinamento passou; ainda não existem resultados do experimento completo no Colab.
+A preparação e o experimento completo foram concluídos sem alterar os resultados das Fases 1–4. O pacote integral do Colab foi importado com 4.096 previsões. O melhor Kronos foi o pré-treinado calibrado, mas não reduziu a log loss contra XGBoost/CatBoost em nenhum horizonte. O fine-tuning controlado também não apresentou vantagem incremental.
 
 O risco central é a sobreposição de pré-treinamento: o Kronos declara dados Binance até junho/2024. Por isso o treino local começa em julho/2024 e a avaliação usa abril–junho/2026. A política permanece em **abstenção integral**.
 
@@ -14,3 +14,7 @@ Arquivos principais:
 - `06_instrucoes_colab.md`
 - `preservation.json`
 - `validation.json`
+- `07_colab_smoke_import.md`
+- `08_full_results.md`
+- `full_analysis.json`
+- `full_artifact_inventory.json`

@@ -1,0 +1,42 @@
+{
+  "source_archive": {
+    "path": "C:/Users/Mathe/Downloads/bitcoin_ai_phase5_results (1).zip",
+    "sha256": "32e99af19944a23401fd8653db83416ee1258678fea436d4499fa5c01c28d196",
+    "bytes": 30609633
+  },
+  "saved_root": "models/phase_5/20261018T152415Z-kronos",
+  "artifacts": [
+    {
+      "path": "models/phase_5/20261018T152415Z-kronos/finetuned_calibrated-calibrators.joblib",
+      "bytes": 3081,
+      "sha256": "822847282d7412765cdb216c8eaae0a4573c6cf3ff0c512471fb3727f0bb05b6"
+    },
+    {
+      "path": "models/phase_5/20261018T152415Z-kronos/pretrained_calibrated-calibrators.joblib",
+      "bytes": 3081,
+      "sha256": "0e603b119688a1ede98028307e1db75f5cf54d842b190e9733d08d6e8362747d"
+    },
+    {
+      "path": "models/phase_5/20261018T152415Z-kronos/kronos_predictions.parquet",
+      "bytes": 70416,
+      "sha256": "2495553bd5528906d33d9ef5e3a187cdbe973d975b7aa412cd7bc902ea6fa88f"
+    },
+    {
+      "path": "models/phase_5/20261018T152415Z-kronos/run_manifest.json",
+      "bytes": 13075,
+      "sha256": "2e6b66c5de272815a09584a8174be4634b9d397d460d01ae7b8ed0f0432abea6"
+    },
+    {
+      "path": "models/phase_5/20261018T152415Z-kronos/finetuned_predictor/config.json",
+      "bytes": 225,
+      "sha256": "70daca2cb11e3a979dd6b8ac12ee08e2aace877acf28f5b8dfb4fe5609736201"
+    },
+    {
+      "path": "models/phase_5/20261018T152415Z-kronos/finetuned_predictor/model.safetensors",
+      "bytes": 16440776,
+      "sha256": "be48b078b376618a7228ef1b4aaa3958dadc560173f94af3be6ce21aa359a5f3"
+    }
+  ],
+  "automatic_promotion": false,
+  "real_orders": false
+}

@@ -35,6 +35,18 @@
     "path": "data/phase_5/bitcoin_ai_phase5_colab.zip",
     "sha256": "17b4793bf356ed77ce789f10467901fbbd07ba00f620f1337a4a188f3faf4632"
   },
+  "phase_5_colab_smoke_import": {
+    "path": "reports/phase_5/runs/20261018T150416841626Z-phase5-import/results.json",
+    "sha256": "46a214310fa60e693c0243580657748cbe6aec461517420e08b043a3febd4a05"
+  },
+  "phase_5_colab_full_import": {
+    "path": "reports/phase_5/runs/20261018T152602827075Z-phase5-import/results.json",
+    "sha256": "b7b944e22616c56bf249aa96b055f296ac2c9fa543915407ac46a551ff90126e"
+  },
+  "phase_5_full_analysis": {
+    "path": "reports/phase_5/full_analysis.json",
+    "sha256": "70bb049d357b19750902178953004b1fa464c38faee499d4d3bcea2c18199f22"
+  },
   "forbidden_final_period_reused": false,
   "historical_artifacts_modified": false
 }

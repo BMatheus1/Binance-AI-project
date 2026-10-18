@@ -1,0 +1,4233 @@
+{
+  "status": "smoke",
+  "source_manifest": {
+    "mode": "smoke",
+    "created_at": "2026-10-18T15:00:37.195962+00:00",
+    "official_repository_revision": "67b630e67f6a18c9e9be918d9b4337c960db1e9a",
+    "model_id": "NeoQuasar/Kronos-mini",
+    "model_revision": "f4e68697d9d5aed55cef5c96aabc3376bcad9f81",
+    "tokenizer_id": "NeoQuasar/Kronos-Tokenizer-2k",
+    "tokenizer_revision": "26966d0035065a0cae0ebad7af8ece35bc1fb51c",
+    "lookback": 512,
+    "prediction_length": 30,
+    "temperature": 0.6,
+    "top_p": 0.9,
+    "monte_carlo_paths": 4,
+    "fine_tune": {
+      "component": "predictor_only",
+      "tokenizer_frozen": true,
+      "learning_rate": 1e-06,
+      "weight_decay": 0.1,
+      "batch_size": 4,
+      "epochs": 1,
+      "max_steps": 500,
+      "gradient_clip": 3.0,
+      "smoke_steps": 1
+    },
+    "training_losses": [
+      2.627445697784424
+    ],
+    "environment": {
+      "notebook_build": "2026-10-18.3",
+      "python": "3.13.15",
+      "torch": "2.11.0+cu130",
+      "cuda": "13.0",
+      "gpu": "Tesla T4",
+      "numpy": "2.1.3",
+      "pandas": "2.2.3",
+      "einops": "0.8.1",
+      "huggingface_hub": "0.36.2",
+      "safetensors": "0.7.0"
+    },
+    "prediction_sha256": "d0c024d59a9baa80219f3a3750866933b359507c2b88ca0dfec1617725f1691e",
+    "forbidden_final_period_used": false,
+    "real_orders": false,
+    "policy": "abstenção integral; Kronos é challenger opcional e não substitui modelos existentes"
+  },
+  "predictions_sha256": "d0c024d59a9baa80219f3a3750866933b359507c2b88ca0dfec1617725f1691e",
+  "variants": {
+    "pretrained_raw_smoke": {
+      "1": {
+        "observations": 2,
+        "phase4_baseline_model": [
+          "xgboost"
+        ],
+        "kronos": {
+          "n": 2,
+          "accuracy": 1.0,
+          "precision_macro": 0.6666666666666666,
+          "recall_macro": 0.6666666666666666,
+          "f1_macro": 0.6666666666666666,
+          "confusion_matrix": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "log_loss": 0.6202212420536637,
+          "brier_multiclass": 0.36363636363636365,
+          "roc_auc_ovr": null,
+          "calibration": [
+            {
+              "class": 0,
+              "left": 0.2,
+              "n": 1,
+              "probability": 0.2727272727272727,
+              "frequency": 0.0
+            },
+            {
+              "class": 0,
+              "left": 0.4,
+              "n": 1,
+              "probability": 0.45454545454545453,
+              "frequency": 1.0
+            },
+            {
+              "class": 1,
+              "left": 0.0,
+              "n": 2,
+              "probability": 0.09090909090909091,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.4,
+              "n": 1,
+              "probability": 0.45454545454545453,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.6000000000000001,
+              "n": 1,
+              "probability": 0.6363636363636364,
+              "frequency": 1.0
+            }
+          ]
+        },
+        "phase4_baseline": {
+          "n": 2,
+          "accuracy": 1.0,
+          "precision_macro": 0.6666666666666666,
+          "recall_macro": 0.6666666666666666,
+          "f1_macro": 0.6666666666666666,
+          "confusion_matrix": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "log_loss": 0.6722149731750761,
+          "brier_multiclass": 0.4762098194747768,
+          "roc_auc_ovr": null,
+          "calibration": [
+            {
+              "class": 0,
+              "left": 0.4,
+              "n": 1,
+              "probability": 0.4860455145515374,
+              "frequency": 0.0
+            },
+            {
+              "class": 0,
+              "left": 0.5,
+              "n": 1,
+              "probability": 0.51008305886766,
+              "frequency": 1.0
+            },
+            {
+              "class": 1,
+              "left": 0.0,
+              "n": 2,
+              "probability": 0.002940545615574784,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.4,
+              "n": 1,
+              "probability": 0.48692009437602574,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.5,
+              "n": 1,
+              "probability": 0.5110702409736273,
+              "frequency": 1.0
+            }
+          ]
+        },
+        "kronos_ece": 0.45454545454545453,
+        "probability_distribution": {
+          "mean": [
+            0.36363636363636365,
+            0.09090909090909091,
+            0.5454545454545454
+          ],
+          "max_probability_quantiles": [
+            0.45454545454545453,
+            0.5,
+            0.5454545454545454,
+            0.5909090909090909,
+            0.6181818181818182,
+            0.6345454545454545,
+            0.6363636363636364
+          ],
+          "entropy_quantiles": [
+            0.8599672810355049,
+            0.8786679352411985,
+            0.8973685894468921,
+            0.9160692436525857,
+            0.9347698978582792
+          ]
+        },
+        "paired_log_loss_delta_vs_phase4": {
+          "mean": -0.05199373112141234,
+          "low": null,
+          "high": null,
+          "days": 1,
+          "limitation": "menos de 10 dias"
+        },
+        "economics": [
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 0.7,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.7
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 0.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.8
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 0.9,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.9
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0006151788811474823,
+            "net_units": -0.0006151788811474823,
+            "max_drawdown_units": 0.0006151788811474823,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0006151788811474823,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0006151788811474823
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0016140647587705725,
+            "net_units": -0.0016140647587705725,
+            "max_drawdown_units": 0.0016140647587705725,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0016140647587705725,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0016140647587705725
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.003608845837736352,
+            "net_units": -0.003608845837736352,
+            "max_drawdown_units": 0.003608845837736352,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.003608845837736352,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.003608845837736352
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 0.7,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.7
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 0.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.8
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 0.9,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.9
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0006151788811474823,
+            "net_units": -0.0006151788811474823,
+            "max_drawdown_units": 0.0006151788811474823,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0006151788811474823,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0006151788811474823
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0016140647587705725,
+            "net_units": -0.0016140647587705725,
+            "max_drawdown_units": 0.0016140647587705725,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0016140647587705725,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0016140647587705725
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.003608845837736352,
+            "net_units": -0.003608845837736352,
+            "max_drawdown_units": 0.003608845837736352,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.003608845837736352,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.003608845837736352
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 0.7,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.7
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 0.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.8
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 0.9,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.9
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0006151788811474823,
+            "net_units": -0.0006151788811474823,
+            "max_drawdown_units": 0.0006151788811474823,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0006151788811474823,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0006151788811474823
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0016140647587705725,
+            "net_units": -0.0016140647587705725,
+            "max_drawdown_units": 0.0016140647587705725,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0016140647587705725,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0016140647587705725
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.003608845837736352,
+            "net_units": -0.003608845837736352,
+            "max_drawdown_units": 0.003608845837736352,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.003608845837736352,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.003608845837736352
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 0.7,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.7
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 0.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.8
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 0.9,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.9
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0006151788811474823,
+            "net_units": -0.0006151788811474823,
+            "max_drawdown_units": 0.0006151788811474823,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0006151788811474823,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0006151788811474823
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0016140647587705725,
+            "net_units": -0.0016140647587705725,
+            "max_drawdown_units": 0.0016140647587705725,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0016140647587705725,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0016140647587705725
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.003608845837736352,
+            "net_units": -0.003608845837736352,
+            "max_drawdown_units": 0.003608845837736352,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.003608845837736352,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.003608845837736352
+            }
+          }
+        ]
+      },
+      "5": {
+        "observations": 2,
+        "phase4_baseline_model": [
+          "xgboost"
+        ],
+        "kronos": {
+          "n": 2,
+          "accuracy": 0.5,
+          "precision_macro": 0.3333333333333333,
+          "recall_macro": 0.16666666666666666,
+          "f1_macro": 0.2222222222222222,
+          "confusion_matrix": [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "log_loss": 1.0438701722472654,
+          "brier_multiclass": 0.7272727272727273,
+          "roc_auc_ovr": null,
+          "calibration": [
+            {
+              "class": 0,
+              "left": 0.2,
+              "n": 1,
+              "probability": 0.2727272727272727,
+              "frequency": 1.0
+            },
+            {
+              "class": 0,
+              "left": 0.4,
+              "n": 1,
+              "probability": 0.45454545454545453,
+              "frequency": 1.0
+            },
+            {
+              "class": 1,
+              "left": 0.0,
+              "n": 2,
+              "probability": 0.09090909090909091,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.4,
+              "n": 1,
+              "probability": 0.45454545454545453,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.6000000000000001,
+              "n": 1,
+              "probability": 0.6363636363636364,
+              "frequency": 0.0
+            }
+          ]
+        },
+        "phase4_baseline": {
+          "n": 2,
+          "accuracy": 0.0,
+          "precision_macro": 0.0,
+          "recall_macro": 0.0,
+          "f1_macro": 0.0,
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "log_loss": 0.7078386666166281,
+          "brier_multiclass": 0.514003566431535,
+          "roc_auc_ovr": null,
+          "calibration": [
+            {
+              "class": 0,
+              "left": 0.4,
+              "n": 2,
+              "probability": 0.4927110438204613,
+              "frequency": 1.0
+            },
+            {
+              "class": 1,
+              "left": 0.0,
+              "n": 2,
+              "probability": 0.0006775055488923319,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.5,
+              "n": 2,
+              "probability": 0.5066114506306463,
+              "frequency": 0.0
+            }
+          ]
+        },
+        "kronos_ece": 0.5909090909090908,
+        "probability_distribution": {
+          "mean": [
+            0.36363636363636365,
+            0.09090909090909091,
+            0.5454545454545454
+          ],
+          "max_probability_quantiles": [
+            0.45454545454545453,
+            0.5,
+            0.5454545454545454,
+            0.5909090909090909,
+            0.6181818181818182,
+            0.6345454545454545,
+            0.6363636363636364
+          ],
+          "entropy_quantiles": [
+            0.8599672810355049,
+            0.8786679352411985,
+            0.8973685894468921,
+            0.9160692436525857,
+            0.9347698978582792
+          ]
+        },
+        "paired_log_loss_delta_vs_phase4": {
+          "mean": 0.33603150563063744,
+          "low": null,
+          "high": null,
+          "days": 1,
+          "limitation": "menos de 10 dias"
+        },
+        "economics": [
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0020065809007260293,
+            "net_units": -0.0020065809007260293,
+            "max_drawdown_units": 0.0020065809007260293,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0020065809007260293,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0020065809007260293
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.003004076070987738,
+            "net_units": -0.003004076070987738,
+            "max_drawdown_units": 0.003004076070987738,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.003004076070987738,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.003004076070987738
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.004996079899025618,
+            "net_units": -0.004996079899025618,
+            "max_drawdown_units": 0.004996079899025618,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.004996079899025618,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.004996079899025618
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0020065809007260293,
+            "net_units": -0.0020065809007260293,
+            "max_drawdown_units": 0.0020065809007260293,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0020065809007260293,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0020065809007260293
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.003004076070987738,
+            "net_units": -0.003004076070987738,
+            "max_drawdown_units": 0.003004076070987738,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.003004076070987738,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.003004076070987738
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.004996079899025618,
+            "net_units": -0.004996079899025618,
+            "max_drawdown_units": 0.004996079899025618,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.004996079899025618,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.004996079899025618
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0020065809007260293,
+            "net_units": -0.0020065809007260293,
+            "max_drawdown_units": 0.0020065809007260293,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0020065809007260293,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0020065809007260293
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.003004076070987738,
+            "net_units": -0.003004076070987738,
+            "max_drawdown_units": 0.003004076070987738,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.003004076070987738,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.003004076070987738
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.004996079899025618,
+            "net_units": -0.004996079899025618,
+            "max_drawdown_units": 0.004996079899025618,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.004996079899025618,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.004996079899025618
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -1.0,
+            "net_units": -1.0,
+            "max_drawdown_units": 1.0,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": -1.0,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -1.0
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0020065809007260293,
+            "net_units": -0.0020065809007260293,
+            "max_drawdown_units": 0.0020065809007260293,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0020065809007260293,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0020065809007260293
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.003004076070987738,
+            "net_units": -0.003004076070987738,
+            "max_drawdown_units": 0.003004076070987738,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.003004076070987738,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.003004076070987738
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 0.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.004996079899025618,
+            "net_units": -0.004996079899025618,
+            "max_drawdown_units": 0.004996079899025618,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.004996079899025618,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.004996079899025618
+            }
+          }
+        ]
+      },
+      "15": {
+        "observations": 2,
+        "phase4_baseline_model": [
+          "xgboost"
+        ],
+        "kronos": {
+          "n": 2,
+          "accuracy": 1.0,
+          "precision_macro": 0.6666666666666666,
+          "recall_macro": 0.6666666666666666,
+          "f1_macro": 0.6666666666666666,
+          "confusion_matrix": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "log_loss": 0.32632790960260416,
+          "brier_multiclass": 0.1322314049586777,
+          "roc_auc_ovr": null,
+          "calibration": [
+            {
+              "class": 0,
+              "left": 0.0,
+              "n": 1,
+              "probability": 0.09090909090909091,
+              "frequency": 0.0
+            },
+            {
+              "class": 0,
+              "left": 0.6000000000000001,
+              "n": 1,
+              "probability": 0.6363636363636364,
+              "frequency": 1.0
+            },
+            {
+              "class": 1,
+              "left": 0.0,
+              "n": 2,
+              "probability": 0.09090909090909091,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.2,
+              "n": 1,
+              "probability": 0.2727272727272727,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.8,
+              "n": 1,
+              "probability": 0.8181818181818182,
+              "frequency": 1.0
+            }
+          ]
+        },
+        "phase4_baseline": {
+          "n": 2,
+          "accuracy": 0.5,
+          "precision_macro": 0.16666666666666666,
+          "recall_macro": 0.3333333333333333,
+          "f1_macro": 0.2222222222222222,
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "log_loss": 0.696140740094835,
+          "brier_multiclass": 0.5026488498036664,
+          "roc_auc_ovr": null,
+          "calibration": [
+            {
+              "class": 0,
+              "left": 0.4,
+              "n": 2,
+              "probability": 0.48881071631972695,
+              "frequency": 0.5
+            },
+            {
+              "class": 1,
+              "left": 0.0,
+              "n": 2,
+              "probability": 0.00034422630010079095,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.5,
+              "n": 2,
+              "probability": 0.5108450573801723,
+              "frequency": 0.5
+            }
+          ]
+        },
+        "kronos_ece": 0.2727272727272727,
+        "probability_distribution": {
+          "mean": [
+            0.36363636363636365,
+            0.09090909090909091,
+            0.5454545454545454
+          ],
+          "max_probability_quantiles": [
+            0.6363636363636364,
+            0.6818181818181819,
+            0.7272727272727273,
+            0.7727272727272727,
+            0.8,
+            0.8163636363636364,
+            0.8181818181818182
+          ],
+          "entropy_quantiles": [
+            0.6001660731596457,
+            0.6651163751286104,
+            0.7300666770975752,
+            0.7950169790665401,
+            0.8599672810355049
+          ]
+        },
+        "paired_log_loss_delta_vs_phase4": {
+          "mean": -0.3698128304922308,
+          "low": null,
+          "high": null,
+          "days": 1,
+          "limitation": "menos de 10 dias"
+        },
+        "economics": [
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 1.4,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.4
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 1.6,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.6
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 1.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.8
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -2.9882117764445937e-05,
+            "net_units": -2.9882117764445937e-05,
+            "max_drawdown_units": 2.9882117764445937e-05,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -2.9882117764445937e-05,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -2.9882117764445937e-05
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0010293529999411133,
+            "net_units": -0.0010293529999411133,
+            "max_drawdown_units": 0.0010293529999411133,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0010293529999411133,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0010293529999411133
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0030253023365034437,
+            "net_units": -0.0030253023365034437,
+            "max_drawdown_units": 0.0030253023365034437,
+            "max_loss_streak": 1,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0030253023365034437,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0030253023365034437
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 1.4,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.4
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 1.6,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.6
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 1.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.8
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -2.9882117764445937e-05,
+            "net_units": -2.9882117764445937e-05,
+            "max_drawdown_units": 2.9882117764445937e-05,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -2.9882117764445937e-05,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -2.9882117764445937e-05
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0010293529999411133,
+            "net_units": -0.0010293529999411133,
+            "max_drawdown_units": 0.0010293529999411133,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0010293529999411133,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0010293529999411133
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0030253023365034437,
+            "net_units": -0.0030253023365034437,
+            "max_drawdown_units": 0.0030253023365034437,
+            "max_loss_streak": 1,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0030253023365034437,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0030253023365034437
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 1.4,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.4
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 1.6,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.6
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 1.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.8
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -2.9882117764445937e-05,
+            "net_units": -2.9882117764445937e-05,
+            "max_drawdown_units": 2.9882117764445937e-05,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -2.9882117764445937e-05,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -2.9882117764445937e-05
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0010293529999411133,
+            "net_units": -0.0010293529999411133,
+            "max_drawdown_units": 0.0010293529999411133,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0010293529999411133,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0010293529999411133
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0030253023365034437,
+            "net_units": -0.0030253023365034437,
+            "max_drawdown_units": 0.0030253023365034437,
+            "max_loss_streak": 1,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0030253023365034437,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0030253023365034437
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 1.4,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.4
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 1.6,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.6
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 1.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.8
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -2.9882117764445937e-05,
+            "net_units": -2.9882117764445937e-05,
+            "max_drawdown_units": 2.9882117764445937e-05,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -2.9882117764445937e-05,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -2.9882117764445937e-05
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0010293529999411133,
+            "net_units": -0.0010293529999411133,
+            "max_drawdown_units": 0.0010293529999411133,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0010293529999411133,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0010293529999411133
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": -0.0030253023365034437,
+            "net_units": -0.0030253023365034437,
+            "max_drawdown_units": 0.0030253023365034437,
+            "max_loss_streak": 1,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": -0.0030253023365034437,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": -0.0030253023365034437
+            }
+          }
+        ]
+      },
+      "30": {
+        "observations": 2,
+        "phase4_baseline_model": [
+          "catboost"
+        ],
+        "kronos": {
+          "n": 2,
+          "accuracy": 1.0,
+          "precision_macro": 0.6666666666666666,
+          "recall_macro": 0.6666666666666666,
+          "f1_macro": 0.6666666666666666,
+          "confusion_matrix": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "log_loss": 0.32632790960260416,
+          "brier_multiclass": 0.1322314049586777,
+          "roc_auc_ovr": null,
+          "calibration": [
+            {
+              "class": 0,
+              "left": 0.0,
+              "n": 1,
+              "probability": 0.09090909090909091,
+              "frequency": 0.0
+            },
+            {
+              "class": 0,
+              "left": 0.6000000000000001,
+              "n": 1,
+              "probability": 0.6363636363636364,
+              "frequency": 1.0
+            },
+            {
+              "class": 1,
+              "left": 0.0,
+              "n": 2,
+              "probability": 0.09090909090909091,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.2,
+              "n": 1,
+              "probability": 0.2727272727272727,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.8,
+              "n": 1,
+              "probability": 0.8181818181818182,
+              "frequency": 1.0
+            }
+          ]
+        },
+        "phase4_baseline": {
+          "n": 2,
+          "accuracy": 0.5,
+          "precision_macro": 0.16666666666666666,
+          "recall_macro": 0.3333333333333333,
+          "f1_macro": 0.2222222222222222,
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "log_loss": 0.6871386478860051,
+          "brier_multiclass": 0.4938397338146039,
+          "roc_auc_ovr": null,
+          "calibration": [
+            {
+              "class": 0,
+              "left": 0.4,
+              "n": 2,
+              "probability": 0.48267639204869817,
+              "frequency": 0.5
+            },
+            {
+              "class": 1,
+              "left": 0.0,
+              "n": 2,
+              "probability": 0.00016099148483531684,
+              "frequency": 0.0
+            },
+            {
+              "class": 2,
+              "left": 0.5,
+              "n": 2,
+              "probability": 0.5171626164664666,
+              "frequency": 0.5
+            }
+          ]
+        },
+        "kronos_ece": 0.2727272727272727,
+        "probability_distribution": {
+          "mean": [
+            0.36363636363636365,
+            0.09090909090909091,
+            0.5454545454545454
+          ],
+          "max_probability_quantiles": [
+            0.6363636363636364,
+            0.6818181818181819,
+            0.7272727272727273,
+            0.7727272727272727,
+            0.8,
+            0.8163636363636364,
+            0.8181818181818182
+          ],
+          "entropy_quantiles": [
+            0.6001660731596457,
+            0.6651163751286104,
+            0.7300666770975752,
+            0.7950169790665401,
+            0.8599672810355049
+          ]
+        },
+        "paired_log_loss_delta_vs_phase4": {
+          "mean": -0.36081073828340093,
+          "low": null,
+          "high": null,
+          "days": 1,
+          "limitation": "menos de 10 dias"
+        },
+        "economics": [
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 1.4,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.4
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 1.6,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.6
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 1.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.8
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.003859608798542302,
+            "net_units": 0.003859608798542302,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.003859608798542302,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.003859608798542302
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.002856250367279989,
+            "net_units": 0.002856250367279989,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.002856250367279989,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.002856250367279989
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.0008525375719152795,
+            "net_units": 0.0008525375719152795,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.52,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.0008525375719152795,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.0008525375719152795
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 1.4,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.4
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 1.6,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.6
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 1.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.8
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.003859608798542302,
+            "net_units": 0.003859608798542302,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.003859608798542302,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.003859608798542302
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.002856250367279989,
+            "net_units": 0.002856250367279989,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.002856250367279989,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.002856250367279989
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.0008525375719152795,
+            "net_units": 0.0008525375719152795,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.55,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.0008525375719152795,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.0008525375719152795
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 1.4,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.4
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 1.6,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.6
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 1.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.8
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.003859608798542302,
+            "net_units": 0.003859608798542302,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.003859608798542302,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.003859608798542302
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.002856250367279989,
+            "net_units": 0.002856250367279989,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.002856250367279989,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.002856250367279989
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.0008525375719152795,
+            "net_units": 0.0008525375719152795,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.58,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.0008525375719152795,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.0008525375719152795
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.7,
+            "net_units": 1.4,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": 0.7,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5882352941176471,
+            "expectancy_ci": {
+              "mean": 0.7,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.4
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.8,
+            "net_units": 1.6,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": 0.8,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5555555555555556,
+            "expectancy_ci": {
+              "mean": 0.8,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.6
+            }
+          },
+          {
+            "mode": "fixed",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 2,
+            "signal_coverage": 1.0,
+            "executed_coverage": 1.0,
+            "abstention_rate": 0.0,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.9,
+            "net_units": 1.8,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": 0.9,
+            "costs_bps_per_side": null,
+            "break_even_non_ties": 0.5263157894736842,
+            "expectancy_ci": {
+              "mean": 0.9,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 1.8
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.003859608798542302,
+            "net_units": 0.003859608798542302,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 5,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.003859608798542302,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.003859608798542302
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.002856250367279989,
+            "net_units": 0.002856250367279989,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 10,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.002856250367279989,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.002856250367279989
+            }
+          },
+          {
+            "mode": "spot",
+            "hypothetical": true,
+            "n_predictions": 2,
+            "trades": 1,
+            "signal_coverage": 0.5,
+            "executed_coverage": 0.5,
+            "abstention_rate": 0.5,
+            "hit_rate_excluding_ties": 1.0,
+            "ties": 0,
+            "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+            "expectancy_per_trade": 0.0008525375719152795,
+            "net_units": 0.0008525375719152795,
+            "max_drawdown_units": 0.0,
+            "max_loss_streak": 0,
+            "threshold": 0.6,
+            "payout": null,
+            "costs_bps_per_side": 20,
+            "break_even_non_ties": null,
+            "expectancy_ci": {
+              "mean": 0.0008525375719152795,
+              "low": null,
+              "high": null,
+              "days": 1,
+              "limitation": "menos de 10 dias"
+            },
+            "risk": {
+              "fixed_notional": 1,
+              "non_overlapping": true,
+              "daily_loss_limit": 10,
+              "max_drawdown": 30
+            },
+            "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+            "monthly_pnl": {
+              "2026-04": 0.0008525375719152795
+            }
+          }
+        ]
+      }
+    }
+  },
+  "policy": "abstenção integral; Kronos é challenger opcional e não substitui modelos existentes",
+  "automatic_promotion": false,
+  "real_orders": false
+}
