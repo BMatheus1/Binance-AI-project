@@ -1,6 +1,6 @@
 # 06 — Execução exata no Google Colab
 
-1. Acesse [Google Colab](https://colab.research.google.com/) e envie `notebooks/phase5_kronos_colab.ipynb`.
+1. Encerre sessões antigas que tenham executado outra versão, acesse [Google Colab](https://colab.research.google.com/) e envie `notebooks/phase5_kronos_colab_v2.ipynb`. Confirme no topo `Build Colab: 2026-10-18.3`.
 2. Em **Runtime → Change runtime type**, selecione **GPU**. A célula 3 interrompe a execução se CUDA não estiver disponível.
 3. Execute as células 1–8 em ordem. Quando solicitado na célula 2, envie `data/phase_5/bitcoin_ai_phase5_colab.zip`.
 4. Confirme `PRETRAIN_SMOKE_OK = True` após a inferência pré-treinada e `TRAIN_SMOKE_OK = True` após o passo de treinamento. Esses resultados apenas validam o ambiente.
@@ -23,4 +23,4 @@ As métricas são accuracy, log loss, Brier multiclasse, calibração, distribui
 
 ### Compatibilidade do runtime Colab
 
-A célula 1 instala apenas as dependências realmente importadas pelo modelo e exige wheels binários. Ela não executa o `requirements.txt` completo do repositório, pois esse arquivo fixa versões antigas de pandas e matplotlib que podem não oferecer wheel para a versão atual do Python no Colab. Torch, NumPy e pandas fornecidos pela própria imagem do Colab são preservados.
+A célula 1 não executa o `requirements.txt` completo do repositório. Einops, Hugging Face Hub, Safetensors e tqdm são instalados em `/content/phase5_deps`, isolados das bibliotecas globais. Torch, NumPy, pandas, PyArrow, scikit-learn e joblib da imagem do Colab são apenas importados e registrados. Assim o notebook não altera dependências usadas por Transformers, Diffusers, Gradio ou pelo próprio runtime.

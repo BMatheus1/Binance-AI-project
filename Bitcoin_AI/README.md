@@ -73,7 +73,7 @@ knowledge/hypotheses/           avaliações exploratórias
 src/btc_research/               módulos independentes
 models/trained/<run_id>/         modelos, metadados e previsões
 models/phase_4/<run_id>/         geração congelada de 1/5/15/30m
-notebooks/phase5_kronos_colab.ipynb  experimento Kronos-mini em GPU
+notebooks/phase5_kronos_colab_v2.ipynb  experimento Kronos-mini em GPU
 reports/                        auditorias, experimentos e relatórios
 tests/                          testes adversariais e integração
 ```

@@ -101,3 +101,15 @@ def test_phase5_import_accepts_aligned_smoke_and_rejects_economic_mismatch(tmp_p
     write_manifest()
     with pytest.raises(ValueError, match="econômicos"):
         import_colab_results(source_dir, root=root)
+
+
+def test_phase5_colab_bootstrap_is_isolated_and_upload_is_cwd_independent():
+    notebook = json.load(open("notebooks/phase5_kronos_colab_v2.ipynb", encoding="utf-8"))
+    sources = ["".join(cell.get("source", [])) for cell in notebook["cells"]]
+    bootstrap, upload = sources[1], sources[2]
+    assert "2026-10-18.3" in bootstrap
+    assert "--target" in bootstrap and "phase5_deps" in bootstrap and "--no-deps" in bootstrap
+    assert "requirements.txt" not in bootstrap
+    assert "os.chdir(CONTENT)" in bootstrap
+    assert "archive.write_bytes" in upload
+    assert "EXPECTED_ARCHIVE_SHA256" in upload

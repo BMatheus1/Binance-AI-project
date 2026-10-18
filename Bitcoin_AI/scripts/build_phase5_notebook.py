@@ -5,7 +5,8 @@ import nbformat as nbf
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "notebooks/phase5_kronos_colab.ipynb"
+OUT = ROOT / "notebooks/phase5_kronos_colab_v2.ipynb"
+COMPAT_OUT = ROOT / "notebooks/phase5_kronos_colab.ipynb"
 
 
 def code(source: str):
@@ -22,37 +23,62 @@ cells = [
 
 Este notebook avalia **Kronos-mini** como challenger. Ele não envia ordens, não altera os modelos das Fases 1–4 e não acessa julho–setembro/2026. A sequência obrigatória é: validar GPU e hashes → inferência pré-treinada → smoke de fine-tuning → experimento completo opcional.
 
+**Build Colab: 2026-10-18.3.** Esta versão não instala o `requirements.txt` oficial e não depende do diretório corrente da sessão.
+
 O pré-treinamento divulgado do Kronos inclui Binance até junho/2024. Por isso o fine-tuning local começa em julho/2024, a calibração usa janeiro–março/2026 e a comparação usa abril–junho/2026. A comparação continua exploratória porque esse último bloco já foi usado na Fase 4.
 """),
     code("""
-#@title 1. Instalar a revisão oficial congelada
-!nvidia-smi
-%cd /content
-!rm -rf /content/Kronos
-!git clone -q https://github.com/shiyu-coder/Kronos.git /content/Kronos
-%cd /content/Kronos
-!git checkout -q 67b630e67f6a18c9e9be918d9b4337c960db1e9a
-!python -m pip install -q --upgrade pip setuptools wheel
-# O requirements oficial fixa pandas/matplotlib antigos. O notebook não usa matplotlib
-# e preserva torch/numpy/pandas já compatíveis com a imagem atual do Colab.
-!python -m pip install -q --only-binary=:all: einops==0.8.1 huggingface_hub==0.33.1 safetensors==0.6.2 tqdm pyarrow scikit-learn joblib
+#@title 1. Preparar o Kronos sem alterar as bibliotecas-base do Colab
+from pathlib import Path
+import os, shutil, subprocess, sys
+
+NOTEBOOK_BUILD = '2026-10-18.3'
+CONTENT = Path('/content')
+REPOSITORY = CONTENT / 'Kronos'
+ISOLATED_DEPS = CONTENT / 'phase5_deps'
+os.chdir(CONTENT)
+
+subprocess.run(['nvidia-smi'], check=True)
+shutil.rmtree(REPOSITORY, ignore_errors=True)
+subprocess.run(['git', 'clone', '-q', 'https://github.com/shiyu-coder/Kronos.git', str(REPOSITORY)], check=True)
+subprocess.run(['git', '-C', str(REPOSITORY), 'checkout', '-q',
+                '67b630e67f6a18c9e9be918d9b4337c960db1e9a'], check=True)
+
+# Dependências do Kronos ficam isoladas. Nada é rebaixado ou atualizado no ambiente global.
+shutil.rmtree(ISOLATED_DEPS, ignore_errors=True)
+subprocess.run([
+    sys.executable, '-m', 'pip', 'install', '-q', '--target', str(ISOLATED_DEPS),
+    '--only-binary=:all:', '--no-deps',
+    'einops==0.8.1', 'huggingface-hub==0.36.2', 'safetensors==0.7.0', 'tqdm==4.67.1'
+], check=True)
+sys.path.insert(0, str(ISOLATED_DEPS))
+
+from huggingface_hub import PyTorchModelHubMixin
+import einops, huggingface_hub, joblib, numpy, pandas, pyarrow, safetensors, sklearn, torch, tqdm
+assert torch.cuda.is_available(), 'Selecione Runtime > Change runtime type > GPU'
+for module in [einops, huggingface_hub, safetensors, tqdm]:
+    assert Path(module.__file__).is_relative_to(ISOLATED_DEPS), f'Dependência fora do ambiente isolado: {module.__file__}'
+print({
+    'build': NOTEBOOK_BUILD,
+    'python': sys.version.split()[0],
+    'torch': torch.__version__,
+    'cuda': torch.version.cuda,
+    'gpu': torch.cuda.get_device_name(0),
+    'einops': einops.__version__,
+    'huggingface_hub': huggingface_hub.__version__,
+    'safetensors': safetensors.__version__,
+    'isolated_dependencies': str(ISOLATED_DEPS),
+    'repository': subprocess.check_output(['git', '-C', str(REPOSITORY), 'rev-parse', 'HEAD'], text=True).strip(),
+})
 """),
     code("""
 #@title 2. Carregar o pacote exportado pelo Bitcoin AI Trader
 from pathlib import Path
 from google.colab import files
-import zipfile, json, hashlib, os
+import zipfile, json, hashlib, shutil
 
 archive = Path('/content/bitcoin_ai_phase5_colab.zip')
-if not archive.exists():
-    uploaded = files.upload()
-    archive = Path('/content') / next(iter(uploaded))
-data_dir = Path('/content/phase5_data')
-data_dir.mkdir(exist_ok=True)
-with zipfile.ZipFile(archive) as z:
-    z.extractall(data_dir)
-manifest = json.loads((data_dir / 'manifest.json').read_text())
-
+EXPECTED_ARCHIVE_SHA256 = '17b4793bf356ed77ce789f10467901fbbd07ba00f620f1337a4a188f3faf4632'
 def sha256(path):
     h = hashlib.sha256()
     with open(path, 'rb') as stream:
@@ -60,12 +86,30 @@ def sha256(path):
             h.update(block)
     return h.hexdigest()
 
+if not archive.exists() or sha256(archive) != EXPECTED_ARCHIVE_SHA256:
+    uploaded = files.upload()
+    candidates = [(name, content) for name, content in uploaded.items()
+                  if Path(name).name == 'bitcoin_ai_phase5_colab.zip']
+    if len(candidates) != 1:
+        raise ValueError('Selecione exatamente bitcoin_ai_phase5_colab.zip')
+    archive.write_bytes(candidates[0][1])
+assert archive.is_file(), archive
+assert sha256(archive) == EXPECTED_ARCHIVE_SHA256, 'ZIP diferente do exportado pela Fase 5'
+data_dir = Path('/content/phase5_data')
+shutil.rmtree(data_dir, ignore_errors=True)
+data_dir.mkdir()
+with zipfile.ZipFile(archive) as z:
+    assert z.testzip() is None, 'ZIP corrompido'
+    assert all(not Path(name).is_absolute() and '..' not in Path(name).parts for name in z.namelist())
+    z.extractall(data_dir)
+manifest = json.loads((data_dir / 'manifest.json').read_text())
+
 for artifact in manifest['artifacts']:
     assert sha256(data_dir / artifact['path']) == artifact['sha256'], artifact['path']
 cfg = manifest['config']
 assert cfg['forbidden_final_test_start'] == '2026-07-01'
 assert manifest['forbidden_final_period_exported'] is False
-print('Pacote íntegro:', len(manifest['artifacts']), 'artefatos')
+print('Pacote íntegro:', len(manifest['artifacts']), 'artefatos', archive)
 """),
     code("""
 #@title 3. Ambiente, sementes e pesos oficiais fixados
@@ -299,8 +343,12 @@ run_manifest = {
     'temperature': cfg['temperature'], 'top_p': cfg['top_p'],
     'monte_carlo_paths': cfg['monte_carlo_paths'] if mode == 'full' else 4,
     'fine_tune': cfg['fine_tune'], 'training_losses': losses,
-    'environment': {'python': platform.python_version(), 'torch': torch.__version__,
-                    'gpu': torch.cuda.get_device_name(0)},
+    'environment': {'notebook_build': NOTEBOOK_BUILD, 'python': platform.python_version(),
+                    'torch': torch.__version__, 'cuda': torch.version.cuda,
+                    'gpu': torch.cuda.get_device_name(0), 'numpy': np.__version__,
+                    'pandas': pd.__version__, 'einops': einops.__version__,
+                    'huggingface_hub': huggingface_hub.__version__,
+                    'safetensors': safetensors.__version__},
     'prediction_sha256': sha256(output_dir / 'kronos_predictions.parquet'),
     'forbidden_final_period_used': False, 'real_orders': False,
     'policy': cfg['policy'],
@@ -332,4 +380,5 @@ notebook = nbf.v4.new_notebook(cells=cells, metadata={
 })
 OUT.parent.mkdir(parents=True, exist_ok=True)
 nbf.write(notebook, OUT)
+nbf.write(notebook, COMPAT_OUT)
 print(OUT)

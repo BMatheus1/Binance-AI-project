@@ -21,7 +21,11 @@
   },
   "phase_5_notebook": {
     "path": "notebooks/phase5_kronos_colab.ipynb",
-    "sha256": "4a6b5dcb17dcf5aa88d456016e1b96fb6d26879802c837024c4abb45cd9bbe18"
+    "sha256": "00262d7ff96cb1ad998357e0e7a1590900bd617a073e6c1cfe0bbdc4d2194af5"
+  },
+  "phase_5_notebook_v2": {
+    "path": "notebooks/phase5_kronos_colab_v2.ipynb",
+    "sha256": "00262d7ff96cb1ad998357e0e7a1590900bd617a073e6c1cfe0bbdc4d2194af5"
   },
   "phase_5_export_manifest": {
     "path": "reports/phase_5/export_manifest.json",

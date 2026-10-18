@@ -2,14 +2,17 @@
   "status": "prepared_waiting_for_full_colab_run",
   "tests": {
     "command": "python -m pytest -q --junitxml=reports/tests.xml",
-    "passed": 69,
+    "passed": 70,
     "failed": 0
   },
   "notebook": {
+    "build": "2026-10-18.3",
     "nbformat_valid": true,
     "cells": 14,
     "python_cells_syntax_valid": true,
-    "accelerator": "GPU"
+    "accelerator": "GPU",
+    "dependencies_isolated": true,
+    "upload_cwd_independent": true
   },
   "official_identity": {
     "repository_revision": "67b630e67f6a18c9e9be918d9b4337c960db1e9a",

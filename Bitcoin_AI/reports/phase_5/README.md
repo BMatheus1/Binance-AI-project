@@ -6,7 +6,7 @@ O risco central é a sobreposição de pré-treinamento: o Kronos declara dados 
 
 Arquivos principais:
 
-- `notebooks/phase5_kronos_colab.ipynb`
+- `notebooks/phase5_kronos_colab_v2.ipynb` (build corrigido `2026-10-18.3`)
 - `data/phase_5/bitcoin_ai_phase5_colab.zip`
 - `reports/phase_5/export_manifest.json`
 - `scripts/export_phase5_colab.py`
