@@ -27,6 +27,7 @@ O pré-treinamento divulgado do Kronos inclui Binance até junho/2024. Por isso 
     code("""
 #@title 1. Instalar a revisão oficial congelada
 !nvidia-smi
+%cd /content
 !rm -rf /content/Kronos
 !git clone -q https://github.com/shiyu-coder/Kronos.git /content/Kronos
 %cd /content/Kronos
