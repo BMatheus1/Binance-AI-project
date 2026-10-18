@@ -20,3 +20,7 @@ python scripts/import_phase5_results.py "C:\caminho\phase5_results"
 O caminho informado deve conter diretamente `run_manifest.json` e `kronos_predictions.parquet`. O importador rejeita revisão diferente, hash divergente, observação duplicada, conjunto incompleto, uso do período proibido ou qualquer diferença em decisão, fim do evento, alvo, retorno, entrada e saída. O resultado aceito fica em `reports/phase_5/runs/<run_id>/results.json`, e `reports/phase_5/latest_import.json` aponta para ele.
 
 As métricas são accuracy, log loss, Brier multiclasse, calibração, distribuição probabilística e intervalo por blocos diários da diferença pareada de log loss contra o modelo congelado da Fase 4. Os cenários econômicos reutilizam payouts, custos, limiares, não sobreposição, limite diário e drawdown existentes. Todos são hipotéticos. A importação mantém `automatic_promotion=false`, `real_orders=false` e abstenção integral.
+
+### Compatibilidade do runtime Colab
+
+A célula 1 instala apenas as dependências realmente importadas pelo modelo e exige wheels binários. Ela não executa o `requirements.txt` completo do repositório, pois esse arquivo fixa versões antigas de pandas e matplotlib que podem não oferecer wheel para a versão atual do Python no Colab. Torch, NumPy e pandas fornecidos pela própria imagem do Colab são preservados.

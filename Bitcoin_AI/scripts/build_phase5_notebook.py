@@ -31,7 +31,10 @@ O pré-treinamento divulgado do Kronos inclui Binance até junho/2024. Por isso 
 !git clone -q https://github.com/shiyu-coder/Kronos.git /content/Kronos
 %cd /content/Kronos
 !git checkout -q 67b630e67f6a18c9e9be918d9b4337c960db1e9a
-!pip install -q -r requirements.txt pyarrow scikit-learn joblib
+!python -m pip install -q --upgrade pip setuptools wheel
+# O requirements oficial fixa pandas/matplotlib antigos. O notebook não usa matplotlib
+# e preserva torch/numpy/pandas já compatíveis com a imagem atual do Colab.
+!python -m pip install -q --only-binary=:all: einops==0.8.1 huggingface_hub==0.33.1 safetensors==0.6.2 tqdm pyarrow scikit-learn joblib
 """),
     code("""
 #@title 2. Carregar o pacote exportado pelo Bitcoin AI Trader
