@@ -1,0 +1,146 @@
+{
+  "created_at": "2026-10-18T14:05:21.074405+00:00",
+  "phase": 5,
+  "schema": {
+    "timestamps": "UTC open_time",
+    "fields": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "amount"
+    ],
+    "amount": "quote_volume USDT"
+  },
+  "target_convention": "decision after candle t; entry open[t+1]; exit close[t+h]; classes 0/1/2",
+  "config": {
+    "seed": 42,
+    "official_repository": "https://github.com/shiyu-coder/Kronos.git",
+    "official_repository_revision": "67b630e67f6a18c9e9be918d9b4337c960db1e9a",
+    "license": "MIT",
+    "model_id": "NeoQuasar/Kronos-mini",
+    "model_revision": "f4e68697d9d5aed55cef5c96aabc3376bcad9f81",
+    "tokenizer_id": "NeoQuasar/Kronos-Tokenizer-2k",
+    "tokenizer_revision": "26966d0035065a0cae0ebad7af8ece35bc1fb51c",
+    "pretraining_cutoff_disclosed": "2024-06-30T23:59:59Z",
+    "local_train_start": "2024-07-01",
+    "train_end": "2026-01-01",
+    "calibration_end": "2026-04-01",
+    "validation_end": "2026-07-01",
+    "forbidden_final_test_start": "2026-07-01",
+    "horizons": [
+      1,
+      5,
+      15,
+      30
+    ],
+    "lookback": 512,
+    "prediction_length": 30,
+    "comparison_rows_calibration": 128,
+    "comparison_rows_validation": 256,
+    "temperature": 0.6,
+    "top_p": 0.9,
+    "monte_carlo_paths": 16,
+    "probability_smoothing_alpha": 0.5,
+    "fine_tune": {
+      "component": "predictor_only",
+      "tokenizer_frozen": true,
+      "learning_rate": 1e-06,
+      "weight_decay": 0.1,
+      "batch_size": 4,
+      "epochs": 1,
+      "max_steps": 500,
+      "gradient_clip": 3.0,
+      "smoke_steps": 1
+    },
+    "thresholds": [
+      0.52,
+      0.55,
+      0.58,
+      0.6
+    ],
+    "payouts": [
+      0.7,
+      0.8,
+      0.9
+    ],
+    "spot_costs_bps_per_side": [
+      5,
+      10,
+      20
+    ],
+    "policy": "abstenção integral; Kronos é challenger opcional e não substitui modelos existentes"
+  },
+  "artifacts": [
+    {
+      "path": "candles_train.parquet",
+      "rows": 790560,
+      "start": "2024-07-01 00:00:00+00:00",
+      "end": "2025-12-31 23:59:00+00:00",
+      "sha256": "6b180f1d553e544207d9160b445d3e656566c96dee78bf6aab7d84ccfc594e73"
+    },
+    {
+      "path": "candles_calibration.parquet",
+      "rows": 129600,
+      "start": "2026-01-01 00:00:00+00:00",
+      "end": "2026-03-31 23:59:00+00:00",
+      "sha256": "d63421db069588505bbf454f21dd11ee297a0ff7f40ce77e2204e3fa49d1bbf6"
+    },
+    {
+      "path": "candles_validation.parquet",
+      "rows": 131040,
+      "start": "2026-04-01 00:00:00+00:00",
+      "end": "2026-06-30 23:59:00+00:00",
+      "sha256": "0a34f7d26d97b2d2197268b6440d0afdcb88a72820c334b1102cce80ffbb87f6"
+    },
+    {
+      "path": "comparison_calibration.parquet",
+      "rows": 128,
+      "start": "2026-01-01 00:30:00+00:00",
+      "end": "2026-03-31 23:29:00+00:00",
+      "sha256": "c82d64b31d5f96851fcf0ae5fe2a497a4f3589885073212f9ea8b80fb54f7308"
+    },
+    {
+      "path": "comparison_validation.parquet",
+      "rows": 256,
+      "start": "2026-04-01 00:30:00+00:00",
+      "end": "2026-06-30 22:59:00+00:00",
+      "sha256": "1931d40bc3de9566688bc9d4aeee683e4818ab7ce09e39e8af154dd1d37076da"
+    }
+  ],
+  "phase4_preservation": {
+    "phase_1_final_evaluation": {
+      "path": "reports/final_evaluation.json",
+      "sha256": "39297e6ceb3a13cd5b0c5f11e0608fc92cee8a298702124abf408040d722b584"
+    },
+    "phase_2_results": {
+      "path": "reports/phase_2/runs/20261017T223631458343Z-phase2/results.json",
+      "sha256": "85c88261568929c4818d659ac4cb9c66039504f0589468ea4c66cb21a981be37"
+    },
+    "phase_3_results": {
+      "path": "reports/phase_3/runs/20261018T005023721954Z-phase3/results.json",
+      "sha256": "0c7be8224a2256b2d87fb87738228360e9b3ef8552986d5fbd1ee7ba158cee6c"
+    },
+    "phase_4_results": {
+      "path": "reports/phase_4/runs/20261018T013856021255Z-phase4/results.json",
+      "sha256": "3e6876e1362d7cc71b2e74969d503699f9c9aa61b90e8c0c7577d5dce5101c3c"
+    },
+    "model_inventory": {
+      "path": "reports/phase_4/model_inventory.json",
+      "sha256": "6be064851a25cc1d9d35558e55d7991ed19d8dfc252e219c9c72f22d08e4f9d7",
+      "joblib_artifacts_inventoried": 78
+    },
+    "forbidden_final_period_reused": false,
+    "historical_artifacts_modified": false
+  },
+  "pretraining_overlap": {
+    "known": true,
+    "local_overlap": "2023-10-01 through 2024-06-30 may overlap Binance pre-training",
+    "mitigation": "fine-tuning export begins 2024-07-01; evaluation is 2026-04-01 through 2026-06-30",
+    "independence_limit": "instrument-level membership and exact source rows were not disclosed"
+  },
+  "forbidden_final_period_exported": false,
+  "archive": "data\\phase_5\\bitcoin_ai_phase5_colab.zip",
+  "archive_sha256": "17b4793bf356ed77ce789f10467901fbbd07ba00f620f1337a4a188f3faf4632"
+}

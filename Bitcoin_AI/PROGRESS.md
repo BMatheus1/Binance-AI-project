@@ -49,3 +49,29 @@ Quatro dossiês, síntese comparativa, protocolo proposto e 16 hipóteses não t
 Concluída em 17/10/2026 como validação interna exploratória. Foram adicionadas 17 features contextuais em módulo separado, três folds walk-forward para sete candidatos, análise de erros, permutação das 37 features, ablação por categoria, calibração, Holm e cenários econômicos. Até 3.000 observações por mês controlaram CPU/memória; julho–setembro/2026 não foi carregado.
 
 O XGBoost contextual teve mudança de log loss de -0,000056 em 1m contra o XGBoost original e +0,000785 em 5m, nos mesmos folds. Nenhum limiar econômico satisfez os critérios predefinidos. A política permanece em abstenção integral. Consulte `reports/phase_2/README.md`.
+
+## Fase 3 — microestrutura e validação prospectiva
+
+Concluída em 17/10/2026 com plano congelado antes da aquisição. Foram autenticados pelos checksums oficiais e processados incrementalmente 11.539.776 AggTrades BTCUSDT Spot de 01–14/10/2026, gerando 20.160 minutos completos e 20 features causais. Não houve duplicatas nem gaps de IDs ou minutos.
+
+A–D usaram o mesmo XGBoost, treino, calibração, validação e purga. Em 1m, a variante selecionada apenas para observação reduziu a log loss de 0,768756 para 0,767187, sem ganho de accuracy. Em 5m, o XGBoost original venceu; acrescentar microestrutura piorou a log loss em 0,000865. Todos os cenários Spot foram negativos e os resultados positivos isolados de payout não têm intervalo diário confiável. A política permanece em abstenção integral.
+
+O coletor público foi validado por 15 segundos com 430 mensagens e livro sincronizado. Ledger imutável, observador prospectivo, paper trading com bid/ask, custos, drawdown e parada, filtro macro e testes foram implementados. Nenhum serviço fica ativo e nenhuma ordem real é possível por esses módulos. Consulte `reports/phase_3/README.md`.
+
+## Fase 4 — horizontes e validação prospectiva
+
+Concluída em 18/10/2026. A definição do alvo, classes, log loss, baselines, calibração, distribuição das probabilidades e barreiras contra leakage foi reauditada. O teste final consumido de julho–setembro/2026 permaneceu bloqueado. O treino, calibração e validação usaram somente períodos anteriores a julho, com purga de 30 minutos e as mesmas linhas para todos os candidatos de cada horizonte.
+
+Execução congelada: `20261018T013856021255Z-phase4`. XGBoost foi selecionado apenas para shadow em 1/5/15m e CatBoost em 30m. A diferença média de log loss contra a frequência foi -0,022185, -0,001886, -0,001852 e -0,001705, respectivamente; os IC95% diários ficaram abaixo de zero. Isso representa ganho probabilístico pequeno, não prova econômica.
+
+Nenhum cenário Spot apresentou expectativa com limite inferior positivo após custos. Alguns cenários de payout fixo em 5/15/30m passaram o filtro dentro da própria validação, portanto permanecem exploratórios e não foram promovidos. A política congelada continua em abstenção integral.
+
+O observador público foi corrigido para gravação em lote e alinhamento de relógio. No ensaio final de 130 segundos recebeu 6.244 mensagens, sem reconexões, gaps de AggTrade ou invalidações do book. Dois candles produziram oito previsões válidas e zero abstenções técnicas novas; todas foram abstidas pela política. O atraso interno mediano foi 0,227 ms e p95 0,744 ms. O ledger acumulou 28 previsões e quatro resultados, insuficientes para conclusão prospectiva. Foram executados 63 testes com sucesso. Consulte `reports/phase_4/README.md`.
+
+## Fase 5 — Kronos no Google Colab
+
+Preparação concluída em 18/10/2026. A implementação oficial foi fixada por commit, assim como Kronos-mini e Kronos-Tokenizer-2k por revisão. O artigo informa pré-treinamento Binance até junho/2024; por isso o treino local começa em julho/2024, sem alegar independência zero-shot para o trecho histórico potencialmente sobreposto.
+
+O exportador produziu candles OHLCVA de treino, calibração e validação, mais 128 decisões de calibração e 256 decisões compartilhadas com XGBoost/CatBoost. Julho–setembro/2026 não foi exportado. O notebook exige GPU, executa primeiro inferência pré-treinada, faz smoke de um passo e deixa o experimento completo atrás de uma opção explícita. O importador verifica hashes, revisões, instantes, alvos, retornos e preços antes de calcular métricas e cenários econômicos.
+
+O smoke local real carregou tokenizer e pesos, gerou duas barras futuras e realizou um passo AdamW finito com alteração dos parâmetros. Isso valida o caminho técnico, sem medir capacidade preditiva. O experimento completo não foi executado e não há resultado de accuracy, log loss ou lucratividade para o Kronos. Foram executados 69 testes com sucesso; a política continua em abstenção integral. Consulte `reports/phase_5/README.md`.

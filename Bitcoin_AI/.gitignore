@@ -9,6 +9,13 @@ data/knowledge/books/
 data/features/
 data/targets/
 data/external/
+data/phase_3/
+runtime/phase_3/
+data/phase_4/
+runtime/phase_4/
+data/phase_5/
+runtime/phase_5/
+.tmp_kronos_official/
 knowledge/references/
 tmp/
 .pytest_cache/

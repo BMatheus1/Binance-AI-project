@@ -1,13 +1,16 @@
 # Bitcoin AI Research
 
-Plataforma local de pesquisa quantitativa para **BTC/USDT Spot**, com previsão probabilística em **1 e 5 minutos**. Python, sem interface web, credenciais de corretora ou envio de ordens. Modelos estimam baixa, empate e alta; uma camada separada pode abster-se.
+Plataforma local de pesquisa quantitativa para **BTC/USDT Spot**, com previsão probabilística em **1, 5, 15 e 30 minutos**. Python, sem interface web, credenciais de corretora ou envio de ordens. Modelos estimam baixa, empate e alta; uma camada separada pode abster-se.
 
-O projeto organiza dados, formaliza hipóteses, treina modelos e avalia previsões e cenários econômicos hipotéticos. Livros são fontes conceituais, nunca prova de lucratividade. Notícias e streaming são extensões futuras, ainda sem coleta ou monitoramento. O README recebido foi preservado em [docs/README_original.md](docs/README_original.md).
+O projeto organiza dados, formaliza hipóteses, treina modelos e avalia previsões e cenários econômicos hipotéticos. Livros são fontes conceituais, nunca prova de lucratividade. As Fases 3 e 4 adicionam coleta pública, horizontes maiores, ledger prospectivo e observação shadow; nenhum monitor fica ativo por padrão. O README recebido foi preservado em [docs/README_original.md](docs/README_original.md).
 
 ## Resultados e documentação
 
 - [Relatórios A–J](reports/INDEX.md) e [conclusões/pendências](reports/J_conclusions.md).
 - [Fase 2 — auditoria, walk-forward e diagnóstico econômico](reports/phase_2/README.md).
+- [Fase 3 — AggTrades, microestrutura, coleta pública e paper trading](reports/phase_3/README.md).
+- [Fase 4 — horizontes 1/5/15/30m, congelamento e validação prospectiva](reports/phase_4/README.md).
+- [Fase 5 — avaliação do Kronos-mini no Google Colab](reports/phase_5/README.md).
 - [Plano e progresso](PROGRESS.md).
 - [Catálogo de variáveis](knowledge/feature_catalog.json).
 - [Conceitos e referências verificadas](knowledge/concepts/verified.md).
@@ -40,13 +43,18 @@ python -m btc_research.cli pilot
 python -m btc_research.cli train
 python -m btc_research.cli evaluate
 python -m btc_research.cli reports
+python scripts/run_phase4.py
+python scripts/run_phase4_shadow.py --seconds 370
+python scripts/export_phase5_colab.py
+# Após executar o notebook Colab e extrair o ZIP retornado:
+python scripts/import_phase5_results.py "C:\caminho\phase5_results"
 ```
 
 Use o executável da `.venv` no lugar de `python` se criou o ambiente acima. Após instalação, `btc-research ingest` equivale ao comando de módulo. Cada etapa é independente. Não remova o registro do teste para reavaliar o mesmo período: novos modelos precisam de outro período futuro independente. Relatórios existentes podem ser regenerados sem novo treinamento.
 
 `pilot` usa outubro–novembro/2023 e não acessa o teste final de 2026. `train` seleciona modelos sem abrir o teste; `evaluate` aplica a escolha congelada. Artefatos anteriores permanecem preservados.
 
-Dependências: NumPy, pandas, PyArrow, scikit-learn, joblib, XGBoost, CatBoost, pypdf e pytest. Versões observadas em `requirements-lock.txt` e em cada execução. Nenhuma nova dependência foi instalada durante a implementação.
+Dependências: NumPy, pandas, PyArrow, scikit-learn, joblib, XGBoost, CatBoost, pypdf, aiohttp, websockets e pytest. Versões observadas em `requirements-lock.txt` e em cada execução.
 
 ## Organização
 
@@ -64,6 +72,8 @@ knowledge/concepts/             conceitos verificados e limitações
 knowledge/hypotheses/           avaliações exploratórias
 src/btc_research/               módulos independentes
 models/trained/<run_id>/         modelos, metadados e previsões
+models/phase_4/<run_id>/         geração congelada de 1/5/15/30m
+notebooks/phase5_kronos_colab.ipynb  experimento Kronos-mini em GPU
 reports/                        auditorias, experimentos e relatórios
 tests/                          testes adversariais e integração
 ```
@@ -130,6 +140,10 @@ Uma posição por vez, limite de perda diária 10 unidades e drawdown 30; sem ma
 
 Novos dados passam pela mesma validação e experimento versionado. PSI compara distribuições com referências do treino; não promove modelos. Deterioração supervisionada e gestão operacional champion/challenger ficam para evolução posterior.
 
-`external.py` define fontes futuras de candles e eventos, incluindo publicação e recebimento. Ambas devem anteceder o uso. Nenhum serviço ou monitor é iniciado.
+`external.py` define fontes de candles e eventos, incluindo publicação, recebimento, relevância estimada e estado macro de risco. `live_market.py` implementa coleta pública; `prospective.py` implementa ledger imutável, observação e paper trading. Nenhum serviço ou monitor é iniciado automaticamente.
+
+`run_phase4_shadow.py` usa somente REST/WebSocket públicos, verifica os hashes dos modelos congelados e grava previsão antes do desfecho. O comando não aceita credenciais e os módulos não implementam envio de ordens.
+
+A Fase 5 prepara um pacote causal reduzido e um notebook Colab com Kronos-mini. O importador compara o challenger com XGBoost/CatBoost nas mesmas decisões e bloqueia divergências de tempo, alvo, preços ou revisões. A inferência e um passo de treinamento passaram no smoke local; o experimento GPU completo ainda precisa ser executado no Colab. Kronos não é promovido automaticamente e a abstenção integral permanece ativa.
 
 Não publicar datasets, livros ou credenciais. O `.gitignore` cobre os originais e artefatos grandes. A leitura contextual dos livros foi parcial; consulte todas as pendências do relatório J antes de considerar a fase integralmente concluída.

@@ -1,0 +1,27 @@
+{
+  "historical_run_id": "20261018T013856021255Z-phase4",
+  "tests": {
+    "command": "python -m pytest -q",
+    "passed": 63,
+    "failed": 0
+  },
+  "target_compatibility": {
+    "legacy_1m_mismatches": 0,
+    "legacy_5m_mismatches": 0
+  },
+  "final_shadow_smoke": {
+    "duration_seconds": 130,
+    "messages": 6244,
+    "closed_candles": 2,
+    "new_valid_predictions": 8,
+    "new_technical_abstentions": 0,
+    "reconnections": 0,
+    "aggtrade_gap_events": 0,
+    "depth_invalidations": 0,
+    "callback_queue_delay_median_ms": 0.227,
+    "callback_queue_delay_p95_ms": 0.744,
+    "real_orders": false
+  },
+  "prospective_evidence_sufficient": false,
+  "reason": "Apenas quatro resultados resolvidos no ledger; mínimos congelados exigem 200 resultados, 30 dias e regimes diversos."
+}

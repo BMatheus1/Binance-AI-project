@@ -1,0 +1,1434 @@
+{
+  "frozen_at": "2026-10-18T01:38:41.745702+00:00",
+  "artifact_count": 78,
+  "all_joblib_artifacts": [
+    {
+      "path": "models\\phase_3\\20261018T004002179809Z-phase3\\horizon_1m.joblib",
+      "sha256": "d7753a02260639de0307eaeb94766272d54f077ffdaebf471919002633b8c913",
+      "bytes": 4138
+    },
+    {
+      "path": "models\\phase_3\\20261018T004002179809Z-phase3\\horizon_5m.joblib",
+      "sha256": "b124d1d67a05d8e62849414f7f88e9108543e8160f43753bc9927e104671ca57",
+      "bytes": 6842
+    },
+    {
+      "path": "models\\phase_3\\20261018T004510164520Z-phase3\\horizon_1m.joblib",
+      "sha256": "7746ec6516d947aa99170ec4e993d3407d35e7fc799ba2efbdf6940ff83922c0",
+      "bytes": 342945
+    },
+    {
+      "path": "models\\phase_3\\20261018T004510164520Z-phase3\\horizon_5m.joblib",
+      "sha256": "b20f6162b574d36a357cc9677cdc5e2c1bf38e702da4f3884300d1a8acb67f2b",
+      "bytes": 313233
+    },
+    {
+      "path": "models\\phase_3\\20261018T004856411061Z-phase3\\horizon_1m.joblib",
+      "sha256": "7746ec6516d947aa99170ec4e993d3407d35e7fc799ba2efbdf6940ff83922c0",
+      "bytes": 342945
+    },
+    {
+      "path": "models\\phase_3\\20261018T004856411061Z-phase3\\horizon_5m.joblib",
+      "sha256": "b20f6162b574d36a357cc9677cdc5e2c1bf38e702da4f3884300d1a8acb67f2b",
+      "bytes": 313233
+    },
+    {
+      "path": "models\\phase_3\\20261018T005023721954Z-phase3\\horizon_1m.joblib",
+      "sha256": "7746ec6516d947aa99170ec4e993d3407d35e7fc799ba2efbdf6940ff83922c0",
+      "bytes": 342945
+    },
+    {
+      "path": "models\\phase_3\\20261018T005023721954Z-phase3\\horizon_5m.joblib",
+      "sha256": "b20f6162b574d36a357cc9677cdc5e2c1bf38e702da4f3884300d1a8acb67f2b",
+      "bytes": 313233
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-catboost.joblib",
+      "sha256": "0c118e964f0fb3dbc0049e628907053335d86922f7f5b401e86c66f12b073e79",
+      "bytes": 70769
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-constant.joblib",
+      "sha256": "71b53a168c6659b1b1cd05d8dd970ffde90160b259c770b8ab4eb289f63514f0",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-frequency.joblib",
+      "sha256": "24af1940d5b5450e7f313c6ac2787e90af53fc5d9d8c11c8c7ef5f5e0bfec80f",
+      "bytes": 793
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-logistic_all_selected.joblib",
+      "sha256": "036ef6a324087a4cef78970ba997f8d334c3bdff9d638030dec8c56171fa658e",
+      "bytes": 4890
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-logistic_price.joblib",
+      "sha256": "1346bf8545db8c10ea18fcc0dce3d47d33516e3649896bb7ef248b4ca1671df8",
+      "bytes": 2234
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-logistic_price_action.joblib",
+      "sha256": "4dd14d937b44b255db70a32efa01cfee2e49e9bd5e299fe6c67a79ddcf4811b2",
+      "bytes": 2874
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-logistic_price_trend.joblib",
+      "sha256": "c09382704a71d049e0719dd7b0ceee269854579e1b0244ac4a86b367d89c5d29",
+      "bytes": 3178
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-logistic_price_trend_volume.joblib",
+      "sha256": "32956cb8ddbb5c22570c0521a8ca6532c2b90fd32212ffb25d85003a6c70e181",
+      "bytes": 3594
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-logistic_price_volatility.joblib",
+      "sha256": "0218870f213c51b064648563c073ee74a71ab6a2c860b5a8c9e409885e261d8d",
+      "bytes": 2602
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-logistic_price_volume.joblib",
+      "sha256": "6ced65c72e0e46e3048a9d025b3563c3545334b14f9277efb8c2a497692aba35",
+      "bytes": 2634
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-momentum.joblib",
+      "sha256": "f0688aaa4db06f6a349d2d9b56ff09ef9c5e34c873ea35fe6ee4681a207a81ac",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-random_forest.joblib",
+      "sha256": "f5b21d4d1e75c8a6080701cf9b53bcecf3baba26f8a84e6ec917bda0625d705d",
+      "bytes": 228650
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-reversion.joblib",
+      "sha256": "685a509eeb44ad9c64bc8e6c70fd76dce46e94c8302545ae0f99358bd97c526e",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174128790285Z-pilot\\1m-xgboost.joblib",
+      "sha256": "b7046322f53c31f1c7422391001150e5d5e345ad7ee62c6c2bacfa6a254c69c7",
+      "bytes": 318145
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-catboost.joblib",
+      "sha256": "7d97ff95bf839e75f84bb6daaf463f6cae4dd2c3d42dfe6bc20ce946129bbc37",
+      "bytes": 70769
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-constant.joblib",
+      "sha256": "71b53a168c6659b1b1cd05d8dd970ffde90160b259c770b8ab4eb289f63514f0",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-frequency.joblib",
+      "sha256": "24af1940d5b5450e7f313c6ac2787e90af53fc5d9d8c11c8c7ef5f5e0bfec80f",
+      "bytes": 793
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-logistic_all_selected.joblib",
+      "sha256": "036ef6a324087a4cef78970ba997f8d334c3bdff9d638030dec8c56171fa658e",
+      "bytes": 4890
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-logistic_price.joblib",
+      "sha256": "1346bf8545db8c10ea18fcc0dce3d47d33516e3649896bb7ef248b4ca1671df8",
+      "bytes": 2234
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-logistic_price_action.joblib",
+      "sha256": "4dd14d937b44b255db70a32efa01cfee2e49e9bd5e299fe6c67a79ddcf4811b2",
+      "bytes": 2874
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-logistic_price_trend.joblib",
+      "sha256": "c09382704a71d049e0719dd7b0ceee269854579e1b0244ac4a86b367d89c5d29",
+      "bytes": 3178
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-logistic_price_trend_volume.joblib",
+      "sha256": "32956cb8ddbb5c22570c0521a8ca6532c2b90fd32212ffb25d85003a6c70e181",
+      "bytes": 3594
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-logistic_price_volatility.joblib",
+      "sha256": "0218870f213c51b064648563c073ee74a71ab6a2c860b5a8c9e409885e261d8d",
+      "bytes": 2602
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-logistic_price_volume.joblib",
+      "sha256": "6ced65c72e0e46e3048a9d025b3563c3545334b14f9277efb8c2a497692aba35",
+      "bytes": 2634
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-momentum.joblib",
+      "sha256": "f0688aaa4db06f6a349d2d9b56ff09ef9c5e34c873ea35fe6ee4681a207a81ac",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-random_forest.joblib",
+      "sha256": "74cf27a7074d66c97a3c06464025346513159f3e55888f3e685eb9a0e4b02824",
+      "bytes": 228650
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-reversion.joblib",
+      "sha256": "685a509eeb44ad9c64bc8e6c70fd76dce46e94c8302545ae0f99358bd97c526e",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\1m-xgboost.joblib",
+      "sha256": "b7046322f53c31f1c7422391001150e5d5e345ad7ee62c6c2bacfa6a254c69c7",
+      "bytes": 318145
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-catboost.joblib",
+      "sha256": "268ecb90bf0ba7ba47cde2a2496579b7cfd03a8f21cdda4d83b0ea19becb5aba",
+      "bytes": 70785
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-constant.joblib",
+      "sha256": "547116aad9912abfa7f1e686446191cb37284568a746fa9dfcd18cf2b4d03732",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-frequency.joblib",
+      "sha256": "d54868aba65b9d9e928936e455ac128370784a5f50da31f21b2a71a00a127b0d",
+      "bytes": 793
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-logistic_all_selected.joblib",
+      "sha256": "3ff65be184ae516922889741fac7c25ea98a7b62a33d4b52893ea323adcc55d0",
+      "bytes": 4890
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-logistic_price.joblib",
+      "sha256": "3f079b3b7ab7b80eb1bee919d466b2b8507972be92e91d93ba93695e4d49a5ef",
+      "bytes": 2234
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-logistic_price_action.joblib",
+      "sha256": "f2cf9914985f2af6d72ebe27f3f127d930fc4d35d9500a15fc5c9f6b2ad27663",
+      "bytes": 2874
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-logistic_price_trend.joblib",
+      "sha256": "779810252599aa9c32aee95dc0c3d30d8886f55011fee2e22b322714edf292e3",
+      "bytes": 3178
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-logistic_price_trend_volume.joblib",
+      "sha256": "d8f3364bbd507373fe73ff5254e33a331950f1837ee15f753d1ab6364eb50c4a",
+      "bytes": 3594
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-logistic_price_volatility.joblib",
+      "sha256": "5706fc8abbac2f692a82c3fc7666a7bbabbceb43a84b0168b9cd04d84bda173e",
+      "bytes": 2602
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-logistic_price_volume.joblib",
+      "sha256": "d0897f5f8f423e9731cefe2b0f52f66f1c8a1989f3d4b0723db19114146cbd06",
+      "bytes": 2634
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-momentum.joblib",
+      "sha256": "726cd8e1d28ae04dd5f81e98e83a1a4c7b564d4415fbf9b168c78ced4bf62600",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-random_forest.joblib",
+      "sha256": "39ca7d1fa2b3fcd9fe60c0cb2837ea2775eb08e4127b6f3f3d72c2cb102b2458",
+      "bytes": 225658
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-reversion.joblib",
+      "sha256": "532e2737fd573c2f1bd2b99ffe997101d337c89ab0cbe9574a309b987a57cada",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174211666736Z-pilot\\5m-xgboost.joblib",
+      "sha256": "20d38c7fb517c4c4093833881c660ed69e7331db1e61cb0f4481e8be33190da8",
+      "bytes": 294353
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-catboost.joblib",
+      "sha256": "4ee67dea3582b37021fd0f11d57438fedabb0061d8d61c32d54860449a91ede8",
+      "bytes": 70737
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-constant.joblib",
+      "sha256": "3b95469e265e68b19a32fb48b0a03ab846f9813682b1863e2a74d14624569e72",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-frequency.joblib",
+      "sha256": "690a050e02eb4e1efd1f30fb4ace7039945537e9cf870c30ff8fc9bc3c6d6048",
+      "bytes": 793
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-logistic_all_selected.joblib",
+      "sha256": "039af582e59fa0db37d9622168c327a80706cb8d50bce827f7c1773c87fd078e",
+      "bytes": 4890
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-logistic_price.joblib",
+      "sha256": "3fd976c0554dbb0f0f6b2bedd93dcc2a8091f662758c5341b63e5176aadddf8b",
+      "bytes": 2234
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-logistic_price_action.joblib",
+      "sha256": "e40d51e07c15030fee760a063a1afcdeedb33f060dcf2d0c7e10150dbf27ba7e",
+      "bytes": 2874
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-logistic_price_trend.joblib",
+      "sha256": "e1249bc48eac5556352a05e3ebc0bd5de6e6edcdcdb91b6596b7c4776a545409",
+      "bytes": 3178
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-logistic_price_trend_volume.joblib",
+      "sha256": "05853bc8b7f00d426ed2468b045de4138b6d8ca2264eb597320ae9e18cfbb08b",
+      "bytes": 3594
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-logistic_price_volatility.joblib",
+      "sha256": "d8295fe64d4e016b110abaf6eab9b0b6e09efb3e32376f4016db7e692df7c6a7",
+      "bytes": 2602
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-logistic_price_volume.joblib",
+      "sha256": "af3b38de0cd908e3fb78861b48c989e44007f84e4af85451584638ec2cab704c",
+      "bytes": 2634
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-momentum.joblib",
+      "sha256": "1cecc5eefc16c079e876886642d20c6da61f770a030249170b8d97873ab14218",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-random_forest.joblib",
+      "sha256": "e11ed58b497650d22cc98da94b6664483fdecaa0e3bedde346e0be34092d62a0",
+      "bytes": 1800330
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-reversion.joblib",
+      "sha256": "1c4a963c0b587f23f47b4ebf0f726ebef690cf55eb6810f4d77cd25ea4544c91",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\1m-xgboost.joblib",
+      "sha256": "52e79ed6382f181e87f24b4d9a230510d6455e81681a502f909778fe1df16f16",
+      "bytes": 356641
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-catboost.joblib",
+      "sha256": "61987dab731602baa6edecfbd37cd3bcc787df3cad95784307a07c75ed282c32",
+      "bytes": 70753
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-constant.joblib",
+      "sha256": "7c5e6adeeacbd18d0877e3a6ca16addb12b1efbc017a5480d7bef96e3380a32c",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-frequency.joblib",
+      "sha256": "1f674ad408888e1abe4052c1f8b2582d1e774f97adc56eba19b17db4433e721c",
+      "bytes": 793
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-logistic_all_selected.joblib",
+      "sha256": "4aeeaef6796fbc42c08527cbf38c1899e8018a0d1f1958a65d97035a331bb547",
+      "bytes": 4890
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-logistic_price.joblib",
+      "sha256": "6cc635b0aba00940e1ca5ef02e6a53f626f6d59d7b50b8e3ce23ceeadf095bd1",
+      "bytes": 2234
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-logistic_price_action.joblib",
+      "sha256": "e145dd8a5acdf0331a0c7b73b452299820a0a9f0f0b6a0a4f84f81d205bd5a33",
+      "bytes": 2874
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-logistic_price_trend.joblib",
+      "sha256": "51f327dfba6cbf23794040ea927f1b229c24d05c806d967eb385fb49e82e483a",
+      "bytes": 3178
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-logistic_price_trend_volume.joblib",
+      "sha256": "fba90d2adf95252479b2bc3ce08db1ccedb0bdab65f056b5c0ae106894cb7de1",
+      "bytes": 3594
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-logistic_price_volatility.joblib",
+      "sha256": "73795149e3b88d023ff3e344087bc5b73189ff6aa453b3cdf605a0c3398b5392",
+      "bytes": 2602
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-logistic_price_volume.joblib",
+      "sha256": "9c51789e2e4b280da0c09a6510e254d0d7edd881249dd6c77d00eb2ee259ba06",
+      "bytes": 2634
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-momentum.joblib",
+      "sha256": "3a57b9b4ab86c97e67eacc3b3c22d494ccd5f2233c836acc1932eef2a581adfa",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-random_forest.joblib",
+      "sha256": "cf3bf154dafcf7855d33478079689499a7e16672b4f48249974405c6fb744acf",
+      "bytes": 1761434
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-reversion.joblib",
+      "sha256": "c18ecdcf41b9c338168fcd2bd9aafae5719c436443e977e55891c79008af7551",
+      "bytes": 809
+    },
+    {
+      "path": "models\\trained\\20261017T174250393322Z-research\\5m-xgboost.joblib",
+      "sha256": "5f59c735ab9949f2f04849860e0d3701640f6fec45934ccf30a806ac96d66993",
+      "bytes": 348401
+    }
+  ],
+  "selected_models": [
+    {
+      "phase": 1,
+      "horizon": 1,
+      "version": "20261017T174250393322Z-research:xgboost",
+      "artifact": "models\\trained\\20261017T174250393322Z-research\\1m-xgboost.joblib",
+      "sha256": "52e79ed6382f181e87f24b4d9a230510d6455e81681a502f909778fe1df16f16",
+      "features": [
+        "return_1",
+        "range_rel",
+        "body_rel",
+        "body_fraction",
+        "lower_wick",
+        "upper_wick",
+        "close_position",
+        "direction_balance_5",
+        "higher_high",
+        "higher_low",
+        "momentum_5",
+        "momentum_20",
+        "sma_distance_20",
+        "sma_slope_20",
+        "macd_rel",
+        "rsi_14",
+        "atr_rel_14",
+        "realized_vol_20",
+        "vol_ratio",
+        "bollinger_z",
+        "volume_rel_20",
+        "volume_change",
+        "trade_intensity",
+        "taker_buy_ratio",
+        "signed_volume",
+        "breakout_20",
+        "support_distance_20",
+        "hour_sin",
+        "hour_cos",
+        "weekday_sin",
+        "weekday_cos",
+        "closed_5m_return",
+        "closed_15m_return",
+        "closed_30m_return",
+        "closed_60m_return"
+      ],
+      "periods": {
+        "train": {
+          "rows": 161999,
+          "start": "2023-10-01 01:01:00+00:00",
+          "end": "2025-12-31 23:52:00+00:00"
+        },
+        "calibration": {
+          "rows": 129589,
+          "start": "2026-01-01 00:05:00+00:00",
+          "end": "2026-03-31 23:53:00+00:00"
+        },
+        "validation": {
+          "rows": 131029,
+          "start": "2026-04-01 00:05:00+00:00",
+          "end": "2026-06-30 23:53:00+00:00"
+        }
+      },
+      "validation_metrics": {
+        "n": 131029,
+        "accuracy": 0.504987445527326,
+        "precision_macro": 0.4538788115491801,
+        "recall_macro": 0.34704382286232965,
+        "f1_macro": 0.34327100961876117,
+        "confusion_matrix": [
+          [
+            30950,
+            11,
+            33002
+          ],
+          [
+            1734,
+            13,
+            1715
+          ],
+          [
+            28386,
+            13,
+            35205
+          ]
+        ],
+        "log_loss": 0.7749094599842437,
+        "brier_multiclass": 0.5222800310831177,
+        "roc_auc_ovr": 0.632456410015902,
+        "calibration": [
+          {
+            "class": 0,
+            "left": 0.2,
+            "n": 119,
+            "probability": 0.29104867244857907,
+            "frequency": 0.31932773109243695
+          },
+          {
+            "class": 0,
+            "left": 0.30000000000000004,
+            "n": 4844,
+            "probability": 0.3680464099436423,
+            "frequency": 0.393476465730801
+          },
+          {
+            "class": 0,
+            "left": 0.4,
+            "n": 87618,
+            "probability": 0.47725919397983413,
+            "frequency": 0.48143075623730286
+          },
+          {
+            "class": 0,
+            "left": 0.5,
+            "n": 38448,
+            "probability": 0.5086048997453184,
+            "frequency": 0.5159436121514773
+          },
+          {
+            "class": 1,
+            "left": 0.0,
+            "n": 119483,
+            "probability": 0.017743004642444483,
+            "frequency": 0.01642911543901643
+          },
+          {
+            "class": 1,
+            "left": 0.1,
+            "n": 8753,
+            "probability": 0.13781534975187307,
+            "frequency": 0.112304352793328
+          },
+          {
+            "class": 1,
+            "left": 0.2,
+            "n": 2362,
+            "probability": 0.239926732265089,
+            "frequency": 0.17866215071972905
+          },
+          {
+            "class": 1,
+            "left": 0.30000000000000004,
+            "n": 431,
+            "probability": 0.3237996933281309,
+            "frequency": 0.21809744779582366
+          },
+          {
+            "class": 2,
+            "left": 0.2,
+            "n": 31,
+            "probability": 0.29357736127297723,
+            "frequency": 0.3548387096774194
+          },
+          {
+            "class": 2,
+            "left": 0.30000000000000004,
+            "n": 5076,
+            "probability": 0.3677719314474381,
+            "frequency": 0.38613081166272656
+          },
+          {
+            "class": 2,
+            "left": 0.4,
+            "n": 74766,
+            "probability": 0.47817204127640484,
+            "frequency": 0.4773426423775513
+          },
+          {
+            "class": 2,
+            "left": 0.5,
+            "n": 51156,
+            "probability": 0.5117823775290145,
+            "frequency": 0.50715458597232
+          }
+        ]
+      },
+      "observed_final_metrics": {
+        "n": 132469,
+        "accuracy": 0.5065487019604586,
+        "precision_macro": 0.45628310056964194,
+        "recall_macro": 0.37484496964574704,
+        "f1_macro": 0.3823131978782001,
+        "confusion_matrix": [
+          [
+            31708,
+            382,
+            30793
+          ],
+          [
+            3252,
+            430,
+            2884
+          ],
+          [
+            27650,
+            406,
+            34964
+          ]
+        ],
+        "log_loss": 0.8096874230893937,
+        "brier_multiclass": 0.5348445417831692,
+        "roc_auc_ovr": 0.6541703491368648,
+        "calibration": [
+          {
+            "class": 0,
+            "left": 0.2,
+            "n": 1830,
+            "probability": 0.28560701683100836,
+            "frequency": 0.27759562841530055
+          },
+          {
+            "class": 0,
+            "left": 0.30000000000000004,
+            "n": 11635,
+            "probability": 0.3586582751065729,
+            "frequency": 0.35496347228190805
+          },
+          {
+            "class": 0,
+            "left": 0.4,
+            "n": 84574,
+            "probability": 0.4737874080009792,
+            "frequency": 0.47555986473384254
+          },
+          {
+            "class": 0,
+            "left": 0.5,
+            "n": 34430,
+            "probability": 0.5086770962847594,
+            "frequency": 0.5235259947720011
+          },
+          {
+            "class": 1,
+            "left": 0.0,
+            "n": 108726,
+            "probability": 0.021483813381021212,
+            "frequency": 0.0199124404466273
+          },
+          {
+            "class": 1,
+            "left": 0.1,
+            "n": 13103,
+            "probability": 0.1414236308761818,
+            "frequency": 0.12684118140883768
+          },
+          {
+            "class": 1,
+            "left": 0.2,
+            "n": 6148,
+            "probability": 0.24441334406022813,
+            "frequency": 0.2119388418998048
+          },
+          {
+            "class": 1,
+            "left": 0.30000000000000004,
+            "n": 4326,
+            "probability": 0.3337630682479742,
+            "frequency": 0.32038834951456313
+          },
+          {
+            "class": 1,
+            "left": 0.4,
+            "n": 166,
+            "probability": 0.4119671385405389,
+            "frequency": 0.30120481927710846
+          },
+          {
+            "class": 2,
+            "left": 0.2,
+            "n": 951,
+            "probability": 0.2905817121038489,
+            "frequency": 0.2618296529968454
+          },
+          {
+            "class": 2,
+            "left": 0.30000000000000004,
+            "n": 12079,
+            "probability": 0.3560961321936865,
+            "frequency": 0.35284377845848164
+          },
+          {
+            "class": 2,
+            "left": 0.4,
+            "n": 74008,
+            "probability": 0.47468089601427316,
+            "frequency": 0.47078694195222137
+          },
+          {
+            "class": 2,
+            "left": 0.5,
+            "n": 45431,
+            "probability": 0.5123784986290484,
+            "frequency": 0.5209438489137374
+          }
+        ]
+      },
+      "decision_rule": {
+        "enabled": false,
+        "threshold": 0.65,
+        "reason": "Nenhum limiar atingiu evidência mínima de expectativa positiva; abstenção integral",
+        "payout_reference": 0.8
+      },
+      "economic_parameters": {
+        "raw": "data/raw",
+        "books": "data/knowledge/books",
+        "seed": 42,
+        "train_end": "2026-01-01",
+        "calibration_end": "2026-04-01",
+        "validation_end": "2026-07-01",
+        "test_end": "2026-10-01",
+        "train_rows_per_month": 6000,
+        "threads": 4,
+        "embargo_minutes": 5,
+        "horizons": [
+          1,
+          5
+        ],
+        "tie_tolerance": 0.0,
+        "entry_convention": "next_open",
+        "thresholds": [
+          0.55,
+          0.58,
+          0.6,
+          0.65
+        ],
+        "payouts": [
+          0.7,
+          0.8,
+          0.9
+        ],
+        "spot_costs_bps_per_side": [
+          5,
+          10,
+          20
+        ],
+        "minimum_validation_trades": 200,
+        "max_daily_loss_units": 10,
+        "max_drawdown_units": 30
+      }
+    },
+    {
+      "phase": 1,
+      "horizon": 5,
+      "version": "20261017T174250393322Z-research:xgboost",
+      "artifact": "models\\trained\\20261017T174250393322Z-research\\5m-xgboost.joblib",
+      "sha256": "5f59c735ab9949f2f04849860e0d3701640f6fec45934ccf30a806ac96d66993",
+      "features": [
+        "return_1",
+        "range_rel",
+        "body_rel",
+        "body_fraction",
+        "lower_wick",
+        "upper_wick",
+        "close_position",
+        "direction_balance_5",
+        "higher_high",
+        "higher_low",
+        "momentum_5",
+        "momentum_20",
+        "sma_distance_20",
+        "sma_slope_20",
+        "macd_rel",
+        "rsi_14",
+        "atr_rel_14",
+        "realized_vol_20",
+        "vol_ratio",
+        "bollinger_z",
+        "volume_rel_20",
+        "volume_change",
+        "trade_intensity",
+        "taker_buy_ratio",
+        "signed_volume",
+        "breakout_20",
+        "support_distance_20",
+        "hour_sin",
+        "hour_cos",
+        "weekday_sin",
+        "weekday_cos",
+        "closed_5m_return",
+        "closed_15m_return",
+        "closed_30m_return",
+        "closed_60m_return"
+      ],
+      "periods": {
+        "train": {
+          "rows": 161998,
+          "start": "2023-10-01 01:01:00+00:00",
+          "end": "2025-12-31 23:45:00+00:00"
+        },
+        "calibration": {
+          "rows": 129585,
+          "start": "2026-01-01 00:05:00+00:00",
+          "end": "2026-03-31 23:49:00+00:00"
+        },
+        "validation": {
+          "rows": 131025,
+          "start": "2026-04-01 00:05:00+00:00",
+          "end": "2026-06-30 23:49:00+00:00"
+        }
+      },
+      "validation_metrics": {
+        "n": 131025,
+        "accuracy": 0.517366914710933,
+        "precision_macro": 0.344882757832014,
+        "recall_macro": 0.3453437428489954,
+        "f1_macro": 0.34463469342650105,
+        "confusion_matrix": [
+          [
+            36588,
+            0,
+            29087
+          ],
+          [
+            117,
+            0,
+            87
+          ],
+          [
+            33946,
+            0,
+            31200
+          ]
+        ],
+        "log_loss": 0.7020612179418934,
+        "brier_multiclass": 0.5003418006727877,
+        "roc_auc_ovr": 0.5986353423413165,
+        "calibration": [
+          {
+            "class": 0,
+            "left": 0.30000000000000004,
+            "n": 245,
+            "probability": 0.3859444273363871,
+            "frequency": 0.3795918367346939
+          },
+          {
+            "class": 0,
+            "left": 0.4,
+            "n": 62909,
+            "probability": 0.479557853917098,
+            "frequency": 0.48241110175014706
+          },
+          {
+            "class": 0,
+            "left": 0.5,
+            "n": 67871,
+            "probability": 0.5190212016380428,
+            "frequency": 0.5191318825418809
+          },
+          {
+            "class": 1,
+            "left": 0.0,
+            "n": 130988,
+            "probability": 0.002462492356415754,
+            "frequency": 0.0015573945704950073
+          },
+          {
+            "class": 1,
+            "left": 0.1,
+            "n": 37,
+            "probability": 0.1197167799171031,
+            "frequency": 0.0
+          },
+          {
+            "class": 2,
+            "left": 0.4,
+            "n": 73090,
+            "probability": 0.4797898889514271,
+            "frequency": 0.4809960322889588
+          },
+          {
+            "class": 2,
+            "left": 0.5,
+            "n": 57697,
+            "probability": 0.5198631871639781,
+            "frequency": 0.5172019342426816
+          },
+          {
+            "class": 2,
+            "left": 0.6000000000000001,
+            "n": 238,
+            "probability": 0.613759848560078,
+            "frequency": 0.6260504201680672
+          }
+        ]
+      },
+      "observed_final_metrics": {
+        "n": 132465,
+        "accuracy": 0.5168761559657268,
+        "precision_macro": 0.34446485332090176,
+        "recall_macro": 0.34657070240302446,
+        "f1_macro": 0.34481421733533607,
+        "confusion_matrix": [
+          [
+            37714,
+            0,
+            28632
+          ],
+          [
+            516,
+            0,
+            345
+          ],
+          [
+            34504,
+            0,
+            30754
+          ]
+        ],
+        "log_loss": 0.7173435207115477,
+        "brier_multiclass": 0.5047346640606497,
+        "roc_auc_ovr": 0.6463944979110806,
+        "calibration": [
+          {
+            "class": 0,
+            "left": 0.30000000000000004,
+            "n": 334,
+            "probability": 0.3869732220046376,
+            "frequency": 0.36826347305389223
+          },
+          {
+            "class": 0,
+            "left": 0.4,
+            "n": 66000,
+            "probability": 0.47809565519516917,
+            "frequency": 0.4810151515151515
+          },
+          {
+            "class": 0,
+            "left": 0.5,
+            "n": 66131,
+            "probability": 0.5187219534852235,
+            "frequency": 0.5213288775309612
+          },
+          {
+            "class": 1,
+            "left": 0.0,
+            "n": 130212,
+            "probability": 0.0052555789612113175,
+            "frequency": 0.004346757595306117
+          },
+          {
+            "class": 1,
+            "left": 0.1,
+            "n": 2246,
+            "probability": 0.12877899756222652,
+            "frequency": 0.12956366874443456
+          },
+          {
+            "class": 1,
+            "left": 0.2,
+            "n": 7,
+            "probability": 0.2042897990605102,
+            "frequency": 0.5714285714285714
+          },
+          {
+            "class": 2,
+            "left": 0.30000000000000004,
+            "n": 61,
+            "probability": 0.39305794541337136,
+            "frequency": 0.3770491803278688
+          },
+          {
+            "class": 2,
+            "left": 0.4,
+            "n": 78462,
+            "probability": 0.47756139129504105,
+            "frequency": 0.47648543243863273
+          },
+          {
+            "class": 2,
+            "left": 0.5,
+            "n": 53763,
+            "probability": 0.5189128786497611,
+            "frequency": 0.5159868310920149
+          },
+          {
+            "class": 2,
+            "left": 0.6000000000000001,
+            "n": 179,
+            "probability": 0.6151819939312831,
+            "frequency": 0.6033519553072626
+          }
+        ]
+      },
+      "decision_rule": {
+        "enabled": false,
+        "threshold": 0.65,
+        "reason": "Nenhum limiar atingiu evidência mínima de expectativa positiva; abstenção integral",
+        "payout_reference": 0.8
+      },
+      "economic_parameters": {
+        "raw": "data/raw",
+        "books": "data/knowledge/books",
+        "seed": 42,
+        "train_end": "2026-01-01",
+        "calibration_end": "2026-04-01",
+        "validation_end": "2026-07-01",
+        "test_end": "2026-10-01",
+        "train_rows_per_month": 6000,
+        "threads": 4,
+        "embargo_minutes": 5,
+        "horizons": [
+          1,
+          5
+        ],
+        "tie_tolerance": 0.0,
+        "entry_convention": "next_open",
+        "thresholds": [
+          0.55,
+          0.58,
+          0.6,
+          0.65
+        ],
+        "payouts": [
+          0.7,
+          0.8,
+          0.9
+        ],
+        "spot_costs_bps_per_side": [
+          5,
+          10,
+          20
+        ],
+        "minimum_validation_trades": 200,
+        "max_daily_loss_units": 10,
+        "max_drawdown_units": 30
+      }
+    },
+    {
+      "phase": 3,
+      "horizon": 1,
+      "version": "20261018T005023721954Z-phase3:D_selected_train_only",
+      "artifact": "models\\phase_3\\20261018T005023721954Z-phase3\\horizon_1m.joblib",
+      "sha256": "7746ec6516d947aa99170ec4e993d3407d35e7fc799ba2efbdf6940ff83922c0",
+      "features": [
+        "atr_rel_14",
+        "realized_vol_20",
+        "avg_trades_per_aggtrade",
+        "weekday_sin",
+        "higher_low",
+        "aggtrade_intensity_20",
+        "aggtrade_intensity_60",
+        "close_position",
+        "hour_cos",
+        "body_fraction",
+        "support_distance_20",
+        "flow_persistence_5",
+        "momentum_5",
+        "flow_imbalance",
+        "buy_share",
+        "taker_buy_ratio",
+        "log_return",
+        "cum_delta_20",
+        "mean_aggtrade_size",
+        "closed_5m_return",
+        "body_rel",
+        "size_shock_20",
+        "vol_ratio",
+        "aggtrades_per_second"
+      ],
+      "periods": {
+        "train": [
+          "2026-10-01 01:01:00+00:00",
+          "2026-10-08 23:53:00+00:00",
+          11453
+        ],
+        "calibration": [
+          "2026-10-09 00:05:00+00:00",
+          "2026-10-11 23:53:00+00:00",
+          4309
+        ],
+        "validation": [
+          "2026-10-12 00:05:00+00:00",
+          "2026-10-14 23:53:00+00:00",
+          4309
+        ]
+      },
+      "validation_metrics": {
+        "n": 4309,
+        "accuracy": 0.5131120909723834,
+        "precision_macro": 0.3424534753340665,
+        "recall_macro": 0.34867949591875974,
+        "f1_macro": 0.34243817342408894,
+        "confusion_matrix": [
+          [
+            1311,
+            0,
+            808
+          ],
+          [
+            50,
+            0,
+            34
+          ],
+          [
+            1206,
+            0,
+            900
+          ]
+        ],
+        "log_loss": 0.767187010769658,
+        "brier_multiclass": 0.5170635804508498,
+        "roc_auc_ovr": 0.5942266103145116,
+        "calibration": [
+          {
+            "class": 0,
+            "left": 0.30000000000000004,
+            "n": 70,
+            "probability": 0.3868439503950247,
+            "frequency": 0.4714285714285714
+          },
+          {
+            "class": 0,
+            "left": 0.4,
+            "n": 1980,
+            "probability": 0.4631585098797538,
+            "frequency": 0.4686868686868687
+          },
+          {
+            "class": 0,
+            "left": 0.5,
+            "n": 2252,
+            "probability": 0.5258116947809675,
+            "frequency": 0.5119893428063943
+          },
+          {
+            "class": 0,
+            "left": 0.6000000000000001,
+            "n": 7,
+            "probability": 0.6101225650477554,
+            "frequency": 0.7142857142857143
+          },
+          {
+            "class": 1,
+            "left": 0.0,
+            "n": 4198,
+            "probability": 0.016792217257460804,
+            "frequency": 0.016674606955693186
+          },
+          {
+            "class": 1,
+            "left": 0.1,
+            "n": 105,
+            "probability": 0.1284082078520048,
+            "frequency": 0.12380952380952381
+          },
+          {
+            "class": 1,
+            "left": 0.2,
+            "n": 6,
+            "probability": 0.21700823176770626,
+            "frequency": 0.16666666666666666
+          },
+          {
+            "class": 2,
+            "left": 0.2,
+            "n": 11,
+            "probability": 0.2797092598562801,
+            "frequency": 0.36363636363636365
+          },
+          {
+            "class": 2,
+            "left": 0.30000000000000004,
+            "n": 108,
+            "probability": 0.37327870792011736,
+            "frequency": 0.4166666666666667
+          },
+          {
+            "class": 2,
+            "left": 0.4,
+            "n": 2689,
+            "probability": 0.46601117763230837,
+            "frequency": 0.4752696169579769
+          },
+          {
+            "class": 2,
+            "left": 0.5,
+            "n": 1501,
+            "probability": 0.529443491725121,
+            "frequency": 0.5189873417721519
+          }
+        ]
+      },
+      "decision_rule": {
+        "enabled": false,
+        "reason": "observação prospectiva somente"
+      },
+      "economic_parameters": {
+        "symbol": "BTCUSDT",
+        "pilot_start": "2026-10-01",
+        "pilot_end_inclusive": "2026-10-14",
+        "official_archive_base": "https://data.binance.vision/data/spot/daily/aggTrades",
+        "public_rest_base": "https://data-api.binance.vision",
+        "public_websocket_base": "wss://data-stream.binance.vision:443",
+        "threads": 4,
+        "seed": 42,
+        "horizons": [
+          1,
+          5
+        ],
+        "embargo_minutes": 5,
+        "train_end": "2026-10-09",
+        "calibration_end": "2026-10-12",
+        "validation_end": "2026-10-15",
+        "thresholds": [
+          0.52,
+          0.55,
+          0.58,
+          0.6
+        ],
+        "payouts": [
+          0.7,
+          0.8,
+          0.9
+        ],
+        "spot_costs_bps_per_side": [
+          5,
+          10,
+          20
+        ],
+        "minimum_validation_trades": 50,
+        "collector_reconnect_seconds": [
+          1,
+          2,
+          5,
+          10,
+          30
+        ],
+        "collector_partition_minutes": 5,
+        "paper_fee_bps_per_side": 5,
+        "paper_latency_ms": 250
+      }
+    },
+    {
+      "phase": 3,
+      "horizon": 5,
+      "version": "20261018T005023721954Z-phase3:A_original_xgboost_37",
+      "artifact": "models\\phase_3\\20261018T005023721954Z-phase3\\horizon_5m.joblib",
+      "sha256": "b20f6162b574d36a357cc9677cdc5e2c1bf38e702da4f3884300d1a8acb67f2b",
+      "features": [
+        "return_1",
+        "log_return",
+        "range_rel",
+        "body_rel",
+        "body_fraction",
+        "lower_wick",
+        "upper_wick",
+        "close_position",
+        "direction_balance_5",
+        "higher_high",
+        "higher_low",
+        "momentum_5",
+        "momentum_20",
+        "sma_distance_20",
+        "sma_slope_20",
+        "ema_distance_20",
+        "macd_rel",
+        "rsi_14",
+        "atr_rel_14",
+        "realized_vol_20",
+        "vol_ratio",
+        "bollinger_z",
+        "volume_rel_20",
+        "volume_change",
+        "trade_intensity",
+        "taker_buy_ratio",
+        "signed_volume",
+        "breakout_20",
+        "support_distance_20",
+        "hour_sin",
+        "hour_cos",
+        "weekday_sin",
+        "weekday_cos",
+        "closed_5m_return",
+        "closed_15m_return",
+        "closed_30m_return",
+        "closed_60m_return"
+      ],
+      "periods": {
+        "train": [
+          "2026-10-01 01:01:00+00:00",
+          "2026-10-08 23:49:00+00:00",
+          11449
+        ],
+        "calibration": [
+          "2026-10-09 00:05:00+00:00",
+          "2026-10-11 23:49:00+00:00",
+          4305
+        ],
+        "validation": [
+          "2026-10-12 00:05:00+00:00",
+          "2026-10-14 23:49:00+00:00",
+          4305
+        ]
+      },
+      "validation_metrics": {
+        "n": 4305,
+        "accuracy": 0.5063879210220673,
+        "precision_macro": 0.340089362179818,
+        "recall_macro": 0.34034277099116367,
+        "f1_macro": 0.335066635308404,
+        "confusion_matrix": [
+          [
+            891,
+            0,
+            1321
+          ],
+          [
+            2,
+            0,
+            6
+          ],
+          [
+            796,
+            0,
+            1289
+          ]
+        ],
+        "log_loss": 0.7077342154007691,
+        "brier_multiclass": 0.5030218696775947,
+        "roc_auc_ovr": 0.4979966342860552,
+        "calibration": [
+          {
+            "class": 0,
+            "left": 0.30000000000000004,
+            "n": 44,
+            "probability": 0.3871193512488294,
+            "frequency": 0.5
+          },
+          {
+            "class": 0,
+            "left": 0.4,
+            "n": 2661,
+            "probability": 0.4645356126143986,
+            "frequency": 0.5031942878617062
+          },
+          {
+            "class": 0,
+            "left": 0.5,
+            "n": 1565,
+            "probability": 0.5273148857140947,
+            "frequency": 0.529073482428115
+          },
+          {
+            "class": 0,
+            "left": 0.6000000000000001,
+            "n": 35,
+            "probability": 0.6229458219727192,
+            "frequency": 0.6571428571428571
+          },
+          {
+            "class": 1,
+            "left": 0.0,
+            "n": 4305,
+            "probability": 0.004496589971148967,
+            "frequency": 0.0018583042973286876
+          },
+          {
+            "class": 2,
+            "left": 0.30000000000000004,
+            "n": 39,
+            "probability": 0.37347588112896835,
+            "frequency": 0.3333333333333333
+          },
+          {
+            "class": 2,
+            "left": 0.4,
+            "n": 1737,
+            "probability": 0.4715327668581598,
+            "frequency": 0.47668393782383417
+          },
+          {
+            "class": 2,
+            "left": 0.5,
+            "n": 2500,
+            "probability": 0.5336071669032142,
+            "frequency": 0.4916
+          },
+          {
+            "class": 2,
+            "left": 0.6000000000000001,
+            "n": 29,
+            "probability": 0.6135472753809792,
+            "frequency": 0.5172413793103449
+          }
+        ]
+      },
+      "decision_rule": {
+        "enabled": false,
+        "reason": "observação prospectiva somente"
+      },
+      "economic_parameters": {
+        "symbol": "BTCUSDT",
+        "pilot_start": "2026-10-01",
+        "pilot_end_inclusive": "2026-10-14",
+        "official_archive_base": "https://data.binance.vision/data/spot/daily/aggTrades",
+        "public_rest_base": "https://data-api.binance.vision",
+        "public_websocket_base": "wss://data-stream.binance.vision:443",
+        "threads": 4,
+        "seed": 42,
+        "horizons": [
+          1,
+          5
+        ],
+        "embargo_minutes": 5,
+        "train_end": "2026-10-09",
+        "calibration_end": "2026-10-12",
+        "validation_end": "2026-10-15",
+        "thresholds": [
+          0.52,
+          0.55,
+          0.58,
+          0.6
+        ],
+        "payouts": [
+          0.7,
+          0.8,
+          0.9
+        ],
+        "spot_costs_bps_per_side": [
+          5,
+          10,
+          20
+        ],
+        "minimum_validation_trades": 50,
+        "collector_reconnect_seconds": [
+          1,
+          2,
+          5,
+          10,
+          30
+        ],
+        "collector_partition_minutes": 5,
+        "paper_fee_bps_per_side": 5,
+        "paper_latency_ms": 250
+      }
+    }
+  ],
+  "phase2": "não persistiu modelos; resultados exploratórios permanecem em reports/phase_2",
+  "immutability": "qualquer hash divergente invalida uso prospectivo"
+}

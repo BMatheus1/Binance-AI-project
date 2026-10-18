@@ -1,0 +1,43 @@
+{
+  "status": "prepared_waiting_for_full_colab_run",
+  "tests": {
+    "command": "python -m pytest -q --junitxml=reports/tests.xml",
+    "passed": 69,
+    "failed": 0
+  },
+  "notebook": {
+    "nbformat_valid": true,
+    "cells": 14,
+    "python_cells_syntax_valid": true,
+    "accelerator": "GPU"
+  },
+  "official_identity": {
+    "repository_revision": "67b630e67f6a18c9e9be918d9b4337c960db1e9a",
+    "model": "NeoQuasar/Kronos-mini",
+    "model_revision": "f4e68697d9d5aed55cef5c96aabc3376bcad9f81",
+    "tokenizer": "NeoQuasar/Kronos-Tokenizer-2k",
+    "tokenizer_revision": "26966d0035065a0cae0ebad7af8ece35bc1fb51c",
+    "license": "MIT"
+  },
+  "local_smoke": {
+    "environment": "CPython 3.14.0, torch 2.10.0+cpu",
+    "pretrained_inference": "passed: 64 observed candles to 2 finite future bars",
+    "fine_tune": "passed: one AdamW predictor step, finite loss and changed parameter",
+    "observed_loss": 2.93847393989563,
+    "performance_interpretation": false
+  },
+  "export": {
+    "archive_integrity": true,
+    "member_hashes_valid": true,
+    "train_rows": 790560,
+    "calibration_rows": 129600,
+    "validation_rows": 131040,
+    "calibration_comparison_rows": 128,
+    "validation_comparison_rows": 256,
+    "forbidden_final_period_exported": false
+  },
+  "full_colab_experiment_executed": false,
+  "kronos_performance_results_available": false,
+  "automatic_promotion": false,
+  "policy": "abstenção integral"
+}

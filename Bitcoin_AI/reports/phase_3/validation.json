@@ -1,0 +1,18 @@
+{
+  "automated_tests": {
+    "command": "python -m pytest -q",
+    "passed": 57,
+    "failed": 0,
+    "date": "2026-10-17"
+  },
+  "public_collector_smoke": {
+    "duration_seconds": 15,
+    "messages": 430,
+    "reconnections": 0,
+    "aggregate_trade_duplicates": 0,
+    "aggregate_trade_missing_ids": 0,
+    "depth_invalidations": 0,
+    "book_valid_at_end": true,
+    "orders_sent": 0
+  }
+}

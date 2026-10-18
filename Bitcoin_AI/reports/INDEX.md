@@ -6,6 +6,12 @@ Estudo bibliográfico posterior: [dossiês dos quatro autores, síntese e cobert
 
 Fase 2: [resultado executivo, nove relatórios e artefatos reproduzíveis](phase_2/README.md). A Fase 2 usa somente validações anteriores a julho/2026; não reabre o teste final consumido.
 
+Fase 3: [piloto oficial de AggTrades, microestrutura, coletor público, ledger prospectivo e paper trading](phase_3/README.md). O piloto usa 01–14/10/2026, posterior ao teste final já consumido, e permanece exploratório.
+
+Fase 4: [auditoria estatística, modelos congelados, horizontes 1/5/15/30m e observação prospectiva](phase_4/README.md). Julho–setembro/2026 permaneceu vedado; a execução histórica usa somente desenvolvimento anterior a julho e mantém abstenção integral.
+
+Fase 5: [pacote causal, notebook GPU, smoke real e integração auditável do Kronos-mini](phase_5/README.md). O experimento completo depende da execução no Google Colab; nenhum resultado preditivo foi inventado ou promovido.
+
 - 1m: xgboost, accuracy 50.6549%, log loss 0.809687; baseline frequência 0.861573. IC95% da diferença pareada de log loss: [-0.072525, -0.033281]. Valor negativo favorece modelo. Decisão congelada: abstenção integral.
 - 5m: xgboost, accuracy 51.6876%, log loss 0.717344; baseline frequência 0.729788. IC95% da diferença pareada de log loss: [-0.024622, -0.003589]. Valor negativo favorece modelo. Decisão congelada: abstenção integral.
 

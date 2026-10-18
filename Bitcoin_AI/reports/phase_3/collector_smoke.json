@@ -1,0 +1,17 @@
+{
+  "messages": 430,
+  "reconnections": 0,
+  "aggtrade_duplicates": 0,
+  "aggtrade_gap_events": 0,
+  "aggtrade_missing_ids": 0,
+  "depth_invalidations": 0,
+  "book": {
+    "valid": true,
+    "bid": 81466.0,
+    "ask": 81466.01,
+    "spread": 0.00999999999476131,
+    "spread_bps": 0.001227505877422283,
+    "last_update_id": 101575212359
+  },
+  "real_orders": false
+}

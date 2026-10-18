@@ -1,0 +1,4768 @@
+{
+  "run_id": "20261018T004002179809Z-phase3",
+  "status": "exploratory_post_final_test_pilot",
+  "versions": {
+    "numpy": "2.4.3",
+    "pandas": "3.0.2",
+    "pyarrow": "23.0.1",
+    "scikit-learn": "1.8.0",
+    "xgboost": "3.2.0",
+    "catboost": "1.2.10",
+    "pypdf": "6.10.2",
+    "pytest": "9.0.3",
+    "joblib": "1.5.3"
+  },
+  "config": {
+    "symbol": "BTCUSDT",
+    "pilot_start": "2026-10-01",
+    "pilot_end_inclusive": "2026-10-14",
+    "official_archive_base": "https://data.binance.vision/data/spot/daily/aggTrades",
+    "public_rest_base": "https://data-api.binance.vision",
+    "public_websocket_base": "wss://data-stream.binance.vision:443",
+    "threads": 4,
+    "seed": 42,
+    "horizons": [
+      1,
+      5
+    ],
+    "embargo_minutes": 5,
+    "train_end": "2026-10-09",
+    "calibration_end": "2026-10-12",
+    "validation_end": "2026-10-15",
+    "thresholds": [
+      0.52,
+      0.55,
+      0.58,
+      0.6
+    ],
+    "payouts": [
+      0.7,
+      0.8,
+      0.9
+    ],
+    "spot_costs_bps_per_side": [
+      5,
+      10,
+      20
+    ],
+    "minimum_validation_trades": 50,
+    "collector_reconnect_seconds": [
+      1,
+      2,
+      5,
+      10,
+      30
+    ],
+    "collector_partition_minutes": 5,
+    "paper_fee_bps_per_side": 5,
+    "paper_latency_ms": 250
+  },
+  "phase2_audit": {
+    "phase2_run": "20261017T223631458343Z-phase2",
+    "target_classes": {
+      "0": "baixa",
+      "1": "empate",
+      "2": "alta"
+    },
+    "probability_metric": "log loss multiclasse; Brier, ECE e calibração também registrados",
+    "binary_50_percent_baseline": "aplicável apenas após excluir empates; log loss=ln(2)",
+    "calibration": "bloco posterior ao treino e anterior à validação em cada fold",
+    "temporal_integrity": {
+      "latest_validation_end": "2026-06-30 23:44:00+00:00",
+      "forbidden_test_reused": false,
+      "final_2026_07_to_09_status": "consumido na Fase 1, não reutilizado"
+    },
+    "statistical_vs_economic": "métricas probabilísticas não implicam expectativa líquida; cenários econômicos foram separados",
+    "candidates": {
+      "1": {
+        "frequency": {
+          "log_loss": 0.7885881354239482,
+          "accuracy": 0.4869059525132422,
+          "ece": 0.005166905822746944,
+          "raw_log_loss": null
+        },
+        "logistic_original": {
+          "log_loss": 0.7673223805583058,
+          "accuracy": 0.4950550061117902,
+          "ece": 0.009729452744473677,
+          "raw_log_loss": 0.7699870766804032
+        },
+        "logistic_contextual": {
+          "log_loss": 0.7669164706080319,
+          "accuracy": 0.49690706374782384,
+          "ece": 0.011237176018417325,
+          "raw_log_loss": 0.7690575047777718
+        },
+        "random_forest_original": {
+          "log_loss": 0.7663337829468166,
+          "accuracy": 0.5050190761936512,
+          "ece": 0.007180870745528342,
+          "raw_log_loss": 0.7670545866244529
+        },
+        "xgboost_original": {
+          "log_loss": 0.7660024705834102,
+          "accuracy": 0.5015742489906286,
+          "ece": 0.0059450798018889466,
+          "raw_log_loss": 0.7670096141282573
+        },
+        "xgboost_contextual_regularized": {
+          "log_loss": 0.7659462805264564,
+          "accuracy": 0.5042412119865171,
+          "ece": 0.007752932451511175,
+          "raw_log_loss": 0.7671159625647554
+        },
+        "catboost_original": {
+          "log_loss": 0.766713360890757,
+          "accuracy": 0.5003148497981257,
+          "ece": 0.008570212571840631,
+          "raw_log_loss": 0.7698610905639254
+        }
+      },
+      "5": {
+        "frequency": {
+          "log_loss": 0.7075604590017118,
+          "accuracy": 0.49672185798422047,
+          "ece": 0.005561118214640652,
+          "raw_log_loss": null
+        },
+        "logistic_original": {
+          "log_loss": 0.7067678048771197,
+          "accuracy": 0.5067970515242434,
+          "ece": 0.0068617660105143264,
+          "raw_log_loss": 0.7079533428633896
+        },
+        "logistic_contextual": {
+          "log_loss": 0.7064457102783838,
+          "accuracy": 0.5072415453568916,
+          "ece": 0.00881278996626989,
+          "raw_log_loss": 0.7077442108951754
+        },
+        "random_forest_original": {
+          "log_loss": 0.7056449972314338,
+          "accuracy": 0.5155387635663221,
+          "ece": 0.006302094706649039,
+          "raw_log_loss": 0.7055171428946493
+        },
+        "xgboost_original": {
+          "log_loss": 0.704937632807581,
+          "accuracy": 0.512390265585065,
+          "ece": 0.010109624010423465,
+          "raw_log_loss": 0.7047465030865997
+        },
+        "xgboost_contextual_regularized": {
+          "log_loss": 0.7057221501235008,
+          "accuracy": 0.5122421009741823,
+          "ece": 0.008697453428136796,
+          "raw_log_loss": 0.7053581022469118
+        },
+        "catboost_original": {
+          "log_loss": 0.7066879873145019,
+          "accuracy": 0.5089083972293218,
+          "ece": 0.010743187636758753,
+          "raw_log_loss": 0.7083369463648427
+        }
+      }
+    },
+    "conclusion": {
+      "phase2_complete": true,
+      "independent_test_available": false,
+      "real_trading_executed": false,
+      "official_policy": "abstenção integral",
+      "statement": "Resultados são exploratórios/walk-forward até junho de 2026; nenhum modelo ou estratégia foi promovido."
+    }
+  },
+  "ingestion": {
+    "source_manifest": "data/phase_3/manifests/download.json",
+    "days": [
+      {
+        "date": "2026-10-01",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-01.zip",
+        "source_sha256": "43c878d893f8ffdb5404581e249ad4a69a3d1495b8256499405b5bbdcf30009d",
+        "rows": 799179,
+        "parquet_parts": 4,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4078050863,
+        "last_agg_id": 4078850041,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-01.parquet",
+        "minute_sha256": "5da6c0d8d215f64d4d44f53c5a50087d6010c096a8e73bcc5eff0bc7ce5c3a97"
+      },
+      {
+        "date": "2026-10-02",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-02.zip",
+        "source_sha256": "f5a1d7dae6c1f5a0804a37384f82bb64d416e27f3455d7a20175b4f982c10426",
+        "rows": 1093390,
+        "parquet_parts": 5,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4078850042,
+        "last_agg_id": 4079943431,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-02.parquet",
+        "minute_sha256": "3e50b374d07b3ebbf27f21fcfad3f086f5ba7aafc77002c8cb43dd286d36bb23"
+      },
+      {
+        "date": "2026-10-03",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-03.zip",
+        "source_sha256": "6a20ec7adb02bf777ec9d6c4cdda0597b6909b322fb71626be4095f08fed0cbe",
+        "rows": 298196,
+        "parquet_parts": 2,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4079943432,
+        "last_agg_id": 4080241627,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-03.parquet",
+        "minute_sha256": "060d32d019c07271ed7bd611c2315730b6602be4f9834eb49bbdc0fdcd1f1da4"
+      },
+      {
+        "date": "2026-10-04",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-04.zip",
+        "source_sha256": "9cc8c101250beb12c3f184d42b219878527cbff40c9fb34a6afe8aa22082b626",
+        "rows": 457875,
+        "parquet_parts": 2,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4080241628,
+        "last_agg_id": 4080699502,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-04.parquet",
+        "minute_sha256": "8d274aca0a5d82c4d1d29c3f7bc2733b2f83bee19ac69f6a458b50376eb66d4b"
+      },
+      {
+        "date": "2026-10-05",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-05.zip",
+        "source_sha256": "83b922b77502a0c8eab4fb8437abf3af01c9ab950672cd69cd230cf7e0a510f1",
+        "rows": 848139,
+        "parquet_parts": 4,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4080699503,
+        "last_agg_id": 4081547641,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-05.parquet",
+        "minute_sha256": "b48c25b0e396e3d6fa622439f6f22e2b7d7ff921c1e99712e48e0c1a8b8fa80a"
+      },
+      {
+        "date": "2026-10-06",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-06.zip",
+        "source_sha256": "01e958aee54879d65824e37f1705e2501cddbb469a4e901fb972ddeadce2fcea",
+        "rows": 811872,
+        "parquet_parts": 4,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4081547642,
+        "last_agg_id": 4082359513,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-06.parquet",
+        "minute_sha256": "7d1fb597eabfba1516b0dc9320ca5bea223d5c1915963c5555de0482cf70fa3a"
+      },
+      {
+        "date": "2026-10-07",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-07.zip",
+        "source_sha256": "e25ec485f71068b31831af6f1f6f4ead163887acfd0493afc045e48bfc8f15cc",
+        "rows": 2519856,
+        "parquet_parts": 11,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4082359514,
+        "last_agg_id": 4084879369,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-07.parquet",
+        "minute_sha256": "22e7c826a18cc99eeaf177bda5d1a4c09b7072502e172f234de01a5353aff6ad"
+      },
+      {
+        "date": "2026-10-08",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-08.zip",
+        "source_sha256": "952c2f1ef81485961911f3bd97268d42e20cb987a40a2e999c8458d641a9509a",
+        "rows": 1061941,
+        "parquet_parts": 5,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4084879370,
+        "last_agg_id": 4085941310,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-08.parquet",
+        "minute_sha256": "ca5fa91080343202b55544cac6dec7a42b7cad5cffd1cf1390c0df20c6a03130"
+      },
+      {
+        "date": "2026-10-09",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-09.zip",
+        "source_sha256": "3554fcb3d0e732de85514c798d8c397631672300201cbcae83a34d1ccccc20ac",
+        "rows": 576912,
+        "parquet_parts": 3,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4085941311,
+        "last_agg_id": 4086518222,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-09.parquet",
+        "minute_sha256": "3d582f6f93cc71ca5af8f5422266093b0355c41220003d96629560ca3cf36954"
+      },
+      {
+        "date": "2026-10-10",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-10.zip",
+        "source_sha256": "8172da51fca4fc2c723fedb669daf7a1b11e6b2f4ee523732f7506c3698feeaf",
+        "rows": 290968,
+        "parquet_parts": 2,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4086518223,
+        "last_agg_id": 4086809190,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-10.parquet",
+        "minute_sha256": "c9af934268a5ae395e78331d0153db9304b9f3e96390943cc970b5fab79150e8"
+      },
+      {
+        "date": "2026-10-11",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-11.zip",
+        "source_sha256": "c3ffd320fae85c6042f9f21e4f7e502d2808259be5f7e46639680fb759edfc47",
+        "rows": 336271,
+        "parquet_parts": 2,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4086809191,
+        "last_agg_id": 4087145461,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-11.parquet",
+        "minute_sha256": "b22c62e730c5bcd0335f9bc96dc2f19469370918482cfcf91be1c537ab763697"
+      },
+      {
+        "date": "2026-10-12",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-12.zip",
+        "source_sha256": "c46e1c102b05f3a33ca6fb6b449f7213c07bc7e0ec5c8cf1d213f78c29eff579",
+        "rows": 693456,
+        "parquet_parts": 3,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4087145462,
+        "last_agg_id": 4087838917,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-12.parquet",
+        "minute_sha256": "6766dd091c8c4abc0655697b469e81e13b326acb7178389b702a1ee4af0c68a3"
+      },
+      {
+        "date": "2026-10-13",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-13.zip",
+        "source_sha256": "516831c4abed130f9c73462929d90dc9008a1bc549bf4df53ec4a2074a9a2c04",
+        "rows": 898717,
+        "parquet_parts": 4,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4087838918,
+        "last_agg_id": 4088737634,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-13.parquet",
+        "minute_sha256": "6fd3ef7236394b06d38927a23ca270b65333f9eaefcc86a7a085569fd96f4f94"
+      },
+      {
+        "date": "2026-10-14",
+        "source": "data\\phase_3\\raw\\aggTrades\\BTCUSDT\\BTCUSDT-aggTrades-2026-10-14.zip",
+        "source_sha256": "2bd3e54ba5d465300237c9b3225a6b03c4be860b9cbd7909c8a59a1dab4274af",
+        "rows": 853004,
+        "parquet_parts": 4,
+        "minutes": 1440,
+        "duplicate_agg_ids": 0,
+        "aggregate_id_gap_events": 0,
+        "underlying_trade_gap_events": 0,
+        "minute_gap_events": 0,
+        "first_agg_id": 4088737635,
+        "last_agg_id": 4089590638,
+        "minute_file": "data\\phase_3\\minutes\\2026-10-14.parquet",
+        "minute_sha256": "adec8f57f22291726faf5033512cb8036c236d5bd9be43af15ded0b37c1e149d"
+      }
+    ],
+    "rows": 11539776,
+    "minutes": 20160,
+    "quality_status": "validado; gaps contabilizados, sem imputação"
+  },
+  "features": {
+    "rows": 20160,
+    "start": "2026-10-01 00:01:00+00:00",
+    "end": "2026-10-15 00:00:00+00:00",
+    "base_features": 37,
+    "micro_features": 20,
+    "candle_origin": "OHLCV reconstruído dos AggTrades oficiais; trades é soma dos IDs de trades subjacentes",
+    "missing_minutes": 0
+  },
+  "experiments": {
+    "1": {
+      "periods": {
+        "train": [
+          "2026-10-01 01:01:00+00:00",
+          "2026-10-08 23:53:00+00:00",
+          11453
+        ],
+        "calibration": [
+          "2026-10-09 00:05:00+00:00",
+          "2026-10-11 23:53:00+00:00",
+          4309
+        ],
+        "validation": [
+          "2026-10-12 00:05:00+00:00",
+          "2026-10-14 23:53:00+00:00",
+          4309
+        ]
+      },
+      "candidates": {
+        "A_original_37": {
+          "columns": [
+            "return_1",
+            "log_return",
+            "range_rel",
+            "body_rel",
+            "body_fraction",
+            "lower_wick",
+            "upper_wick",
+            "close_position",
+            "direction_balance_5",
+            "higher_high",
+            "higher_low",
+            "momentum_5",
+            "momentum_20",
+            "sma_distance_20",
+            "sma_slope_20",
+            "ema_distance_20",
+            "macd_rel",
+            "rsi_14",
+            "atr_rel_14",
+            "realized_vol_20",
+            "vol_ratio",
+            "bollinger_z",
+            "volume_rel_20",
+            "volume_change",
+            "trade_intensity",
+            "taker_buy_ratio",
+            "signed_volume",
+            "breakout_20",
+            "support_distance_20",
+            "hour_sin",
+            "hour_cos",
+            "weekday_sin",
+            "weekday_cos",
+            "closed_5m_return",
+            "closed_15m_return",
+            "closed_30m_return",
+            "closed_60m_return"
+          ],
+          "metrics": {
+            "n": 4309,
+            "accuracy": 0.4950104432582966,
+            "precision_macro": 0.3295373086956858,
+            "recall_macro": 0.33614737909216436,
+            "f1_macro": 0.318677702830826,
+            "confusion_matrix": [
+              [
+                1503,
+                0,
+                616
+              ],
+              [
+                51,
+                0,
+                33
+              ],
+              [
+                1476,
+                0,
+                630
+              ]
+            ],
+            "log_loss": 0.774152360231497,
+            "brier_multiclass": 0.5207301706598008,
+            "roc_auc_ovr": 0.5852516740988335,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.0,
+                "n": 1,
+                "probability": 0.060176124770594044,
+                "frequency": 0.0
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 42,
+                "probability": 0.3854709294100745,
+                "frequency": 0.42857142857142855
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 1472,
+                "probability": 0.4671268728938571,
+                "frequency": 0.485054347826087
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2718,
+                "probability": 0.5403935958634328,
+                "frequency": 0.4952170713760118
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 75,
+                "probability": 0.6192258857117923,
+                "frequency": 0.5333333333333333
+              },
+              {
+                "class": 0,
+                "left": 0.7000000000000001,
+                "n": 1,
+                "probability": 0.7396826746520828,
+                "frequency": 1.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4171,
+                "probability": 0.01618027814155621,
+                "frequency": 0.016782546152001917
+              },
+              {
+                "class": 1,
+                "left": 0.1,
+                "n": 136,
+                "probability": 0.12737296736006165,
+                "frequency": 0.09558823529411764
+              },
+              {
+                "class": 1,
+                "left": 0.2,
+                "n": 2,
+                "probability": 0.2019122279231761,
+                "frequency": 0.5
+              },
+              {
+                "class": 2,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.2603167299095351,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 343,
+                "probability": 0.3782508033491849,
+                "frequency": 0.44314868804664725
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2930,
+                "probability": 0.4548038316577489,
+                "frequency": 0.4928327645051195
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 1029,
+                "probability": 0.522186452581704,
+                "frequency": 0.49076773566569487
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 5,
+                "probability": 0.6216259035014627,
+                "frequency": 0.8
+              },
+              {
+                "class": 2,
+                "left": 0.9,
+                "n": 1,
+                "probability": 0.9398238751912072,
+                "frequency": 1.0
+              }
+            ]
+          },
+          "raw_metrics": {
+            "n": 4309,
+            "accuracy": 0.5001160362032955,
+            "precision_macro": 0.3331708214379225,
+            "recall_macro": 0.3398518596200941,
+            "f1_macro": 0.3338694166359078,
+            "confusion_matrix": [
+              [
+                1274,
+                0,
+                845
+              ],
+              [
+                40,
+                0,
+                44
+              ],
+              [
+                1225,
+                0,
+                881
+              ]
+            ],
+            "log_loss": 0.773542039283448,
+            "brier_multiclass": 0.5211187184746793,
+            "roc_auc_ovr": 0.5855015763451491,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.0,
+                "n": 1,
+                "probability": 0.01305975833023286,
+                "frequency": 0.0
+              },
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.2978674021651713,
+                "frequency": 0.0
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 167,
+                "probability": 0.3793997353564387,
+                "frequency": 0.4311377245508982
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 1802,
+                "probability": 0.46010066827308366,
+                "frequency": 0.48224195338512765
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2258,
+                "probability": 0.5403488581039688,
+                "frequency": 0.5026572187776793
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 79,
+                "probability": 0.6186753101270808,
+                "frequency": 0.5316455696202531
+              },
+              {
+                "class": 0,
+                "left": 0.7000000000000001,
+                "n": 1,
+                "probability": 0.7438380588398127,
+                "frequency": 1.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4192,
+                "probability": 0.017247850199523424,
+                "frequency": 0.016698473282442748
+              },
+              {
+                "class": 1,
+                "left": 0.1,
+                "n": 117,
+                "probability": 0.1251904347816491,
+                "frequency": 0.11965811965811966
+              },
+              {
+                "class": 2,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.25615920077797494,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 341,
+                "probability": 0.3777533945476626,
+                "frequency": 0.44574780058651026
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2392,
+                "probability": 0.45439816740627725,
+                "frequency": 0.49038461538461536
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 1555,
+                "probability": 0.5341250305056956,
+                "frequency": 0.49517684887459806
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 18,
+                "probability": 0.6281619788361125,
+                "frequency": 0.5
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 1,
+                "probability": 0.701973268965508,
+                "frequency": 1.0
+              },
+              {
+                "class": 2,
+                "left": 0.9,
+                "n": 1,
+                "probability": 0.9869402416684628,
+                "frequency": 1.0
+              }
+            ]
+          },
+          "ece": 0.037816218811201445,
+          "raw_ece": 0.03658738150503049
+        },
+        "B_aggtrades": {
+          "columns": [
+            "flow_imbalance",
+            "buy_share",
+            "volume_delta",
+            "mean_aggtrade_size",
+            "avg_trades_per_aggtrade",
+            "quote_per_aggtrade",
+            "aggtrades_per_second",
+            "cum_delta_5",
+            "cum_delta_20",
+            "cum_delta_60",
+            "aggtrade_intensity_5",
+            "aggtrade_intensity_20",
+            "aggtrade_intensity_60",
+            "underlying_trade_intensity_20",
+            "size_shock_20",
+            "activity_shock_20",
+            "flow_persistence_5",
+            "flow_persistence_20",
+            "price_flow_divergence_5",
+            "price_flow_divergence_20"
+          ],
+          "metrics": {
+            "n": 4309,
+            "accuracy": 0.5015084706428405,
+            "precision_macro": 0.3340761055879328,
+            "recall_macro": 0.34061606045246123,
+            "f1_macro": 0.3265842140135904,
+            "confusion_matrix": [
+              [
+                1465,
+                0,
+                654
+              ],
+              [
+                42,
+                0,
+                42
+              ],
+              [
+                1410,
+                0,
+                696
+              ]
+            ],
+            "log_loss": 0.7766981017255571,
+            "brier_multiclass": 0.521041838889051,
+            "roc_auc_ovr": 0.587521262597758,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.22840310132779507,
+                "frequency": 1.0
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 102,
+                "probability": 0.3802212863778822,
+                "frequency": 0.49019607843137253
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 2013,
+                "probability": 0.46787241918159417,
+                "frequency": 0.4734227521112767
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2183,
+                "probability": 0.5273675425844425,
+                "frequency": 0.5089326614750344
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 9,
+                "probability": 0.6201530818690361,
+                "frequency": 0.3333333333333333
+              },
+              {
+                "class": 0,
+                "left": 0.8,
+                "n": 1,
+                "probability": 0.8390938846118157,
+                "frequency": 1.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 3954,
+                "probability": 0.026475246626041792,
+                "frequency": 0.014668689934243804
+              },
+              {
+                "class": 1,
+                "left": 0.1,
+                "n": 293,
+                "probability": 0.13898645714214045,
+                "frequency": 0.06825938566552901
+              },
+              {
+                "class": 1,
+                "left": 0.2,
+                "n": 61,
+                "probability": 0.23269629056130003,
+                "frequency": 0.09836065573770492
+              },
+              {
+                "class": 1,
+                "left": 0.30000000000000004,
+                "n": 1,
+                "probability": 0.31438658036656353,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.1,
+                "n": 1,
+                "probability": 0.16089391199672778,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.27772686463399543,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 169,
+                "probability": 0.37444403314001795,
+                "frequency": 0.47928994082840237
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 3435,
+                "probability": 0.4613950219220806,
+                "frequency": 0.48384279475982533
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 702,
+                "probability": 0.5146891523455169,
+                "frequency": 0.5170940170940171
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 1,
+                "probability": 0.6596637594924947,
+                "frequency": 0.0
+              }
+            ]
+          },
+          "raw_metrics": {
+            "n": 4309,
+            "accuracy": 0.5031329774889766,
+            "precision_macro": 0.33532387910636613,
+            "recall_macro": 0.3420201702410291,
+            "f1_macro": 0.3383068326571035,
+            "confusion_matrix": [
+              [
+                1160,
+                0,
+                959
+              ],
+              [
+                38,
+                0,
+                46
+              ],
+              [
+                1098,
+                0,
+                1008
+              ]
+            ],
+            "log_loss": 0.7737472023493817,
+            "brier_multiclass": 0.5209350746912543,
+            "roc_auc_ovr": 0.5874162048941094,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.0,
+                "n": 1,
+                "probability": 0.09040674401788001,
+                "frequency": 1.0
+              },
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 4,
+                "probability": 0.2584453780492229,
+                "frequency": 0.75
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 165,
+                "probability": 0.3738179282834915,
+                "frequency": 0.43636363636363634
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 2261,
+                "probability": 0.4637787724659094,
+                "frequency": 0.48474126492702346
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 1869,
+                "probability": 0.5303969245843112,
+                "frequency": 0.5050829320492242
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 8,
+                "probability": 0.6191874123525272,
+                "frequency": 0.25
+              },
+              {
+                "class": 0,
+                "left": 0.8,
+                "n": 1,
+                "probability": 0.8420458607824555,
+                "frequency": 1.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4090,
+                "probability": 0.022170585811575765,
+                "frequency": 0.01613691931540342
+              },
+              {
+                "class": 1,
+                "left": 0.1,
+                "n": 187,
+                "probability": 0.1359075591189217,
+                "frequency": 0.08021390374331551
+              },
+              {
+                "class": 1,
+                "left": 0.2,
+                "n": 29,
+                "probability": 0.23114352335828003,
+                "frequency": 0.10344827586206896
+              },
+              {
+                "class": 1,
+                "left": 0.30000000000000004,
+                "n": 3,
+                "probability": 0.34768417990084854,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.1,
+                "n": 1,
+                "probability": 0.1579213962385529,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.2847522593273006,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 138,
+                "probability": 0.37938213780593055,
+                "frequency": 0.5144927536231884
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2633,
+                "probability": 0.46134545611856126,
+                "frequency": 0.4743638435244968
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 1528,
+                "probability": 0.5261292941224205,
+                "frequency": 0.512434554973822
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 6,
+                "probability": 0.6171513750720422,
+                "frequency": 0.3333333333333333
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 2,
+                "probability": 0.7487816398925357,
+                "frequency": 0.5
+              }
+            ]
+          },
+          "ece": 0.011263048982893747,
+          "raw_ece": 0.017571557743000607
+        },
+        "C_combined": {
+          "columns": [
+            "return_1",
+            "log_return",
+            "range_rel",
+            "body_rel",
+            "body_fraction",
+            "lower_wick",
+            "upper_wick",
+            "close_position",
+            "direction_balance_5",
+            "higher_high",
+            "higher_low",
+            "momentum_5",
+            "momentum_20",
+            "sma_distance_20",
+            "sma_slope_20",
+            "ema_distance_20",
+            "macd_rel",
+            "rsi_14",
+            "atr_rel_14",
+            "realized_vol_20",
+            "vol_ratio",
+            "bollinger_z",
+            "volume_rel_20",
+            "volume_change",
+            "trade_intensity",
+            "taker_buy_ratio",
+            "signed_volume",
+            "breakout_20",
+            "support_distance_20",
+            "hour_sin",
+            "hour_cos",
+            "weekday_sin",
+            "weekday_cos",
+            "closed_5m_return",
+            "closed_15m_return",
+            "closed_30m_return",
+            "closed_60m_return",
+            "flow_imbalance",
+            "buy_share",
+            "volume_delta",
+            "mean_aggtrade_size",
+            "avg_trades_per_aggtrade",
+            "quote_per_aggtrade",
+            "aggtrades_per_second",
+            "cum_delta_5",
+            "cum_delta_20",
+            "cum_delta_60",
+            "aggtrade_intensity_5",
+            "aggtrade_intensity_20",
+            "aggtrade_intensity_60",
+            "underlying_trade_intensity_20",
+            "size_shock_20",
+            "activity_shock_20",
+            "flow_persistence_5",
+            "flow_persistence_20",
+            "price_flow_divergence_5",
+            "price_flow_divergence_20"
+          ],
+          "metrics": {
+            "n": 4309,
+            "accuracy": 0.5001160362032955,
+            "precision_macro": 0.3335414079781023,
+            "recall_macro": 0.3396129861705867,
+            "f1_macro": 0.3218517037874367,
+            "confusion_matrix": [
+              [
+                1520,
+                0,
+                599
+              ],
+              [
+                50,
+                0,
+                34
+              ],
+              [
+                1471,
+                0,
+                635
+              ]
+            ],
+            "log_loss": 0.7727261473039607,
+            "brier_multiclass": 0.5205324297823638,
+            "roc_auc_ovr": 0.5905126889256925,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.0,
+                "n": 1,
+                "probability": 0.05238951685690868,
+                "frequency": 0.0
+              },
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.27151880323644245,
+                "frequency": 1.0
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 68,
+                "probability": 0.3846781253980524,
+                "frequency": 0.45588235294117646
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 1466,
+                "probability": 0.4668877326266971,
+                "frequency": 0.47066848567530695
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2677,
+                "probability": 0.5390813673924829,
+                "frequency": 0.5028016436309302
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 95,
+                "probability": 0.61776987021714,
+                "frequency": 0.5263157894736842
+              },
+              {
+                "class": 0,
+                "left": 0.7000000000000001,
+                "n": 1,
+                "probability": 0.709446715799905,
+                "frequency": 1.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4144,
+                "probability": 0.015825288617051354,
+                "frequency": 0.015926640926640926
+              },
+              {
+                "class": 1,
+                "left": 0.1,
+                "n": 158,
+                "probability": 0.13101338186518935,
+                "frequency": 0.10759493670886076
+              },
+              {
+                "class": 1,
+                "left": 0.2,
+                "n": 7,
+                "probability": 0.2161134576991452,
+                "frequency": 0.14285714285714285
+              },
+              {
+                "class": 2,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.2905531809678193,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 313,
+                "probability": 0.37982184828277754,
+                "frequency": 0.45686900958466453
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2992,
+                "probability": 0.45551611362278716,
+                "frequency": 0.48830213903743314
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 996,
+                "probability": 0.5231256507382724,
+                "frequency": 0.5
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 6,
+                "probability": 0.6149152311735303,
+                "frequency": 0.5
+              },
+              {
+                "class": 2,
+                "left": 0.9,
+                "n": 1,
+                "probability": 0.9476104831246455,
+                "frequency": 1.0
+              }
+            ]
+          },
+          "raw_metrics": {
+            "n": 4309,
+            "accuracy": 0.4980273845439777,
+            "precision_macro": 0.3317973892751405,
+            "recall_macro": 0.33847979383085036,
+            "f1_macro": 0.333705759494807,
+            "confusion_matrix": [
+              [
+                1220,
+                0,
+                899
+              ],
+              [
+                39,
+                0,
+                45
+              ],
+              [
+                1180,
+                0,
+                926
+              ]
+            ],
+            "log_loss": 0.7729576725525431,
+            "brier_multiclass": 0.5215260083579089,
+            "roc_auc_ovr": 0.590486716814087,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.0,
+                "n": 1,
+                "probability": 0.004823770026046983,
+                "frequency": 0.0
+              },
+              {
+                "class": 0,
+                "left": 0.1,
+                "n": 1,
+                "probability": 0.19875664304627558,
+                "frequency": 1.0
+              },
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 4,
+                "probability": 0.28346848398363444,
+                "frequency": 0.75
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 255,
+                "probability": 0.37458983128211126,
+                "frequency": 0.396078431372549
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 1814,
+                "probability": 0.45948537864487904,
+                "frequency": 0.48897464167585447
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2116,
+                "probability": 0.5397641190912285,
+                "frequency": 0.5023629489603024
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 117,
+                "probability": 0.6170232338155921,
+                "frequency": 0.5384615384615384
+              },
+              {
+                "class": 0,
+                "left": 0.7000000000000001,
+                "n": 1,
+                "probability": 0.7028027992710376,
+                "frequency": 1.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4189,
+                "probability": 0.01618729966689349,
+                "frequency": 0.01694915254237288
+              },
+              {
+                "class": 1,
+                "left": 0.1,
+                "n": 115,
+                "probability": 0.12996674115734289,
+                "frequency": 0.10434782608695652
+              },
+              {
+                "class": 1,
+                "left": 0.2,
+                "n": 5,
+                "probability": 0.21196931769379596,
+                "frequency": 0.2
+              },
+              {
+                "class": 2,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.29719657138353417,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 332,
+                "probability": 0.3772702046054858,
+                "frequency": 0.44879518072289154
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2309,
+                "probability": 0.45545362158391534,
+                "frequency": 0.4841922910350801
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 1589,
+                "probability": 0.5370617193601965,
+                "frequency": 0.5015733165512901
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 73,
+                "probability": 0.6210983745308523,
+                "frequency": 0.547945205479452
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 4,
+                "probability": 0.7164745403962902,
+                "frequency": 0.25
+              },
+              {
+                "class": 2,
+                "left": 0.9,
+                "n": 1,
+                "probability": 0.9951762299739454,
+                "frequency": 1.0
+              }
+            ]
+          },
+          "ece": 0.030721614500429647,
+          "raw_ece": 0.039591119218679256
+        },
+        "D_selected_train_only": {
+          "columns": [
+            "atr_rel_14",
+            "realized_vol_20",
+            "avg_trades_per_aggtrade",
+            "weekday_sin",
+            "higher_low",
+            "aggtrade_intensity_20",
+            "aggtrade_intensity_60",
+            "close_position",
+            "hour_cos",
+            "body_fraction",
+            "support_distance_20",
+            "flow_persistence_5",
+            "momentum_5",
+            "flow_imbalance",
+            "buy_share",
+            "taker_buy_ratio",
+            "log_return",
+            "cum_delta_20",
+            "mean_aggtrade_size",
+            "closed_5m_return",
+            "body_rel",
+            "size_shock_20",
+            "vol_ratio",
+            "aggtrades_per_second"
+          ],
+          "metrics": {
+            "n": 4309,
+            "accuracy": 0.49152935715943374,
+            "precision_macro": 0.3266971578427967,
+            "recall_macro": 0.3338392401105421,
+            "f1_macro": 0.3201458759892313,
+            "confusion_matrix": [
+              [
+                1435,
+                0,
+                684
+              ],
+              [
+                45,
+                0,
+                39
+              ],
+              [
+                1423,
+                0,
+                683
+              ]
+            ],
+            "log_loss": 0.7717371023012388,
+            "brier_multiclass": 0.5203871754407632,
+            "roc_auc_ovr": 0.5904844957968947,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.0,
+                "n": 1,
+                "probability": 0.07045437988991723,
+                "frequency": 0.0
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 53,
+                "probability": 0.38527882875668373,
+                "frequency": 0.4716981132075472
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 1550,
+                "probability": 0.46658325791876404,
+                "frequency": 0.4780645161290323
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2642,
+                "probability": 0.5386055761421449,
+                "frequency": 0.5003785011355034
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 61,
+                "probability": 0.6171730242321795,
+                "frequency": 0.47540983606557374
+              },
+              {
+                "class": 0,
+                "left": 0.7000000000000001,
+                "n": 2,
+                "probability": 0.7157209496720714,
+                "frequency": 1.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4201,
+                "probability": 0.014350189395835674,
+                "frequency": 0.016662699357295883
+              },
+              {
+                "class": 1,
+                "left": 0.1,
+                "n": 108,
+                "probability": 0.12718183493251722,
+                "frequency": 0.12962962962962962
+              },
+              {
+                "class": 2,
+                "left": 0.2,
+                "n": 2,
+                "probability": 0.2842782803296615,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 256,
+                "probability": 0.3825541745290194,
+                "frequency": 0.45703125
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2891,
+                "probability": 0.45726853413293916,
+                "frequency": 0.487720511933587
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 1153,
+                "probability": 0.523861573592509,
+                "frequency": 0.4986990459670425
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 6,
+                "probability": 0.6337180269292028,
+                "frequency": 0.5
+              },
+              {
+                "class": 2,
+                "left": 0.9,
+                "n": 1,
+                "probability": 0.9295456200966822,
+                "frequency": 1.0
+              }
+            ]
+          },
+          "raw_metrics": {
+            "n": 4309,
+            "accuracy": 0.49849152935715946,
+            "precision_macro": 0.33210708644234654,
+            "recall_macro": 0.3388031469149397,
+            "f1_macro": 0.3341877059720546,
+            "confusion_matrix": [
+              [
+                1213,
+                0,
+                906
+              ],
+              [
+                38,
+                0,
+                46
+              ],
+              [
+                1171,
+                0,
+                935
+              ]
+            ],
+            "log_loss": 0.771601066504839,
+            "brier_multiclass": 0.5212852516052363,
+            "roc_auc_ovr": 0.5907549178810908,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.0,
+                "n": 1,
+                "probability": 0.0068029937881957745,
+                "frequency": 0.0
+              },
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 5,
+                "probability": 0.2645564216404306,
+                "frequency": 0.6
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 218,
+                "probability": 0.3779173394366678,
+                "frequency": 0.44954128440366975
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 1864,
+                "probability": 0.45967220738572134,
+                "frequency": 0.4796137339055794
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2150,
+                "probability": 0.5381066624111761,
+                "frequency": 0.5055813953488372
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 70,
+                "probability": 0.6143924855658066,
+                "frequency": 0.5142857142857142
+              },
+              {
+                "class": 0,
+                "left": 0.7000000000000001,
+                "n": 1,
+                "probability": 0.7207660352351889,
+                "frequency": 1.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4215,
+                "probability": 0.01630890229877837,
+                "frequency": 0.01708185053380783
+              },
+              {
+                "class": 1,
+                "left": 0.1,
+                "n": 94,
+                "probability": 0.12526264510889487,
+                "frequency": 0.1276595744680851
+              },
+              {
+                "class": 2,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.27922855905001714,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 278,
+                "probability": 0.37950175857553475,
+                "frequency": 0.4676258992805755
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2322,
+                "probability": 0.45688280889289107,
+                "frequency": 0.4862187769164513
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 1647,
+                "probability": 0.5354802485561079,
+                "frequency": 0.4936247723132969
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 55,
+                "probability": 0.6188640648650393,
+                "frequency": 0.5636363636363636
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 5,
+                "probability": 0.7303749314668435,
+                "frequency": 0.4
+              },
+              {
+                "class": 2,
+                "left": 0.9,
+                "n": 1,
+                "probability": 0.9931970062117209,
+                "frequency": 1.0
+              }
+            ]
+          },
+          "ece": 0.03963269877651742,
+          "raw_ece": 0.03697695913442461
+        }
+      },
+      "frequency_baseline": {
+        "n": 4309,
+        "accuracy": 0.4917614295660246,
+        "precision_macro": 0.1639204765220082,
+        "recall_macro": 0.3333333333333333,
+        "f1_macro": 0.21976768305330843,
+        "confusion_matrix": [
+          [
+            2119,
+            0,
+            0
+          ],
+          [
+            84,
+            0,
+            0
+          ],
+          [
+            2106,
+            0,
+            0
+          ]
+        ],
+        "log_loss": 0.7949354713661703,
+        "brier_multiclass": 0.5213462432435376,
+        "roc_auc_ovr": 0.5,
+        "calibration": [
+          {
+            "class": 0,
+            "left": 0.4,
+            "n": 4309,
+            "probability": 0.47241620111731836,
+            "frequency": 0.4917614295660246
+          },
+          {
+            "class": 1,
+            "left": 0.0,
+            "n": 4309,
+            "probability": 0.059706703910614514,
+            "frequency": 0.019494082153631933
+          },
+          {
+            "class": 2,
+            "left": 0.4,
+            "n": 4309,
+            "probability": 0.4678770949720671,
+            "frequency": 0.48874448828034345
+          }
+        ]
+      },
+      "frequency_ece": 0.01934522844870623,
+      "constant_50_binary": {
+        "n_non_ties": 4225,
+        "log_loss": 0.6931471805599453,
+        "accuracy": 0.5,
+        "scope": "somente baixa/alta; empate excluído, pois 50/50 não define probabilidade válida para três classes"
+      },
+      "selected_for_prospective": "D_selected_train_only",
+      "selection_warning": "selecionado no próprio holdout; exige observação prospectiva antes de qualquer conclusão"
+    },
+    "5": {
+      "periods": {
+        "train": [
+          "2026-10-01 01:01:00+00:00",
+          "2026-10-08 23:49:00+00:00",
+          11449
+        ],
+        "calibration": [
+          "2026-10-09 00:05:00+00:00",
+          "2026-10-11 23:49:00+00:00",
+          4305
+        ],
+        "validation": [
+          "2026-10-12 00:05:00+00:00",
+          "2026-10-14 23:49:00+00:00",
+          4305
+        ]
+      },
+      "candidates": {
+        "A_original_37": {
+          "columns": [
+            "return_1",
+            "log_return",
+            "range_rel",
+            "body_rel",
+            "body_fraction",
+            "lower_wick",
+            "upper_wick",
+            "close_position",
+            "direction_balance_5",
+            "higher_high",
+            "higher_low",
+            "momentum_5",
+            "momentum_20",
+            "sma_distance_20",
+            "sma_slope_20",
+            "ema_distance_20",
+            "macd_rel",
+            "rsi_14",
+            "atr_rel_14",
+            "realized_vol_20",
+            "vol_ratio",
+            "bollinger_z",
+            "volume_rel_20",
+            "volume_change",
+            "trade_intensity",
+            "taker_buy_ratio",
+            "signed_volume",
+            "breakout_20",
+            "support_distance_20",
+            "hour_sin",
+            "hour_cos",
+            "weekday_sin",
+            "weekday_cos",
+            "closed_5m_return",
+            "closed_15m_return",
+            "closed_30m_return",
+            "closed_60m_return"
+          ],
+          "metrics": {
+            "n": 4305,
+            "accuracy": 0.5063879210220673,
+            "precision_macro": 0.33680032616202826,
+            "recall_macro": 0.3374055186230762,
+            "f1_macro": 0.33686179696927937,
+            "confusion_matrix": [
+              [
+                1211,
+                0,
+                1001
+              ],
+              [
+                4,
+                0,
+                4
+              ],
+              [
+                1116,
+                0,
+                969
+              ]
+            ],
+            "log_loss": 0.7082757605300452,
+            "brier_multiclass": 0.5032760571215613,
+            "roc_auc_ovr": 0.49308017807367643,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 4,
+                "probability": 0.2891432817750259,
+                "frequency": 0.75
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 55,
+                "probability": 0.374633469560425,
+                "frequency": 0.41818181818181815
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 1995,
+                "probability": 0.47123007142647866,
+                "frequency": 0.5082706766917293
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2247,
+                "probability": 0.5278024558181388,
+                "frequency": 0.5211392968402314
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 4,
+                "probability": 0.60862231161759,
+                "frequency": 0.25
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4305,
+                "probability": 0.0033882723910371344,
+                "frequency": 0.0018583042973286876
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 4,
+                "probability": 0.3913003741035109,
+                "frequency": 0.75
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2426,
+                "probability": 0.4706873736199513,
+                "frequency": 0.47732893652102226
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 1816,
+                "probability": 0.5283394103112288,
+                "frequency": 0.4906387665198238
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 55,
+                "probability": 0.6251154602528286,
+                "frequency": 0.5818181818181818
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 4,
+                "probability": 0.7107460251239672,
+                "frequency": 0.25
+              }
+            ]
+          },
+          "raw_metrics": {
+            "n": 4305,
+            "accuracy": 0.5036004645760743,
+            "precision_macro": 0.33410504304977556,
+            "recall_macro": 0.3347252035622858,
+            "f1_macro": 0.33286281461300454,
+            "confusion_matrix": [
+              [
+                1294,
+                0,
+                918
+              ],
+              [
+                3,
+                0,
+                5
+              ],
+              [
+                1211,
+                0,
+                874
+              ]
+            ],
+            "log_loss": 0.7106660952394818,
+            "brier_multiclass": 0.5047827738230767,
+            "roc_auc_ovr": 0.4905268758349017,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.25700990122241957,
+                "frequency": 1.0
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 71,
+                "probability": 0.376368336531674,
+                "frequency": 0.4647887323943662
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 1754,
+                "probability": 0.46478814799566587,
+                "frequency": 0.5131128848346637
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2310,
+                "probability": 0.5390942142984982,
+                "frequency": 0.512987012987013
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 166,
+                "probability": 0.6220920660867377,
+                "frequency": 0.5542168674698795
+              },
+              {
+                "class": 0,
+                "left": 0.7000000000000001,
+                "n": 3,
+                "probability": 0.7319227305613626,
+                "frequency": 0.3333333333333333
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4305,
+                "probability": 0.0015692961885092247,
+                "frequency": 0.0018583042973286876
+              },
+              {
+                "class": 2,
+                "left": 0.2,
+                "n": 3,
+                "probability": 0.2680763077915493,
+                "frequency": 0.6666666666666666
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 174,
+                "probability": 0.37844322807797426,
+                "frequency": 0.4425287356321839
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2362,
+                "probability": 0.46055940762517317,
+                "frequency": 0.48560541913632516
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 1696,
+                "probability": 0.5347867478365586,
+                "frequency": 0.4852594339622642
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 69,
+                "probability": 0.6234775924369852,
+                "frequency": 0.5217391304347826
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 1,
+                "probability": 0.7429707089283469,
+                "frequency": 0.0
+              }
+            ]
+          },
+          "ece": 0.021887673411553746,
+          "raw_ece": 0.038475524682039804
+        },
+        "B_aggtrades": {
+          "columns": [
+            "flow_imbalance",
+            "buy_share",
+            "volume_delta",
+            "mean_aggtrade_size",
+            "avg_trades_per_aggtrade",
+            "quote_per_aggtrade",
+            "aggtrades_per_second",
+            "cum_delta_5",
+            "cum_delta_20",
+            "cum_delta_60",
+            "aggtrade_intensity_5",
+            "aggtrade_intensity_20",
+            "aggtrade_intensity_60",
+            "underlying_trade_intensity_20",
+            "size_shock_20",
+            "activity_shock_20",
+            "flow_persistence_5",
+            "flow_persistence_20",
+            "price_flow_divergence_5",
+            "price_flow_divergence_20"
+          ],
+          "metrics": {
+            "n": 4305,
+            "accuracy": 0.494541231126597,
+            "precision_macro": 0.33555835712651727,
+            "recall_macro": 0.33535601898228257,
+            "f1_macro": 0.3092131647692964,
+            "confusion_matrix": [
+              [
+                546,
+                0,
+                1666
+              ],
+              [
+                1,
+                0,
+                7
+              ],
+              [
+                502,
+                0,
+                1583
+              ]
+            ],
+            "log_loss": 0.7092226916008648,
+            "brier_multiclass": 0.5028673215234775,
+            "roc_auc_ovr": 0.5202323311483447,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.1,
+                "n": 1,
+                "probability": 0.14702969049224543,
+                "frequency": 1.0
+              },
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.27310802344768625,
+                "frequency": 1.0
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 11,
+                "probability": 0.3700667559970005,
+                "frequency": 0.36363636363636365
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 3550,
+                "probability": 0.47973725864451383,
+                "frequency": 0.5104225352112676
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 741,
+                "probability": 0.5090183935236955,
+                "frequency": 0.5317139001349528
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 1,
+                "probability": 0.6419574792598355,
+                "frequency": 0.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4305,
+                "probability": 0.006647791247758443,
+                "frequency": 0.0018583042973286876
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 1,
+                "probability": 0.35668042964095575,
+                "frequency": 1.0
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 1338,
+                "probability": 0.4873337342381286,
+                "frequency": 0.484304932735426
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 2954,
+                "probability": 0.5181797553427198,
+                "frequency": 0.483750846310088
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 10,
+                "probability": 0.6307982740006886,
+                "frequency": 0.7
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 1,
+                "probability": 0.7253684359056399,
+                "frequency": 0.0
+              },
+              {
+                "class": 2,
+                "left": 0.8,
+                "n": 1,
+                "probability": 0.8529660815869039,
+                "frequency": 0.0
+              }
+            ]
+          },
+          "raw_metrics": {
+            "n": 4305,
+            "accuracy": 0.5117305458768874,
+            "precision_macro": 0.33999597865028885,
+            "recall_macro": 0.3405410210710274,
+            "f1_macro": 0.3394619533672129,
+            "confusion_matrix": [
+              [
+                1270,
+                0,
+                942
+              ],
+              [
+                3,
+                0,
+                5
+              ],
+              [
+                1152,
+                0,
+                933
+              ]
+            ],
+            "log_loss": 0.707212522692315,
+            "brier_multiclass": 0.5021106581939548,
+            "roc_auc_ovr": 0.5179021169893369,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.1,
+                "n": 1,
+                "probability": 0.13481126638144664,
+                "frequency": 1.0
+              },
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 4,
+                "probability": 0.27012270214107587,
+                "frequency": 0.5
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 19,
+                "probability": 0.3857750256787888,
+                "frequency": 0.3157894736842105
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 1932,
+                "probability": 0.4756113776644096,
+                "frequency": 0.505175983436853
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2345,
+                "probability": 0.5229511080915069,
+                "frequency": 0.5223880597014925
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 3,
+                "probability": 0.6349761032635525,
+                "frequency": 0.6666666666666666
+              },
+              {
+                "class": 0,
+                "left": 0.8,
+                "n": 1,
+                "probability": 0.8026005484417161,
+                "frequency": 0.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4305,
+                "probability": 0.002562527442288573,
+                "frequency": 0.0018583042973286876
+              },
+              {
+                "class": 2,
+                "left": 0.1,
+                "n": 1,
+                "probability": 0.1957050993119921,
+                "frequency": 1.0
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 3,
+                "probability": 0.3645821341124306,
+                "frequency": 0.3333333333333333
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2502,
+                "probability": 0.4763418592498156,
+                "frequency": 0.47721822541966424
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 1776,
+                "probability": 0.5234181284513717,
+                "frequency": 0.49268018018018017
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 18,
+                "probability": 0.6135304478724046,
+                "frequency": 0.6666666666666666
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 4,
+                "probability": 0.7295291370014496,
+                "frequency": 0.5
+              },
+              {
+                "class": 2,
+                "left": 0.8,
+                "n": 1,
+                "probability": 0.8651887336165577,
+                "frequency": 0.0
+              }
+            ]
+          },
+          "ece": 0.020628232761142454,
+          "raw_ece": 0.01588944375369352
+        },
+        "C_combined": {
+          "columns": [
+            "return_1",
+            "log_return",
+            "range_rel",
+            "body_rel",
+            "body_fraction",
+            "lower_wick",
+            "upper_wick",
+            "close_position",
+            "direction_balance_5",
+            "higher_high",
+            "higher_low",
+            "momentum_5",
+            "momentum_20",
+            "sma_distance_20",
+            "sma_slope_20",
+            "ema_distance_20",
+            "macd_rel",
+            "rsi_14",
+            "atr_rel_14",
+            "realized_vol_20",
+            "vol_ratio",
+            "bollinger_z",
+            "volume_rel_20",
+            "volume_change",
+            "trade_intensity",
+            "taker_buy_ratio",
+            "signed_volume",
+            "breakout_20",
+            "support_distance_20",
+            "hour_sin",
+            "hour_cos",
+            "weekday_sin",
+            "weekday_cos",
+            "closed_5m_return",
+            "closed_15m_return",
+            "closed_30m_return",
+            "closed_60m_return",
+            "flow_imbalance",
+            "buy_share",
+            "volume_delta",
+            "mean_aggtrade_size",
+            "avg_trades_per_aggtrade",
+            "quote_per_aggtrade",
+            "aggtrades_per_second",
+            "cum_delta_5",
+            "cum_delta_20",
+            "cum_delta_60",
+            "aggtrade_intensity_5",
+            "aggtrade_intensity_20",
+            "aggtrade_intensity_60",
+            "underlying_trade_intensity_20",
+            "size_shock_20",
+            "activity_shock_20",
+            "flow_persistence_5",
+            "flow_persistence_20",
+            "price_flow_divergence_5",
+            "price_flow_divergence_20"
+          ],
+          "metrics": {
+            "n": 4305,
+            "accuracy": 0.50801393728223,
+            "precision_macro": 0.3395390406055205,
+            "recall_macro": 0.34010339648715027,
+            "f1_macro": 0.3387805442739156,
+            "confusion_matrix": [
+              [
+                1039,
+                0,
+                1173
+              ],
+              [
+                2,
+                0,
+                6
+              ],
+              [
+                937,
+                0,
+                1148
+              ]
+            ],
+            "log_loss": 0.7081433955304304,
+            "brier_multiclass": 0.5033802243508396,
+            "roc_auc_ovr": 0.5168960461535966,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 8,
+                "probability": 0.28679592723411695,
+                "frequency": 0.75
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 56,
+                "probability": 0.3730209522213257,
+                "frequency": 0.39285714285714285
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 2377,
+                "probability": 0.47086693711387856,
+                "frequency": 0.5061001262095077
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 1862,
+                "probability": 0.5238880486610584,
+                "frequency": 0.5268528464017186
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 2,
+                "probability": 0.6452246980508483,
+                "frequency": 0.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4305,
+                "probability": 0.0037133961311015752,
+                "frequency": 0.0018583042973286876
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 2,
+                "probability": 0.35292785019013895,
+                "frequency": 1.0
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2059,
+                "probability": 0.474655677488129,
+                "frequency": 0.4759592034968431
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 2183,
+                "probability": 0.5280807412414728,
+                "frequency": 0.48923499770957396
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 53,
+                "probability": 0.6279664703558491,
+                "frequency": 0.6226415094339622
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 8,
+                "probability": 0.7131508354032539,
+                "frequency": 0.25
+              }
+            ]
+          },
+          "raw_metrics": {
+            "n": 4305,
+            "accuracy": 0.5096399535423926,
+            "precision_macro": 0.3389916276245954,
+            "recall_macro": 0.3395978334872789,
+            "f1_macro": 0.33907270653530586,
+            "confusion_matrix": [
+              [
+                1216,
+                0,
+                996
+              ],
+              [
+                3,
+                0,
+                5
+              ],
+              [
+                1107,
+                0,
+                978
+              ]
+            ],
+            "log_loss": 0.711891289082838,
+            "brier_multiclass": 0.5059984574586488,
+            "roc_auc_ovr": 0.5097715098371561,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 13,
+                "probability": 0.2645737041187316,
+                "frequency": 0.5384615384615384
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 148,
+                "probability": 0.3776901656608774,
+                "frequency": 0.47297297297297297
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 1839,
+                "probability": 0.4618143920285432,
+                "frequency": 0.5046220772158782
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2092,
+                "probability": 0.5402001194336995,
+                "frequency": 0.5162523900573613
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 207,
+                "probability": 0.6227515957393184,
+                "frequency": 0.6135265700483091
+              },
+              {
+                "class": 0,
+                "left": 0.7000000000000001,
+                "n": 6,
+                "probability": 0.7256797956518057,
+                "frequency": 0.0
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4305,
+                "probability": 0.0011731190183274932,
+                "frequency": 0.0018583042973286876
+              },
+              {
+                "class": 2,
+                "left": 0.2,
+                "n": 6,
+                "probability": 0.27369670058747336,
+                "frequency": 1.0
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 213,
+                "probability": 0.37736543349925256,
+                "frequency": 0.38497652582159625
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2131,
+                "probability": 0.4596902248257328,
+                "frequency": 0.48287189113092444
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 1797,
+                "probability": 0.5378790120345394,
+                "frequency": 0.4936004451864218
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 145,
+                "probability": 0.622230108804915,
+                "frequency": 0.5172413793103449
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 13,
+                "probability": 0.7354082324403532,
+                "frequency": 0.46153846153846156
+              }
+            ]
+          },
+          "ece": 0.02077836844663263,
+          "raw_ece": 0.03674061120477791
+        },
+        "D_selected_train_only": {
+          "columns": [
+            "avg_trades_per_aggtrade",
+            "weekday_sin",
+            "vol_ratio",
+            "realized_vol_20",
+            "cum_delta_20",
+            "momentum_5",
+            "flow_persistence_5",
+            "bollinger_z",
+            "momentum_20",
+            "closed_5m_return",
+            "taker_buy_ratio",
+            "buy_share",
+            "flow_imbalance",
+            "breakout_20",
+            "closed_30m_return",
+            "aggtrades_per_second",
+            "lower_wick",
+            "signed_volume",
+            "range_rel",
+            "higher_low",
+            "volume_delta",
+            "hour_cos",
+            "mean_aggtrade_size",
+            "direction_balance_5"
+          ],
+          "metrics": {
+            "n": 4305,
+            "accuracy": 0.49477351916376305,
+            "precision_macro": 0.33510789676590985,
+            "recall_macro": 0.33504776648843676,
+            "f1_macro": 0.31341809177302915,
+            "confusion_matrix": [
+              [
+                597,
+                0,
+                1615
+              ],
+              [
+                0,
+                0,
+                8
+              ],
+              [
+                552,
+                0,
+                1533
+              ]
+            ],
+            "log_loss": 0.7097464142165801,
+            "brier_multiclass": 0.5053640269613956,
+            "roc_auc_ovr": 0.5155476395332145,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.1,
+                "n": 1,
+                "probability": 0.18209779246216398,
+                "frequency": 1.0
+              },
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 15,
+                "probability": 0.2675708290278288,
+                "frequency": 0.4666666666666667
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 115,
+                "probability": 0.3740313585302589,
+                "frequency": 0.4434782608695652
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 3094,
+                "probability": 0.4666912791533927,
+                "frequency": 0.5126050420168067
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 1080,
+                "probability": 0.5153659118893709,
+                "frequency": 0.525
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4305,
+                "probability": 0.002306957272042434,
+                "frequency": 0.0018583042973286876
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 1208,
+                "probability": 0.4827998071329474,
+                "frequency": 0.4859271523178808
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 2968,
+                "probability": 0.5328694056588061,
+                "frequency": 0.4807951482479784
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 113,
+                "probability": 0.626003458738517,
+                "frequency": 0.5575221238938053
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 15,
+                "probability": 0.7324284474242404,
+                "frequency": 0.5333333333333333
+              },
+              {
+                "class": 2,
+                "left": 0.8,
+                "n": 1,
+                "probability": 0.8178993831274328,
+                "frequency": 0.0
+              }
+            ]
+          },
+          "raw_metrics": {
+            "n": 4305,
+            "accuracy": 0.5147502903600465,
+            "precision_macro": 0.34153817976578943,
+            "recall_macro": 0.34189422422279175,
+            "f1_macro": 0.3393752604845249,
+            "confusion_matrix": [
+              [
+                1349,
+                0,
+                863
+              ],
+              [
+                3,
+                0,
+                5
+              ],
+              [
+                1218,
+                0,
+                867
+              ]
+            ],
+            "log_loss": 0.7100401176268922,
+            "brier_multiclass": 0.5045524639675374,
+            "roc_auc_ovr": 0.5094843837674522,
+            "calibration": [
+              {
+                "class": 0,
+                "left": 0.2,
+                "n": 1,
+                "probability": 0.24760550909858406,
+                "frequency": 1.0
+              },
+              {
+                "class": 0,
+                "left": 0.30000000000000004,
+                "n": 87,
+                "probability": 0.37674473082015436,
+                "frequency": 0.5057471264367817
+              },
+              {
+                "class": 0,
+                "left": 0.4,
+                "n": 1679,
+                "probability": 0.4640756382388116,
+                "frequency": 0.49553305539011316
+              },
+              {
+                "class": 0,
+                "left": 0.5,
+                "n": 2319,
+                "probability": 0.5404451642684632,
+                "frequency": 0.5217766278568349
+              },
+              {
+                "class": 0,
+                "left": 0.6000000000000001,
+                "n": 216,
+                "probability": 0.6218883861291064,
+                "frequency": 0.5740740740740741
+              },
+              {
+                "class": 0,
+                "left": 0.7000000000000001,
+                "n": 3,
+                "probability": 0.7407508174365386,
+                "frequency": 0.3333333333333333
+              },
+              {
+                "class": 1,
+                "left": 0.0,
+                "n": 4305,
+                "probability": 0.0013584634939604794,
+                "frequency": 0.0018583042973286876
+              },
+              {
+                "class": 2,
+                "left": 0.2,
+                "n": 3,
+                "probability": 0.2584970831962185,
+                "frequency": 0.6666666666666666
+              },
+              {
+                "class": 2,
+                "left": 0.30000000000000004,
+                "n": 222,
+                "probability": 0.37813757344913596,
+                "frequency": 0.42342342342342343
+              },
+              {
+                "class": 2,
+                "left": 0.4,
+                "n": 2372,
+                "probability": 0.45935040493882556,
+                "frequency": 0.4776559865092749
+              },
+              {
+                "class": 2,
+                "left": 0.5,
+                "n": 1623,
+                "probability": 0.5358480002869266,
+                "frequency": 0.5021565003080715
+              },
+              {
+                "class": 2,
+                "left": 0.6000000000000001,
+                "n": 84,
+                "probability": 0.6234172519255533,
+                "frequency": 0.4880952380952381
+              },
+              {
+                "class": 2,
+                "left": 0.7000000000000001,
+                "n": 1,
+                "probability": 0.7523944727015971,
+                "frequency": 0.0
+              }
+            ]
+          },
+          "ece": 0.03643687230241529,
+          "raw_ece": 0.02927731316145615
+        }
+      },
+      "frequency_baseline": {
+        "n": 4305,
+        "accuracy": 0.4843205574912892,
+        "precision_macro": 0.16144018583042974,
+        "recall_macro": 0.3333333333333333,
+        "f1_macro": 0.21752738654147105,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            2212
+          ],
+          [
+            0,
+            0,
+            8
+          ],
+          [
+            0,
+            0,
+            2085
+          ]
+        ],
+        "log_loss": 0.7081844007706134,
+        "brier_multiclass": 0.5021204001582273,
+        "roc_auc_ovr": 0.5,
+        "calibration": [
+          {
+            "class": 0,
+            "left": 0.4,
+            "n": 4305,
+            "probability": 0.4931016416346488,
+            "frequency": 0.5138211382113821
+          },
+          {
+            "class": 1,
+            "left": 0.0,
+            "n": 4305,
+            "probability": 0.0068110373733845635,
+            "frequency": 0.0018583042973286876
+          },
+          {
+            "class": 2,
+            "left": 0.5,
+            "n": 4305,
+            "probability": 0.5000873209919664,
+            "frequency": 0.4843205574912892
+          }
+        ]
+      },
+      "frequency_ece": 0.015766763500677183,
+      "constant_50_binary": {
+        "n_non_ties": 4297,
+        "log_loss": 0.6931471805599453,
+        "accuracy": 0.5,
+        "scope": "somente baixa/alta; empate excluído, pois 50/50 não define probabilidade válida para três classes"
+      },
+      "selected_for_prospective": "C_combined",
+      "selection_warning": "selecionado no próprio holdout; exige observação prospectiva antes de qualquer conclusão"
+    }
+  },
+  "economics": {
+    "1": {
+      "model": "D_selected_train_only",
+      "scenarios": [
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 268,
+          "signal_coverage": 0.0621954049663495,
+          "executed_coverage": 0.0621954049663495,
+          "abstention_rate": 0.9378045950336505,
+          "hit_rate_excluding_ties": 0.5173745173745173,
+          "ties": 9,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.11641791044776119,
+          "net_units": -31.2,
+          "max_drawdown_units": 37.500000000000036,
+          "max_loss_streak": 7,
+          "threshold": 0.52,
+          "payout": 0.7,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5882352941176471,
+          "expectancy_ci": {
+            "mean": -0.11641791044776119,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -31.200000000000006
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 1097,
+          "signal_coverage": 0.2545834300301694,
+          "executed_coverage": 0.2545834300301694,
+          "abstention_rate": 0.7454165699698306,
+          "hit_rate_excluding_ties": 0.5271535580524345,
+          "ties": 29,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.04977210574293528,
+          "net_units": -54.6,
+          "max_drawdown_units": 78.20000000000026,
+          "max_loss_streak": 9,
+          "threshold": 0.52,
+          "payout": 0.8,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5555555555555556,
+          "expectancy_ci": {
+            "mean": -0.04977210574293528,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -54.59999999999997
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 2435,
+          "signal_coverage": 0.5650963100487352,
+          "executed_coverage": 0.5650963100487352,
+          "abstention_rate": 0.43490368995126477,
+          "hit_rate_excluding_ties": 0.5160617438464747,
+          "ties": 38,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.01917864476386037,
+          "net_units": -46.699999999999996,
+          "max_drawdown_units": 103.20000000000037,
+          "max_loss_streak": 15,
+          "threshold": 0.52,
+          "payout": 0.9,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5263157894736842,
+          "expectancy_ci": {
+            "mean": -0.01917864476386037,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -46.699999999999974
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 162,
+          "signal_coverage": 0.03759572986771873,
+          "executed_coverage": 0.03759572986771873,
+          "abstention_rate": 0.9624042701322812,
+          "hit_rate_excluding_ties": 0.5328947368421053,
+          "ties": 10,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0009474482475451321,
+          "net_units": -0.1534866161023114,
+          "max_drawdown_units": 0.1534866161023114,
+          "max_loss_streak": 83,
+          "threshold": 0.52,
+          "payout": null,
+          "costs_bps_per_side": 5,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0009474482475451321,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.1534866161023114
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 162,
+          "signal_coverage": 0.03759572986771873,
+          "executed_coverage": 0.03759572986771873,
+          "abstention_rate": 0.9624042701322812,
+          "hit_rate_excluding_ties": 0.5328947368421053,
+          "ties": 10,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0019460020216874045,
+          "net_units": -0.3152523275133595,
+          "max_drawdown_units": 0.3152523275133595,
+          "max_loss_streak": 156,
+          "threshold": 0.52,
+          "payout": null,
+          "costs_bps_per_side": 10,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0019460020216874045,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.3152523275133595
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 162,
+          "signal_coverage": 0.03759572986771873,
+          "executed_coverage": 0.03759572986771873,
+          "abstention_rate": 0.9624042701322812,
+          "hit_rate_excluding_ties": 0.5328947368421053,
+          "ties": 10,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.003940119888013541,
+          "net_units": -0.6382994218581937,
+          "max_drawdown_units": 0.6382994218581937,
+          "max_loss_streak": 162,
+          "threshold": 0.52,
+          "payout": null,
+          "costs_bps_per_side": 20,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.003940119888013541,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.6382994218581937
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 248,
+          "signal_coverage": 0.05755395683453238,
+          "executed_coverage": 0.05755395683453238,
+          "abstention_rate": 0.9424460431654677,
+          "hit_rate_excluding_ties": 0.5103734439834025,
+          "ties": 7,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.1286290322580645,
+          "net_units": -31.899999999999995,
+          "max_drawdown_units": 37.500000000000036,
+          "max_loss_streak": 7,
+          "threshold": 0.55,
+          "payout": 0.7,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5882352941176471,
+          "expectancy_ci": {
+            "mean": -0.1286290322580645,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -31.900000000000006
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 914,
+          "signal_coverage": 0.2121141796240427,
+          "executed_coverage": 0.2121141796240427,
+          "abstention_rate": 0.7878858203759573,
+          "hit_rate_excluding_ties": 0.5297418630751964,
+          "ties": 23,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.04529540481400439,
+          "net_units": -41.40000000000001,
+          "max_drawdown_units": 67.20000000000016,
+          "max_loss_streak": 9,
+          "threshold": 0.55,
+          "payout": 0.8,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5555555555555556,
+          "expectancy_ci": {
+            "mean": -0.04529540481400439,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -41.39999999999998
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 1017,
+          "signal_coverage": 0.23601763750290092,
+          "executed_coverage": 0.23601763750290092,
+          "abstention_rate": 0.763982362497099,
+          "hit_rate_excluding_ties": 0.5231388329979879,
+          "ties": 23,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0058997050147492555,
+          "net_units": -5.999999999999993,
+          "max_drawdown_units": 45.00000000000011,
+          "max_loss_streak": 10,
+          "threshold": 0.55,
+          "payout": 0.9,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5263157894736842,
+          "expectancy_ci": {
+            "mean": -0.0058997050147492555,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -5.999999999999989
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 111,
+          "signal_coverage": 0.025760037131585055,
+          "executed_coverage": 0.025760037131585055,
+          "abstention_rate": 0.974239962868415,
+          "hit_rate_excluding_ties": 0.5865384615384616,
+          "ties": 7,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0009055200533210823,
+          "net_units": -0.10051272591864013,
+          "max_drawdown_units": 0.10051272591864013,
+          "max_loss_streak": 64,
+          "threshold": 0.55,
+          "payout": null,
+          "costs_bps_per_side": 5,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0009055200533210823,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.10051272591864013
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 111,
+          "signal_coverage": 0.025760037131585055,
+          "executed_coverage": 0.025760037131585055,
+          "abstention_rate": 0.974239962868415,
+          "hit_rate_excluding_ties": 0.5865384615384616,
+          "ties": 7,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0019041157347249016,
+          "net_units": -0.21135684655446407,
+          "max_drawdown_units": 0.21135684655446407,
+          "max_loss_streak": 105,
+          "threshold": 0.55,
+          "payout": null,
+          "costs_bps_per_side": 10,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0019041157347249016,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.21135684655446407
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 111,
+          "signal_coverage": 0.025760037131585055,
+          "executed_coverage": 0.025760037131585055,
+          "abstention_rate": 0.974239962868415,
+          "hit_rate_excluding_ties": 0.5865384615384616,
+          "ties": 7,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0038983172901032883,
+          "net_units": -0.432713219201465,
+          "max_drawdown_units": 0.432713219201465,
+          "max_loss_streak": 111,
+          "threshold": 0.55,
+          "payout": null,
+          "costs_bps_per_side": 20,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0038983172901032883,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.432713219201465
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 197,
+          "signal_coverage": 0.0457182640983987,
+          "executed_coverage": 0.0457182640983987,
+          "abstention_rate": 0.9542817359016013,
+          "hit_rate_excluding_ties": 0.5077720207253886,
+          "ties": 4,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.13401015228426394,
+          "net_units": -26.4,
+          "max_drawdown_units": 32.80000000000004,
+          "max_loss_streak": 7,
+          "threshold": 0.58,
+          "payout": 0.7,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5882352941176471,
+          "expectancy_ci": {
+            "mean": -0.13401015228426394,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -26.400000000000006
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 242,
+          "signal_coverage": 0.056161522394987236,
+          "executed_coverage": 0.056161522394987236,
+          "abstention_rate": 0.9438384776050127,
+          "hit_rate_excluding_ties": 0.5294117647058824,
+          "ties": 4,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.046280991735537215,
+          "net_units": -11.200000000000006,
+          "max_drawdown_units": 23.999999999999957,
+          "max_loss_streak": 7,
+          "threshold": 0.58,
+          "payout": 0.8,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5555555555555556,
+          "expectancy_ci": {
+            "mean": -0.046280991735537215,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -11.199999999999994
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 242,
+          "signal_coverage": 0.056161522394987236,
+          "executed_coverage": 0.056161522394987236,
+          "abstention_rate": 0.9438384776050127,
+          "hit_rate_excluding_ties": 0.5294117647058824,
+          "ties": 4,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": 0.005785123966942143,
+          "net_units": 1.3999999999999986,
+          "max_drawdown_units": 15.499999999999973,
+          "max_loss_streak": 7,
+          "threshold": 0.58,
+          "payout": 0.9,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5263157894736842,
+          "expectancy_ci": {
+            "mean": 0.005785123966942143,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": 1.4000000000000017
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 15,
+          "signal_coverage": 0.0034810860988628454,
+          "executed_coverage": 0.0034810860988628454,
+          "abstention_rate": 0.9965189139011371,
+          "hit_rate_excluding_ties": 0.4666666666666667,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0008408696345723055,
+          "net_units": -0.012613044518584582,
+          "max_drawdown_units": 0.012867337892546904,
+          "max_loss_streak": 13,
+          "threshold": 0.58,
+          "payout": null,
+          "costs_bps_per_side": 5,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0008408696345723055,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.012613044518584582
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 15,
+          "signal_coverage": 0.0034810860988628454,
+          "executed_coverage": 0.0034810860988628454,
+          "abstention_rate": 0.9965189139011371,
+          "hit_rate_excluding_ties": 0.4666666666666667,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.001839529934118119,
+          "net_units": -0.027592949011771783,
+          "max_drawdown_units": 0.027592949011771783,
+          "max_loss_streak": 13,
+          "threshold": 0.58,
+          "payout": null,
+          "costs_bps_per_side": 10,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.001839529934118119,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.027592949011771783
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 15,
+          "signal_coverage": 0.0034810860988628454,
+          "executed_coverage": 0.0034810860988628454,
+          "abstention_rate": 0.9965189139011371,
+          "hit_rate_excluding_ties": 0.4666666666666667,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.00383386053231299,
+          "net_units": -0.05750790798469485,
+          "max_drawdown_units": 0.05750790798469485,
+          "max_loss_streak": 15,
+          "threshold": 0.58,
+          "payout": null,
+          "costs_bps_per_side": 20,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.00383386053231299,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.05750790798469485
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 70,
+          "signal_coverage": 0.016245068461359945,
+          "executed_coverage": 0.016245068461359945,
+          "abstention_rate": 0.98375493153864,
+          "hit_rate_excluding_ties": 0.5072463768115942,
+          "ties": 1,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.1357142857142858,
+          "net_units": -9.500000000000005,
+          "max_drawdown_units": 14.100000000000012,
+          "max_loss_streak": 5,
+          "threshold": 0.6,
+          "payout": 0.7,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5882352941176471,
+          "expectancy_ci": {
+            "mean": -0.1357142857142858,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -9.500000000000002
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 70,
+          "signal_coverage": 0.016245068461359945,
+          "executed_coverage": 0.016245068461359945,
+          "abstention_rate": 0.98375493153864,
+          "hit_rate_excluding_ties": 0.5072463768115942,
+          "ties": 1,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.08571428571428567,
+          "net_units": -5.999999999999997,
+          "max_drawdown_units": 12.399999999999999,
+          "max_loss_streak": 5,
+          "threshold": 0.6,
+          "payout": 0.8,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5555555555555556,
+          "expectancy_ci": {
+            "mean": -0.08571428571428567,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -5.999999999999998
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 70,
+          "signal_coverage": 0.016245068461359945,
+          "executed_coverage": 0.016245068461359945,
+          "abstention_rate": 0.98375493153864,
+          "hit_rate_excluding_ties": 0.5072463768115942,
+          "ties": 1,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0357142857142857,
+          "net_units": -2.499999999999999,
+          "max_drawdown_units": 11.199999999999996,
+          "max_loss_streak": 5,
+          "threshold": 0.6,
+          "payout": 0.9,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5263157894736842,
+          "expectancy_ci": {
+            "mean": -0.0357142857142857,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -2.5
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 7,
+          "signal_coverage": 0.0016245068461359943,
+          "executed_coverage": 0.0016245068461359943,
+          "abstention_rate": 0.998375493153864,
+          "hit_rate_excluding_ties": 0.5714285714285714,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.000615522371365973,
+          "net_units": -0.004308656599561811,
+          "max_drawdown_units": 0.004562949973524133,
+          "max_loss_streak": 5,
+          "threshold": 0.6,
+          "payout": null,
+          "costs_bps_per_side": 5,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.000615522371365973,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.004308656599561811
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 7,
+          "signal_coverage": 0.0016245068461359943,
+          "executed_coverage": 0.0016245068461359943,
+          "abstention_rate": 0.998375493153864,
+          "hit_rate_excluding_ties": 0.5714285714285714,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0016144079056702454,
+          "net_units": -0.011300855339691718,
+          "max_drawdown_units": 0.011300855339691718,
+          "max_loss_streak": 5,
+          "threshold": 0.6,
+          "payout": null,
+          "costs_bps_per_side": 10,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0016144079056702454,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.011300855339691718
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4309,
+          "trades": 7,
+          "signal_coverage": 0.0016245068461359943,
+          "executed_coverage": 0.0016245068461359943,
+          "abstention_rate": 0.998375493153864,
+          "hit_rate_excluding_ties": 0.5714285714285714,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0036091882990264717,
+          "net_units": -0.0252643180931853,
+          "max_drawdown_units": 0.0252643180931853,
+          "max_loss_streak": 7,
+          "threshold": 0.6,
+          "payout": null,
+          "costs_bps_per_side": 20,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0036091882990264717,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.0252643180931853
+          }
+        }
+      ],
+      "spread_observed": false,
+      "reason": "AggTrades históricos não incluem bid/ask"
+    },
+    "5": {
+      "model": "C_combined",
+      "scenarios": [
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 39,
+          "signal_coverage": 0.021370499419279907,
+          "executed_coverage": 0.009059233449477353,
+          "abstention_rate": 0.9786295005807201,
+          "hit_rate_excluding_ties": 0.48717948717948717,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.17179487179487177,
+          "net_units": -6.699999999999999,
+          "max_drawdown_units": 8.099999999999998,
+          "max_loss_streak": 4,
+          "threshold": 0.52,
+          "payout": 0.7,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5882352941176471,
+          "expectancy_ci": {
+            "mean": -0.17179487179487177,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -6.700000000000001
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 204,
+          "signal_coverage": 0.1173054587688734,
+          "executed_coverage": 0.047386759581881537,
+          "abstention_rate": 0.8826945412311266,
+          "hit_rate_excluding_ties": 0.4950980392156863,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.10882352941176471,
+          "net_units": -22.2,
+          "max_drawdown_units": 25.199999999999978,
+          "max_loss_streak": 7,
+          "threshold": 0.52,
+          "payout": 0.8,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5555555555555556,
+          "expectancy_ci": {
+            "mean": -0.10882352941176471,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -22.199999999999996
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 618,
+          "signal_coverage": 0.4413472706155633,
+          "executed_coverage": 0.14355400696864112,
+          "abstention_rate": 0.5586527293844367,
+          "hit_rate_excluding_ties": 0.5024390243902439,
+          "ties": 3,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.04514563106796116,
+          "net_units": -27.9,
+          "max_drawdown_units": 48.30000000000013,
+          "max_loss_streak": 10,
+          "threshold": 0.52,
+          "payout": 0.9,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5263157894736842,
+          "expectancy_ci": {
+            "mean": -0.04514563106796116,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -27.89999999999999
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 131,
+          "signal_coverage": 0.08130081300813008,
+          "executed_coverage": 0.030429732868757258,
+          "abstention_rate": 0.9186991869918699,
+          "hit_rate_excluding_ties": 0.5038167938931297,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0010585878012829054,
+          "net_units": -0.1386750019680606,
+          "max_drawdown_units": 0.1393464341322327,
+          "max_loss_streak": 16,
+          "threshold": 0.52,
+          "payout": null,
+          "costs_bps_per_side": 5,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0010585878012829054,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.1386750019680606
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 131,
+          "signal_coverage": 0.08130081300813008,
+          "executed_coverage": 0.030429732868757258,
+          "abstention_rate": 0.9186991869918699,
+          "hit_rate_excluding_ties": 0.5038167938931297,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.002057030491357933,
+          "net_units": -0.26947099436788924,
+          "max_drawdown_units": 0.26947099436788924,
+          "max_loss_streak": 33,
+          "threshold": 0.52,
+          "payout": null,
+          "costs_bps_per_side": 10,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.002057030491357933,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.26947099436788924
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 131,
+          "signal_coverage": 0.08130081300813008,
+          "executed_coverage": 0.030429732868757258,
+          "abstention_rate": 0.9186991869918699,
+          "hit_rate_excluding_ties": 0.5038167938931297,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.004050926522136616,
+          "net_units": -0.5306713743998966,
+          "max_drawdown_units": 0.5306713743998966,
+          "max_loss_streak": 131,
+          "threshold": 0.52,
+          "payout": null,
+          "costs_bps_per_side": 20,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.004050926522136616,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.5306713743998966
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 39,
+          "signal_coverage": 0.021370499419279907,
+          "executed_coverage": 0.009059233449477353,
+          "abstention_rate": 0.9786295005807201,
+          "hit_rate_excluding_ties": 0.48717948717948717,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.17179487179487177,
+          "net_units": -6.699999999999999,
+          "max_drawdown_units": 8.099999999999998,
+          "max_loss_streak": 4,
+          "threshold": 0.55,
+          "payout": 0.7,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5882352941176471,
+          "expectancy_ci": {
+            "mean": -0.17179487179487177,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -6.700000000000001
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 204,
+          "signal_coverage": 0.11637630662020906,
+          "executed_coverage": 0.047386759581881537,
+          "abstention_rate": 0.883623693379791,
+          "hit_rate_excluding_ties": 0.4950980392156863,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.10882352941176471,
+          "net_units": -22.2,
+          "max_drawdown_units": 25.199999999999978,
+          "max_loss_streak": 7,
+          "threshold": 0.55,
+          "payout": 0.8,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5555555555555556,
+          "expectancy_ci": {
+            "mean": -0.10882352941176471,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -22.199999999999996
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 241,
+          "signal_coverage": 0.1389082462253194,
+          "executed_coverage": 0.055981416957026714,
+          "abstention_rate": 0.8610917537746806,
+          "hit_rate_excluding_ties": 0.5103734439834025,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.03029045643153526,
+          "net_units": -7.299999999999997,
+          "max_drawdown_units": 14.099999999999998,
+          "max_loss_streak": 4,
+          "threshold": 0.55,
+          "payout": 0.9,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5263157894736842,
+          "expectancy_ci": {
+            "mean": -0.03029045643153526,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -7.299999999999997
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 131,
+          "signal_coverage": 0.08130081300813008,
+          "executed_coverage": 0.030429732868757258,
+          "abstention_rate": 0.9186991869918699,
+          "hit_rate_excluding_ties": 0.5038167938931297,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0010585878012829054,
+          "net_units": -0.1386750019680606,
+          "max_drawdown_units": 0.1393464341322327,
+          "max_loss_streak": 16,
+          "threshold": 0.55,
+          "payout": null,
+          "costs_bps_per_side": 5,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0010585878012829054,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.1386750019680606
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 131,
+          "signal_coverage": 0.08130081300813008,
+          "executed_coverage": 0.030429732868757258,
+          "abstention_rate": 0.9186991869918699,
+          "hit_rate_excluding_ties": 0.5038167938931297,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.002057030491357933,
+          "net_units": -0.26947099436788924,
+          "max_drawdown_units": 0.26947099436788924,
+          "max_loss_streak": 33,
+          "threshold": 0.55,
+          "payout": null,
+          "costs_bps_per_side": 10,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.002057030491357933,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.26947099436788924
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 131,
+          "signal_coverage": 0.08130081300813008,
+          "executed_coverage": 0.030429732868757258,
+          "abstention_rate": 0.9186991869918699,
+          "hit_rate_excluding_ties": 0.5038167938931297,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.004050926522136616,
+          "net_units": -0.5306713743998966,
+          "max_drawdown_units": 0.5306713743998966,
+          "max_loss_streak": 131,
+          "threshold": 0.55,
+          "payout": null,
+          "costs_bps_per_side": 20,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.004050926522136616,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.5306713743998966
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 39,
+          "signal_coverage": 0.021370499419279907,
+          "executed_coverage": 0.009059233449477353,
+          "abstention_rate": 0.9786295005807201,
+          "hit_rate_excluding_ties": 0.48717948717948717,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.17179487179487177,
+          "net_units": -6.699999999999999,
+          "max_drawdown_units": 8.099999999999998,
+          "max_loss_streak": 4,
+          "threshold": 0.58,
+          "payout": 0.7,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5882352941176471,
+          "expectancy_ci": {
+            "mean": -0.17179487179487177,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -6.700000000000001
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 51,
+          "signal_coverage": 0.027874564459930314,
+          "executed_coverage": 0.011846689895470384,
+          "abstention_rate": 0.9721254355400697,
+          "hit_rate_excluding_ties": 0.49019607843137253,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.11764705882352942,
+          "net_units": -6.000000000000001,
+          "max_drawdown_units": 10.400000000000002,
+          "max_loss_streak": 6,
+          "threshold": 0.58,
+          "payout": 0.8,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5555555555555556,
+          "expectancy_ci": {
+            "mean": -0.11764705882352942,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -5.999999999999999
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 51,
+          "signal_coverage": 0.027874564459930314,
+          "executed_coverage": 0.011846689895470384,
+          "abstention_rate": 0.9721254355400697,
+          "hit_rate_excluding_ties": 0.49019607843137253,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.06862745098039216,
+          "net_units": -3.5000000000000004,
+          "max_drawdown_units": 9.2,
+          "max_loss_streak": 6,
+          "threshold": 0.58,
+          "payout": 0.9,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5263157894736842,
+          "expectancy_ci": {
+            "mean": -0.06862745098039216,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -3.4999999999999996
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 41,
+          "signal_coverage": 0.024390243902439025,
+          "executed_coverage": 0.009523809523809525,
+          "abstention_rate": 0.975609756097561,
+          "hit_rate_excluding_ties": 0.5121951219512195,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0008611383498514375,
+          "net_units": -0.03530667234390894,
+          "max_drawdown_units": 0.03565201487501779,
+          "max_loss_streak": 5,
+          "threshold": 0.58,
+          "payout": null,
+          "costs_bps_per_side": 5,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0008611383498514375,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.03530667234390894
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 41,
+          "signal_coverage": 0.024390243902439025,
+          "executed_coverage": 0.009523809523809525,
+          "abstention_rate": 0.975609756097561,
+          "hit_rate_excluding_ties": 0.5121951219512195,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0018597783908011383,
+          "net_units": -0.07625091402284667,
+          "max_drawdown_units": 0.07625091402284667,
+          "max_loss_streak": 19,
+          "threshold": 0.58,
+          "payout": null,
+          "costs_bps_per_side": 10,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0018597783908011383,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.07625091402284667
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 41,
+          "signal_coverage": 0.024390243902439025,
+          "executed_coverage": 0.009523809523809525,
+          "abstention_rate": 0.975609756097561,
+          "hit_rate_excluding_ties": 0.5121951219512195,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.003854068532458272,
+          "net_units": -0.15801680983078914,
+          "max_drawdown_units": 0.15801680983078914,
+          "max_loss_streak": 41,
+          "threshold": 0.58,
+          "payout": null,
+          "costs_bps_per_side": 20,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.003854068532458272,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.15801680983078914
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 27,
+          "signal_coverage": 0.014634146341463415,
+          "executed_coverage": 0.0062717770034843206,
+          "abstention_rate": 0.9853658536585366,
+          "hit_rate_excluding_ties": 0.5555555555555556,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.055555555555555594,
+          "net_units": -1.500000000000001,
+          "max_drawdown_units": 3.5,
+          "max_loss_streak": 3,
+          "threshold": 0.6,
+          "payout": 0.7,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5882352941176471,
+          "expectancy_ci": {
+            "mean": -0.055555555555555594,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -1.5000000000000007
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 27,
+          "signal_coverage": 0.014634146341463415,
+          "executed_coverage": 0.0062717770034843206,
+          "abstention_rate": 0.9853658536585366,
+          "hit_rate_excluding_ties": 0.5555555555555556,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": 3.289549702593056e-17,
+          "net_units": 8.881784197001252e-16,
+          "max_drawdown_units": 3.2,
+          "max_loss_streak": 3,
+          "threshold": 0.6,
+          "payout": 0.8,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5555555555555556,
+          "expectancy_ci": {
+            "mean": 3.289549702593056e-17,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": 6.661338147750939e-16
+          }
+        },
+        {
+          "mode": "fixed",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 27,
+          "signal_coverage": 0.014634146341463415,
+          "executed_coverage": 0.0062717770034843206,
+          "abstention_rate": 0.9853658536585366,
+          "hit_rate_excluding_ties": 0.5555555555555556,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": 0.05555555555555555,
+          "net_units": 1.5,
+          "max_drawdown_units": 3.1,
+          "max_loss_streak": 3,
+          "threshold": 0.6,
+          "payout": 0.9,
+          "costs_bps_per_side": null,
+          "break_even_non_ties": 0.5263157894736842,
+          "expectancy_ci": {
+            "mean": 0.05555555555555555,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": 1.5000000000000007
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 25,
+          "signal_coverage": 0.014169570267131244,
+          "executed_coverage": 0.005807200929152149,
+          "abstention_rate": 0.9858304297328687,
+          "hit_rate_excluding_ties": 0.6,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0006561269942151738,
+          "net_units": -0.016403174855379343,
+          "max_drawdown_units": 0.01696059532280636,
+          "max_loss_streak": 4,
+          "threshold": 0.6,
+          "payout": null,
+          "costs_bps_per_side": 5,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0006561269942151738,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.016403174855379343
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 25,
+          "signal_coverage": 0.014169570267131244,
+          "executed_coverage": 0.005807200929152149,
+          "abstention_rate": 0.9858304297328687,
+          "hit_rate_excluding_ties": 0.6,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.0016549719441684685,
+          "net_units": -0.04137429860421171,
+          "max_drawdown_units": 0.04137429860421171,
+          "max_loss_streak": 15,
+          "threshold": 0.6,
+          "payout": null,
+          "costs_bps_per_side": 10,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.0016549719441684685,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.04137429860421171
+          }
+        },
+        {
+          "mode": "spot",
+          "hypothetical": true,
+          "n_predictions": 4305,
+          "trades": 25,
+          "signal_coverage": 0.014169570267131244,
+          "executed_coverage": 0.005807200929152149,
+          "abstention_rate": 0.9858304297328687,
+          "hit_rate_excluding_ties": 0.6,
+          "ties": 0,
+          "tie_rule": "fixed: reembolso; spot: retorno realizado menos custos",
+          "expectancy_per_trade": -0.003649671290332783,
+          "net_units": -0.09124178225831958,
+          "max_drawdown_units": 0.09124178225831958,
+          "max_loss_streak": 25,
+          "threshold": 0.6,
+          "payout": null,
+          "costs_bps_per_side": 20,
+          "break_even_non_ties": null,
+          "expectancy_ci": {
+            "mean": -0.003649671290332783,
+            "low": null,
+            "high": null,
+            "days": 3,
+            "limitation": "menos de 10 dias"
+          },
+          "risk": {
+            "fixed_notional": 1,
+            "non_overlapping": true,
+            "daily_loss_limit": 1000000000.0,
+            "max_drawdown": 1000000000.0
+          },
+          "limitations": "Entrada next_open idealizada; sem livro de ofertas/latência, tick/lot/minNotional e liquidez real não simulados. Custos são cenários, não tarifas observadas.",
+          "monthly_pnl": {
+            "2026-10": -0.09124178225831958
+          }
+        }
+      ],
+      "spread_observed": false,
+      "reason": "AggTrades históricos não incluem bid/ask"
+    }
+  },
+  "real_trading_executed": false,
+  "official_policy": "abstenção integral",
+  "conclusion": {
+    "pilot_complete": true,
+    "independent_post_selection_test": false,
+    "evidence_sufficient_for_real_trading": false,
+    "reason": "14 dias e apenas três dias de validação; seleção consumiu o holdout; custos históricos são cenários"
+  }
+}

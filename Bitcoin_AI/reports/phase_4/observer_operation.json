@@ -1,0 +1,179 @@
+{
+  "started_after_freeze": "2026-10-18T01:41:28.284212+00:00",
+  "duration_seconds": 130,
+  "operational": {
+    "messages": 6244,
+    "reconnections": 0,
+    "aggtrade_duplicates": 0,
+    "aggtrade_gap_events": 0,
+    "aggtrade_missing_ids": 0,
+    "depth_invalidations": 0,
+    "book": {
+      "valid": true,
+      "bid": 81914.86,
+      "ask": 81914.87,
+      "spread": 0.00999999999476131,
+      "spread_bps": 0.0012207796466198548,
+      "last_update_id": 101578585596
+    },
+    "real_orders": false
+  },
+  "closed_candles_received": 2,
+  "duplicate_closed_candles": 0,
+  "technical_abstentions": 0,
+  "callback_queue_delay_ms": {
+    "n": 6244,
+    "median": 0.22699999999999998,
+    "p95": 0.744,
+    "max": 1818.416
+  },
+  "source_to_receive_clock_delta_ms": {
+    "n": 1755,
+    "median": -974.5540000000001,
+    "p05": -975.2479,
+    "p95": -817.0654999999999,
+    "min": -975.673,
+    "max": 744.208
+  },
+  "clock_alignment_wait_ms": {
+    "n": 2,
+    "median": 814.239,
+    "max": 860.49
+  },
+  "source_to_receive_latency_ms": {
+    "n": 14,
+    "median": 141.851,
+    "p95": 679.46605,
+    "max": 744.208
+  },
+  "pending_outcomes": 8,
+  "ledger": {
+    "predictions": 28,
+    "resolved": 4,
+    "technical_abstentions": 16,
+    "policy_abstentions": 12,
+    "selected_opportunities": 0,
+    "ledger": {
+      "records": 32,
+      "predictions": 28,
+      "resolved": 4,
+      "head_hash": "cf361424e32b21ad5d2301f8884b7227efce334090576c62e16de199c240ebcd"
+    },
+    "metrics": {
+      "n": 4,
+      "accuracy": 0.75,
+      "precision_macro": 0.5,
+      "recall_macro": 0.5555555555555555,
+      "f1_macro": 0.48888888888888893,
+      "confusion_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          2
+        ]
+      ],
+      "log_loss": 0.7036288246439116,
+      "brier_multiclass": 0.4795720382870845,
+      "roc_auc_ovr": null,
+      "calibration": [
+        {
+          "class": 0,
+          "left": 0.4,
+          "n": 2,
+          "probability": 0.4287602553729055,
+          "frequency": 0.0
+        },
+        {
+          "class": 0,
+          "left": 0.5,
+          "n": 2,
+          "probability": 0.5262206827563745,
+          "frequency": 0.5
+        },
+        {
+          "class": 1,
+          "left": 0.0,
+          "n": 4,
+          "probability": 0.03600385215359815,
+          "frequency": 0.0
+        },
+        {
+          "class": 2,
+          "left": 0.4,
+          "n": 3,
+          "probability": 0.47994034722363016,
+          "frequency": 0.6666666666666666
+        },
+        {
+          "class": 2,
+          "left": 0.5,
+          "n": 1,
+          "probability": 0.5062016734561569,
+          "frequency": 1.0
+        }
+      ]
+    }
+  },
+  "paper": {
+    "1": {
+      "active": true,
+      "predictions": 2,
+      "trades": 0,
+      "abstentions": 2,
+      "abstention_rate": 1.0,
+      "net_quote": 0.0,
+      "drawdown_quote": 0.0,
+      "drawdown_fraction": 0.0,
+      "daily_loss_fraction": 0.0,
+      "real_orders": false
+    },
+    "5": {
+      "active": true,
+      "predictions": 2,
+      "trades": 0,
+      "abstentions": 2,
+      "abstention_rate": 1.0,
+      "net_quote": 0.0,
+      "drawdown_quote": 0.0,
+      "drawdown_fraction": 0.0,
+      "daily_loss_fraction": 0.0,
+      "real_orders": false
+    },
+    "15": {
+      "active": true,
+      "predictions": 2,
+      "trades": 0,
+      "abstentions": 2,
+      "abstention_rate": 1.0,
+      "net_quote": 0.0,
+      "drawdown_quote": 0.0,
+      "drawdown_fraction": 0.0,
+      "daily_loss_fraction": 0.0,
+      "real_orders": false
+    },
+    "30": {
+      "active": true,
+      "predictions": 2,
+      "trades": 0,
+      "abstentions": 2,
+      "abstention_rate": 1.0,
+      "net_quote": 0.0,
+      "drawdown_quote": 0.0,
+      "drawdown_fraction": 0.0,
+      "daily_loss_fraction": 0.0,
+      "real_orders": false
+    }
+  },
+  "sufficient_for_economic_conclusion": false,
+  "real_orders": false
+}

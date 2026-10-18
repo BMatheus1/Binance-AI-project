@@ -1,0 +1,36 @@
+{
+  "phase_1_final_evaluation": {
+    "path": "reports/final_evaluation.json",
+    "sha256": "39297e6ceb3a13cd5b0c5f11e0608fc92cee8a298702124abf408040d722b584"
+  },
+  "phase_2_results": {
+    "path": "reports/phase_2/runs/20261017T223631458343Z-phase2/results.json",
+    "sha256": "85c88261568929c4818d659ac4cb9c66039504f0589468ea4c66cb21a981be37"
+  },
+  "phase_3_results": {
+    "path": "reports/phase_3/runs/20261018T005023721954Z-phase3/results.json",
+    "sha256": "0c7be8224a2256b2d87fb87738228360e9b3ef8552986d5fbd1ee7ba158cee6c"
+  },
+  "phase_4_results": {
+    "path": "reports/phase_4/runs/20261018T013856021255Z-phase4/results.json",
+    "sha256": "3e6876e1362d7cc71b2e74969d503699f9c9aa61b90e8c0c7577d5dce5101c3c"
+  },
+  "phase_5_config": {
+    "path": "configs/phase_5.json",
+    "sha256": "982fbd55f79aebb10ec73579ced2812deb44bfe55ca0fcab22624a2f9e6e1112"
+  },
+  "phase_5_notebook": {
+    "path": "notebooks/phase5_kronos_colab.ipynb",
+    "sha256": "67052906d198e5995a1ae4684c45027685fae393b2e6efde09aaa94a12eafdde"
+  },
+  "phase_5_export_manifest": {
+    "path": "reports/phase_5/export_manifest.json",
+    "sha256": "7cbff017e67a3018119eb3dcb1dd3396058f20cb3a6b5fd4c72bd90f14ca7134"
+  },
+  "phase_5_colab_archive": {
+    "path": "data/phase_5/bitcoin_ai_phase5_colab.zip",
+    "sha256": "17b4793bf356ed77ce789f10467901fbbd07ba00f620f1337a4a188f3faf4632"
+  },
+  "forbidden_final_period_reused": false,
+  "historical_artifacts_modified": false
+}

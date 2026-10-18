@@ -1,0 +1,23 @@
+{
+  "symbol": "BTCUSDT",
+  "pilot_start": "2026-10-01",
+  "pilot_end_inclusive": "2026-10-14",
+  "official_archive_base": "https://data.binance.vision/data/spot/daily/aggTrades",
+  "public_rest_base": "https://data-api.binance.vision",
+  "public_websocket_base": "wss://data-stream.binance.vision:443",
+  "threads": 4,
+  "seed": 42,
+  "horizons": [1, 5],
+  "embargo_minutes": 5,
+  "train_end": "2026-10-09",
+  "calibration_end": "2026-10-12",
+  "validation_end": "2026-10-15",
+  "thresholds": [0.52, 0.55, 0.58, 0.60],
+  "payouts": [0.7, 0.8, 0.9],
+  "spot_costs_bps_per_side": [5, 10, 20],
+  "minimum_validation_trades": 50,
+  "collector_reconnect_seconds": [1, 2, 5, 10, 30],
+  "collector_partition_minutes": 5,
+  "paper_fee_bps_per_side": 5,
+  "paper_latency_ms": 250
+}

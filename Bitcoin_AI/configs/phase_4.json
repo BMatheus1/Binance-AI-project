@@ -1,0 +1,21 @@
+{
+  "seed": 42,
+  "threads": 4,
+  "horizons": [1, 5, 15, 30],
+  "train_end": "2026-01-01",
+  "calibration_end": "2026-04-01",
+  "validation_end": "2026-07-01",
+  "forbidden_final_test_start": "2026-07-01",
+  "train_rows_per_month": 3000,
+  "embargo_minutes": 30,
+  "algorithms": ["logistic", "xgboost", "catboost"],
+  "thresholds": [0.52, 0.55, 0.58, 0.60],
+  "payouts": [0.7, 0.8, 0.9],
+  "spot_costs_bps_per_side": [5, 10, 20],
+  "minimum_validation_trades": 200,
+  "max_daily_loss_units": 10,
+  "max_drawdown_units": 30,
+  "prospective_minimum_resolved_signals": 200,
+  "prospective_minimum_days": 30,
+  "prospective_policy": "Observações posteriores ao congelamento nunca participam de seleção ou ajuste; duração isolada não basta sem sinais e regimes diversos."
+}
