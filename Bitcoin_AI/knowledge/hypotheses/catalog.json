@@ -1,0 +1,225 @@
+[
+  {
+    "id": "H-PREÇO",
+    "category": "PREÇO",
+    "status": "sem evidência suficiente",
+    "source_type": "formalização própria; referências conceituais quando indicadas",
+    "references": [],
+    "feature_ids": [
+      "return_1",
+      "log_return"
+    ],
+    "definitions": {
+      "return_1": "close/close.shift(1)-1",
+      "log_return": "log(close/close.shift(1))"
+    },
+    "conditions": [
+      "candles completos e contínuos",
+      "sem acesso a informação futura",
+      "períodos cronológicos independentes"
+    ],
+    "predictive_hypothesis": "O grupo reduz log loss fora da amostra e mantém contribuição ao longo do tempo.",
+    "evaluation": "Ablações de grupos, importância na validação, métricas mensais e walk-forward; consulte relatórios E/G. TEMPO não teve ablação isolada.",
+    "limitations": [
+      "correlação não é causalidade",
+      "múltiplas comparações não corrigidas",
+      "formalização não reproduz integralmente métodos dos autores"
+    ],
+    "evidence": "reports/G_relevance.md"
+  },
+  {
+    "id": "H-PRICE ACTION",
+    "category": "PRICE ACTION",
+    "status": "sem evidência suficiente",
+    "source_type": "formalização própria; referências conceituais quando indicadas",
+    "references": [
+      "Nison: PDF36-37, cap3",
+      "Brooks: PDF16, fig1.5"
+    ],
+    "feature_ids": [
+      "body_rel",
+      "body_fraction",
+      "lower_wick",
+      "upper_wick",
+      "close_position",
+      "direction_balance_5",
+      "breakout_20",
+      "support_distance_20"
+    ],
+    "definitions": {
+      "body_rel": "abs(close-open)/open",
+      "body_fraction": "(close-open)/(high-low); zero se range=0",
+      "lower_wick": "(min(open,close)-low)/(high-low); zero se range=0",
+      "upper_wick": "(high-max(open,close))/(high-low); zero se range=0",
+      "close_position": "(close-low)/(high-low); 0.5 se range=0",
+      "direction_balance_5": "mean(sign(close-open),5)",
+      "breakout_20": "close/max(high.shift(1),20)-1",
+      "support_distance_20": "close/min(low.shift(1),20)-1"
+    },
+    "conditions": [
+      "candles completos e contínuos",
+      "sem acesso a informação futura",
+      "períodos cronológicos independentes"
+    ],
+    "predictive_hypothesis": "O grupo reduz log loss fora da amostra e mantém contribuição ao longo do tempo.",
+    "evaluation": "Ablações de grupos, importância na validação, métricas mensais e walk-forward; consulte relatórios E/G. TEMPO não teve ablação isolada.",
+    "limitations": [
+      "correlação não é causalidade",
+      "múltiplas comparações não corrigidas",
+      "formalização não reproduz integralmente métodos dos autores"
+    ],
+    "evidence": "reports/G_relevance.md"
+  },
+  {
+    "id": "H-TEMPO",
+    "category": "TEMPO",
+    "status": "sem evidência suficiente",
+    "source_type": "formalização própria; referências conceituais quando indicadas",
+    "references": [],
+    "feature_ids": [
+      "hour_sin",
+      "hour_cos",
+      "weekday_sin",
+      "weekday_cos"
+    ],
+    "definitions": {
+      "hour_sin": "sin(2*pi*minute_of_day_at_decision/1440)",
+      "hour_cos": "cos(2*pi*minute_of_day_at_decision/1440)",
+      "weekday_sin": "sin(2*pi*day_of_week_at_decision/7)",
+      "weekday_cos": "cos(2*pi*day_of_week_at_decision/7)"
+    },
+    "conditions": [
+      "candles completos e contínuos",
+      "sem acesso a informação futura",
+      "períodos cronológicos independentes"
+    ],
+    "predictive_hypothesis": "O grupo reduz log loss fora da amostra e mantém contribuição ao longo do tempo.",
+    "evaluation": "Ablações de grupos, importância na validação, métricas mensais e walk-forward; consulte relatórios E/G. TEMPO não teve ablação isolada.",
+    "limitations": [
+      "correlação não é causalidade",
+      "múltiplas comparações não corrigidas",
+      "formalização não reproduz integralmente métodos dos autores"
+    ],
+    "evidence": "reports/G_relevance.md"
+  },
+  {
+    "id": "H-TENDÊNCIA",
+    "category": "TENDÊNCIA",
+    "status": "sem evidência suficiente",
+    "source_type": "formalização própria; referências conceituais quando indicadas",
+    "references": [
+      "Grimes: PDF30-32, cap1"
+    ],
+    "feature_ids": [
+      "higher_high",
+      "higher_low",
+      "momentum_5",
+      "momentum_20",
+      "sma_distance_20",
+      "sma_slope_20",
+      "ema_distance_20",
+      "macd_rel",
+      "rsi_14",
+      "closed_5m_return",
+      "closed_15m_return",
+      "closed_30m_return",
+      "closed_60m_return"
+    ],
+    "definitions": {
+      "higher_high": "1(high>high.shift(1))",
+      "higher_low": "1(low>low.shift(1))",
+      "momentum_5": "close/close.shift(5)-1",
+      "momentum_20": "close/close.shift(20)-1",
+      "sma_distance_20": "close/mean(close,20)-1",
+      "sma_slope_20": "mean(close,20)/mean(close,20).shift(5)-1",
+      "ema_distance_20": "close/EMA finita normalizada span20 sobre60-1",
+      "macd_rel": "(EMAfinita12-EMAfinita26)/close; ambas janela60",
+      "rsi_14": "RSI Cutler: mean(gain,14)/(mean(gain,14)+mean(loss,14)); neutro0.5",
+      "closed_5m_return": "close/open-1 do último candle UTC completo de 5m",
+      "closed_15m_return": "close/open-1 do último candle UTC completo de 15m",
+      "closed_30m_return": "close/open-1 do último candle UTC completo de 30m",
+      "closed_60m_return": "close/open-1 do último candle UTC completo de 60m"
+    },
+    "conditions": [
+      "candles completos e contínuos",
+      "sem acesso a informação futura",
+      "períodos cronológicos independentes"
+    ],
+    "predictive_hypothesis": "O grupo reduz log loss fora da amostra e mantém contribuição ao longo do tempo.",
+    "evaluation": "Ablações de grupos, importância na validação, métricas mensais e walk-forward; consulte relatórios E/G. TEMPO não teve ablação isolada.",
+    "limitations": [
+      "correlação não é causalidade",
+      "múltiplas comparações não corrigidas",
+      "formalização não reproduz integralmente métodos dos autores"
+    ],
+    "evidence": "reports/G_relevance.md"
+  },
+  {
+    "id": "H-VOLATILIDADE",
+    "category": "VOLATILIDADE",
+    "status": "sem evidência suficiente",
+    "source_type": "formalização própria; referências conceituais quando indicadas",
+    "references": [],
+    "feature_ids": [
+      "range_rel",
+      "atr_rel_14",
+      "realized_vol_20",
+      "vol_ratio",
+      "bollinger_z"
+    ],
+    "definitions": {
+      "range_rel": "(high-low)/close",
+      "atr_rel_14": "mean(max(high-low,abs(high-prevclose),abs(low-prevclose)),14)/close",
+      "realized_vol_20": "std(log_return,20,ddof1)",
+      "vol_ratio": "std(log_return,20)/std(log_return,60); 1 se ambas zero",
+      "bollinger_z": "(close-mean(close,20))/std(close,20); zero se std=0"
+    },
+    "conditions": [
+      "candles completos e contínuos",
+      "sem acesso a informação futura",
+      "períodos cronológicos independentes"
+    ],
+    "predictive_hypothesis": "O grupo reduz log loss fora da amostra e mantém contribuição ao longo do tempo.",
+    "evaluation": "Ablações de grupos, importância na validação, métricas mensais e walk-forward; consulte relatórios E/G. TEMPO não teve ablação isolada.",
+    "limitations": [
+      "correlação não é causalidade",
+      "múltiplas comparações não corrigidas",
+      "formalização não reproduz integralmente métodos dos autores"
+    ],
+    "evidence": "reports/G_relevance.md"
+  },
+  {
+    "id": "H-VOLUME",
+    "category": "VOLUME",
+    "status": "sem evidência suficiente",
+    "source_type": "formalização própria; referências conceituais quando indicadas",
+    "references": [],
+    "feature_ids": [
+      "volume_rel_20",
+      "volume_change",
+      "trade_intensity",
+      "taker_buy_ratio",
+      "signed_volume"
+    ],
+    "definitions": {
+      "volume_rel_20": "volume/mean(volume,20); 1 se média=0",
+      "volume_change": "log1p(volume)-log1p(volume.shift(1))",
+      "trade_intensity": "trades/mean(trades,20); 1 se média=0",
+      "taker_buy_ratio": "taker_base/volume; 0.5 se volume=0",
+      "signed_volume": "sign(close-open)*volume/mean(volume,20)"
+    },
+    "conditions": [
+      "candles completos e contínuos",
+      "sem acesso a informação futura",
+      "períodos cronológicos independentes"
+    ],
+    "predictive_hypothesis": "O grupo reduz log loss fora da amostra e mantém contribuição ao longo do tempo.",
+    "evaluation": "Ablações de grupos, importância na validação, métricas mensais e walk-forward; consulte relatórios E/G. TEMPO não teve ablação isolada.",
+    "limitations": [
+      "correlação não é causalidade",
+      "múltiplas comparações não corrigidas",
+      "formalização não reproduz integralmente métodos dos autores"
+    ],
+    "evidence": "reports/G_relevance.md"
+  }
+]

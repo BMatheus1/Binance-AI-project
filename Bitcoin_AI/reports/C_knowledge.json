@@ -1,0 +1,4093 @@
+{
+  "books": [
+    {
+      "file": "data\\knowledge\\books\\adam grimes - Entender estrutura e comportamento do mercado.pdf",
+      "sha256": "b5e0226ea298a0708cfb0a5256f0ae8499774aaa0b1d8a7423f4315431406628",
+      "references": [
+        {
+          "pdf_page": 4,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 5,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 7,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 8,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 9,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 11,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 12,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 13,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 15,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 21,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 27,
+          "topics": [
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 28,
+          "topics": [
+            "candles",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 30,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 31,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 35,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 36,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 37,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 38,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 39,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 40,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 41,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 42,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 43,
+          "topics": [
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 45,
+          "topics": [
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 46,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 48,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 49,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 50,
+          "topics": [
+            "candles",
+            "tendencia",
+            "suporte_resistencia",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 51,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 52,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 53,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 54,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 55,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 56,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 57,
+          "topics": [
+            "candles",
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 58,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 59,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 60,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 61,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 65,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 66,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 67,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 68,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 69,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 70,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 71,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 72,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 73,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 74,
+          "topics": [
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 75,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 76,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 77,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 78,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 79,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 80,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 81,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 82,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 83,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 84,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 85,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 86,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 87,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 88,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 89,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 90,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 91,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 92,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 93,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 94,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 95,
+          "topics": [
+            "tendencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 96,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 97,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 98,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 99,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 100,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 101,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 102,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 103,
+          "topics": [
+            "tendencia",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 104,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 105,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 106,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 107,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 108,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 109,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 110,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 111,
+          "topics": [
+            "tendencia",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 113,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 114,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 115,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 116,
+          "topics": [
+            "suporte_resistencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 117,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 118,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 119,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 120,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 121,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 122,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 123,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 124,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 125,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 126,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 127,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 128,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 129,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 130,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 131,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 132,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 133,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 134,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 135,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 136,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 137,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 138,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 139,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 140,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 141,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 142,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 143,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 144,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 145,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 146,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 147,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 148,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "reversao",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 149,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 150,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 151,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 152,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 153,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 154,
+          "topics": [
+            "tendencia",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 155,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 156,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 157,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "reversao",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 158,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 159,
+          "topics": [
+            "tendencia",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 160,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 161,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 162,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 165,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 166,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "reversao",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 167,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 168,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 169,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 170,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 171,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 172,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 173,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 174,
+          "topics": [
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 175,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 176,
+          "topics": [
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 177,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 178,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 179,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 180,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 181,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 182,
+          "topics": [
+            "candles",
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 183,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 184,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 185,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 186,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 187,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 188,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 189,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 190,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 191,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 192,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 193,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 194,
+          "topics": [
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 195,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 196,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 197,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 198,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 199,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 200,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 201,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 202,
+          "topics": [
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 203,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 204,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 206,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 207,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 208,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 209,
+          "topics": [
+            "suporte_resistencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 210,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 211,
+          "topics": [
+            "tendencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 212,
+          "topics": [
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 214,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 215,
+          "topics": [
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 216,
+          "topics": [
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 217,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 219,
+          "topics": [
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 221,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 222,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 223,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 224,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 225,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 226,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 227,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 228,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 230,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 231,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 232,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 234,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 235,
+          "topics": [
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 236,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 237,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 238,
+          "topics": [
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 239,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 240,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 241,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 242,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 243,
+          "topics": [
+            "tendencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 244,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 245,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 246,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 248,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 249,
+          "topics": [
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 250,
+          "topics": [
+            "suporte_resistencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 251,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 252,
+          "topics": [
+            "suporte_resistencia",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 253,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 254,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 255,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 260,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 261,
+          "topics": [
+            "tendencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 262,
+          "topics": [
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 263,
+          "topics": [
+            "tendencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 264,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 265,
+          "topics": [
+            "tendencia",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 266,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 270,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 272,
+          "topics": [
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 273,
+          "topics": [
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 274,
+          "topics": [
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 275,
+          "topics": [
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 276,
+          "topics": [
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 281,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 290,
+          "topics": [
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 294,
+          "topics": [
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 304,
+          "topics": [
+            "tendencia",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 305,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 306,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 309,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 310,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 311,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 312,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 313,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 314,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 315,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 316,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 317,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 319,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 320,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 321,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 322,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 323,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 324,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 325,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 326,
+          "topics": [
+            "suporte_resistencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 327,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 328,
+          "topics": [
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 329,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 330,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 331,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 332,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 333,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 334,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 335,
+          "topics": [
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 337,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 338,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 339,
+          "topics": [
+            "tendencia",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 340,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 341,
+          "topics": [
+            "tendencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 342,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 343,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 344,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 345,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 346,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 347,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 348,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 349,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 350,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 351,
+          "topics": [
+            "suporte_resistencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 352,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 353,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 354,
+          "topics": [
+            "suporte_resistencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 355,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 356,
+          "topics": [
+            "tendencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 357,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 358,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 359,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 366,
+          "topics": [
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 369,
+          "topics": [
+            "tendencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 373,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 375,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 386,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 387,
+          "topics": [
+            "candles",
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 395,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 396,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 397,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 400,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 403,
+          "topics": [
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 404,
+          "topics": [
+            "suporte_resistencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 413,
+          "topics": [
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 418,
+          "topics": [
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 420,
+          "topics": [
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 422,
+          "topics": [
+            "candles"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 423,
+          "topics": [
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 424,
+          "topics": [
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 426,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 427,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 428,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 429,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 431,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 433,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 435,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 436,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 437,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 438,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 440,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 443,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "volatilidade",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 444,
+          "topics": [
+            "candles",
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 445,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 446,
+          "topics": [
+            "tendencia",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 447,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 448,
+          "topics": [
+            "tendencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 449,
+          "topics": [
+            "tendencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 450,
+          "topics": [
+            "tendencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 451,
+          "topics": [
+            "tendencia",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 452,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 453,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "volatilidade",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 454,
+          "topics": [
+            "tendencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 455,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "volatilidade",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 456,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 457,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "reversao",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 458,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 459,
+          "topics": [
+            "tendencia",
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 460,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 461,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 463,
+          "topics": [
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 465,
+          "topics": [
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 466,
+          "topics": [
+            "candles",
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 467,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 468,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 469,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 470,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 471,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 472,
+          "topics": [
+            "tendencia",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 473,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 474,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 475,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 476,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 477,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 478,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 479,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "volume",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        }
+      ],
+      "pages": 480,
+      "metadata": {
+        "/Author": "Adam Grimes",
+        "/CreationDate": "D:20120621151716-04'00'",
+        "/Creator": "calibre (0.9.8) [http://calibre-ebook.com]",
+        "/EBX_PUBLISHER": "/Wiley Trading",
+        "/Keywords": "Business & Economics, Finance",
+        "/ModDate": "D:20121130211533-06'00'",
+        "/Producer": "Acrobat Distiller 7.0.5 (Windows)",
+        "/Title": "The Art & Science of Technical Analysis: Market Structure, Price Action & Trading Strategies"
+      },
+      "readable_pages": 471,
+      "status": "texto acessível"
+    },
+    {
+      "file": "data\\knowledge\\books\\Al brooks - interpretar price action e movimentos candle a candle.pdf",
+      "sha256": "cb89710ad0a70058c2b167c2f9c23cb611380c06dda7a6b608ce70629e1c03d8",
+      "references": [
+        {
+          "pdf_page": 2,
+          "topics": [
+            "candles",
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 3,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 4,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 5,
+          "topics": [
+            "candles",
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 6,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 7,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 8,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 9,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 10,
+          "topics": [
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 210,
+          "topics": [
+            "candles",
+            "tendencia",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 211,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 212,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "pullback",
+            "reversao",
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        }
+      ],
+      "pages": 212,
+      "metadata": {},
+      "readable_pages": 211,
+      "status": "texto acessível"
+    },
+    {
+      "file": "data\\knowledge\\books\\David Aronson - testar cientificamente a eficácia das estratégias.pdf",
+      "sha256": "75557b4339b73944427eef67c850d535be0e6fec7f1a8ecbb8678245aadbe797",
+      "references": [
+        {
+          "pdf_page": 3,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 10,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 12,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 13,
+          "topics": [
+            "volume"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 19,
+          "topics": [
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 20,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 21,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 22,
+          "topics": [
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 24,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 25,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 26,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 27,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 29,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 30,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 31,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 32,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 34,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 38,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 39,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 40,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 43,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 46,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 47,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 49,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 51,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 53,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 54,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 56,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 58,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 61,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 63,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 65,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 66,
+          "topics": [
+            "rompimentos"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 67,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 68,
+          "topics": [
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 73,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 74,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 75,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 76,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 77,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 81,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 83,
+          "topics": [
+            "tendencia",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 84,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 85,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 86,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 87,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 88,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 94,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 95,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 96,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 97,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 98,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 99,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 100,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 101,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 102,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 107,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 122,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 130,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 131,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 132,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 133,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 134,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 136,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 137,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 138,
+          "topics": [
+            "volume",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 143,
+          "topics": [
+            "tendencia",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 145,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 147,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 148,
+          "topics": [
+            "tendencia",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 150,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 152,
+          "topics": [
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 154,
+          "topics": [
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 155,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 161,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 165,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 182,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 185,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 187,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 189,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 190,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 191,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 192,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 193,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 203,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 214,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 215,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 216,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 217,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 218,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 220,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 221,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 222,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 224,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 225,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 226,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 227,
+          "topics": [
+            "tendencia",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 228,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 230,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 232,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 233,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 234,
+          "topics": [
+            "tendencia",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 235,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 236,
+          "topics": [
+            "tendencia",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 237,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 238,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 239,
+          "topics": [
+            "tendencia",
+            "rompimentos",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 240,
+          "topics": [
+            "tendencia",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 241,
+          "topics": [
+            "tendencia",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 242,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 244,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 246,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 247,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 248,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 249,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 250,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 251,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 252,
+          "topics": [
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 261,
+          "topics": [
+            "tendencia",
+            "volatilidade"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 264,
+          "topics": [
+            "tendencia",
+            "reversao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 265,
+          "topics": [
+            "tendencia",
+            "suporte_resistencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 266,
+          "topics": [
+            "tendencia",
+            "validacao"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 269,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 274,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 275,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 286,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        },
+        {
+          "pdf_page": 300,
+          "topics": [
+            "tendencia"
+          ],
+          "status": "localização por palavras; requer leitura contextual"
+        }
+      ],
+      "pages": 300,
+      "metadata": {
+        "/CreationDate": "D:20220529143151",
+        "/Creator": "PDFium"
+      },
+      "readable_pages": 300,
+      "status": "texto acessível"
+    },
+    {
+      "file": "data\\knowledge\\books\\Steve nison - reconhecer padrões de candles japoneses.pdf",
+      "sha256": "83ce35f9fe900db995034b68e93e20b4506e25a6f188c1c697ccc57bfaa4c155",
+      "references": [],
+      "pages": 316,
+      "metadata": {
+        "/CreationDate": "D:20010620151749Z",
+        "/Producer": "Acrobat Distiller 3.0 for Windows",
+        "/ModDate": "D:20050122200435+11'00'"
+      },
+      "readable_pages": 0,
+      "status": "digitalizado; OCR não executado"
+    }
+  ],
+  "method": "Índice determinístico, páginas PDF físicas (1-based), sem reproduzir texto integral.",
+  "limits": [
+    "Ocorrência de termo não equivale a conceito validado.",
+    "Gráficos requerem leitura visual; OCR completo pendente quando necessário.",
+    "Referências verificadas e formalizações próprias ficam em knowledge/concepts/verified.md."
+  ],
+  "study_update": {
+    "date": "2026-10-17",
+    "index": "knowledge/study/README.md",
+    "coverage": "knowledge/study/coverage.json",
+    "totals": {
+      "pdf_pages_processed": 1308,
+      "ocr_pages_completed": 528,
+      "pages_with_selected_passages_reviewed": 324,
+      "pages_with_visual_review_recorded": 20
+    },
+    "note": "Índice automático histórico não é leitura integral. Novas hipóteses não testadas."
+  }
+}

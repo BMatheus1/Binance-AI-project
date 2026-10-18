@@ -1,0 +1,171 @@
+{
+  "version": "bibliographic-2026-10-17",
+  "status": "propostas não testadas; sem promoção de modelos",
+  "attribution": "Formalizações e desenhos de teste próprios, inspirados nas passagens citadas; não são algoritmos oficiais dos autores.",
+  "shared_protocol": "protocol.md",
+  "horizons_minutes": [1, 5],
+  "execution_assumption": "Após fechamento de t, entrada teórica open[t+1], saída close[t+h]; executar ordens não faz parte do estudo.",
+  "frozen_test": "2026-07 a 2026-09 já observado; não é teste independente para estas novas hipóteses.",
+  "hypotheses": [
+    {
+      "id": "ST-H01",
+      "question": "Geometria acrescenta informação além de retornos, amplitude e contexto?",
+      "definition": "Corpo, sombras e posição de fechamento normalizados; zero range com flag própria.",
+      "available_at": "Fechamento do candle; escalas superiores somente encerradas.",
+      "comparison": "Mesmo modelo simples com e sem o grupo, mesmo orçamento de seleção.",
+      "evidence_against": "Incremento desaparece fora da amostra ou após incluir contexto equivalente.",
+      "sources": [{"book": "nison", "pdf_pages": [20, 23, 36, 37]}, {"book": "brooks", "pdf_pages": [16, 203]}],
+      "readiness": "Descritores definidos; desenho completo deve ser congelado antes da avaliação nova."
+    },
+    {
+      "id": "ST-H02",
+      "question": "A interpretação de sombra inferior longa depende da direção anterior e da confirmação?",
+      "definition": "Separar geometria, contexto anterior e confirmação posterior; comparar as três camadas.",
+      "available_at": "Sinal simples no fechamento; confirmado apenas após fechar a barra confirmadora.",
+      "comparison": "Mesma forma em alta, baixa e faixa, com amplitude e volatilidade comparáveis.",
+      "evidence_against": "Contexto explica todo o efeito ou confirmação chega tarde demais para os custos.",
+      "sources": [{"book": "nison", "pdf_pages": [40, 41, 42, 43, 296]}],
+      "readiness": "Pendentes limiares de corpo/sombras e definição causal do contexto."
+    },
+    {
+      "id": "ST-H03",
+      "question": "Engolfo de corpo informa algo além da amplitude da segunda barra?",
+      "definition": "Cores contrárias, corpo atual contém anterior, pelo menos uma fronteira estrita, corpos não nulos; detalhes no protocolo.",
+      "available_at": "Fechamento da segunda barra.",
+      "comparison": "Barras com direção, magnitude e tendência semelhantes sem engolfo.",
+      "evidence_against": "Não há incremento ao controlar tamanho e direção da barra atual.",
+      "sources": [{"book": "nison", "pdf_pages": [51, 52, 53]}],
+      "readiness": "Evento estrito definido; exceção de quase-doji seria outra variante."
+    },
+    {
+      "id": "ST-H04",
+      "question": "Harami e inside bar têm efeitos diferentes sobre direção ou compressão posterior?",
+      "definition": "Quatro grupos: só corpo contido pequeno, só amplitude contida, ambos, nenhum; fator exploratório de corpo 0.5.",
+      "available_at": "Fechamento da segunda barra.",
+      "comparison": "Contexto e amplitude anterior pareados; direção e amplitude futura como desfechos separados.",
+      "evidence_against": "Nomes diferentes não produzem incremento após controles.",
+      "sources": [{"book": "nison", "pdf_pages": [90, 91, 92, 96]}, {"book": "brooks", "pdf_pages": [205]}],
+      "readiness": "Definições exploratórias no protocolo; teste confirmatório ainda não registrado."
+    },
+    {
+      "id": "ST-H05",
+      "question": "Um doji raro no contexto recente tem efeito diferente de um doji frequente?",
+      "definition": "B/R<=0.1 com R>0; frequência nos 20 candles anteriores, sem incluir o atual.",
+      "available_at": "Fechamento do evento, usando histórico anterior para raridade.",
+      "comparison": "Doji simples versus interação com frequência e tendência.",
+      "evidence_against": "Raridade não melhora generalização ou apenas seleciona amostra insuficiente.",
+      "sources": [{"book": "nison", "pdf_pages": [160, 161, 162]}, {"book": "brooks", "pdf_pages": [203]}],
+      "readiness": "Evento definido como adaptação; estratos e critérios de decisão pendentes."
+    },
+    {
+      "id": "ST-H06",
+      "question": "Ultrapassar extremo anterior e fechar novamente dentro difere de fechar além dele?",
+      "definition": "Extremos dos 20 candles anteriores; rejeição estrita no mesmo candle, conforme protocolo.",
+      "available_at": "Fechamento da barra que rejeita o nível.",
+      "comparison": "Rompimentos sem rejeição e níveis placebo de distância comparável.",
+      "evidence_against": "Efeito não supera contexto, placebos ou custos.",
+      "sources": [{"book": "grimes", "pdf_pages": [166, 167, 168, 169]}, {"book": "nison", "pdf_pages": [203, 211]}],
+      "readiness": "Variante de janela fixa definida; não equivale a nível discricionário significativo."
+    },
+    {
+      "id": "ST-H07",
+      "question": "Compressão próxima à borda prevê expansão, direção, ou apenas ambas com grande incerteza?",
+      "definition": "Amplitude relativa e posição numa faixa anterior; distinguir proximidade da borda e compressão.",
+      "available_at": "Após fechamento; faixa e referência de amplitude anteriores ao evento.",
+      "comparison": "Compressão no meio da faixa e proximidade da borda sem compressão.",
+      "evidence_against": "Efeito de expansão sem direção não autoriza sinal direcional.",
+      "sources": [{"book": "grimes", "pdf_pages": [134, 135, 136, 190, 192, 193]}, {"book": "brooks", "pdf_pages": [82, 202]}],
+      "readiness": "Janelas, limiares e duração do episódio ainda devem ser fixados."
+    },
+    {
+      "id": "ST-H08",
+      "question": "Pullback de menor atividade dentro de tendência maior acrescenta informação?",
+      "definition": "Impulso, retração e retomada causal; contexto superior apenas encerrado.",
+      "available_at": "Última barra encerrada necessária para cada etapa.",
+      "comparison": "Retomadas locais sem contexto alinhado e modelo apenas de momentum.",
+      "evidence_against": "Filtros de pullback não melhoram baseline de tendência ou reduzem demais a amostra.",
+      "sources": [{"book": "grimes", "pdf_pages": [170, 171, 178, 179, 180]}, {"book": "brooks", "pdf_pages": [141, 204, 205]}],
+      "readiness": "Pendentes máquina de estados e critérios numéricos de impulso e retração."
+    },
+    {
+      "id": "ST-H09",
+      "question": "Segunda tentativa supera a primeira depois de somar custos e dependência do episódio?",
+      "definition": "H1/H2 ou L1/L2 com interrupção intermediária; registrar tentativas e expiração.",
+      "available_at": "Depois de observar cada nova tentativa; nunca retroativamente na primeira.",
+      "comparison": "Resultado por episódio completo, não só da segunda entrada sobrevivente.",
+      "evidence_against": "A vantagem desaparece quando tentativas perdedoras e custos são incluídos.",
+      "sources": [{"book": "brooks", "pdf_pages": [69, 204, 205, 206]}, {"book": "grimes", "pdf_pages": [180, 185]}],
+      "readiness": "Não pronta: suplemento não fixa todas as convenções de contagem e reinício."
+    },
+    {
+      "id": "ST-H10",
+      "question": "A sequência Anti tem efeito além de um forte movimento contrário isolado?",
+      "definition": "Desgaste anterior, impulso contrário, primeira correção controlada e retomada.",
+      "available_at": "Somente após cada transição observada; pivôs respeitam confirmação.",
+      "comparison": "Impulso contrário sozinho versus sequência completa.",
+      "evidence_against": "Sequência acrescenta atraso e complexidade sem ganho fora da amostra.",
+      "sources": [{"book": "grimes", "pdf_pages": [186, 187, 188, 189]}],
+      "readiness": "Não pronta: definir numericamente desgaste, impulso, controle e expiração."
+    },
+    {
+      "id": "ST-H11",
+      "question": "MACD SMA 3/10/16 acrescenta informação além de retornos equivalentes?",
+      "definition": "SMA3-SMA10; sinal SMA16 da diferença; sem histograma nessa especificação.",
+      "available_at": "Fechamento com aquecimento suficiente e reinício após lacunas.",
+      "comparison": "Retornos e momentum simples; não tratar filtros correlacionados como provas independentes.",
+      "evidence_against": "Filtro não acrescenta informação ou reage apenas à saída de observações da janela.",
+      "sources": [{"book": "grimes", "pdf_pages": [226, 227, 228, 432, 433, 434, 435, 436]}],
+      "readiness": "Fórmula definida; gatilho de decisão não definido nem validado."
+    },
+    {
+      "id": "ST-H12",
+      "question": "Níveis estruturais superam níveis placebo em testes de rejeição e reteste?",
+      "definition": "Níveis reais e placebo definidos sem observar futuro; distâncias, persistência e tolerâncias comparáveis.",
+      "available_at": "Antes da barra avaliada; pivôs disponíveis somente após confirmação.",
+      "comparison": "Diferença de efeito com pareamento por contexto e distância.",
+      "evidence_against": "Linhas reais não superam placebos ou a escolha visual explica a diferença.",
+      "sources": [{"book": "grimes", "pdf_pages": [116, 117, 118]}, {"book": "nison", "pdf_pages": [195, 211]}],
+      "readiness": "Gerador placebo e critério de nível real ainda precisam ser congelados."
+    },
+    {
+      "id": "ST-H13",
+      "question": "Volume relativo modifica o efeito de candles e impulsos após controlar volatilidade?",
+      "definition": "Volume em relação ao histórico anterior e à sazonalidade; interações explicitadas.",
+      "available_at": "Fechamento; volume final do candle maior nunca antecipado.",
+      "comparison": "Mesmo padrão com e sem volume, controlando amplitude e horário.",
+      "evidence_against": "Volume apenas repete informação de amplitude ou de horário.",
+      "sources": [{"book": "nison", "pdf_pages": [249, 250, 256]}, {"book": "grimes", "pdf_pages": [171]}],
+      "readiness": "Normalização pendente; open interest não está incluído e exige fonte própria."
+    },
+    {
+      "id": "ST-H14",
+      "question": "Padrões clássicos com gap têm frequência suficiente; variantes sem gap preservam algum efeito?",
+      "definition": "Distinguir gap de corpos, gap de extremos e variante sem gap; não misturar populações.",
+      "available_at": "Após concluir todas as barras, inclusive confirmação quando exigida.",
+      "comparison": "Versão estrita e variante explicitamente separadas, sem selecionar apenas a vencedora.",
+      "evidence_against": "Amostra insuficiente ou efeito da variante não corresponde ao padrão clássico.",
+      "sources": [{"book": "nison", "pdf_pages": [57, 62, 67, 68, 77, 130, 131]}],
+      "readiness": "Prioridade baixa; primeiro medir disponibilidade e qualidade, sem conclusão preditiva."
+    },
+    {
+      "id": "ST-H15",
+      "question": "O prazo de resposta muda o valor informacional e econômico do mesmo padrão?",
+      "definition": "Avaliar 1m e 5m separadamente; excursões e percurso apenas como desfechos.",
+      "available_at": "Sinal em t; resultados somente quando cada horizonte terminar.",
+      "comparison": "Efeito por horizonte com seleção múltipla registrada.",
+      "evidence_against": "Efeito bruto não alcança o custo ou desaparece antes de execução viável.",
+      "sources": [{"book": "grimes", "pdf_pages": [169, 247, 248]}, {"book": "brooks", "pdf_pages": [152]}],
+      "readiness": "Horizontes definidos; não escolher retroativamente o melhor como se fosse hipótese única."
+    },
+    {
+      "id": "ST-H16",
+      "question": "Confluência acrescenta informação ou apenas repete sinais e seleciona poucos eventos?",
+      "definition": "Contexto sozinho, padrão sozinho e interação, com orçamento de seleção equivalente.",
+      "available_at": "Máximo dos horários de disponibilidade dos componentes.",
+      "comparison": "Incremento marginal, cobertura e estabilidade temporal.",
+      "evidence_against": "A melhora desaparece com controle de redundância, dependência e múltiplas tentativas.",
+      "sources": [{"book": "nison", "pdf_pages": [183, 188]}, {"book": "grimes", "pdf_pages": [205, 206, 207, 208]}, {"book": "aronson", "pdf_pages": [253, 254, 286]}],
+      "readiness": "Família exata de combinações deve ser congelada antes de avaliação confirmatória."
+    }
+  ]
+}

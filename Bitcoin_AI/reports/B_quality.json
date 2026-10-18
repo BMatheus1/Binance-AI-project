@@ -1,0 +1,1314 @@
+{
+  "status": "validated",
+  "schema_version": "1.0",
+  "months": [
+    {
+      "month": "2023-10",
+      "rows": 44640,
+      "start": "2023-10-01 00:00:00+00:00",
+      "end": "2023-10-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2023-10.zip": {
+          "sha256": "9e854972545806398d124571916348238ce39961072730c200cca3c2e0bd50a3",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2023-10.zip",
+          "sha256": "9e854972545806398d124571916348238ce39961072730c200cca3c2e0bd50a3",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "17af93ea2a02787646a836685fe40c5442b5e2b48bed35d236f57017d17f1dde",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2023-11",
+      "rows": 43200,
+      "start": "2023-11-01 00:00:00+00:00",
+      "end": "2023-11-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2023-11.zip": {
+          "sha256": "4b1462878f31fd736385b761f6bb0a3f525936a6ae9f5f52c3e3b95ee2df35b4",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2023-11.zip",
+          "sha256": "4b1462878f31fd736385b761f6bb0a3f525936a6ae9f5f52c3e3b95ee2df35b4",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "812c3a7739cdb120999c2d0d154768b071e17470f1e15ad9794690a80feb71e9",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2023-12",
+      "rows": 44640,
+      "start": "2023-12-01 00:00:00+00:00",
+      "end": "2023-12-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2023-12.zip": {
+          "sha256": "c8b684a66b5ddbb58bf116251359c2dd83a07ce46791f4caa16dd4301eb17636",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2023-12.zip",
+          "sha256": "c8b684a66b5ddbb58bf116251359c2dd83a07ce46791f4caa16dd4301eb17636",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "869c9614f60560136ee4cbbfd517a6c00326ff0c9aacb080702c09e8e4cd19f4",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-01",
+      "rows": 44640,
+      "start": "2024-01-01 00:00:00+00:00",
+      "end": "2024-01-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-01.zip": {
+          "sha256": "40b78258091a468f8756843f207f5913eafc1d6e756c40a78711320d93fa5e75",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-01.zip",
+          "sha256": "40b78258091a468f8756843f207f5913eafc1d6e756c40a78711320d93fa5e75",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "17a64906b507f149c152c7dd58050e114ac9b3f5bb1ea79478c8c36f1e57e6c3",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-02",
+      "rows": 41760,
+      "start": "2024-02-01 00:00:00+00:00",
+      "end": "2024-02-29 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-02.zip": {
+          "sha256": "431132e0db8b9fe6e5c93c8e9ba3ae37dbcfa0edcdd57618b1b78ac18d14be79",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-02.zip",
+          "sha256": "431132e0db8b9fe6e5c93c8e9ba3ae37dbcfa0edcdd57618b1b78ac18d14be79",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "123f383e97bd5842a22fca1e5f1d2e83a00339c547cbf3413ec2ca0f413cb069",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-03",
+      "rows": 44640,
+      "start": "2024-03-01 00:00:00+00:00",
+      "end": "2024-03-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-03.zip": {
+          "sha256": "a9af86295eae839f1d072643c67eed7fcc47bb1d82c12ef312d041eec9511e7b",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-03.zip",
+          "sha256": "a9af86295eae839f1d072643c67eed7fcc47bb1d82c12ef312d041eec9511e7b",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "ee1ab3552e8573f408ab6d4680e0164f7631f12d12176d27d07349c48a0a2800",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-04",
+      "rows": 43200,
+      "start": "2024-04-01 00:00:00+00:00",
+      "end": "2024-04-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-04.zip": {
+          "sha256": "753040cbfaa72bf9b1fdc6253a3b521a9a174a664dfd0929a556be327b016bc6",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-04.zip",
+          "sha256": "753040cbfaa72bf9b1fdc6253a3b521a9a174a664dfd0929a556be327b016bc6",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "b71ad6459ba75c5293f068bb59593284b62c615dc092b3f3d62ec79989e7e9c5",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-05",
+      "rows": 44640,
+      "start": "2024-05-01 00:00:00+00:00",
+      "end": "2024-05-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-05.zip": {
+          "sha256": "0f709143f66a09acc430d24a5f27f9accd52689c23ce10f2c0b6ea26997bfa8a",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-05.zip",
+          "sha256": "0f709143f66a09acc430d24a5f27f9accd52689c23ce10f2c0b6ea26997bfa8a",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "5f9a7d3e4c77e8fbc4acce6eabd41364759d1401c999e0f9cf39969502275f51",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-06",
+      "rows": 43200,
+      "start": "2024-06-01 00:00:00+00:00",
+      "end": "2024-06-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-06.zip": {
+          "sha256": "90f4fc3f55918787848c71f4cd0f2f1a5851bbffaf6392e76e9ab555b7479d2b",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-06.zip",
+          "sha256": "90f4fc3f55918787848c71f4cd0f2f1a5851bbffaf6392e76e9ab555b7479d2b",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "3b4c5a591e49610fc063b709bff51d6d35b79e9650d1f7931587769773015f07",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-07",
+      "rows": 44640,
+      "start": "2024-07-01 00:00:00+00:00",
+      "end": "2024-07-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-07.zip": {
+          "sha256": "9cfd749fd2027a0c6f261bed607b49dd1256369fb41b784934544a3676f8162e",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-07.zip",
+          "sha256": "9cfd749fd2027a0c6f261bed607b49dd1256369fb41b784934544a3676f8162e",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "aa9d7b3b3036292b8aafc8fd1fb2059f7000219a7e35b3bbcf3beeaf3ac44ccc",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-08",
+      "rows": 44640,
+      "start": "2024-08-01 00:00:00+00:00",
+      "end": "2024-08-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-08.zip": {
+          "sha256": "6a1cac2a5482132dc5a030534aa028e2becc560877f2b93b7add90194f576c42",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-08.zip",
+          "sha256": "6a1cac2a5482132dc5a030534aa028e2becc560877f2b93b7add90194f576c42",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "05bda13cba51023513078630b543ddc81c3f3d1a486cda472d7dfc9daa31f596",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-09",
+      "rows": 43200,
+      "start": "2024-09-01 00:00:00+00:00",
+      "end": "2024-09-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-09.zip": {
+          "sha256": "1e30f6091b05eeb7b0449735d749354b81ab429ab1449bae82a21e316db8eac3",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-09.zip",
+          "sha256": "1e30f6091b05eeb7b0449735d749354b81ab429ab1449bae82a21e316db8eac3",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "dccf758af74a0e66b708da1d433cac4e5ee28938251300cb870ffc3d8769cf4d",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-10",
+      "rows": 44640,
+      "start": "2024-10-01 00:00:00+00:00",
+      "end": "2024-10-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-10.zip": {
+          "sha256": "13f7f9f9bed652fd152422246cfbcaefa6223692c5c37fb3ca4e72f45501e607",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-10.zip",
+          "sha256": "13f7f9f9bed652fd152422246cfbcaefa6223692c5c37fb3ca4e72f45501e607",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "bf45b0dfe5f1d833160df32d9e4f6deddf88f788cca54f7c61aa823b1d4afa19",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-11",
+      "rows": 43200,
+      "start": "2024-11-01 00:00:00+00:00",
+      "end": "2024-11-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-11.zip": {
+          "sha256": "c30a63bd0e8a77f2d18a2a019272b907f29a84fd5378796cf9333b041edcb12b",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-11.zip",
+          "sha256": "c30a63bd0e8a77f2d18a2a019272b907f29a84fd5378796cf9333b041edcb12b",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "6a78086620600ff3b598a34eb1c3aff567b520822a274b942039d447f338085b",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2024-12",
+      "rows": 44640,
+      "start": "2024-12-01 00:00:00+00:00",
+      "end": "2024-12-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2024-12.zip": {
+          "sha256": "58fef0b7c7abce7a0201efd04ed3732f236f607f3fcecf228fb8384cad1ae2c1",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2024-12.zip",
+          "sha256": "58fef0b7c7abce7a0201efd04ed3732f236f607f3fcecf228fb8384cad1ae2c1",
+          "unit": "ms",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "e278b4eea10baaa5a3acf6c527bb56cea821ef3245e6353e927380ff279ab0c0",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-01",
+      "rows": 44640,
+      "start": "2025-01-01 00:00:00+00:00",
+      "end": "2025-01-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-01.zip": {
+          "sha256": "8d028b2f91aad57d6b693d44449c93f9c4b7044f55f298c8a3ac40ab676dafac",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-01.zip",
+          "sha256": "8d028b2f91aad57d6b693d44449c93f9c4b7044f55f298c8a3ac40ab676dafac",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "8ae55a0b3a262bef3132812b099436ce794014b50dfef549c6c95ce423f52792",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-02",
+      "rows": 40320,
+      "start": "2025-02-01 00:00:00+00:00",
+      "end": "2025-02-28 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-02.zip": {
+          "sha256": "26b3795072983a66bdbe8327e0d5e71069bdd5ca831d4da3850ba68ef7a991ef",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-02.zip",
+          "sha256": "26b3795072983a66bdbe8327e0d5e71069bdd5ca831d4da3850ba68ef7a991ef",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "d7e30b1bb8a455a1f70dae736e0c6c3254972fb63bbab1ecf97f47be07a39a86",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-03",
+      "rows": 44640,
+      "start": "2025-03-01 00:00:00+00:00",
+      "end": "2025-03-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-03.zip": {
+          "sha256": "e333601b6c721434f3cdd6670ffde2371bef7946572864c49ba6431a690ab1ca",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-03.zip",
+          "sha256": "e333601b6c721434f3cdd6670ffde2371bef7946572864c49ba6431a690ab1ca",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "5f57361264b6b3295ce401a68e7f427a6bc69e204297820531a71d05decee5fd",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-04",
+      "rows": 43200,
+      "start": "2025-04-01 00:00:00+00:00",
+      "end": "2025-04-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-04.zip": {
+          "sha256": "4103d48887f9f5ec04144b190314ec31db9e3094674e5d53a3436b338854848f",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-04.zip",
+          "sha256": "4103d48887f9f5ec04144b190314ec31db9e3094674e5d53a3436b338854848f",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "ecda6c03f891f1e59a7a75b3cb1db751af7183aeae45962837a5c174f90b2308",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-05",
+      "rows": 44640,
+      "start": "2025-05-01 00:00:00+00:00",
+      "end": "2025-05-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-05.zip": {
+          "sha256": "7f95bf97e3ccfbb55cd002f124a54dc1726ced7cfd54e6fd200e59845ca95d5c",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-05.zip",
+          "sha256": "7f95bf97e3ccfbb55cd002f124a54dc1726ced7cfd54e6fd200e59845ca95d5c",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "d51d88795254aaf9b5d04cbf01adedac635025bb4747de6007d8798050ddafda",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-06",
+      "rows": 43200,
+      "start": "2025-06-01 00:00:00+00:00",
+      "end": "2025-06-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-06.zip": {
+          "sha256": "f95f6169e253d38fb321c87984c827878634250cdcc3ff84fc3507f036bcabbd",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-06.zip",
+          "sha256": "f95f6169e253d38fb321c87984c827878634250cdcc3ff84fc3507f036bcabbd",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "b8d7dc523e360bdbebdfda006f899a5e548b12b9914ec3421ed7db536af59e08",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-07",
+      "rows": 44640,
+      "start": "2025-07-01 00:00:00+00:00",
+      "end": "2025-07-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-07.zip": {
+          "sha256": "3377e023fe252418cfaf46c9e23b3f0d1e56fb2fd89b4191fc66262b947a0ee2",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-07.zip",
+          "sha256": "3377e023fe252418cfaf46c9e23b3f0d1e56fb2fd89b4191fc66262b947a0ee2",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "f04e2a52be8b4f6b9ea543c02ac11dc0b4ea5fcf6ad88d0d074a8e2c0649b9b9",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-08",
+      "rows": 44640,
+      "start": "2025-08-01 00:00:00+00:00",
+      "end": "2025-08-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-08.zip": {
+          "sha256": "11da1c7db8949cbdcbb757531756eda55f2a3d663cfac671c5d1a8a87911318f",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-08.zip",
+          "sha256": "11da1c7db8949cbdcbb757531756eda55f2a3d663cfac671c5d1a8a87911318f",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "9c0326c74d1d196848fa76cef794bd1946b80354d1108140d05bd667d9f20f13",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-09",
+      "rows": 43200,
+      "start": "2025-09-01 00:00:00+00:00",
+      "end": "2025-09-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-09.zip": {
+          "sha256": "52bb4a4a52afbcc0af77e3eb92c114bf810982ca63bf02f8fe15062e59c5f44b",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-09.zip",
+          "sha256": "52bb4a4a52afbcc0af77e3eb92c114bf810982ca63bf02f8fe15062e59c5f44b",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "87a4f3abfcf4fdc4e4b3a89a84f18d77fa94c25a13698aadf460705af398eb28",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-10",
+      "rows": 44640,
+      "start": "2025-10-01 00:00:00+00:00",
+      "end": "2025-10-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-10.zip": {
+          "sha256": "985d878cacbfdde85c9e0da2e8830ab913fe01bfdcde6e488563d8194df11f6b",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-10.zip",
+          "sha256": "985d878cacbfdde85c9e0da2e8830ab913fe01bfdcde6e488563d8194df11f6b",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "2f9935fa90f214b405a07ab9bcb8a80ba5e0ac431ddc800ff726413108be7f64",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-11",
+      "rows": 43200,
+      "start": "2025-11-01 00:00:00+00:00",
+      "end": "2025-11-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-11.zip": {
+          "sha256": "c54159d1216ab07f040a96d6678748e8746ac4200cba373fb6b758f2cdd1e5e5",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-11.zip",
+          "sha256": "c54159d1216ab07f040a96d6678748e8746ac4200cba373fb6b758f2cdd1e5e5",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "67962ca3a8f67e4e2c59cf2eb3a74c983b478caa6dd1ad9b87274be6920d95af",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2025-12",
+      "rows": 44640,
+      "start": "2025-12-01 00:00:00+00:00",
+      "end": "2025-12-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2025-12.zip": {
+          "sha256": "7b47647352b01356dcd678a1438efb8baac03ed798785ed2179d428aab0cca9b",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2025-12.zip",
+          "sha256": "7b47647352b01356dcd678a1438efb8baac03ed798785ed2179d428aab0cca9b",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "bf0dc7a2a755e0c12db1f5b6b78fe4dadfd7d490a9ace58bb70c40ab563821bc",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2026-01",
+      "rows": 44640,
+      "start": "2026-01-01 00:00:00+00:00",
+      "end": "2026-01-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2026-01.zip": {
+          "sha256": "d28b369da32a6ea84ba0af517b1847ab67b2fcc1e0e111c1b24d56ae07240cb9",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2026-01.zip",
+          "sha256": "d28b369da32a6ea84ba0af517b1847ab67b2fcc1e0e111c1b24d56ae07240cb9",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "178bb9bf0235eb36181d34cf554e5abb1afe227240eef76da9ceb79350d8cffd",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2026-02",
+      "rows": 40320,
+      "start": "2026-02-01 00:00:00+00:00",
+      "end": "2026-02-28 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2026-02.zip": {
+          "sha256": "cee2e913ed07e02834e2387c65ca430fe3576f620588bad8a02229238f385407",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2026-02.zip",
+          "sha256": "cee2e913ed07e02834e2387c65ca430fe3576f620588bad8a02229238f385407",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "47e130e415f9676555547c6055b4a209ed6945772baa79afa6465e16b4b25112",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2026-03",
+      "rows": 44640,
+      "start": "2026-03-01 00:00:00+00:00",
+      "end": "2026-03-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2026-03.zip": {
+          "sha256": "a2c1e689d39aa7877e218f436f15162e9a4436778a377d32e9d9b81b081381cd",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2026-03.zip",
+          "sha256": "a2c1e689d39aa7877e218f436f15162e9a4436778a377d32e9d9b81b081381cd",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "ef4f33f3c1cb4becc68ead74f0c3cb73a62293c71c981c60bb615b124fd61d83",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2026-04",
+      "rows": 43200,
+      "start": "2026-04-01 00:00:00+00:00",
+      "end": "2026-04-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2026-04.zip": {
+          "sha256": "318afd4f5acfbcfbb40fbe727a77eee8e9e7b54d8941589c78a32283d90b4a01",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2026-04.zip",
+          "sha256": "318afd4f5acfbcfbb40fbe727a77eee8e9e7b54d8941589c78a32283d90b4a01",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "fb00e477ce9aec5035e60b315bfda2811ddf639ea46b2ae6339c799bfb7e95a6",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2026-05",
+      "rows": 44640,
+      "start": "2026-05-01 00:00:00+00:00",
+      "end": "2026-05-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2026-05.zip": {
+          "sha256": "62983d93c35e26ec6c29116c629e443b7ddfe3d301aca83331ff58112199d8d0",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2026-05.zip",
+          "sha256": "62983d93c35e26ec6c29116c629e443b7ddfe3d301aca83331ff58112199d8d0",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "2dae4b17568bf6f24542ea3c1f3e789e386e1217cf26818c34f6002e9f415b20",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2026-06",
+      "rows": 43200,
+      "start": "2026-06-01 00:00:00+00:00",
+      "end": "2026-06-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2026-06.zip": {
+          "sha256": "c8e1d5e70b766dd2312fc9cd7085785bb25708e27e75c21a5a5aaba61a6d07f5",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2026-06.zip",
+          "sha256": "c8e1d5e70b766dd2312fc9cd7085785bb25708e27e75c21a5a5aaba61a6d07f5",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "b07eb63e3c073b1c5f586eb02ba3650c0f7f2cfd606245840c3619dbbcdf6a5e",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2026-07",
+      "rows": 44640,
+      "start": "2026-07-01 00:00:00+00:00",
+      "end": "2026-07-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2026-07.zip": {
+          "sha256": "3ef15c84353da48e1c7c5fd99b9751cb036bf8986ed47f7cd1be63359c0d4f6b",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2026-07.zip",
+          "sha256": "3ef15c84353da48e1c7c5fd99b9751cb036bf8986ed47f7cd1be63359c0d4f6b",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "78468d8f856c50d149863f1bd38f0f47226f965fba533019fdbc238c35c87578",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2026-08",
+      "rows": 44640,
+      "start": "2026-08-01 00:00:00+00:00",
+      "end": "2026-08-31 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2026-08.zip": {
+          "sha256": "acab442e02745177063031d402929703ae983715010064b40cf811c4beb843d4",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2026-08.zip",
+          "sha256": "acab442e02745177063031d402929703ae983715010064b40cf811c4beb843d4",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "7a8680254467ed3132f5f16557d4c5c12643b6187d98a5273654b3c37d9f2ace",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    },
+    {
+      "month": "2026-09",
+      "rows": 43200,
+      "start": "2026-09-01 00:00:00+00:00",
+      "end": "2026-09-30 23:59:00+00:00",
+      "missing_minutes": 0,
+      "internal_gap_events": 0,
+      "duplicate_rows_removed": 0,
+      "sources": {
+        "BTCUSDT-1m-2026-09.zip": {
+          "sha256": "7a021fb5981cfdb1a56457d68fa81360ab27350c981ddfe63112b2322df44b56",
+          "checksum": null
+        }
+      },
+      "details": [
+        {
+          "invalid_rows": 0,
+          "file": "BTCUSDT-1m-2026-09.zip",
+          "sha256": "7a021fb5981cfdb1a56457d68fa81360ab27350c981ddfe63112b2322df44b56",
+          "unit": "us",
+          "checksum": "ausente; proveniência externa não autenticada",
+          "unordered": false
+        }
+      ],
+      "output_sha256": "8b46af419d4c1568cf256d0330fe743926fd20400a418422787b43c72180946c",
+      "cache_hit": false,
+      "boundary_missing_minutes": 0
+    }
+  ],
+  "files": [
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2023-10.zip",
+      "sha256": "9e854972545806398d124571916348238ce39961072730c200cca3c2e0bd50a3",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2023-11.zip",
+      "sha256": "4b1462878f31fd736385b761f6bb0a3f525936a6ae9f5f52c3e3b95ee2df35b4",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2023-12.zip",
+      "sha256": "c8b684a66b5ddbb58bf116251359c2dd83a07ce46791f4caa16dd4301eb17636",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-01.zip",
+      "sha256": "40b78258091a468f8756843f207f5913eafc1d6e756c40a78711320d93fa5e75",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-02.zip",
+      "sha256": "431132e0db8b9fe6e5c93c8e9ba3ae37dbcfa0edcdd57618b1b78ac18d14be79",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-03.zip",
+      "sha256": "a9af86295eae839f1d072643c67eed7fcc47bb1d82c12ef312d041eec9511e7b",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-04.zip",
+      "sha256": "753040cbfaa72bf9b1fdc6253a3b521a9a174a664dfd0929a556be327b016bc6",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-05.zip",
+      "sha256": "0f709143f66a09acc430d24a5f27f9accd52689c23ce10f2c0b6ea26997bfa8a",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-06.zip",
+      "sha256": "90f4fc3f55918787848c71f4cd0f2f1a5851bbffaf6392e76e9ab555b7479d2b",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-07.zip",
+      "sha256": "9cfd749fd2027a0c6f261bed607b49dd1256369fb41b784934544a3676f8162e",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-08.zip",
+      "sha256": "6a1cac2a5482132dc5a030534aa028e2becc560877f2b93b7add90194f576c42",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-09.zip",
+      "sha256": "1e30f6091b05eeb7b0449735d749354b81ab429ab1449bae82a21e316db8eac3",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-10.zip",
+      "sha256": "13f7f9f9bed652fd152422246cfbcaefa6223692c5c37fb3ca4e72f45501e607",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-11.zip",
+      "sha256": "c30a63bd0e8a77f2d18a2a019272b907f29a84fd5378796cf9333b041edcb12b",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2024-12.zip",
+      "sha256": "58fef0b7c7abce7a0201efd04ed3732f236f607f3fcecf228fb8384cad1ae2c1",
+      "unit": "ms",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-01.zip",
+      "sha256": "8d028b2f91aad57d6b693d44449c93f9c4b7044f55f298c8a3ac40ab676dafac",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-02.zip",
+      "sha256": "26b3795072983a66bdbe8327e0d5e71069bdd5ca831d4da3850ba68ef7a991ef",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-03.zip",
+      "sha256": "e333601b6c721434f3cdd6670ffde2371bef7946572864c49ba6431a690ab1ca",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-04.zip",
+      "sha256": "4103d48887f9f5ec04144b190314ec31db9e3094674e5d53a3436b338854848f",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-05.zip",
+      "sha256": "7f95bf97e3ccfbb55cd002f124a54dc1726ced7cfd54e6fd200e59845ca95d5c",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-06.zip",
+      "sha256": "f95f6169e253d38fb321c87984c827878634250cdcc3ff84fc3507f036bcabbd",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-07.zip",
+      "sha256": "3377e023fe252418cfaf46c9e23b3f0d1e56fb2fd89b4191fc66262b947a0ee2",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-08.zip",
+      "sha256": "11da1c7db8949cbdcbb757531756eda55f2a3d663cfac671c5d1a8a87911318f",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-09.zip",
+      "sha256": "52bb4a4a52afbcc0af77e3eb92c114bf810982ca63bf02f8fe15062e59c5f44b",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-10.zip",
+      "sha256": "985d878cacbfdde85c9e0da2e8830ab913fe01bfdcde6e488563d8194df11f6b",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-11.zip",
+      "sha256": "c54159d1216ab07f040a96d6678748e8746ac4200cba373fb6b758f2cdd1e5e5",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2025-12.zip",
+      "sha256": "7b47647352b01356dcd678a1438efb8baac03ed798785ed2179d428aab0cca9b",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2026-01.zip",
+      "sha256": "d28b369da32a6ea84ba0af517b1847ab67b2fcc1e0e111c1b24d56ae07240cb9",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2026-02.zip",
+      "sha256": "cee2e913ed07e02834e2387c65ca430fe3576f620588bad8a02229238f385407",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2026-03.zip",
+      "sha256": "a2c1e689d39aa7877e218f436f15162e9a4436778a377d32e9d9b81b081381cd",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2026-04.zip",
+      "sha256": "318afd4f5acfbcfbb40fbe727a77eee8e9e7b54d8941589c78a32283d90b4a01",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2026-05.zip",
+      "sha256": "62983d93c35e26ec6c29116c629e443b7ddfe3d301aca83331ff58112199d8d0",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2026-06.zip",
+      "sha256": "c8e1d5e70b766dd2312fc9cd7085785bb25708e27e75c21a5a5aaba61a6d07f5",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2026-07.zip",
+      "sha256": "3ef15c84353da48e1c7c5fd99b9751cb036bf8986ed47f7cd1be63359c0d4f6b",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2026-08.zip",
+      "sha256": "acab442e02745177063031d402929703ae983715010064b40cf811c4beb843d4",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    },
+    {
+      "invalid_rows": 0,
+      "file": "BTCUSDT-1m-2026-09.zip",
+      "sha256": "7a021fb5981cfdb1a56457d68fa81360ab27350c981ddfe63112b2322df44b56",
+      "unit": "us",
+      "checksum": "ausente; proveniência externa não autenticada",
+      "unordered": false
+    }
+  ],
+  "errors": [],
+  "candles": 1578240,
+  "missing_minutes_within_months": 0,
+  "boundary_missing_minutes": 0,
+  "duplicate_rows_removed": 0,
+  "decisions": [
+    "Duplicatas idênticas removidas só no derivado; conflitos impedem treinamento.",
+    "Lacunas preservadas; indicadores reiniciam e targets que cruzam lacunas são descartados.",
+    "Sem checksum externo não é possível autenticar proveniência; SHA local detecta alterações posteriores."
+  ]
+}

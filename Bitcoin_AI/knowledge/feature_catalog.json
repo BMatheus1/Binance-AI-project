@@ -1,0 +1,735 @@
+[
+  {
+    "id": "return_1",
+    "name": "return_1",
+    "category": "PREÇO",
+    "description": "close/close.shift(1)-1",
+    "formula": "close/close.shift(1)-1",
+    "window_minutes": 2,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-PREÇO",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "log_return",
+    "name": "log_return",
+    "category": "PREÇO",
+    "description": "log(close/close.shift(1))",
+    "formula": "log(close/close.shift(1))",
+    "window_minutes": 2,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-PREÇO",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "range_rel",
+    "name": "range_rel",
+    "category": "VOLATILIDADE",
+    "description": "(high-low)/close",
+    "formula": "(high-low)/close",
+    "window_minutes": 1,
+    "dependencies": [
+      "high",
+      "low",
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-VOLATILIDADE",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "body_rel",
+    "name": "body_rel",
+    "category": "PRICE ACTION",
+    "description": "abs(close-open)/open",
+    "formula": "abs(close-open)/open",
+    "window_minutes": 1,
+    "dependencies": [
+      "open",
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-PRICE ACTION",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "body_fraction",
+    "name": "body_fraction",
+    "category": "PRICE ACTION",
+    "description": "(close-open)/(high-low); zero se range=0",
+    "formula": "(close-open)/(high-low); zero se range=0",
+    "window_minutes": 1,
+    "dependencies": [
+      "open",
+      "high",
+      "low",
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-PRICE ACTION",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "lower_wick",
+    "name": "lower_wick",
+    "category": "PRICE ACTION",
+    "description": "(min(open,close)-low)/(high-low); zero se range=0",
+    "formula": "(min(open,close)-low)/(high-low); zero se range=0",
+    "window_minutes": 1,
+    "dependencies": [
+      "open",
+      "high",
+      "low",
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-PRICE ACTION",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "upper_wick",
+    "name": "upper_wick",
+    "category": "PRICE ACTION",
+    "description": "(high-max(open,close))/(high-low); zero se range=0",
+    "formula": "(high-max(open,close))/(high-low); zero se range=0",
+    "window_minutes": 1,
+    "dependencies": [
+      "open",
+      "high",
+      "low",
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-PRICE ACTION",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "close_position",
+    "name": "close_position",
+    "category": "PRICE ACTION",
+    "description": "(close-low)/(high-low); 0.5 se range=0",
+    "formula": "(close-low)/(high-low); 0.5 se range=0",
+    "window_minutes": 1,
+    "dependencies": [
+      "high",
+      "low",
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-PRICE ACTION",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "direction_balance_5",
+    "name": "direction_balance_5",
+    "category": "PRICE ACTION",
+    "description": "mean(sign(close-open),5)",
+    "formula": "mean(sign(close-open),5)",
+    "window_minutes": 5,
+    "dependencies": [
+      "open",
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-PRICE ACTION",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "higher_high",
+    "name": "higher_high",
+    "category": "TENDÊNCIA",
+    "description": "1(high>high.shift(1))",
+    "formula": "1(high>high.shift(1))",
+    "window_minutes": 2,
+    "dependencies": [
+      "high"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "higher_low",
+    "name": "higher_low",
+    "category": "TENDÊNCIA",
+    "description": "1(low>low.shift(1))",
+    "formula": "1(low>low.shift(1))",
+    "window_minutes": 2,
+    "dependencies": [
+      "low"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "momentum_5",
+    "name": "momentum_5",
+    "category": "TENDÊNCIA",
+    "description": "close/close.shift(5)-1",
+    "formula": "close/close.shift(5)-1",
+    "window_minutes": 6,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "momentum_20",
+    "name": "momentum_20",
+    "category": "TENDÊNCIA",
+    "description": "close/close.shift(20)-1",
+    "formula": "close/close.shift(20)-1",
+    "window_minutes": 21,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "sma_distance_20",
+    "name": "sma_distance_20",
+    "category": "TENDÊNCIA",
+    "description": "close/mean(close,20)-1",
+    "formula": "close/mean(close,20)-1",
+    "window_minutes": 20,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "sma_slope_20",
+    "name": "sma_slope_20",
+    "category": "TENDÊNCIA",
+    "description": "mean(close,20)/mean(close,20).shift(5)-1",
+    "formula": "mean(close,20)/mean(close,20).shift(5)-1",
+    "window_minutes": 25,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "ema_distance_20",
+    "name": "ema_distance_20",
+    "category": "TENDÊNCIA",
+    "description": "close/EMA finita normalizada span20 sobre60-1",
+    "formula": "close/EMA finita normalizada span20 sobre60-1",
+    "window_minutes": 60,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "macd_rel",
+    "name": "macd_rel",
+    "category": "TENDÊNCIA",
+    "description": "(EMAfinita12-EMAfinita26)/close; ambas janela60",
+    "formula": "(EMAfinita12-EMAfinita26)/close; ambas janela60",
+    "window_minutes": 60,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "rsi_14",
+    "name": "rsi_14",
+    "category": "TENDÊNCIA",
+    "description": "RSI Cutler: mean(gain,14)/(mean(gain,14)+mean(loss,14)); neutro0.5",
+    "formula": "RSI Cutler: mean(gain,14)/(mean(gain,14)+mean(loss,14)); neutro0.5",
+    "window_minutes": 15,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "atr_rel_14",
+    "name": "atr_rel_14",
+    "category": "VOLATILIDADE",
+    "description": "mean(max(high-low,abs(high-prevclose),abs(low-prevclose)),14)/close",
+    "formula": "mean(max(high-low,abs(high-prevclose),abs(low-prevclose)),14)/close",
+    "window_minutes": 15,
+    "dependencies": [
+      "high",
+      "low",
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-VOLATILIDADE",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "realized_vol_20",
+    "name": "realized_vol_20",
+    "category": "VOLATILIDADE",
+    "description": "std(log_return,20,ddof1)",
+    "formula": "std(log_return,20,ddof1)",
+    "window_minutes": 21,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-VOLATILIDADE",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "vol_ratio",
+    "name": "vol_ratio",
+    "category": "VOLATILIDADE",
+    "description": "std(log_return,20)/std(log_return,60); 1 se ambas zero",
+    "formula": "std(log_return,20)/std(log_return,60); 1 se ambas zero",
+    "window_minutes": 61,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-VOLATILIDADE",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "bollinger_z",
+    "name": "bollinger_z",
+    "category": "VOLATILIDADE",
+    "description": "(close-mean(close,20))/std(close,20); zero se std=0",
+    "formula": "(close-mean(close,20))/std(close,20); zero se std=0",
+    "window_minutes": 20,
+    "dependencies": [
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-VOLATILIDADE",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "volume_rel_20",
+    "name": "volume_rel_20",
+    "category": "VOLUME",
+    "description": "volume/mean(volume,20); 1 se média=0",
+    "formula": "volume/mean(volume,20); 1 se média=0",
+    "window_minutes": 20,
+    "dependencies": [
+      "volume"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-VOLUME",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "volume_change",
+    "name": "volume_change",
+    "category": "VOLUME",
+    "description": "log1p(volume)-log1p(volume.shift(1))",
+    "formula": "log1p(volume)-log1p(volume.shift(1))",
+    "window_minutes": 2,
+    "dependencies": [
+      "volume"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-VOLUME",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "trade_intensity",
+    "name": "trade_intensity",
+    "category": "VOLUME",
+    "description": "trades/mean(trades,20); 1 se média=0",
+    "formula": "trades/mean(trades,20); 1 se média=0",
+    "window_minutes": 20,
+    "dependencies": [
+      "trades"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-VOLUME",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "taker_buy_ratio",
+    "name": "taker_buy_ratio",
+    "category": "VOLUME",
+    "description": "taker_base/volume; 0.5 se volume=0",
+    "formula": "taker_base/volume; 0.5 se volume=0",
+    "window_minutes": 1,
+    "dependencies": [
+      "taker_base",
+      "volume"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-VOLUME",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "signed_volume",
+    "name": "signed_volume",
+    "category": "VOLUME",
+    "description": "sign(close-open)*volume/mean(volume,20)",
+    "formula": "sign(close-open)*volume/mean(volume,20)",
+    "window_minutes": 20,
+    "dependencies": [
+      "open",
+      "close",
+      "volume"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-VOLUME",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "breakout_20",
+    "name": "breakout_20",
+    "category": "PRICE ACTION",
+    "description": "close/max(high.shift(1),20)-1",
+    "formula": "close/max(high.shift(1),20)-1",
+    "window_minutes": 21,
+    "dependencies": [
+      "high",
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-PRICE ACTION",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "support_distance_20",
+    "name": "support_distance_20",
+    "category": "PRICE ACTION",
+    "description": "close/min(low.shift(1),20)-1",
+    "formula": "close/min(low.shift(1),20)-1",
+    "window_minutes": 21,
+    "dependencies": [
+      "low",
+      "close"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-PRICE ACTION",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "hour_sin",
+    "name": "hour_sin",
+    "category": "TEMPO",
+    "description": "sin(2*pi*minute_of_day_at_decision/1440)",
+    "formula": "sin(2*pi*minute_of_day_at_decision/1440)",
+    "window_minutes": 1,
+    "dependencies": [
+      "open_time"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TEMPO",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "hour_cos",
+    "name": "hour_cos",
+    "category": "TEMPO",
+    "description": "cos(2*pi*minute_of_day_at_decision/1440)",
+    "formula": "cos(2*pi*minute_of_day_at_decision/1440)",
+    "window_minutes": 1,
+    "dependencies": [
+      "open_time"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TEMPO",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "weekday_sin",
+    "name": "weekday_sin",
+    "category": "TEMPO",
+    "description": "sin(2*pi*day_of_week_at_decision/7)",
+    "formula": "sin(2*pi*day_of_week_at_decision/7)",
+    "window_minutes": 1,
+    "dependencies": [
+      "open_time"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TEMPO",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "weekday_cos",
+    "name": "weekday_cos",
+    "category": "TEMPO",
+    "description": "cos(2*pi*day_of_week_at_decision/7)",
+    "formula": "cos(2*pi*day_of_week_at_decision/7)",
+    "window_minutes": 1,
+    "dependencies": [
+      "open_time"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TEMPO",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "closed_5m_return",
+    "name": "closed_5m_return",
+    "category": "TENDÊNCIA",
+    "description": "close/open-1 do último candle UTC completo de 5m",
+    "formula": "close/open-1 do último candle UTC completo de 5m",
+    "window_minutes": 10,
+    "dependencies": [
+      "open",
+      "close",
+      "open_time"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "closed_15m_return",
+    "name": "closed_15m_return",
+    "category": "TENDÊNCIA",
+    "description": "close/open-1 do último candle UTC completo de 15m",
+    "formula": "close/open-1 do último candle UTC completo de 15m",
+    "window_minutes": 30,
+    "dependencies": [
+      "open",
+      "close",
+      "open_time"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "closed_30m_return",
+    "name": "closed_30m_return",
+    "category": "TENDÊNCIA",
+    "description": "close/open-1 do último candle UTC completo de 30m",
+    "formula": "close/open-1 do último candle UTC completo de 30m",
+    "window_minutes": 60,
+    "dependencies": [
+      "open",
+      "close",
+      "open_time"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  },
+  {
+    "id": "closed_60m_return",
+    "name": "closed_60m_return",
+    "category": "TENDÊNCIA",
+    "description": "close/open-1 do último candle UTC completo de 60m",
+    "formula": "close/open-1 do último candle UTC completo de 60m",
+    "window_minutes": 120,
+    "dependencies": [
+      "open",
+      "close",
+      "open_time"
+    ],
+    "unit": "adimensional",
+    "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+    "available_at": "open_time + 1min; somente candle encerrado",
+    "hypothesis": "H-TENDÊNCIA",
+    "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+    "version": "1.0",
+    "validation_status": "implementada; evidência preditiva em relatórios E/G",
+    "relevance": null
+  }
+]

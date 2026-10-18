@@ -1,0 +1,21 @@
+{
+  "raw": "data/raw",
+  "books": "data/knowledge/books",
+  "seed": 42,
+  "train_end": "2026-01-01",
+  "calibration_end": "2026-04-01",
+  "validation_end": "2026-07-01",
+  "test_end": "2026-10-01",
+  "train_rows_per_month": 6000,
+  "threads": 4,
+  "embargo_minutes": 5,
+  "horizons": [1, 5],
+  "tie_tolerance": 0.0,
+  "entry_convention": "next_open",
+  "thresholds": [0.55, 0.58, 0.60, 0.65],
+  "payouts": [0.7, 0.8, 0.9],
+  "spot_costs_bps_per_side": [5, 10, 20],
+  "minimum_validation_trades": 200,
+  "max_daily_loss_units": 10,
+  "max_drawdown_units": 30
+}

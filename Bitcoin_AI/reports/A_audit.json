@@ -1,0 +1,529 @@
+{
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 81,
+      "category": "revisão_manual"
+    },
+    {
+      "path": "configs\\research.json",
+      "bytes": 560,
+      "category": "configuração"
+    },
+    {
+      "path": "data\\knowledge\\books\\adam grimes - Entender estrutura e comportamento do mercado.pdf",
+      "bytes": 10223913,
+      "category": "conhecimento_pdf",
+      "sha256": "b5e0226ea298a0708cfb0a5256f0ae8499774aaa0b1d8a7423f4315431406628",
+      "pages": 480,
+      "encrypted": false,
+      "metadata": {
+        "/Author": "Adam Grimes",
+        "/CreationDate": "D:20120621151716-04'00'",
+        "/Creator": "calibre (0.9.8) [http://calibre-ebook.com]",
+        "/EBX_PUBLISHER": "/Wiley Trading",
+        "/Keywords": "Business & Economics, Finance",
+        "/ModDate": "D:20121130211533-06'00'",
+        "/Producer": "Acrobat Distiller 7.0.5 (Windows)",
+        "/Title": "The Art & Science of Technical Analysis: Market Structure, Price Action & Trading Strategies"
+      },
+      "sample_text_chars": 6280
+    },
+    {
+      "path": "data\\knowledge\\books\\Al brooks - interpretar price action e movimentos candle a candle.pdf",
+      "bytes": 68891087,
+      "category": "conhecimento_pdf",
+      "sha256": "cb89710ad0a70058c2b167c2f9c23cb611380c06dda7a6b608ce70629e1c03d8",
+      "pages": 212,
+      "encrypted": false,
+      "metadata": {},
+      "sample_text_chars": 21940
+    },
+    {
+      "path": "data\\knowledge\\books\\David Aronson - testar cientificamente a eficácia das estratégias.pdf",
+      "bytes": 11501803,
+      "category": "conhecimento_pdf",
+      "sha256": "75557b4339b73944427eef67c850d535be0e6fec7f1a8ecbb8678245aadbe797",
+      "pages": 300,
+      "encrypted": false,
+      "metadata": {
+        "/CreationDate": "D:20220529143151",
+        "/Creator": "PDFium"
+      },
+      "sample_text_chars": 13294
+    },
+    {
+      "path": "data\\knowledge\\books\\Steve nison - reconhecer padrões de candles japoneses.pdf",
+      "bytes": 28938925,
+      "category": "conhecimento_pdf",
+      "sha256": "83ce35f9fe900db995034b68e93e20b4506e25a6f188c1c697ccc57bfaa4c155",
+      "pages": 316,
+      "encrypted": false,
+      "metadata": {
+        "/CreationDate": "D:20010620151749Z",
+        "/Producer": "Acrobat Distiller 3.0 for Windows",
+        "/ModDate": "D:20050122200435+11'00'"
+      },
+      "sample_text_chars": 0
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2023-10.zip",
+      "bytes": 2099200,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "9e854972545806398d124571916348238ce39961072730c200cca3c2e0bd50a3",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2023-10.csv"
+      ],
+      "nominal_month": "2023-10"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2023-11.zip",
+      "bytes": 2056098,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "4b1462878f31fd736385b761f6bb0a3f525936a6ae9f5f52c3e3b95ee2df35b4",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2023-11.csv"
+      ],
+      "nominal_month": "2023-11"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2023-12.zip",
+      "bytes": 2144300,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "c8b684a66b5ddbb58bf116251359c2dd83a07ce46791f4caa16dd4301eb17636",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2023-12.csv"
+      ],
+      "nominal_month": "2023-12"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-01.zip",
+      "bytes": 2169570,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "40b78258091a468f8756843f207f5913eafc1d6e756c40a78711320d93fa5e75",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-01.csv"
+      ],
+      "nominal_month": "2024-01"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-02.zip",
+      "bytes": 2013843,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "431132e0db8b9fe6e5c93c8e9ba3ae37dbcfa0edcdd57618b1b78ac18d14be79",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-02.csv"
+      ],
+      "nominal_month": "2024-02"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-03.zip",
+      "bytes": 2221094,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "a9af86295eae839f1d072643c67eed7fcc47bb1d82c12ef312d041eec9511e7b",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-03.csv"
+      ],
+      "nominal_month": "2024-03"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-04.zip",
+      "bytes": 2120723,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "753040cbfaa72bf9b1fdc6253a3b521a9a174a664dfd0929a556be327b016bc6",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-04.csv"
+      ],
+      "nominal_month": "2024-04"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-05.zip",
+      "bytes": 2144250,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "0f709143f66a09acc430d24a5f27f9accd52689c23ce10f2c0b6ea26997bfa8a",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-05.csv"
+      ],
+      "nominal_month": "2024-05"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-06.zip",
+      "bytes": 2018857,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "90f4fc3f55918787848c71f4cd0f2f1a5851bbffaf6392e76e9ab555b7479d2b",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-06.csv"
+      ],
+      "nominal_month": "2024-06"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-07.zip",
+      "bytes": 2141506,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "9cfd749fd2027a0c6f261bed607b49dd1256369fb41b784934544a3676f8162e",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-07.csv"
+      ],
+      "nominal_month": "2024-07"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-08.zip",
+      "bytes": 2164472,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "6a1cac2a5482132dc5a030534aa028e2becc560877f2b93b7add90194f576c42",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-08.csv"
+      ],
+      "nominal_month": "2024-08"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-09.zip",
+      "bytes": 2049758,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "1e30f6091b05eeb7b0449735d749354b81ab429ab1449bae82a21e316db8eac3",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-09.csv"
+      ],
+      "nominal_month": "2024-09"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-10.zip",
+      "bytes": 2121607,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "13f7f9f9bed652fd152422246cfbcaefa6223692c5c37fb3ca4e72f45501e607",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-10.csv"
+      ],
+      "nominal_month": "2024-10"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-11.zip",
+      "bytes": 2146495,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "c30a63bd0e8a77f2d18a2a019272b907f29a84fd5378796cf9333b041edcb12b",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-11.csv"
+      ],
+      "nominal_month": "2024-11"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2024-12.zip",
+      "bytes": 2218893,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "58fef0b7c7abce7a0201efd04ed3732f236f607f3fcecf228fb8384cad1ae2c1",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2024-12.csv"
+      ],
+      "nominal_month": "2024-12"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-01.zip",
+      "bytes": 2222830,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "8d028b2f91aad57d6b693d44449c93f9c4b7044f55f298c8a3ac40ab676dafac",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-01.csv"
+      ],
+      "nominal_month": "2025-01"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-02.zip",
+      "bytes": 1993970,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "26b3795072983a66bdbe8327e0d5e71069bdd5ca831d4da3850ba68ef7a991ef",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-02.csv"
+      ],
+      "nominal_month": "2025-02"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-03.zip",
+      "bytes": 2215591,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "e333601b6c721434f3cdd6670ffde2371bef7946572864c49ba6431a690ab1ca",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-03.csv"
+      ],
+      "nominal_month": "2025-03"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-04.zip",
+      "bytes": 2120466,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "4103d48887f9f5ec04144b190314ec31db9e3094674e5d53a3436b338854848f",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-04.csv"
+      ],
+      "nominal_month": "2025-04"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-05.zip",
+      "bytes": 2184868,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "7f95bf97e3ccfbb55cd002f124a54dc1726ced7cfd54e6fd200e59845ca95d5c",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-05.csv"
+      ],
+      "nominal_month": "2025-05"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-06.zip",
+      "bytes": 2074513,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "f95f6169e253d38fb321c87984c827878634250cdcc3ff84fc3507f036bcabbd",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-06.csv"
+      ],
+      "nominal_month": "2025-06"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-07.zip",
+      "bytes": 2136490,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "3377e023fe252418cfaf46c9e23b3f0d1e56fb2fd89b4191fc66262b947a0ee2",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-07.csv"
+      ],
+      "nominal_month": "2025-07"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-08.zip",
+      "bytes": 2150048,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "11da1c7db8949cbdcbb757531756eda55f2a3d663cfac671c5d1a8a87911318f",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-08.csv"
+      ],
+      "nominal_month": "2025-08"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-09.zip",
+      "bytes": 2045189,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "52bb4a4a52afbcc0af77e3eb92c114bf810982ca63bf02f8fe15062e59c5f44b",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-09.csv"
+      ],
+      "nominal_month": "2025-09"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-10.zip",
+      "bytes": 2216628,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "985d878cacbfdde85c9e0da2e8830ab913fe01bfdcde6e488563d8194df11f6b",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-10.csv"
+      ],
+      "nominal_month": "2025-10"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-11.zip",
+      "bytes": 2165376,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "c54159d1216ab07f040a96d6678748e8746ac4200cba373fb6b758f2cdd1e5e5",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-11.csv"
+      ],
+      "nominal_month": "2025-11"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2025-12.zip",
+      "bytes": 2154846,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "7b47647352b01356dcd678a1438efb8baac03ed798785ed2179d428aab0cca9b",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2025-12.csv"
+      ],
+      "nominal_month": "2025-12"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2026-01.zip",
+      "bytes": 2127988,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "d28b369da32a6ea84ba0af517b1847ab67b2fcc1e0e111c1b24d56ae07240cb9",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2026-01.csv"
+      ],
+      "nominal_month": "2026-01"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2026-02.zip",
+      "bytes": 2021779,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "cee2e913ed07e02834e2387c65ca430fe3576f620588bad8a02229238f385407",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2026-02.csv"
+      ],
+      "nominal_month": "2026-02"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2026-03.zip",
+      "bytes": 2213444,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "a2c1e689d39aa7877e218f436f15162e9a4436778a377d32e9d9b81b081381cd",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2026-03.csv"
+      ],
+      "nominal_month": "2026-03"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2026-04.zip",
+      "bytes": 2088776,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "318afd4f5acfbcfbb40fbe727a77eee8e9e7b54d8941589c78a32283d90b4a01",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2026-04.csv"
+      ],
+      "nominal_month": "2026-04"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2026-05.zip",
+      "bytes": 2120776,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "62983d93c35e26ec6c29116c629e443b7ddfe3d301aca83331ff58112199d8d0",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2026-05.csv"
+      ],
+      "nominal_month": "2026-05"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2026-06.zip",
+      "bytes": 2092027,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "c8e1d5e70b766dd2312fc9cd7085785bb25708e27e75c21a5a5aaba61a6d07f5",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2026-06.csv"
+      ],
+      "nominal_month": "2026-06"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2026-07.zip",
+      "bytes": 2112275,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "3ef15c84353da48e1c7c5fd99b9751cb036bf8986ed47f7cd1be63359c0d4f6b",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2026-07.csv"
+      ],
+      "nominal_month": "2026-07"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2026-08.zip",
+      "bytes": 2084946,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "acab442e02745177063031d402929703ae983715010064b40cf811c4beb843d4",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2026-08.csv"
+      ],
+      "nominal_month": "2026-08"
+    },
+    {
+      "path": "data\\raw\\BTCUSDT-1m-2026-09.zip",
+      "bytes": 2054117,
+      "category": "candidato_binance_spot_klines_1m_verificar_schema",
+      "sha256": "7a021fb5981cfdb1a56457d68fa81360ab27350c981ddfe63112b2322df44b56",
+      "crc_ok": true,
+      "members": [
+        "BTCUSDT-1m-2026-09.csv"
+      ],
+      "nominal_month": "2026-09"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 2085,
+      "category": "documentação"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 628,
+      "category": "revisão_manual"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1680,
+      "category": "documentação"
+    },
+    {
+      "path": "src\\btc_research\\__init__.py",
+      "bytes": 98,
+      "category": "código"
+    },
+    {
+      "path": "src\\btc_research\\audit.py",
+      "bytes": 3389,
+      "category": "código"
+    },
+    {
+      "path": "src\\btc_research\\common.py",
+      "bytes": 1746,
+      "category": "código"
+    },
+    {
+      "path": "src\\btc_research\\ingestion.py",
+      "bytes": 10442,
+      "category": "código"
+    },
+    {
+      "path": "src\\btc_research\\knowledge.py",
+      "bytes": 2616,
+      "category": "código"
+    }
+  ],
+  "count": 50,
+  "bytes": 196006662,
+  "dependencies": {
+    "numpy": "2.4.3",
+    "pandas": "3.0.2",
+    "pyarrow": "23.0.1",
+    "scikit-learn": "1.8.0",
+    "xgboost": "3.2.0",
+    "catboost": "1.2.10",
+    "pypdf": "6.10.2",
+    "pytest": "9.0.3",
+    "joblib": "1.5.3"
+  },
+  "original_layout": {
+    "raw": "data/raw",
+    "books": "data/knowledge/books"
+  },
+  "initial_received_files": 42,
+  "initial_received_bytes": 195985098,
+  "notes": [
+    "Livros preservados em data/knowledge/books; conhecimentos derivados em knowledge/.",
+    "Nomes de arquivos não comprovam origem; esquema, datas, CRC e checksums são verificados na ingestão."
+  ]
+}

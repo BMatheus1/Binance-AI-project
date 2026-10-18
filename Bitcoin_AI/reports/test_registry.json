@@ -1,0 +1,9 @@
+[
+  {
+    "run": "20261017T174250393322Z-research",
+    "start": "2026-07-01",
+    "end": "2026-10-01",
+    "status": "evaluated",
+    "development_sha256": "29f940bd9df7bf57f005ffb170a5576c2ad1911f5ff222e30ce28d8949cbb776"
+  }
+]

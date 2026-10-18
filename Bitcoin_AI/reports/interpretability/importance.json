@@ -1,0 +1,342 @@
+{
+  "1": {
+    "method": "2 deslocamentos circulares por feature/grupo, validação; exploratório, sem causalidade",
+    "n": 13103,
+    "importance": {
+      "return_1": {
+        "delta_log_loss_mean": -2.8135640586512967e-05,
+        "delta_log_loss_std": 1.637111132585245e-05
+      },
+      "range_rel": {
+        "delta_log_loss_mean": 0.0015562859710250843,
+        "delta_log_loss_std": 0.00032094862564846505
+      },
+      "body_rel": {
+        "delta_log_loss_mean": -0.00012577428052562567,
+        "delta_log_loss_std": 3.997537580646693e-05
+      },
+      "body_fraction": {
+        "delta_log_loss_mean": -0.0002060168120998629,
+        "delta_log_loss_std": 3.4631773692228585e-05
+      },
+      "lower_wick": {
+        "delta_log_loss_mean": -0.0002080669908101629,
+        "delta_log_loss_std": 3.657474244583847e-05
+      },
+      "upper_wick": {
+        "delta_log_loss_mean": 1.5550359584615148e-05,
+        "delta_log_loss_std": 9.258706813619622e-06
+      },
+      "close_position": {
+        "delta_log_loss_mean": -0.0005353938324064167,
+        "delta_log_loss_std": 1.6677798339026495e-06
+      },
+      "direction_balance_5": {
+        "delta_log_loss_mean": -2.6132121239696993e-06,
+        "delta_log_loss_std": 2.3152393891889833e-05
+      },
+      "higher_high": {
+        "delta_log_loss_mean": -6.553103344297817e-06,
+        "delta_log_loss_std": 5.276009083954314e-06
+      },
+      "higher_low": {
+        "delta_log_loss_mean": -4.984918318629017e-06,
+        "delta_log_loss_std": 1.7543795503560666e-06
+      },
+      "momentum_5": {
+        "delta_log_loss_mean": -5.317851060571144e-05,
+        "delta_log_loss_std": 1.6896134527377704e-05
+      },
+      "momentum_20": {
+        "delta_log_loss_mean": 1.8335937095825816e-05,
+        "delta_log_loss_std": 3.058320000065562e-05
+      },
+      "sma_distance_20": {
+        "delta_log_loss_mean": -0.00015051536596133452,
+        "delta_log_loss_std": 4.983991864215831e-05
+      },
+      "sma_slope_20": {
+        "delta_log_loss_mean": -1.0707159976530711e-05,
+        "delta_log_loss_std": 4.400599698906049e-05
+      },
+      "macd_rel": {
+        "delta_log_loss_mean": -5.1945575897272e-05,
+        "delta_log_loss_std": 2.535814882465015e-05
+      },
+      "rsi_14": {
+        "delta_log_loss_mean": 7.750079915536112e-05,
+        "delta_log_loss_std": 3.1224629718162866e-05
+      },
+      "atr_rel_14": {
+        "delta_log_loss_mean": 0.01654737235415671,
+        "delta_log_loss_std": 0.0008861037004500583
+      },
+      "realized_vol_20": {
+        "delta_log_loss_mean": -0.0005456363253581453,
+        "delta_log_loss_std": 0.0001857433410623055
+      },
+      "vol_ratio": {
+        "delta_log_loss_mean": 0.0005565049538755473,
+        "delta_log_loss_std": 1.844001885792368e-05
+      },
+      "bollinger_z": {
+        "delta_log_loss_mean": 0.0002309542361858541,
+        "delta_log_loss_std": 6.275233207292397e-05
+      },
+      "volume_rel_20": {
+        "delta_log_loss_mean": 8.837442612213975e-05,
+        "delta_log_loss_std": 1.4766150778833254e-05
+      },
+      "volume_change": {
+        "delta_log_loss_mean": -2.7049709508286668e-05,
+        "delta_log_loss_std": 7.33057688362404e-06
+      },
+      "trade_intensity": {
+        "delta_log_loss_mean": -3.18246137376299e-05,
+        "delta_log_loss_std": 1.2328330927791065e-05
+      },
+      "taker_buy_ratio": {
+        "delta_log_loss_mean": -0.00018924302002271132,
+        "delta_log_loss_std": 1.824462354454992e-05
+      },
+      "signed_volume": {
+        "delta_log_loss_mean": 0.0003445437169119492,
+        "delta_log_loss_std": 3.2462352494988522e-06
+      },
+      "breakout_20": {
+        "delta_log_loss_mean": -8.169848297379101e-05,
+        "delta_log_loss_std": 6.586736338465293e-06
+      },
+      "support_distance_20": {
+        "delta_log_loss_mean": -8.780054103274537e-05,
+        "delta_log_loss_std": 2.268446071551633e-05
+      },
+      "hour_sin": {
+        "delta_log_loss_mean": 4.5042152476137964e-05,
+        "delta_log_loss_std": 1.2476076589607032e-06
+      },
+      "hour_cos": {
+        "delta_log_loss_mean": -3.175837186375485e-05,
+        "delta_log_loss_std": 6.983064228305302e-06
+      },
+      "weekday_sin": {
+        "delta_log_loss_mean": -6.864074486256921e-05,
+        "delta_log_loss_std": 0.0001793325043319971
+      },
+      "weekday_cos": {
+        "delta_log_loss_mean": 5.537118114185002e-06,
+        "delta_log_loss_std": 9.050031949231485e-06
+      },
+      "closed_5m_return": {
+        "delta_log_loss_mean": -0.00017037586799473203,
+        "delta_log_loss_std": 1.324129725810419e-05
+      },
+      "closed_15m_return": {
+        "delta_log_loss_mean": 4.0433120319038895e-05,
+        "delta_log_loss_std": 4.302024548208383e-06
+      },
+      "closed_30m_return": {
+        "delta_log_loss_mean": 7.506959549985481e-05,
+        "delta_log_loss_std": 2.634730102435423e-05
+      },
+      "closed_60m_return": {
+        "delta_log_loss_mean": -4.9305293746193524e-05,
+        "delta_log_loss_std": 6.6993667299786175e-06
+      },
+      "group:PREÇO": {
+        "delta_log_loss_mean": -4.42636960965026e-05,
+        "delta_log_loss_std": 1.0124760526697418e-05
+      },
+      "group:PRICE ACTION": {
+        "delta_log_loss_mean": -0.000548738991725195,
+        "delta_log_loss_std": 0.00040296208797790944
+      },
+      "group:TEMPO": {
+        "delta_log_loss_mean": -0.00013130027439323122,
+        "delta_log_loss_std": 0.00018946348457338225
+      },
+      "group:TENDÊNCIA": {
+        "delta_log_loss_mean": -5.9970314124246915e-05,
+        "delta_log_loss_std": 7.218527327229607e-05
+      },
+      "group:VOLATILIDADE": {
+        "delta_log_loss_mean": 0.040741180999066484,
+        "delta_log_loss_std": 0.0002826533404604592
+      },
+      "group:VOLUME": {
+        "delta_log_loss_mean": 0.0003569583178674174,
+        "delta_log_loss_std": 6.09356952454565e-05
+      }
+    }
+  },
+  "5": {
+    "method": "2 deslocamentos circulares por feature/grupo, validação; exploratório, sem causalidade",
+    "n": 13103,
+    "importance": {
+      "return_1": {
+        "delta_log_loss_mean": -3.554588293053218e-05,
+        "delta_log_loss_std": 2.2091269301971472e-05
+      },
+      "range_rel": {
+        "delta_log_loss_mean": -0.00018402120939009503,
+        "delta_log_loss_std": 3.948135519515894e-06
+      },
+      "body_rel": {
+        "delta_log_loss_mean": -0.00014799755141087223,
+        "delta_log_loss_std": 3.7020276700272525e-06
+      },
+      "body_fraction": {
+        "delta_log_loss_mean": -0.00013807931744586055,
+        "delta_log_loss_std": 3.1733169807979245e-06
+      },
+      "lower_wick": {
+        "delta_log_loss_mean": -9.571747402631336e-05,
+        "delta_log_loss_std": 1.2023557839302423e-05
+      },
+      "upper_wick": {
+        "delta_log_loss_mean": -8.47072696977813e-05,
+        "delta_log_loss_std": 2.035433826719224e-05
+      },
+      "close_position": {
+        "delta_log_loss_mean": -0.00013610630208260588,
+        "delta_log_loss_std": 5.38883184134642e-05
+      },
+      "direction_balance_5": {
+        "delta_log_loss_mean": 1.8240370448674437e-05,
+        "delta_log_loss_std": 1.722758608047048e-06
+      },
+      "higher_high": {
+        "delta_log_loss_mean": 1.9289523429999456e-05,
+        "delta_log_loss_std": 1.1143508682476266e-07
+      },
+      "higher_low": {
+        "delta_log_loss_mean": 4.3904911117276235e-06,
+        "delta_log_loss_std": 3.221173177692105e-06
+      },
+      "momentum_5": {
+        "delta_log_loss_mean": 3.416621730922831e-06,
+        "delta_log_loss_std": 1.3822212148018043e-05
+      },
+      "momentum_20": {
+        "delta_log_loss_mean": -1.743973424739309e-05,
+        "delta_log_loss_std": 2.5170985143652125e-05
+      },
+      "sma_distance_20": {
+        "delta_log_loss_mean": 4.0666755041052216e-05,
+        "delta_log_loss_std": 1.9292143694837893e-05
+      },
+      "sma_slope_20": {
+        "delta_log_loss_mean": -4.269618205593462e-05,
+        "delta_log_loss_std": 3.6818783912262454e-06
+      },
+      "macd_rel": {
+        "delta_log_loss_mean": -2.1515783631131935e-05,
+        "delta_log_loss_std": 1.8961270453032864e-05
+      },
+      "rsi_14": {
+        "delta_log_loss_mean": 4.291375308168588e-05,
+        "delta_log_loss_std": 2.4449465662657044e-05
+      },
+      "atr_rel_14": {
+        "delta_log_loss_mean": -0.00021599080141376792,
+        "delta_log_loss_std": 4.201452068008926e-05
+      },
+      "realized_vol_20": {
+        "delta_log_loss_mean": -0.00015014429088389125,
+        "delta_log_loss_std": 1.2266680417427622e-05
+      },
+      "vol_ratio": {
+        "delta_log_loss_mean": 0.00013469616448952282,
+        "delta_log_loss_std": 1.079296372857863e-05
+      },
+      "bollinger_z": {
+        "delta_log_loss_mean": 0.00015906735670329075,
+        "delta_log_loss_std": 4.438281514701492e-05
+      },
+      "volume_rel_20": {
+        "delta_log_loss_mean": -2.10120322723939e-05,
+        "delta_log_loss_std": 1.8115989336042748e-05
+      },
+      "volume_change": {
+        "delta_log_loss_mean": -2.8853790498772902e-05,
+        "delta_log_loss_std": 2.473336887265365e-05
+      },
+      "trade_intensity": {
+        "delta_log_loss_mean": -4.38569953136736e-05,
+        "delta_log_loss_std": 1.6454901197893168e-05
+      },
+      "taker_buy_ratio": {
+        "delta_log_loss_mean": -0.0001300819565690503,
+        "delta_log_loss_std": 3.831097066286926e-05
+      },
+      "signed_volume": {
+        "delta_log_loss_mean": 0.0002801984814402858,
+        "delta_log_loss_std": 3.17964899985701e-05
+      },
+      "breakout_20": {
+        "delta_log_loss_mean": -1.2950692088009585e-05,
+        "delta_log_loss_std": 1.3512823804184837e-05
+      },
+      "support_distance_20": {
+        "delta_log_loss_mean": -3.300248116844262e-06,
+        "delta_log_loss_std": 2.2318207389349087e-05
+      },
+      "hour_sin": {
+        "delta_log_loss_mean": 1.3911569560876025e-05,
+        "delta_log_loss_std": 8.290313880277012e-06
+      },
+      "hour_cos": {
+        "delta_log_loss_mean": 5.1188503709442834e-05,
+        "delta_log_loss_std": 2.9851533239977357e-05
+      },
+      "weekday_sin": {
+        "delta_log_loss_mean": -9.112494789798031e-06,
+        "delta_log_loss_std": 1.4774799308170383e-05
+      },
+      "weekday_cos": {
+        "delta_log_loss_mean": 3.424467005130882e-05,
+        "delta_log_loss_std": 1.5674078575278472e-05
+      },
+      "closed_5m_return": {
+        "delta_log_loss_mean": 5.7116579857463545e-05,
+        "delta_log_loss_std": 2.679909243480383e-05
+      },
+      "closed_15m_return": {
+        "delta_log_loss_mean": 0.00022285772059882358,
+        "delta_log_loss_std": 0.00011467136540355138
+      },
+      "closed_30m_return": {
+        "delta_log_loss_mean": 0.00016598854405469599,
+        "delta_log_loss_std": 7.070097833061784e-05
+      },
+      "closed_60m_return": {
+        "delta_log_loss_mean": -2.5919387264927707e-05,
+        "delta_log_loss_std": 3.3150583834906655e-05
+      },
+      "group:PREÇO": {
+        "delta_log_loss_mean": 6.933989375679239e-06,
+        "delta_log_loss_std": 4.27338371122854e-06
+      },
+      "group:PRICE ACTION": {
+        "delta_log_loss_mean": -0.00027403071291143277,
+        "delta_log_loss_std": 1.0676571867151985e-05
+      },
+      "group:TEMPO": {
+        "delta_log_loss_mean": 3.893800055010388e-05,
+        "delta_log_loss_std": 4.7166064187642576e-07
+      },
+      "group:TENDÊNCIA": {
+        "delta_log_loss_mean": 0.0012835665331766832,
+        "delta_log_loss_std": 0.00014230223111871831
+      },
+      "group:VOLATILIDADE": {
+        "delta_log_loss_mean": 0.001220314239198883,
+        "delta_log_loss_std": 0.00014452999283109946
+      },
+      "group:VOLUME": {
+        "delta_log_loss_mean": 0.00011040223531738613,
+        "delta_log_loss_std": 8.681688703721102e-05
+      }
+    }
+  }
+}

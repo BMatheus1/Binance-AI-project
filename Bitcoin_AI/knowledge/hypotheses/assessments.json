@@ -1,0 +1,86 @@
+[
+  {
+    "id": "H-1-logistic_price",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": 0.0,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-1-logistic_price_action",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.01665944796112251,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-1-logistic_price_trend",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.0007387681769299714,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-1-logistic_price_volatility",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.020489093879442977,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-1-logistic_price_volume",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.0015565240498803812,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-1-logistic_price_trend_volume",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.002042585216123771,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-1-logistic_all_selected",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.02056688518108618,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-5-logistic_price",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": 0.0,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-5-logistic_price_action",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.00021736510778291862,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-5-logistic_price_trend",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.0011502784434680446,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-5-logistic_price_volatility",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.0007167131346079714,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-5-logistic_price_volume",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.0003609179446202315,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-5-logistic_price_trend_volume",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.0010653916044656153,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  },
+  {
+    "id": "H-5-logistic_all_selected",
+    "status": "sem evidência suficiente",
+    "validation_delta_log_loss_vs_price": -0.0008516246196580424,
+    "interpretation": "comparação exploratória; múltiplas hipóteses e dependência temporal impedem validação conclusiva"
+  }
+]

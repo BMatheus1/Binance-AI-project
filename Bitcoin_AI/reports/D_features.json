@@ -1,0 +1,1315 @@
+{
+  "version": "1.0",
+  "feature_count": 37,
+  "partitions": [
+    {
+      "month": "2023-10",
+      "rows": 44640,
+      "warmup_or_missing_rows": 60,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2023-10": "17af93ea2a02787646a836685fe40c5442b5e2b48bed35d236f57017d17f1dde",
+          "2023-11": "812c3a7739cdb120999c2d0d154768b071e17470f1e15ad9794690a80feb71e9"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "5f0ec35e14d7706a848f2587346d691d6c1568bdeec0441316c734191a366bef",
+      "targets_sha256": "94aa8235df5994c09b3994b799e2cbda9abd9d567f50a8544ba36e231655e948"
+    },
+    {
+      "month": "2023-11",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2023-10": "17af93ea2a02787646a836685fe40c5442b5e2b48bed35d236f57017d17f1dde",
+          "2023-11": "812c3a7739cdb120999c2d0d154768b071e17470f1e15ad9794690a80feb71e9",
+          "2023-12": "869c9614f60560136ee4cbbfd517a6c00326ff0c9aacb080702c09e8e4cd19f4"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "a625a86bca80d2f0255d4ccae081e25e1b3f26df84903e5b25f61687c74e20d9",
+      "targets_sha256": "883d34b579a78be351e8f7125e4f9d9d56258acb5a281824b78434821f34672e"
+    },
+    {
+      "month": "2023-12",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2023-11": "812c3a7739cdb120999c2d0d154768b071e17470f1e15ad9794690a80feb71e9",
+          "2023-12": "869c9614f60560136ee4cbbfd517a6c00326ff0c9aacb080702c09e8e4cd19f4",
+          "2024-01": "17a64906b507f149c152c7dd58050e114ac9b3f5bb1ea79478c8c36f1e57e6c3"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "a1c220426fdd51534a7feb81e1b90fc4f300864598011355bf654cf0633320dc",
+      "targets_sha256": "d27c30f1ec3e4d3d6f4a3001a25d95349eae5efe61412522d063afdfc7d83326"
+    },
+    {
+      "month": "2024-01",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2023-12": "869c9614f60560136ee4cbbfd517a6c00326ff0c9aacb080702c09e8e4cd19f4",
+          "2024-01": "17a64906b507f149c152c7dd58050e114ac9b3f5bb1ea79478c8c36f1e57e6c3",
+          "2024-02": "123f383e97bd5842a22fca1e5f1d2e83a00339c547cbf3413ec2ca0f413cb069"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "a035078953a049de2d0465e0b8ab1927412642ebd95881e6293c295b776f4156",
+      "targets_sha256": "821fdf47d0e146ca3b60ce973c323ddfaf144551a6c14cd88c223e3ec66bc9b9"
+    },
+    {
+      "month": "2024-02",
+      "rows": 41760,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-01": "17a64906b507f149c152c7dd58050e114ac9b3f5bb1ea79478c8c36f1e57e6c3",
+          "2024-02": "123f383e97bd5842a22fca1e5f1d2e83a00339c547cbf3413ec2ca0f413cb069",
+          "2024-03": "ee1ab3552e8573f408ab6d4680e0164f7631f12d12176d27d07349c48a0a2800"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "576a04208ef910e4c0420a3477343f3e03cf1d77aa608c1debac6095be029e79",
+      "targets_sha256": "2d14426fe259c8411f813155453b02838921bad96566c3505da4f3aae2ba6ac0"
+    },
+    {
+      "month": "2024-03",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-02": "123f383e97bd5842a22fca1e5f1d2e83a00339c547cbf3413ec2ca0f413cb069",
+          "2024-03": "ee1ab3552e8573f408ab6d4680e0164f7631f12d12176d27d07349c48a0a2800",
+          "2024-04": "b71ad6459ba75c5293f068bb59593284b62c615dc092b3f3d62ec79989e7e9c5"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "3062c3573f9f400fd191b36167470550c6908aa2891b3a76c0512218a0d39fb2",
+      "targets_sha256": "ab88c900b50dc2ee292b9f62196a2defe398718fc99d0cde65cc820098d35e58"
+    },
+    {
+      "month": "2024-04",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-03": "ee1ab3552e8573f408ab6d4680e0164f7631f12d12176d27d07349c48a0a2800",
+          "2024-04": "b71ad6459ba75c5293f068bb59593284b62c615dc092b3f3d62ec79989e7e9c5",
+          "2024-05": "5f9a7d3e4c77e8fbc4acce6eabd41364759d1401c999e0f9cf39969502275f51"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "1f52b6b75b1cd0e2736e28c19ad4634ab44e5b38b453c9adc12da2192bdc3415",
+      "targets_sha256": "44f69e57da8fc468f4826bec1c937b4726b08276f6b26804d401720c41434e3e"
+    },
+    {
+      "month": "2024-05",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-04": "b71ad6459ba75c5293f068bb59593284b62c615dc092b3f3d62ec79989e7e9c5",
+          "2024-05": "5f9a7d3e4c77e8fbc4acce6eabd41364759d1401c999e0f9cf39969502275f51",
+          "2024-06": "3b4c5a591e49610fc063b709bff51d6d35b79e9650d1f7931587769773015f07"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "53ca04dc7c0c0b847e8a7331ec6f97077b6d9dcd53a8b731e0ccfc7dec866324",
+      "targets_sha256": "f74f10f2030dc3a0a67f7c322c9a11cb146dfefaf5b176a46fb7646059e02aa1"
+    },
+    {
+      "month": "2024-06",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-05": "5f9a7d3e4c77e8fbc4acce6eabd41364759d1401c999e0f9cf39969502275f51",
+          "2024-06": "3b4c5a591e49610fc063b709bff51d6d35b79e9650d1f7931587769773015f07",
+          "2024-07": "aa9d7b3b3036292b8aafc8fd1fb2059f7000219a7e35b3bbcf3beeaf3ac44ccc"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "6408cb40f592a92c2b161beb7ad7868cecc863d95ea3ea38911030ea567f40a7",
+      "targets_sha256": "e84ab89eda24753b012fe24a6368b0ced9a9b6e60154633c2ce093fe582f0847"
+    },
+    {
+      "month": "2024-07",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-06": "3b4c5a591e49610fc063b709bff51d6d35b79e9650d1f7931587769773015f07",
+          "2024-07": "aa9d7b3b3036292b8aafc8fd1fb2059f7000219a7e35b3bbcf3beeaf3ac44ccc",
+          "2024-08": "05bda13cba51023513078630b543ddc81c3f3d1a486cda472d7dfc9daa31f596"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "a79851eb2f5a98281dc7945433bde589f0ae660377175a900e8e0431ebc059b6",
+      "targets_sha256": "9afa0718c892aeeeeb941c9460e17e06eb95fedbd6f1b0c4ccd5d9a53411aaa4"
+    },
+    {
+      "month": "2024-08",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-07": "aa9d7b3b3036292b8aafc8fd1fb2059f7000219a7e35b3bbcf3beeaf3ac44ccc",
+          "2024-08": "05bda13cba51023513078630b543ddc81c3f3d1a486cda472d7dfc9daa31f596",
+          "2024-09": "dccf758af74a0e66b708da1d433cac4e5ee28938251300cb870ffc3d8769cf4d"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "341d93a39196f093758474fe9a1ceb93d3fd748fcf7814d47be72c4462a125eb",
+      "targets_sha256": "f8371fbc5437230b67c1f4896ec957b9bc43e224f96ffd69e4c277fa6e82737c"
+    },
+    {
+      "month": "2024-09",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-08": "05bda13cba51023513078630b543ddc81c3f3d1a486cda472d7dfc9daa31f596",
+          "2024-09": "dccf758af74a0e66b708da1d433cac4e5ee28938251300cb870ffc3d8769cf4d",
+          "2024-10": "bf45b0dfe5f1d833160df32d9e4f6deddf88f788cca54f7c61aa823b1d4afa19"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "267fe7a2579d6b52748f5b745eff804044e5353d559460f6c572c6410f0432b1",
+      "targets_sha256": "389df4f52a326e56498ca28d862035a0c47860ebcaea5f930d64cc82d776dfa5"
+    },
+    {
+      "month": "2024-10",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-09": "dccf758af74a0e66b708da1d433cac4e5ee28938251300cb870ffc3d8769cf4d",
+          "2024-10": "bf45b0dfe5f1d833160df32d9e4f6deddf88f788cca54f7c61aa823b1d4afa19",
+          "2024-11": "6a78086620600ff3b598a34eb1c3aff567b520822a274b942039d447f338085b"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "7ce0496c1d7d5859130348cf14574acfd756a02a61268fa7a5bfe7330de84cc8",
+      "targets_sha256": "9ce4a24f926c46577821b6b920ca85f3cf62a8cf686a3faf232b9fee270e16f7"
+    },
+    {
+      "month": "2024-11",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-10": "bf45b0dfe5f1d833160df32d9e4f6deddf88f788cca54f7c61aa823b1d4afa19",
+          "2024-11": "6a78086620600ff3b598a34eb1c3aff567b520822a274b942039d447f338085b",
+          "2024-12": "e278b4eea10baaa5a3acf6c527bb56cea821ef3245e6353e927380ff279ab0c0"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "38b756e6ae97119cc46a342fe2ae0c0f4223ca041ac24daf5c92570ba0bc4d94",
+      "targets_sha256": "b245bd27fa371b9e045c47245c99f315651a2277dde3099a56062f748cb01c44"
+    },
+    {
+      "month": "2024-12",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-11": "6a78086620600ff3b598a34eb1c3aff567b520822a274b942039d447f338085b",
+          "2024-12": "e278b4eea10baaa5a3acf6c527bb56cea821ef3245e6353e927380ff279ab0c0",
+          "2025-01": "8ae55a0b3a262bef3132812b099436ce794014b50dfef549c6c95ce423f52792"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "0c8006aa7220f48b8f5c7110cd4330a03fd7f1953b3d7e64eb47236be8018c25",
+      "targets_sha256": "d95e3e7a5854c8b236f25515a0433c02a248d99b66ca9dcdf9bc4dc677e43591"
+    },
+    {
+      "month": "2025-01",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2024-12": "e278b4eea10baaa5a3acf6c527bb56cea821ef3245e6353e927380ff279ab0c0",
+          "2025-01": "8ae55a0b3a262bef3132812b099436ce794014b50dfef549c6c95ce423f52792",
+          "2025-02": "d7e30b1bb8a455a1f70dae736e0c6c3254972fb63bbab1ecf97f47be07a39a86"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "5f2fb9756130abe9d45bb0fdbdcd373bfb838bd0e62dbf0d3ea449f2cdf8f15a",
+      "targets_sha256": "30703ae4d58d98a4314881e217d83788862d8e63128b816df3d03a6fca46de59"
+    },
+    {
+      "month": "2025-02",
+      "rows": 40320,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-01": "8ae55a0b3a262bef3132812b099436ce794014b50dfef549c6c95ce423f52792",
+          "2025-02": "d7e30b1bb8a455a1f70dae736e0c6c3254972fb63bbab1ecf97f47be07a39a86",
+          "2025-03": "5f57361264b6b3295ce401a68e7f427a6bc69e204297820531a71d05decee5fd"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "9af4772fa5e01d856c1209bf6dc108fb8bdddc943094109127575ea0357da902",
+      "targets_sha256": "beb7fccdaac45bb178cb5f4b3724cb9f9fcb241172cfc9e7445dee35e517afda"
+    },
+    {
+      "month": "2025-03",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-02": "d7e30b1bb8a455a1f70dae736e0c6c3254972fb63bbab1ecf97f47be07a39a86",
+          "2025-03": "5f57361264b6b3295ce401a68e7f427a6bc69e204297820531a71d05decee5fd",
+          "2025-04": "ecda6c03f891f1e59a7a75b3cb1db751af7183aeae45962837a5c174f90b2308"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "190d3a655b51fc75a07140ca00e82794ffeb57070129e48f085583befea7edcb",
+      "targets_sha256": "e079a539186fd4460bbcf4fb5eae031c31ff298563e9cda0a0149291b026cf3c"
+    },
+    {
+      "month": "2025-04",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-03": "5f57361264b6b3295ce401a68e7f427a6bc69e204297820531a71d05decee5fd",
+          "2025-04": "ecda6c03f891f1e59a7a75b3cb1db751af7183aeae45962837a5c174f90b2308",
+          "2025-05": "d51d88795254aaf9b5d04cbf01adedac635025bb4747de6007d8798050ddafda"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "36d620b0fcfb4378b8fa9d60593a81515eb6233997f05c477a699f786dc1b7e3",
+      "targets_sha256": "6730b9b89111fc89d76fee0a23745c71aabe61cae26f36e51b87b107a3670baf"
+    },
+    {
+      "month": "2025-05",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-04": "ecda6c03f891f1e59a7a75b3cb1db751af7183aeae45962837a5c174f90b2308",
+          "2025-05": "d51d88795254aaf9b5d04cbf01adedac635025bb4747de6007d8798050ddafda",
+          "2025-06": "b8d7dc523e360bdbebdfda006f899a5e548b12b9914ec3421ed7db536af59e08"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "a625007a29e7670cd4b580338e619567fc004fc19e8f22d1c841aa8bf9809837",
+      "targets_sha256": "a52ad8fa5a6a4c9431dadb72fed4ea0e3795f8194a38bc8dc237dc41936ffc57"
+    },
+    {
+      "month": "2025-06",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-05": "d51d88795254aaf9b5d04cbf01adedac635025bb4747de6007d8798050ddafda",
+          "2025-06": "b8d7dc523e360bdbebdfda006f899a5e548b12b9914ec3421ed7db536af59e08",
+          "2025-07": "f04e2a52be8b4f6b9ea543c02ac11dc0b4ea5fcf6ad88d0d074a8e2c0649b9b9"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "8880c28f310f8de5064cc812f6fb00202d6df210958ef0f187fd78cd50371455",
+      "targets_sha256": "e314998d14225f20a465f8fa5a9c75062034dcef3e83e3a8131d05afcff4b34e"
+    },
+    {
+      "month": "2025-07",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-06": "b8d7dc523e360bdbebdfda006f899a5e548b12b9914ec3421ed7db536af59e08",
+          "2025-07": "f04e2a52be8b4f6b9ea543c02ac11dc0b4ea5fcf6ad88d0d074a8e2c0649b9b9",
+          "2025-08": "9c0326c74d1d196848fa76cef794bd1946b80354d1108140d05bd667d9f20f13"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "81156bff65f46c652c475074cb5a2ccaa0667e6471835a8465fc4a3df9213835",
+      "targets_sha256": "8b53c7b0bfdae9a912022178f01cd67932dca6c29dd300f7fe9e775a89acb345"
+    },
+    {
+      "month": "2025-08",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-07": "f04e2a52be8b4f6b9ea543c02ac11dc0b4ea5fcf6ad88d0d074a8e2c0649b9b9",
+          "2025-08": "9c0326c74d1d196848fa76cef794bd1946b80354d1108140d05bd667d9f20f13",
+          "2025-09": "87a4f3abfcf4fdc4e4b3a89a84f18d77fa94c25a13698aadf460705af398eb28"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "c96d781557b323044b2d9c7cbb797dd138e927c9061f5b99c528217673ead32a",
+      "targets_sha256": "6ee8962dc68fd55a5b10f96d681a7aa211ae5591183a309e1c87a14371a98dc4"
+    },
+    {
+      "month": "2025-09",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-08": "9c0326c74d1d196848fa76cef794bd1946b80354d1108140d05bd667d9f20f13",
+          "2025-09": "87a4f3abfcf4fdc4e4b3a89a84f18d77fa94c25a13698aadf460705af398eb28",
+          "2025-10": "2f9935fa90f214b405a07ab9bcb8a80ba5e0ac431ddc800ff726413108be7f64"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "735c0a3d061b9168021dc51fa0bd7093b0cfd88d989db97452f2e02fafad3ddf",
+      "targets_sha256": "92622964f0ddad3af3e9ba626363a22c19ad284448c9843ad029c094af050d7e"
+    },
+    {
+      "month": "2025-10",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-09": "87a4f3abfcf4fdc4e4b3a89a84f18d77fa94c25a13698aadf460705af398eb28",
+          "2025-10": "2f9935fa90f214b405a07ab9bcb8a80ba5e0ac431ddc800ff726413108be7f64",
+          "2025-11": "67962ca3a8f67e4e2c59cf2eb3a74c983b478caa6dd1ad9b87274be6920d95af"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "5203d8e1ac587047e1346f17b1228640445aa273e0cc27b872cf08b6fd5a21cc",
+      "targets_sha256": "216d38db34673756f7b865b89c0ab0a81a79e82606030e70d07e62ce8a9029ac"
+    },
+    {
+      "month": "2025-11",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-10": "2f9935fa90f214b405a07ab9bcb8a80ba5e0ac431ddc800ff726413108be7f64",
+          "2025-11": "67962ca3a8f67e4e2c59cf2eb3a74c983b478caa6dd1ad9b87274be6920d95af",
+          "2025-12": "bf0dc7a2a755e0c12db1f5b6b78fe4dadfd7d490a9ace58bb70c40ab563821bc"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "ecf328e32daa76cdeaad10b5050aebaf09e33b5af7b1303160c8e5e74c18e663",
+      "targets_sha256": "96f592860a514470b8bfadc01bec77ee2ad5fd50f3fdbd4452a9cc80fe8bd464"
+    },
+    {
+      "month": "2025-12",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-11": "67962ca3a8f67e4e2c59cf2eb3a74c983b478caa6dd1ad9b87274be6920d95af",
+          "2025-12": "bf0dc7a2a755e0c12db1f5b6b78fe4dadfd7d490a9ace58bb70c40ab563821bc",
+          "2026-01": "178bb9bf0235eb36181d34cf554e5abb1afe227240eef76da9ceb79350d8cffd"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "496940b4364f139dbd4c52bd668259db6fc140c1d4b186e753bba281d6dddbbd",
+      "targets_sha256": "bd7506bdf079dd8a9bf476b9a8e2c40ff0d061e6405340bb9282b90e5f3309a6"
+    },
+    {
+      "month": "2026-01",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2025-12": "bf0dc7a2a755e0c12db1f5b6b78fe4dadfd7d490a9ace58bb70c40ab563821bc",
+          "2026-01": "178bb9bf0235eb36181d34cf554e5abb1afe227240eef76da9ceb79350d8cffd",
+          "2026-02": "47e130e415f9676555547c6055b4a209ed6945772baa79afa6465e16b4b25112"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "7e1431b9a74ca614f1360451511f0253ca0e7241b95789da9f59d64a53df01ef",
+      "targets_sha256": "e2664c23c8cf5b79ad51168a814dc18777ba9951b2b15b34a645fad9dd25179a"
+    },
+    {
+      "month": "2026-02",
+      "rows": 40320,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2026-01": "178bb9bf0235eb36181d34cf554e5abb1afe227240eef76da9ceb79350d8cffd",
+          "2026-02": "47e130e415f9676555547c6055b4a209ed6945772baa79afa6465e16b4b25112",
+          "2026-03": "ef4f33f3c1cb4becc68ead74f0c3cb73a62293c71c981c60bb615b124fd61d83"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "28c691e86f15efc31ec3e4c7d62911923d15e1bf8cd3ee418c2004420255c59e",
+      "targets_sha256": "f600d1526c46dc06fba650bee539c09c8fdaf6e409e36985834b4dd81161b295"
+    },
+    {
+      "month": "2026-03",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2026-02": "47e130e415f9676555547c6055b4a209ed6945772baa79afa6465e16b4b25112",
+          "2026-03": "ef4f33f3c1cb4becc68ead74f0c3cb73a62293c71c981c60bb615b124fd61d83",
+          "2026-04": "fb00e477ce9aec5035e60b315bfda2811ddf639ea46b2ae6339c799bfb7e95a6"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "d654199d7c78be92dd2426a16041164d8b0dd1ea06c20c224e9be5aa6d23f228",
+      "targets_sha256": "281beead614b9f79e9ade3a5462147d57a1e5e4a1d029e889dc188c8b0505e23"
+    },
+    {
+      "month": "2026-04",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2026-03": "ef4f33f3c1cb4becc68ead74f0c3cb73a62293c71c981c60bb615b124fd61d83",
+          "2026-04": "fb00e477ce9aec5035e60b315bfda2811ddf639ea46b2ae6339c799bfb7e95a6",
+          "2026-05": "2dae4b17568bf6f24542ea3c1f3e789e386e1217cf26818c34f6002e9f415b20"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "93551c1bbf1346b2463a44197a3796a9c9cf13bcdf875824715cbe5a3b03ce0d",
+      "targets_sha256": "fc337ee28f06cf031c15e576831e6c280bbe35acdbe3011df7d8b2440f7c6c29"
+    },
+    {
+      "month": "2026-05",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2026-04": "fb00e477ce9aec5035e60b315bfda2811ddf639ea46b2ae6339c799bfb7e95a6",
+          "2026-05": "2dae4b17568bf6f24542ea3c1f3e789e386e1217cf26818c34f6002e9f415b20",
+          "2026-06": "b07eb63e3c073b1c5f586eb02ba3650c0f7f2cfd606245840c3619dbbcdf6a5e"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "1f0a819962dfeadde08b58b027a7041c2d0ca1936f4b8ce8e5a2e0eb3e50f656",
+      "targets_sha256": "5a91d8f9d763c1650d96e5ff23f1ea3705051c8a918142420ec143f0fde60e34"
+    },
+    {
+      "month": "2026-06",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2026-05": "2dae4b17568bf6f24542ea3c1f3e789e386e1217cf26818c34f6002e9f415b20",
+          "2026-06": "b07eb63e3c073b1c5f586eb02ba3650c0f7f2cfd606245840c3619dbbcdf6a5e",
+          "2026-07": "78468d8f856c50d149863f1bd38f0f47226f965fba533019fdbc238c35c87578"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "e0044e172ae146091c0813310b1fe6dee10cd5276e48e39b6b8f3114a2135c4c",
+      "targets_sha256": "ab1a4f9fb63f3f6dfbf7c50e5d971e39ad6e1a6d51f9460325f113770bf08f93"
+    },
+    {
+      "month": "2026-07",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2026-06": "b07eb63e3c073b1c5f586eb02ba3650c0f7f2cfd606245840c3619dbbcdf6a5e",
+          "2026-07": "78468d8f856c50d149863f1bd38f0f47226f965fba533019fdbc238c35c87578",
+          "2026-08": "7a8680254467ed3132f5f16557d4c5c12643b6187d98a5273654b3c37d9f2ace"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "dcd3d4c754450bd37a1e1ce62622f00a06c8a1a7ee3731617d05a143bb2549be",
+      "targets_sha256": "8d43b5577612bf83a4b11639612193fb4f62ab9205c3997c1f683b18d7d9ff75"
+    },
+    {
+      "month": "2026-08",
+      "rows": 44640,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2026-07": "78468d8f856c50d149863f1bd38f0f47226f965fba533019fdbc238c35c87578",
+          "2026-08": "7a8680254467ed3132f5f16557d4c5c12643b6187d98a5273654b3c37d9f2ace",
+          "2026-09": "8b46af419d4c1568cf256d0330fe743926fd20400a418422787b43c72180946c"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "52835402c071e11aaa72f1621665ead52bbb74ee539be97b08cdc5cfe1cb2baf",
+      "targets_sha256": "a4da1206a532471be909df4dde67d794d3e79dec89bb72e29e61b0f5d1cf9a01"
+    },
+    {
+      "month": "2026-09",
+      "rows": 43200,
+      "warmup_or_missing_rows": 0,
+      "key": {
+        "code": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+        "sources": {
+          "2026-08": "7a8680254467ed3132f5f16557d4c5c12643b6187d98a5273654b3c37d9f2ace",
+          "2026-09": "8b46af419d4c1568cf256d0330fe743926fd20400a418422787b43c72180946c"
+        },
+        "tie_tolerance": 0.0
+      },
+      "features_sha256": "704b028e13dd945e5c87a466a196822debf13975f8938f62d9ddd2db0ce0f76f",
+      "targets_sha256": "75a91bacc6a56241e5b385aeaa9b5d809ce48d6646c6bf0232a74da7a18d83fb"
+    }
+  ],
+  "catalog": [
+    {
+      "id": "return_1",
+      "name": "return_1",
+      "category": "PREÇO",
+      "description": "close/close.shift(1)-1",
+      "formula": "close/close.shift(1)-1",
+      "window_minutes": 2,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-PREÇO",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "log_return",
+      "name": "log_return",
+      "category": "PREÇO",
+      "description": "log(close/close.shift(1))",
+      "formula": "log(close/close.shift(1))",
+      "window_minutes": 2,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-PREÇO",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "range_rel",
+      "name": "range_rel",
+      "category": "VOLATILIDADE",
+      "description": "(high-low)/close",
+      "formula": "(high-low)/close",
+      "window_minutes": 1,
+      "dependencies": [
+        "high",
+        "low",
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-VOLATILIDADE",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "body_rel",
+      "name": "body_rel",
+      "category": "PRICE ACTION",
+      "description": "abs(close-open)/open",
+      "formula": "abs(close-open)/open",
+      "window_minutes": 1,
+      "dependencies": [
+        "open",
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-PRICE ACTION",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "body_fraction",
+      "name": "body_fraction",
+      "category": "PRICE ACTION",
+      "description": "(close-open)/(high-low); zero se range=0",
+      "formula": "(close-open)/(high-low); zero se range=0",
+      "window_minutes": 1,
+      "dependencies": [
+        "open",
+        "high",
+        "low",
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-PRICE ACTION",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "lower_wick",
+      "name": "lower_wick",
+      "category": "PRICE ACTION",
+      "description": "(min(open,close)-low)/(high-low); zero se range=0",
+      "formula": "(min(open,close)-low)/(high-low); zero se range=0",
+      "window_minutes": 1,
+      "dependencies": [
+        "open",
+        "high",
+        "low",
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-PRICE ACTION",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "upper_wick",
+      "name": "upper_wick",
+      "category": "PRICE ACTION",
+      "description": "(high-max(open,close))/(high-low); zero se range=0",
+      "formula": "(high-max(open,close))/(high-low); zero se range=0",
+      "window_minutes": 1,
+      "dependencies": [
+        "open",
+        "high",
+        "low",
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-PRICE ACTION",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "close_position",
+      "name": "close_position",
+      "category": "PRICE ACTION",
+      "description": "(close-low)/(high-low); 0.5 se range=0",
+      "formula": "(close-low)/(high-low); 0.5 se range=0",
+      "window_minutes": 1,
+      "dependencies": [
+        "high",
+        "low",
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-PRICE ACTION",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "direction_balance_5",
+      "name": "direction_balance_5",
+      "category": "PRICE ACTION",
+      "description": "mean(sign(close-open),5)",
+      "formula": "mean(sign(close-open),5)",
+      "window_minutes": 5,
+      "dependencies": [
+        "open",
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-PRICE ACTION",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "higher_high",
+      "name": "higher_high",
+      "category": "TENDÊNCIA",
+      "description": "1(high>high.shift(1))",
+      "formula": "1(high>high.shift(1))",
+      "window_minutes": 2,
+      "dependencies": [
+        "high"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "higher_low",
+      "name": "higher_low",
+      "category": "TENDÊNCIA",
+      "description": "1(low>low.shift(1))",
+      "formula": "1(low>low.shift(1))",
+      "window_minutes": 2,
+      "dependencies": [
+        "low"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "momentum_5",
+      "name": "momentum_5",
+      "category": "TENDÊNCIA",
+      "description": "close/close.shift(5)-1",
+      "formula": "close/close.shift(5)-1",
+      "window_minutes": 6,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "momentum_20",
+      "name": "momentum_20",
+      "category": "TENDÊNCIA",
+      "description": "close/close.shift(20)-1",
+      "formula": "close/close.shift(20)-1",
+      "window_minutes": 21,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "sma_distance_20",
+      "name": "sma_distance_20",
+      "category": "TENDÊNCIA",
+      "description": "close/mean(close,20)-1",
+      "formula": "close/mean(close,20)-1",
+      "window_minutes": 20,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "sma_slope_20",
+      "name": "sma_slope_20",
+      "category": "TENDÊNCIA",
+      "description": "mean(close,20)/mean(close,20).shift(5)-1",
+      "formula": "mean(close,20)/mean(close,20).shift(5)-1",
+      "window_minutes": 25,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "ema_distance_20",
+      "name": "ema_distance_20",
+      "category": "TENDÊNCIA",
+      "description": "close/EMA finita normalizada span20 sobre60-1",
+      "formula": "close/EMA finita normalizada span20 sobre60-1",
+      "window_minutes": 60,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "macd_rel",
+      "name": "macd_rel",
+      "category": "TENDÊNCIA",
+      "description": "(EMAfinita12-EMAfinita26)/close; ambas janela60",
+      "formula": "(EMAfinita12-EMAfinita26)/close; ambas janela60",
+      "window_minutes": 60,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "rsi_14",
+      "name": "rsi_14",
+      "category": "TENDÊNCIA",
+      "description": "RSI Cutler: mean(gain,14)/(mean(gain,14)+mean(loss,14)); neutro0.5",
+      "formula": "RSI Cutler: mean(gain,14)/(mean(gain,14)+mean(loss,14)); neutro0.5",
+      "window_minutes": 15,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "atr_rel_14",
+      "name": "atr_rel_14",
+      "category": "VOLATILIDADE",
+      "description": "mean(max(high-low,abs(high-prevclose),abs(low-prevclose)),14)/close",
+      "formula": "mean(max(high-low,abs(high-prevclose),abs(low-prevclose)),14)/close",
+      "window_minutes": 15,
+      "dependencies": [
+        "high",
+        "low",
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-VOLATILIDADE",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "realized_vol_20",
+      "name": "realized_vol_20",
+      "category": "VOLATILIDADE",
+      "description": "std(log_return,20,ddof1)",
+      "formula": "std(log_return,20,ddof1)",
+      "window_minutes": 21,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-VOLATILIDADE",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "vol_ratio",
+      "name": "vol_ratio",
+      "category": "VOLATILIDADE",
+      "description": "std(log_return,20)/std(log_return,60); 1 se ambas zero",
+      "formula": "std(log_return,20)/std(log_return,60); 1 se ambas zero",
+      "window_minutes": 61,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-VOLATILIDADE",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "bollinger_z",
+      "name": "bollinger_z",
+      "category": "VOLATILIDADE",
+      "description": "(close-mean(close,20))/std(close,20); zero se std=0",
+      "formula": "(close-mean(close,20))/std(close,20); zero se std=0",
+      "window_minutes": 20,
+      "dependencies": [
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-VOLATILIDADE",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "volume_rel_20",
+      "name": "volume_rel_20",
+      "category": "VOLUME",
+      "description": "volume/mean(volume,20); 1 se média=0",
+      "formula": "volume/mean(volume,20); 1 se média=0",
+      "window_minutes": 20,
+      "dependencies": [
+        "volume"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-VOLUME",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "volume_change",
+      "name": "volume_change",
+      "category": "VOLUME",
+      "description": "log1p(volume)-log1p(volume.shift(1))",
+      "formula": "log1p(volume)-log1p(volume.shift(1))",
+      "window_minutes": 2,
+      "dependencies": [
+        "volume"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-VOLUME",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "trade_intensity",
+      "name": "trade_intensity",
+      "category": "VOLUME",
+      "description": "trades/mean(trades,20); 1 se média=0",
+      "formula": "trades/mean(trades,20); 1 se média=0",
+      "window_minutes": 20,
+      "dependencies": [
+        "trades"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-VOLUME",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "taker_buy_ratio",
+      "name": "taker_buy_ratio",
+      "category": "VOLUME",
+      "description": "taker_base/volume; 0.5 se volume=0",
+      "formula": "taker_base/volume; 0.5 se volume=0",
+      "window_minutes": 1,
+      "dependencies": [
+        "taker_base",
+        "volume"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-VOLUME",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "signed_volume",
+      "name": "signed_volume",
+      "category": "VOLUME",
+      "description": "sign(close-open)*volume/mean(volume,20)",
+      "formula": "sign(close-open)*volume/mean(volume,20)",
+      "window_minutes": 20,
+      "dependencies": [
+        "open",
+        "close",
+        "volume"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-VOLUME",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "breakout_20",
+      "name": "breakout_20",
+      "category": "PRICE ACTION",
+      "description": "close/max(high.shift(1),20)-1",
+      "formula": "close/max(high.shift(1),20)-1",
+      "window_minutes": 21,
+      "dependencies": [
+        "high",
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-PRICE ACTION",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "support_distance_20",
+      "name": "support_distance_20",
+      "category": "PRICE ACTION",
+      "description": "close/min(low.shift(1),20)-1",
+      "formula": "close/min(low.shift(1),20)-1",
+      "window_minutes": 21,
+      "dependencies": [
+        "low",
+        "close"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-PRICE ACTION",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "hour_sin",
+      "name": "hour_sin",
+      "category": "TEMPO",
+      "description": "sin(2*pi*minute_of_day_at_decision/1440)",
+      "formula": "sin(2*pi*minute_of_day_at_decision/1440)",
+      "window_minutes": 1,
+      "dependencies": [
+        "open_time"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TEMPO",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "hour_cos",
+      "name": "hour_cos",
+      "category": "TEMPO",
+      "description": "cos(2*pi*minute_of_day_at_decision/1440)",
+      "formula": "cos(2*pi*minute_of_day_at_decision/1440)",
+      "window_minutes": 1,
+      "dependencies": [
+        "open_time"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TEMPO",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "weekday_sin",
+      "name": "weekday_sin",
+      "category": "TEMPO",
+      "description": "sin(2*pi*day_of_week_at_decision/7)",
+      "formula": "sin(2*pi*day_of_week_at_decision/7)",
+      "window_minutes": 1,
+      "dependencies": [
+        "open_time"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TEMPO",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "weekday_cos",
+      "name": "weekday_cos",
+      "category": "TEMPO",
+      "description": "cos(2*pi*day_of_week_at_decision/7)",
+      "formula": "cos(2*pi*day_of_week_at_decision/7)",
+      "window_minutes": 1,
+      "dependencies": [
+        "open_time"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TEMPO",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "closed_5m_return",
+      "name": "closed_5m_return",
+      "category": "TENDÊNCIA",
+      "description": "close/open-1 do último candle UTC completo de 5m",
+      "formula": "close/open-1 do último candle UTC completo de 5m",
+      "window_minutes": 10,
+      "dependencies": [
+        "open",
+        "close",
+        "open_time"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "closed_15m_return",
+      "name": "closed_15m_return",
+      "category": "TENDÊNCIA",
+      "description": "close/open-1 do último candle UTC completo de 15m",
+      "formula": "close/open-1 do último candle UTC completo de 15m",
+      "window_minutes": 30,
+      "dependencies": [
+        "open",
+        "close",
+        "open_time"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "closed_30m_return",
+      "name": "closed_30m_return",
+      "category": "TENDÊNCIA",
+      "description": "close/open-1 do último candle UTC completo de 30m",
+      "formula": "close/open-1 do último candle UTC completo de 30m",
+      "window_minutes": 60,
+      "dependencies": [
+        "open",
+        "close",
+        "open_time"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    },
+    {
+      "id": "closed_60m_return",
+      "name": "closed_60m_return",
+      "category": "TENDÊNCIA",
+      "description": "close/open-1 do último candle UTC completo de 60m",
+      "formula": "close/open-1 do último candle UTC completo de 60m",
+      "window_minutes": 120,
+      "dependencies": [
+        "open",
+        "close",
+        "open_time"
+      ],
+      "unit": "adimensional",
+      "source": "Binance Spot BTCUSDT 1m; SHA e source_file em processed",
+      "available_at": "open_time + 1min; somente candle encerrado",
+      "hypothesis": "H-TENDÊNCIA",
+      "missing": "sem imputação; warmup/lacuna = NaN, linha excluída do modelo; divisão por zero conforme fórmula",
+      "version": "1.0",
+      "validation_status": "implementada; evidência preditiva em relatórios E/G",
+      "relevance": null
+    }
+  ]
+}

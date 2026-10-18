@@ -1,0 +1,34 @@
+{
+  "seed": 42,
+  "threads": 4,
+  "rows_per_month": 3000,
+  "embargo_minutes": 5,
+  "development_end_exclusive": "2026-07-01",
+  "forbidden_final_test_start": "2026-07-01",
+  "folds": [
+    {
+      "id": "wf_2024q4",
+      "train_end": "2024-07-01",
+      "calibration_end": "2024-10-01",
+      "validation_end": "2025-01-01"
+    },
+    {
+      "id": "wf_2025q2",
+      "train_end": "2025-01-01",
+      "calibration_end": "2025-04-01",
+      "validation_end": "2025-07-01"
+    },
+    {
+      "id": "wf_2026q2",
+      "train_end": "2026-01-01",
+      "calibration_end": "2026-04-01",
+      "validation_end": "2026-07-01"
+    }
+  ],
+  "thresholds": [0.52, 0.55, 0.58, 0.60, 0.65],
+  "payouts": [0.7, 0.8, 0.9],
+  "spot_costs_bps_per_side": [5, 10, 20],
+  "minimum_validation_trades": 200,
+  "bootstrap_repeats": 500,
+  "permutation_sample": 8000
+}

@@ -1,0 +1,206 @@
+{
+  "checked": 40,
+  "all_unchanged": true,
+  "files": [
+    {
+      "file": "data\\knowledge\\books\\adam grimes - Entender estrutura e comportamento do mercado.pdf",
+      "sha256": "b5e0226ea298a0708cfb0a5256f0ae8499774aaa0b1d8a7423f4315431406628",
+      "unchanged": true
+    },
+    {
+      "file": "data\\knowledge\\books\\Al brooks - interpretar price action e movimentos candle a candle.pdf",
+      "sha256": "cb89710ad0a70058c2b167c2f9c23cb611380c06dda7a6b608ce70629e1c03d8",
+      "unchanged": true
+    },
+    {
+      "file": "data\\knowledge\\books\\David Aronson - testar cientificamente a eficácia das estratégias.pdf",
+      "sha256": "75557b4339b73944427eef67c850d535be0e6fec7f1a8ecbb8678245aadbe797",
+      "unchanged": true
+    },
+    {
+      "file": "data\\knowledge\\books\\Steve nison - reconhecer padrões de candles japoneses.pdf",
+      "sha256": "83ce35f9fe900db995034b68e93e20b4506e25a6f188c1c697ccc57bfaa4c155",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2023-10.zip",
+      "sha256": "9e854972545806398d124571916348238ce39961072730c200cca3c2e0bd50a3",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2023-11.zip",
+      "sha256": "4b1462878f31fd736385b761f6bb0a3f525936a6ae9f5f52c3e3b95ee2df35b4",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2023-12.zip",
+      "sha256": "c8b684a66b5ddbb58bf116251359c2dd83a07ce46791f4caa16dd4301eb17636",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-01.zip",
+      "sha256": "40b78258091a468f8756843f207f5913eafc1d6e756c40a78711320d93fa5e75",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-02.zip",
+      "sha256": "431132e0db8b9fe6e5c93c8e9ba3ae37dbcfa0edcdd57618b1b78ac18d14be79",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-03.zip",
+      "sha256": "a9af86295eae839f1d072643c67eed7fcc47bb1d82c12ef312d041eec9511e7b",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-04.zip",
+      "sha256": "753040cbfaa72bf9b1fdc6253a3b521a9a174a664dfd0929a556be327b016bc6",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-05.zip",
+      "sha256": "0f709143f66a09acc430d24a5f27f9accd52689c23ce10f2c0b6ea26997bfa8a",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-06.zip",
+      "sha256": "90f4fc3f55918787848c71f4cd0f2f1a5851bbffaf6392e76e9ab555b7479d2b",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-07.zip",
+      "sha256": "9cfd749fd2027a0c6f261bed607b49dd1256369fb41b784934544a3676f8162e",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-08.zip",
+      "sha256": "6a1cac2a5482132dc5a030534aa028e2becc560877f2b93b7add90194f576c42",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-09.zip",
+      "sha256": "1e30f6091b05eeb7b0449735d749354b81ab429ab1449bae82a21e316db8eac3",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-10.zip",
+      "sha256": "13f7f9f9bed652fd152422246cfbcaefa6223692c5c37fb3ca4e72f45501e607",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-11.zip",
+      "sha256": "c30a63bd0e8a77f2d18a2a019272b907f29a84fd5378796cf9333b041edcb12b",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2024-12.zip",
+      "sha256": "58fef0b7c7abce7a0201efd04ed3732f236f607f3fcecf228fb8384cad1ae2c1",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-01.zip",
+      "sha256": "8d028b2f91aad57d6b693d44449c93f9c4b7044f55f298c8a3ac40ab676dafac",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-02.zip",
+      "sha256": "26b3795072983a66bdbe8327e0d5e71069bdd5ca831d4da3850ba68ef7a991ef",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-03.zip",
+      "sha256": "e333601b6c721434f3cdd6670ffde2371bef7946572864c49ba6431a690ab1ca",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-04.zip",
+      "sha256": "4103d48887f9f5ec04144b190314ec31db9e3094674e5d53a3436b338854848f",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-05.zip",
+      "sha256": "7f95bf97e3ccfbb55cd002f124a54dc1726ced7cfd54e6fd200e59845ca95d5c",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-06.zip",
+      "sha256": "f95f6169e253d38fb321c87984c827878634250cdcc3ff84fc3507f036bcabbd",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-07.zip",
+      "sha256": "3377e023fe252418cfaf46c9e23b3f0d1e56fb2fd89b4191fc66262b947a0ee2",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-08.zip",
+      "sha256": "11da1c7db8949cbdcbb757531756eda55f2a3d663cfac671c5d1a8a87911318f",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-09.zip",
+      "sha256": "52bb4a4a52afbcc0af77e3eb92c114bf810982ca63bf02f8fe15062e59c5f44b",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-10.zip",
+      "sha256": "985d878cacbfdde85c9e0da2e8830ab913fe01bfdcde6e488563d8194df11f6b",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-11.zip",
+      "sha256": "c54159d1216ab07f040a96d6678748e8746ac4200cba373fb6b758f2cdd1e5e5",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2025-12.zip",
+      "sha256": "7b47647352b01356dcd678a1438efb8baac03ed798785ed2179d428aab0cca9b",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2026-01.zip",
+      "sha256": "d28b369da32a6ea84ba0af517b1847ab67b2fcc1e0e111c1b24d56ae07240cb9",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2026-02.zip",
+      "sha256": "cee2e913ed07e02834e2387c65ca430fe3576f620588bad8a02229238f385407",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2026-03.zip",
+      "sha256": "a2c1e689d39aa7877e218f436f15162e9a4436778a377d32e9d9b81b081381cd",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2026-04.zip",
+      "sha256": "318afd4f5acfbcfbb40fbe727a77eee8e9e7b54d8941589c78a32283d90b4a01",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2026-05.zip",
+      "sha256": "62983d93c35e26ec6c29116c629e443b7ddfe3d301aca83331ff58112199d8d0",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2026-06.zip",
+      "sha256": "c8e1d5e70b766dd2312fc9cd7085785bb25708e27e75c21a5a5aaba61a6d07f5",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2026-07.zip",
+      "sha256": "3ef15c84353da48e1c7c5fd99b9751cb036bf8986ed47f7cd1be63359c0d4f6b",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2026-08.zip",
+      "sha256": "acab442e02745177063031d402929703ae983715010064b40cf811c4beb843d4",
+      "unchanged": true
+    },
+    {
+      "file": "data\\raw\\BTCUSDT-1m-2026-09.zip",
+      "sha256": "7a021fb5981cfdb1a56457d68fa81360ab27350c981ddfe63112b2322df44b56",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,3630 @@
+{
+  "run_id": "20261017T221506538058Z-phase2",
+  "status": "exploratory_validation_only",
+  "config": {
+    "seed": 42,
+    "threads": 4,
+    "rows_per_month": 6000,
+    "embargo_minutes": 5,
+    "development_end_exclusive": "2026-07-01",
+    "forbidden_final_test_start": "2026-07-01",
+    "folds": [
+      {
+        "id": "wf_2024q4",
+        "train_end": "2024-07-01",
+        "calibration_end": "2024-10-01",
+        "validation_end": "2025-01-01"
+      },
+      {
+        "id": "wf_2025q2",
+        "train_end": "2025-01-01",
+        "calibration_end": "2025-04-01",
+        "validation_end": "2025-07-01"
+      },
+      {
+        "id": "wf_2026q2",
+        "train_end": "2026-01-01",
+        "calibration_end": "2026-04-01",
+        "validation_end": "2026-07-01"
+      }
+    ],
+    "thresholds": [
+      0.52,
+      0.55,
+      0.58,
+      0.6,
+      0.65
+    ],
+    "payouts": [
+      0.7,
+      0.8,
+      0.9
+    ],
+    "spot_costs_bps_per_side": [
+      5,
+      10,
+      20
+    ],
+    "minimum_validation_trades": 200,
+    "bootstrap_repeats": 500,
+    "permutation_sample": 8000
+  },
+  "versions": {
+    "numpy": "2.4.3",
+    "pandas": "3.0.2",
+    "pyarrow": "23.0.1",
+    "scikit-learn": "1.8.0",
+    "xgboost": "3.2.0",
+    "catboost": "1.2.10",
+    "pypdf": "6.10.2",
+    "pytest": "9.0.3",
+    "joblib": "1.5.3"
+  },
+  "new_feature_catalog": {
+    "wick_imbalance": "sombra inferior menos sombra superior",
+    "rejection_low": "sombra inferior vezes posição do fechamento",
+    "rejection_high": "sombra superior vezes distância do fechamento ao topo",
+    "doji": "1 se corpo/range <= 10%",
+    "doji_frequency_5": "frequência de doji nos cinco candles encerrados",
+    "body_growth_3": "1 se o corpo absoluto cresceu por três candles",
+    "range_compression_3": "1 se a amplitude relativa contraiu por três candles",
+    "engulf_proxy": "reversão de sinal com corpo maior que o candle anterior",
+    "momentum_acceleration": "momentum de 5m menos um quarto do momentum de 20m",
+    "trend_strength": "momentum20 normalizado pela volatilidade realizada",
+    "range_to_atr": "amplitude do candle dividida pelo ATR relativo",
+    "mean_reversion_pressure": "-z-score de Bollinger vezes razão de volatilidade",
+    "taker_imbalance": "duas vezes participação compradora agressora menos um",
+    "activity_pressure": "desequilíbrio agressor vezes volume e trades relativos",
+    "price_volume_agreement": "sinal do corpo vezes desequilíbrio agressor",
+    "rejection_at_extreme": "rejeição ponderada pela distância causal ao extremo de 20m",
+    "direction_persistence": "módulo do balanço direcional dos últimos cinco candles"
+  },
+  "audit": {
+    "status": "aprovada_com_limitações",
+    "candles": 1578240,
+    "critical_data_errors": [],
+    "missing_minutes": 0,
+    "duplicates_removed": 0,
+    "feature_count": 37,
+    "phase1_horizons": {
+      "1": {
+        "candidate_count": 14,
+        "selected": "xgboost",
+        "policy": {
+          "enabled": false,
+          "threshold": 0.65,
+          "reason": "Nenhum limiar atingiu evidência mínima de expectativa positiva; abstenção integral",
+          "payout_reference": 0.8
+        },
+        "candidate_names": [
+          "catboost",
+          "constant",
+          "frequency",
+          "logistic_all_selected",
+          "logistic_price",
+          "logistic_price_action",
+          "logistic_price_trend",
+          "logistic_price_trend_volume",
+          "logistic_price_volatility",
+          "logistic_price_volume",
+          "momentum",
+          "random_forest",
+          "reversion",
+          "xgboost"
+        ],
+        "periods": {
+          "train": {
+            "rows": 161999,
+            "start": "2023-10-01 01:01:00+00:00",
+            "end": "2025-12-31 23:52:00+00:00"
+          },
+          "calibration": {
+            "rows": 129589,
+            "start": "2026-01-01 00:05:00+00:00",
+            "end": "2026-03-31 23:53:00+00:00"
+          },
+          "validation": {
+            "rows": 131029,
+            "start": "2026-04-01 00:05:00+00:00",
+            "end": "2026-06-30 23:53:00+00:00"
+          }
+        }
+      },
+      "5": {
+        "candidate_count": 14,
+        "selected": "xgboost",
+        "policy": {
+          "enabled": false,
+          "threshold": 0.65,
+          "reason": "Nenhum limiar atingiu evidência mínima de expectativa positiva; abstenção integral",
+          "payout_reference": 0.8
+        },
+        "candidate_names": [
+          "catboost",
+          "constant",
+          "frequency",
+          "logistic_all_selected",
+          "logistic_price",
+          "logistic_price_action",
+          "logistic_price_trend",
+          "logistic_price_trend_volume",
+          "logistic_price_volatility",
+          "logistic_price_volume",
+          "momentum",
+          "random_forest",
+          "reversion",
+          "xgboost"
+        ],
+        "periods": {
+          "train": {
+            "rows": 161998,
+            "start": "2023-10-01 01:01:00+00:00",
+            "end": "2025-12-31 23:45:00+00:00"
+          },
+          "calibration": {
+            "rows": 129585,
+            "start": "2026-01-01 00:05:00+00:00",
+            "end": "2026-03-31 23:49:00+00:00"
+          },
+          "validation": {
+            "rows": 131025,
+            "start": "2026-04-01 00:05:00+00:00",
+            "end": "2026-06-30 23:49:00+00:00"
+          }
+        }
+      }
+    },
+    "causality_checks": {
+      "available_after_decision": 0,
+      "duplicate_decisions": 0,
+      "ordered": true
+    },
+    "phase1_test_registry": [
+      {
+        "run": "20261017T174250393322Z-research",
+        "start": "2026-07-01",
+        "end": "2026-10-01",
+        "status": "evaluated",
+        "development_sha256": "29f940bd9df7bf57f005ffb170a5576c2ad1911f5ff222e30ce28d8949cbb776"
+      }
+    ],
+    "phase2_latest_timestamp": "2026-06-30 23:59:00+00:00",
+    "forbidden_test_start": "2026-07-01",
+    "forbidden_test_rows_loaded": 0,
+    "originals_preserved": {
+      "checked": 40,
+      "all_unchanged": true
+    },
+    "findings": [
+      "Timestamps, ordem, continuidade, OHLC, volume, hashes e precisão ms/us foram auditados na Fase 1 sem erro crítico.",
+      "As 37 features são calculadas com candles encerrados; targets e preços futuros ficam em arquivos/colunas separados.",
+      "Treino, calibração e validação possuem purga pelo fim do rótulo e embargo; o scaler e a seleção de colunas são ajustados no treino.",
+      "A calibração usa regressão logística sobre log-probabilidades em bloco posterior ao treino.",
+      "A importância da Fase 1 teve somente duas permutações e o walk-forward cobriu apenas logística e frequência.",
+      "O relatório final descreveu todos os candidatos e sensibilidades no teste consumido; esses números não podem selecionar mudanças da Fase 2.",
+      "Amostragem uniforme reduz custo, mas pode omitir eventos raros e torna a inferência sobre caudas mais fraca."
+    ],
+    "phase1_development_sha256": "29f940bd9df7bf57f005ffb170a5576c2ad1911f5ff222e30ce28d8949cbb776"
+  },
+  "folds": {
+    "wf_2024q4": {
+      "periods": {
+        "1": {
+          "train": 53999,
+          "calibration": 17999,
+          "validation": 17999,
+          "validation_start": "2024-10-01 00:05:00+00:00",
+          "validation_end": "2024-12-31 23:52:00+00:00"
+        },
+        "5": {
+          "train": 53998,
+          "calibration": 17998,
+          "validation": 17998,
+          "validation_start": "2024-10-01 00:05:00+00:00",
+          "validation_end": "2024-12-31 23:45:00+00:00"
+        }
+      },
+      "horizons": {
+        "1": {
+          "candidates": {
+            "frequency": {
+              "metrics": {
+                "n": 17999,
+                "accuracy": 0.49280515584199125,
+                "precision_macro": 0.16426838528066376,
+                "recall_macro": 0.3333333333333333,
+                "f1_macro": 0.22008014192315803,
+                "confusion_matrix": [
+                  [
+                    0,
+                    0,
+                    8811
+                  ],
+                  [
+                    0,
+                    0,
+                    318
+                  ],
+                  [
+                    0,
+                    0,
+                    8870
+                  ]
+                ],
+                "log_loss": 0.7738474941547093,
+                "brier_multiclass": 0.5175213770758388,
+                "roc_auc_ovr": 0.5,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 17999,
+                    "probability": 0.4812969890004074,
+                    "frequency": 0.48952719595533084
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17999,
+                    "probability": 0.03240620717751194,
+                    "frequency": 0.017667648202677928
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 17999,
+                    "probability": 0.48629680382208074,
+                    "frequency": 0.49280515584199125
+                  }
+                ]
+              },
+              "ece": 0.006508352019910513,
+              "raw_metrics": null,
+              "columns": [
+                "return_1"
+              ]
+            },
+            "logistic_original": {
+              "metrics": {
+                "n": 17999,
+                "accuracy": 0.4991943996888716,
+                "precision_macro": 0.46603997605480646,
+                "recall_macro": 0.34070902918784324,
+                "f1_macro": 0.33923670538073464,
+                "confusion_matrix": [
+                  [
+                    4104,
+                    2,
+                    4705
+                  ],
+                  [
+                    162,
+                    2,
+                    154
+                  ],
+                  [
+                    3990,
+                    1,
+                    4879
+                  ]
+                ],
+                "log_loss": 0.7530612998609963,
+                "brier_multiclass": 0.5153419658423862,
+                "roc_auc_ovr": 0.625432659479463,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 70,
+                    "probability": 0.37802899964016673,
+                    "frequency": 0.2857142857142857
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 13362,
+                    "probability": 0.4828747494402711,
+                    "frequency": 0.4899715611435414
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 4565,
+                    "probability": 0.5082029790696976,
+                    "frequency": 0.49112814895947426
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 2,
+                    "probability": 0.6047558221839884,
+                    "frequency": 1.0
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17459,
+                    "probability": 0.01627426059910523,
+                    "frequency": 0.013230998338965577
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 462,
+                    "probability": 0.13438199892478564,
+                    "frequency": 0.14285714285714285
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 70,
+                    "probability": 0.23609283102741788,
+                    "frequency": 0.2714285714285714
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.30000000000000004,
+                    "n": 8,
+                    "probability": 0.3357777579514635,
+                    "frequency": 0.25
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.2,
+                    "n": 1,
+                    "probability": 0.28892325327124946,
+                    "frequency": 0.0
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 107,
+                    "probability": 0.37715449198110657,
+                    "frequency": 0.45794392523364486
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 11931,
+                    "probability": 0.483909171228068,
+                    "frequency": 0.48512278937222364
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 5960,
+                    "probability": 0.506646839186386,
+                    "frequency": 0.5088926174496644
+                  }
+                ]
+              },
+              "ece": 0.007119598714893018,
+              "raw_metrics": {
+                "n": 17999,
+                "accuracy": 0.4976387577087616,
+                "precision_macro": 0.33169090988479305,
+                "recall_macro": 0.3376609326142534,
+                "f1_macro": 0.33440362569640264,
+                "confusion_matrix": [
+                  [
+                    4205,
+                    0,
+                    4606
+                  ],
+                  [
+                    159,
+                    0,
+                    159
+                  ],
+                  [
+                    4118,
+                    0,
+                    4752
+                  ]
+                ],
+                "log_loss": 0.754768425352852,
+                "brier_multiclass": 0.5158925565291861,
+                "roc_auc_ovr": 0.6265508319939851,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 2,
+                    "probability": 0.28274190134355226,
+                    "frequency": 0.0
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 258,
+                    "probability": 0.3802891103041077,
+                    "frequency": 0.3682170542635659
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 11301,
+                    "probability": 0.4709288105375909,
+                    "frequency": 0.4894257145385364
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 6408,
+                    "probability": 0.5172613494637216,
+                    "frequency": 0.49406991260923844
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 29,
+                    "probability": 0.6403444901781735,
+                    "frequency": 0.6206896551724138
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.7000000000000001,
+                    "n": 1,
+                    "probability": 0.705254940785669,
+                    "frequency": 1.0
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17012,
+                    "probability": 0.01613781830709516,
+                    "frequency": 0.010463202445332706
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 849,
+                    "probability": 0.1373275506649289,
+                    "frequency": 0.12838633686690223
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 136,
+                    "probability": 0.22992592026769906,
+                    "frequency": 0.22058823529411764
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.30000000000000004,
+                    "n": 2,
+                    "probability": 0.31482366916761156,
+                    "frequency": 0.5
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.2,
+                    "n": 2,
+                    "probability": 0.29518556135909424,
+                    "frequency": 0.0
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 385,
+                    "probability": 0.37787353461174183,
+                    "frequency": 0.4077922077922078
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 9917,
+                    "probability": 0.471539674746809,
+                    "frequency": 0.48784914792780076
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 7673,
+                    "probability": 0.5193676950545295,
+                    "frequency": 0.5035839958295322
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 20,
+                    "probability": 0.628338026071635,
+                    "frequency": 0.45
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.7000000000000001,
+                    "n": 2,
+                    "probability": 0.7172580986536962,
+                    "frequency": 1.0
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.020786194293712968,
+                "low": -0.02614181763867825,
+                "high": -0.016691038829033195,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            },
+            "logistic_contextual": {
+              "metrics": {
+                "n": 17999,
+                "accuracy": 0.4948052669592755,
+                "precision_macro": 0.4410092239847974,
+                "recall_macro": 0.3387609242938345,
+                "f1_macro": 0.33850133360929374,
+                "confusion_matrix": [
+                  [
+                    4144,
+                    4,
+                    4663
+                  ],
+                  [
+                    131,
+                    3,
+                    184
+                  ],
+                  [
+                    4109,
+                    2,
+                    4759
+                  ]
+                ],
+                "log_loss": 0.7527856482823809,
+                "brier_multiclass": 0.5153539724350489,
+                "roc_auc_ovr": 0.6269886580632527,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 1,
+                    "probability": 0.2879498301973168,
+                    "frequency": 1.0
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 111,
+                    "probability": 0.3731350954315048,
+                    "frequency": 0.3063063063063063
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 12751,
+                    "probability": 0.48160666097047017,
+                    "frequency": 0.49117716257548427
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 5136,
+                    "probability": 0.5090228110389644,
+                    "frequency": 0.48929127725856697
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17465,
+                    "probability": 0.016236541390958915,
+                    "frequency": 0.013226452905811623
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 458,
+                    "probability": 0.13336069160266692,
+                    "frequency": 0.1462882096069869
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 64,
+                    "probability": 0.23447136072001878,
+                    "frequency": 0.265625
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.30000000000000004,
+                    "n": 11,
+                    "probability": 0.3546461413880415,
+                    "frequency": 0.2727272727272727
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.4,
+                    "n": 1,
+                    "probability": 0.42117659868610724,
+                    "frequency": 0.0
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.2,
+                    "n": 1,
+                    "probability": 0.29087357111657597,
+                    "frequency": 0.0
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 69,
+                    "probability": 0.3759522451578544,
+                    "frequency": 0.43478260869565216
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 11966,
+                    "probability": 0.48369442048279687,
+                    "frequency": 0.48763162293163964
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 5963,
+                    "probability": 0.5071085872337764,
+                    "frequency": 0.5039409693107496
+                  }
+                ]
+              },
+              "ece": 0.007976849908275723,
+              "raw_metrics": {
+                "n": 17999,
+                "accuracy": 0.4963609089393855,
+                "precision_macro": 0.4419469117437433,
+                "recall_macro": 0.33878817856856464,
+                "f1_macro": 0.33735098595268537,
+                "confusion_matrix": [
+                  [
+                    4087,
+                    4,
+                    4720
+                  ],
+                  [
+                    157,
+                    2,
+                    159
+                  ],
+                  [
+                    4025,
+                    0,
+                    4845
+                  ]
+                ],
+                "log_loss": 0.7539037093744377,
+                "brier_multiclass": 0.5158978272458653,
+                "roc_auc_ovr": 0.628353789179043,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 3,
+                    "probability": 0.2879236442665049,
+                    "frequency": 0.3333333333333333
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 298,
+                    "probability": 0.37949354924486134,
+                    "frequency": 0.3523489932885906
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 11255,
+                    "probability": 0.4703279063590905,
+                    "frequency": 0.48982674366948026
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 6409,
+                    "probability": 0.5192094840048715,
+                    "frequency": 0.4950850366671868
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 34,
+                    "probability": 0.6336864037579402,
+                    "frequency": 0.5588235294117647
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17051,
+                    "probability": 0.015393531828728855,
+                    "frequency": 0.010439270424022052
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 788,
+                    "probability": 0.13791072604313365,
+                    "frequency": 0.13451776649746192
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 145,
+                    "probability": 0.23426586798022,
+                    "frequency": 0.20689655172413793
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.30000000000000004,
+                    "n": 15,
+                    "probability": 0.33637589367055926,
+                    "frequency": 0.26666666666666666
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.2,
+                    "n": 4,
+                    "probability": 0.28859271827808947,
+                    "frequency": 0.0
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 438,
+                    "probability": 0.37479040740825553,
+                    "frequency": 0.3904109589041096
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 9468,
+                    "probability": 0.47055755001304295,
+                    "frequency": 0.4888043937473595
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 8073,
+                    "probability": 0.520445968288137,
+                    "frequency": 0.5031586770717206
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 15,
+                    "probability": 0.6244289591725622,
+                    "frequency": 0.5333333333333333
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.7000000000000001,
+                    "n": 1,
+                    "probability": 0.7065027907040181,
+                    "frequency": 1.0
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return",
+                "wick_imbalance",
+                "rejection_low",
+                "rejection_high",
+                "doji",
+                "doji_frequency_5",
+                "body_growth_3",
+                "range_compression_3",
+                "engulf_proxy",
+                "momentum_acceleration",
+                "trend_strength",
+                "range_to_atr",
+                "mean_reversion_pressure",
+                "taker_imbalance",
+                "activity_pressure",
+                "price_volume_agreement",
+                "rejection_at_extreme",
+                "direction_persistence"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.021061845872328226,
+                "low": -0.026198831104665185,
+                "high": -0.017063352245504478,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            },
+            "random_forest_original": {
+              "metrics": {
+                "n": 17999,
+                "accuracy": 0.508417134285238,
+                "precision_macro": 0.3389797045420893,
+                "recall_macro": 0.3450636569342471,
+                "f1_macro": 0.3419519597838032,
+                "confusion_matrix": [
+                  [
+                    4651,
+                    0,
+                    4160
+                  ],
+                  [
+                    150,
+                    0,
+                    168
+                  ],
+                  [
+                    4369,
+                    1,
+                    4500
+                  ]
+                ],
+                "log_loss": 0.750989438035349,
+                "brier_multiclass": 0.5141425031786618,
+                "roc_auc_ovr": 0.6341436596716412,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 19,
+                    "probability": 0.29469156519599826,
+                    "frequency": 0.21052631578947367
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 389,
+                    "probability": 0.36510959911425683,
+                    "frequency": 0.3341902313624679
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 11511,
+                    "probability": 0.48291453200068707,
+                    "frequency": 0.48484058726435586
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 6080,
+                    "probability": 0.5088724865250137,
+                    "frequency": 0.5092105263157894
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17273,
+                    "probability": 0.014310406206362408,
+                    "frequency": 0.011868233659468534
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 559,
+                    "probability": 0.1347127811078851,
+                    "frequency": 0.12701252236135957
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 151,
+                    "probability": 0.24169079529666135,
+                    "frequency": 0.23841059602649006
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.30000000000000004,
+                    "n": 16,
+                    "probability": 0.3174771289632548,
+                    "frequency": 0.375
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 210,
+                    "probability": 0.376951457447693,
+                    "frequency": 0.37142857142857144
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 11856,
+                    "probability": 0.48343424266557183,
+                    "frequency": 0.48195006747638325
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 5933,
+                    "probability": 0.5096544931690191,
+                    "frequency": 0.518793190628687
+                  }
+                ]
+              },
+              "ece": 0.005734536905259346,
+              "raw_metrics": {
+                "n": 17999,
+                "accuracy": 0.508972720706706,
+                "precision_macro": 0.33926240639452043,
+                "recall_macro": 0.34531690618867444,
+                "f1_macro": 0.3416400007585227,
+                "confusion_matrix": [
+                  [
+                    4164,
+                    0,
+                    4647
+                  ],
+                  [
+                    166,
+                    0,
+                    152
+                  ],
+                  [
+                    3872,
+                    1,
+                    4997
+                  ]
+                ],
+                "log_loss": 0.7517280296270697,
+                "brier_multiclass": 0.5140112115113565,
+                "roc_auc_ovr": 0.636023555483382,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 60,
+                    "probability": 0.27397089786298007,
+                    "frequency": 0.23333333333333334
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 512,
+                    "probability": 0.36544315239216807,
+                    "frequency": 0.388671875
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 11489,
+                    "probability": 0.4753790533772602,
+                    "frequency": 0.4838541213334494
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 5936,
+                    "probability": 0.5167074294016469,
+                    "frequency": 0.5117924528301887
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 2,
+                    "probability": 0.606004571202167,
+                    "frequency": 0.5
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17226,
+                    "probability": 0.016978124405705876,
+                    "frequency": 0.011552304655752932
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 621,
+                    "probability": 0.1334694123882934,
+                    "frequency": 0.1320450885668277
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 133,
+                    "probability": 0.24917985233150045,
+                    "frequency": 0.21052631578947367
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.30000000000000004,
+                    "n": 19,
+                    "probability": 0.3123703543297695,
+                    "frequency": 0.47368421052631576
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.2,
+                    "n": 29,
+                    "probability": 0.2847771831163079,
+                    "frequency": 0.3103448275862069
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 616,
+                    "probability": 0.3705466258245436,
+                    "frequency": 0.3944805194805195
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 9561,
+                    "probability": 0.4762964499712842,
+                    "frequency": 0.4824809120384897
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 7766,
+                    "probability": 0.5207605296135148,
+                    "frequency": 0.5137780066958537
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 27,
+                    "probability": 0.6074101337421396,
+                    "frequency": 0.5555555555555556
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.022858056119360242,
+                "low": -0.02859293648099264,
+                "high": -0.01840240291571096,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            },
+            "xgboost_original": {
+              "metrics": {
+                "n": 17999,
+                "accuracy": 0.5116395355297516,
+                "precision_macro": 0.3411204402079701,
+                "recall_macro": 0.3472586387715025,
+                "f1_macro": 0.34408613395803034,
+                "confusion_matrix": [
+                  [
+                    4712,
+                    0,
+                    4099
+                  ],
+                  [
+                    152,
+                    0,
+                    166
+                  ],
+                  [
+                    4373,
+                    0,
+                    4497
+                  ]
+                ],
+                "log_loss": 0.7509907493839297,
+                "brier_multiclass": 0.514109979904192,
+                "roc_auc_ovr": 0.6359566300869168,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 3,
+                    "probability": 0.2951193075987256,
+                    "frequency": 0.6666666666666666
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 342,
+                    "probability": 0.37026022620739824,
+                    "frequency": 0.3157894736842105
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 11071,
+                    "probability": 0.48017360927879266,
+                    "frequency": 0.4824315779965676
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 6583,
+                    "probability": 0.5104406410061797,
+                    "frequency": 0.5104055901564636
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17337,
+                    "probability": 0.014879175038433843,
+                    "frequency": 0.011882101863067427
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 529,
+                    "probability": 0.13628470197561163,
+                    "frequency": 0.14366729678638943
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 131,
+                    "probability": 0.2376109611810227,
+                    "frequency": 0.2748091603053435
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.30000000000000004,
+                    "n": 2,
+                    "probability": 0.30560590008878985,
+                    "frequency": 0.0
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 192,
+                    "probability": 0.3806589929300759,
+                    "frequency": 0.390625
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 11224,
+                    "probability": 0.4802378989323955,
+                    "frequency": 0.47977548111190305
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 6583,
+                    "probability": 0.5119524623551543,
+                    "frequency": 0.5180009114385539
+                  }
+                ]
+              },
+              "ece": 0.006853744620306846,
+              "raw_metrics": {
+                "n": 17999,
+                "accuracy": 0.5131951775098617,
+                "precision_macro": 0.34206577789061715,
+                "recall_macro": 0.3481815311401215,
+                "f1_macro": 0.34446282320669824,
+                "confusion_matrix": [
+                  [
+                    4198,
+                    0,
+                    4613
+                  ],
+                  [
+                    170,
+                    0,
+                    148
+                  ],
+                  [
+                    3831,
+                    0,
+                    5039
+                  ]
+                ],
+                "log_loss": 0.7517444127557149,
+                "brier_multiclass": 0.5139676445732538,
+                "roc_auc_ovr": 0.6378144696877521,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 23,
+                    "probability": 0.2874315089131749,
+                    "frequency": 0.2608695652173913
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 460,
+                    "probability": 0.36724157745176716,
+                    "frequency": 0.3673913043478261
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 11523,
+                    "probability": 0.47425815340755795,
+                    "frequency": 0.481471838930834
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 5993,
+                    "probability": 0.5159467751598876,
+                    "frequency": 0.5152678124478558
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17211,
+                    "probability": 0.017504158632778252,
+                    "frequency": 0.011213758642728488
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 633,
+                    "probability": 0.1358001374267314,
+                    "frequency": 0.13428120063191154
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 151,
+                    "probability": 0.24310617570582518,
+                    "frequency": 0.2582781456953642
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.30000000000000004,
+                    "n": 4,
+                    "probability": 0.3105538935752118,
+                    "frequency": 0.25
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.2,
+                    "n": 4,
+                    "probability": 0.29520111646157,
+                    "frequency": 0.5
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 560,
+                    "probability": 0.37248593285520987,
+                    "frequency": 0.3732142857142857
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 9378,
+                    "probability": 0.47388263328173613,
+                    "frequency": 0.47760716570697376
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 8056,
+                    "probability": 0.5197233066656598,
+                    "frequency": 0.5188679245283019
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 1,
+                    "probability": 0.6001948134979088,
+                    "frequency": 0.0
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.022856744770779525,
+                "low": -0.028655415580208832,
+                "high": -0.01815162768099095,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            },
+            "xgboost_contextual_regularized": {
+              "metrics": {
+                "n": 17999,
+                "accuracy": 0.5105283626868159,
+                "precision_macro": 0.3403470346822039,
+                "recall_macro": 0.3464627527571677,
+                "f1_macro": 0.3433720983839983,
+                "confusion_matrix": [
+                  [
+                    4536,
+                    0,
+                    4275
+                  ],
+                  [
+                    144,
+                    0,
+                    174
+                  ],
+                  [
+                    4217,
+                    0,
+                    4653
+                  ]
+                ],
+                "log_loss": 0.750878948059146,
+                "brier_multiclass": 0.5140807479570492,
+                "roc_auc_ovr": 0.6357681947582137,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 5,
+                    "probability": 0.292691224470462,
+                    "frequency": 0.2
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 329,
+                    "probability": 0.3701257990911556,
+                    "frequency": 0.3191489361702128
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 11316,
+                    "probability": 0.48107212358087176,
+                    "frequency": 0.48391657829621776
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 6349,
+                    "probability": 0.5096244462759679,
+                    "frequency": 0.5085840289809419
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17323,
+                    "probability": 0.014773248443996214,
+                    "frequency": 0.012238065000288633
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 544,
+                    "probability": 0.13395228638308487,
+                    "frequency": 0.125
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 123,
+                    "probability": 0.243818383053446,
+                    "frequency": 0.2764227642276423
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.30000000000000004,
+                    "n": 9,
+                    "probability": 0.3221910211258521,
+                    "frequency": 0.4444444444444444
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 182,
+                    "probability": 0.3792724524377643,
+                    "frequency": 0.3901098901098901
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 11278,
+                    "probability": 0.4815016335976713,
+                    "frequency": 0.47880829934385527
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 6539,
+                    "probability": 0.5100578038198091,
+                    "frequency": 0.5198042514145894
+                  }
+                ]
+              },
+              "ece": 0.007039087753490178,
+              "raw_metrics": {
+                "n": 17999,
+                "accuracy": 0.5114728596033113,
+                "precision_macro": 0.3409267522640716,
+                "recall_macro": 0.34699868903408165,
+                "f1_macro": 0.3430992132846145,
+                "confusion_matrix": [
+                  [
+                    4127,
+                    0,
+                    4684
+                  ],
+                  [
+                    165,
+                    0,
+                    153
+                  ],
+                  [
+                    3791,
+                    0,
+                    5079
+                  ]
+                ],
+                "log_loss": 0.751787753663746,
+                "brier_multiclass": 0.5139164941053465,
+                "roc_auc_ovr": 0.6376817506352944,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 21,
+                    "probability": 0.29032630267861015,
+                    "frequency": 0.23809523809523808
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 446,
+                    "probability": 0.36803082548256627,
+                    "frequency": 0.35874439461883406
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 11526,
+                    "probability": 0.47389129704836935,
+                    "frequency": 0.4809994794377928
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 6006,
+                    "probability": 0.5158302866828555,
+                    "frequency": 0.5164835164835165
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17203,
+                    "probability": 0.017786173821417204,
+                    "frequency": 0.011277102830901588
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 662,
+                    "probability": 0.132618203041384,
+                    "frequency": 0.13141993957703926
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 123,
+                    "probability": 0.24646551602547911,
+                    "frequency": 0.24390243902439024
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.30000000000000004,
+                    "n": 11,
+                    "probability": 0.308611307426077,
+                    "frequency": 0.6363636363636364
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.2,
+                    "n": 6,
+                    "probability": 0.29007630670449003,
+                    "frequency": 0.5
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 502,
+                    "probability": 0.3705949307077973,
+                    "frequency": 0.36254980079681276
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 9407,
+                    "probability": 0.4736543329669486,
+                    "frequency": 0.4763474008716913
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 8084,
+                    "probability": 0.5192589563446445,
+                    "frequency": 0.5200395843641762
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return",
+                "wick_imbalance",
+                "rejection_low",
+                "rejection_high",
+                "doji",
+                "doji_frequency_5",
+                "body_growth_3",
+                "range_compression_3",
+                "engulf_proxy",
+                "momentum_acceleration",
+                "trend_strength",
+                "range_to_atr",
+                "mean_reversion_pressure",
+                "taker_imbalance",
+                "activity_pressure",
+                "price_volume_agreement",
+                "rejection_at_extreme",
+                "direction_persistence"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.02296854609556326,
+                "low": -0.02886570088304159,
+                "high": -0.018267783444342472,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            },
+            "catboost_original": {
+              "metrics": {
+                "n": 17999,
+                "accuracy": 0.5094171898438802,
+                "precision_macro": 0.3396110077113937,
+                "recall_macro": 0.34571971141774666,
+                "f1_macro": 0.3426374452309225,
+                "confusion_matrix": [
+                  [
+                    4570,
+                    0,
+                    4241
+                  ],
+                  [
+                    154,
+                    0,
+                    164
+                  ],
+                  [
+                    4271,
+                    0,
+                    4599
+                  ]
+                ],
+                "log_loss": 0.7514028780299342,
+                "brier_multiclass": 0.5142493043981106,
+                "roc_auc_ovr": 0.6340644427992514,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 1,
+                    "probability": 0.297958733922921,
+                    "frequency": 1.0
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 398,
+                    "probability": 0.36751263950226065,
+                    "frequency": 0.3316582914572864
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 11493,
+                    "probability": 0.4834210417685673,
+                    "frequency": 0.48255459845123116
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 6107,
+                    "probability": 0.5078214859566754,
+                    "frequency": 0.5128541018503356
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17252,
+                    "probability": 0.013830063574928343,
+                    "frequency": 0.011882680268954324
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 552,
+                    "probability": 0.13866528281026078,
+                    "frequency": 0.11956521739130435
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 161,
+                    "probability": 0.24433124085819435,
+                    "frequency": 0.19254658385093168
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.30000000000000004,
+                    "n": 34,
+                    "probability": 0.3100612784839269,
+                    "frequency": 0.47058823529411764
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 219,
+                    "probability": 0.37464236063557377,
+                    "frequency": 0.3926940639269406
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 11692,
+                    "probability": 0.4834831062679581,
+                    "frequency": 0.4818679438932604
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 6088,
+                    "probability": 0.5084195304441376,
+                    "frequency": 0.5174113009198423
+                  }
+                ]
+              },
+              "ece": 0.007474048138301098,
+              "raw_metrics": {
+                "n": 17999,
+                "accuracy": 0.5134174120784488,
+                "precision_macro": 0.34227684209555936,
+                "recall_macro": 0.3482830321549397,
+                "f1_macro": 0.34378628290566526,
+                "confusion_matrix": [
+                  [
+                    4004,
+                    0,
+                    4807
+                  ],
+                  [
+                    162,
+                    0,
+                    156
+                  ],
+                  [
+                    3633,
+                    0,
+                    5237
+                  ]
+                ],
+                "log_loss": 0.754562033341463,
+                "brier_multiclass": 0.514110190126204,
+                "roc_auc_ovr": 0.635811504347795,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 365,
+                    "probability": 0.37388125189421373,
+                    "frequency": 0.336986301369863
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 13197,
+                    "probability": 0.47749332348109824,
+                    "frequency": 0.4841251799651436
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 4437,
+                    "probability": 0.510610228022645,
+                    "frequency": 0.5181428893396439
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17207,
+                    "probability": 0.02165254589666186,
+                    "frequency": 0.011158249549601906
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.1,
+                    "n": 647,
+                    "probability": 0.13559298933091157,
+                    "frequency": 0.13601236476043277
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.2,
+                    "n": 145,
+                    "probability": 0.23373590779049563,
+                    "frequency": 0.2620689655172414
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 479,
+                    "probability": 0.3734137364641896,
+                    "frequency": 0.3778705636743215
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 10628,
+                    "probability": 0.47825273718950334,
+                    "frequency": 0.48400451637184794
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 6892,
+                    "probability": 0.5135730372540791,
+                    "frequency": 0.5143644805571678
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.022444616124775087,
+                "low": -0.028335752636580527,
+                "high": -0.01789001551856635,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            }
+          },
+          "category_ablations": {
+            "only:PREÇO": {
+              "log_loss": 0.7697593948973416,
+              "delta_vs_full": 0.01669809503634523
+            },
+            "without:PREÇO": {
+              "log_loss": 0.7531451529136862,
+              "delta_vs_full": 8.385305268987508e-05
+            },
+            "only:PRICE ACTION": {
+              "log_loss": 0.7557962550237983,
+              "delta_vs_full": 0.0027349551628019775
+            },
+            "without:PRICE ACTION": {
+              "log_loss": 0.7533031268853044,
+              "delta_vs_full": 0.00024182702430808334
+            },
+            "only:TEMPO": {
+              "log_loss": 0.7643264119942472,
+              "delta_vs_full": 0.011265112133250876
+            },
+            "without:TEMPO": {
+              "log_loss": 0.752847279960036,
+              "delta_vs_full": -0.0002140199009603716
+            },
+            "only:TENDÊNCIA": {
+              "log_loss": 0.7691964426599065,
+              "delta_vs_full": 0.01613514279891015
+            },
+            "without:TENDÊNCIA": {
+              "log_loss": 0.7532549612075139,
+              "delta_vs_full": 0.00019366134651754852
+            },
+            "only:VOLATILIDADE": {
+              "log_loss": 0.7528986362391402,
+              "delta_vs_full": -0.00016266362185612948
+            },
+            "without:VOLATILIDADE": {
+              "log_loss": 0.7554091227254253,
+              "delta_vs_full": 0.0023478228644289167
+            },
+            "only:VOLUME": {
+              "log_loss": 0.7689283207263836,
+              "delta_vs_full": 0.01586702086538727
+            },
+            "without:VOLUME": {
+              "log_loss": 0.7528545774667988,
+              "delta_vs_full": -0.0002067223941975005
+            }
+          }
+        },
+        "5": {
+          "candidates": {
+            "frequency": {
+              "metrics": {
+                "n": 17998,
+                "accuracy": 0.4965551727969774,
+                "precision_macro": 0.16551839093232582,
+                "recall_macro": 0.3333333333333333,
+                "f1_macro": 0.22119918321886023,
+                "confusion_matrix": [
+                  [
+                    0,
+                    0,
+                    9030
+                  ],
+                  [
+                    0,
+                    0,
+                    31
+                  ],
+                  [
+                    0,
+                    0,
+                    8937
+                  ]
+                ],
+                "log_loss": 0.7050318319654707,
+                "brier_multiclass": 0.5018091194247357,
+                "roc_auc_ovr": 0.5,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 17998,
+                    "probability": 0.4939538156700801,
+                    "frequency": 0.5017224136015113
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.0029629080942945507,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 17998,
+                    "probability": 0.5030832762356254,
+                    "frequency": 0.4965551727969774
+                  }
+                ]
+              },
+              "ece": 0.006528103438648014,
+              "raw_metrics": null,
+              "columns": [
+                "return_1"
+              ]
+            },
+            "logistic_original": {
+              "metrics": {
+                "n": 17998,
+                "accuracy": 0.5108900988998778,
+                "precision_macro": 0.34075851175515526,
+                "recall_macro": 0.3413063959095482,
+                "f1_macro": 0.3405178170996006,
+                "confusion_matrix": [
+                  [
+                    4295,
+                    0,
+                    4735
+                  ],
+                  [
+                    15,
+                    0,
+                    16
+                  ],
+                  [
+                    4037,
+                    0,
+                    4900
+                  ]
+                ],
+                "log_loss": 0.7039986464157857,
+                "brier_multiclass": 0.5017007172675557,
+                "roc_auc_ovr": 0.5954864507773837,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 3,
+                    "probability": 0.25153448745929236,
+                    "frequency": 0.3333333333333333
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 33,
+                    "probability": 0.379988881000265,
+                    "frequency": 0.5757575757575758
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 10073,
+                    "probability": 0.4823546728257545,
+                    "frequency": 0.49071776034944903
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 7867,
+                    "probability": 0.5153004568303131,
+                    "frequency": 0.5154442608364053
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 22,
+                    "probability": 0.6271816783143025,
+                    "frequency": 0.5454545454545454
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.002167813179355418,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 22,
+                    "probability": 0.37276358466431053,
+                    "frequency": 0.45454545454545453
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 8823,
+                    "probability": 0.48441076870685956,
+                    "frequency": 0.48509577241301144
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 9117,
+                    "probability": 0.5171007375041348,
+                    "frequency": 0.5079521772512888
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 33,
+                    "probability": 0.619828318086293,
+                    "frequency": 0.42424242424242425
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.7000000000000001,
+                    "n": 3,
+                    "probability": 0.7484607321603506,
+                    "frequency": 0.6666666666666666
+                  }
+                ]
+              },
+              "ece": 0.005251760174631463,
+              "raw_metrics": {
+                "n": 17998,
+                "accuracy": 0.5106678519835537,
+                "precision_macro": 0.3407796506160817,
+                "recall_macro": 0.34124901132090996,
+                "f1_macro": 0.339561012669535,
+                "confusion_matrix": [
+                  [
+                    4056,
+                    0,
+                    4974
+                  ],
+                  [
+                    15,
+                    0,
+                    16
+                  ],
+                  [
+                    3802,
+                    0,
+                    5135
+                  ]
+                ],
+                "log_loss": 0.7042302454543319,
+                "brier_multiclass": 0.5019328565607688,
+                "roc_auc_ovr": 0.5958249504842599,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.1,
+                    "n": 2,
+                    "probability": 0.18176983076456216,
+                    "frequency": 0.5
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 3,
+                    "probability": 0.25566925167334215,
+                    "frequency": 0.3333333333333333
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 115,
+                    "probability": 0.3795305495012645,
+                    "frequency": 0.5043478260869565
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 10495,
+                    "probability": 0.47909139772382575,
+                    "frequency": 0.4920438303954264
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 7354,
+                    "probability": 0.5166362372299144,
+                    "frequency": 0.5155017677454447
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 29,
+                    "probability": 0.6258072128937603,
+                    "frequency": 0.5172413793103449
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.0024039667003965533,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 29,
+                    "probability": 0.37418767516335294,
+                    "frequency": 0.4827586206896552
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 8388,
+                    "probability": 0.483121552670492,
+                    "frequency": 0.48450166905102526
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 9462,
+                    "probability": 0.5206621765228185,
+                    "frequency": 0.507292327203551
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 114,
+                    "probability": 0.6206257598580056,
+                    "frequency": 0.49122807017543857
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.7000000000000001,
+                    "n": 3,
+                    "probability": 0.7443307472638447,
+                    "frequency": 0.6666666666666666
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.8,
+                    "n": 2,
+                    "probability": 0.8182301692354359,
+                    "frequency": 0.5
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.0010331855496850829,
+                "low": -0.0017936720085066319,
+                "high": -0.00029040107052010416,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            },
+            "logistic_contextual": {
+              "metrics": {
+                "n": 17998,
+                "accuracy": 0.5089454383820424,
+                "precision_macro": 0.3394547061687729,
+                "recall_macro": 0.34001133317744947,
+                "f1_macro": 0.33919506962393453,
+                "confusion_matrix": [
+                  [
+                    4268,
+                    0,
+                    4762
+                  ],
+                  [
+                    17,
+                    0,
+                    14
+                  ],
+                  [
+                    4045,
+                    0,
+                    4892
+                  ]
+                ],
+                "log_loss": 0.7040386881734969,
+                "brier_multiclass": 0.5017302126593418,
+                "roc_auc_ovr": 0.5875301589144705,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 3,
+                    "probability": 0.2609195322624522,
+                    "frequency": 0.3333333333333333
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 30,
+                    "probability": 0.3837006493433892,
+                    "frequency": 0.5333333333333333
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 10042,
+                    "probability": 0.480624099573811,
+                    "frequency": 0.4922326229834694
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 7906,
+                    "probability": 0.5168395665881302,
+                    "frequency": 0.513407538578295
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 17,
+                    "probability": 0.6255969385202828,
+                    "frequency": 0.6470588235294118
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.0021775653983874188,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 17,
+                    "probability": 0.3742528094916793,
+                    "frequency": 0.35294117647058826
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 8768,
+                    "probability": 0.48288311589901844,
+                    "frequency": 0.48574361313868614
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 9180,
+                    "probability": 0.5187734536124251,
+                    "frequency": 0.5071895424836601
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 30,
+                    "probability": 0.6159812933716176,
+                    "frequency": 0.4666666666666667
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.7000000000000001,
+                    "n": 3,
+                    "probability": 0.7390765449192188,
+                    "frequency": 0.6666666666666666
+                  }
+                ]
+              },
+              "ece": 0.008337637813359855,
+              "raw_metrics": {
+                "n": 17998,
+                "accuracy": 0.5098344260473386,
+                "precision_macro": 0.34018462495385626,
+                "recall_macro": 0.3406845457268184,
+                "f1_macro": 0.33909104328440964,
+                "confusion_matrix": [
+                  [
+                    4069,
+                    0,
+                    4961
+                  ],
+                  [
+                    18,
+                    0,
+                    13
+                  ],
+                  [
+                    3830,
+                    0,
+                    5107
+                  ]
+                ],
+                "log_loss": 0.704393662191278,
+                "brier_multiclass": 0.5020245420571505,
+                "roc_auc_ovr": 0.5880240541716502,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.1,
+                    "n": 1,
+                    "probability": 0.17490263260877845,
+                    "frequency": 0.0
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.2,
+                    "n": 4,
+                    "probability": 0.25007176731562136,
+                    "frequency": 0.5
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 110,
+                    "probability": 0.3810902432067116,
+                    "frequency": 0.4818181818181818
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 10378,
+                    "probability": 0.4768480933392574,
+                    "frequency": 0.49267681634226246
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 7481,
+                    "probability": 0.5187409005861023,
+                    "frequency": 0.5146370806041973
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 24,
+                    "probability": 0.6248638465557708,
+                    "frequency": 0.5
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.0022532032255504443,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 24,
+                    "probability": 0.3750953690380013,
+                    "frequency": 0.5
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 8286,
+                    "probability": 0.4808838807126394,
+                    "frequency": 0.48310403089548637
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 9573,
+                    "probability": 0.5227642725752911,
+                    "frequency": 0.5078867648595007
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 110,
+                    "probability": 0.6188317598115913,
+                    "frequency": 0.5181818181818182
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.7000000000000001,
+                    "n": 4,
+                    "probability": 0.7499282158452891,
+                    "frequency": 0.5
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.8,
+                    "n": 1,
+                    "probability": 0.825097367391221,
+                    "frequency": 1.0
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return",
+                "wick_imbalance",
+                "rejection_low",
+                "rejection_high",
+                "doji",
+                "doji_frequency_5",
+                "body_growth_3",
+                "range_compression_3",
+                "engulf_proxy",
+                "momentum_acceleration",
+                "trend_strength",
+                "range_to_atr",
+                "mean_reversion_pressure",
+                "taker_imbalance",
+                "activity_pressure",
+                "price_volume_agreement",
+                "rejection_at_extreme",
+                "direction_persistence"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.0009931437919737335,
+                "low": -0.0019329362929205516,
+                "high": -0.0001513909516711459,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            },
+            "random_forest_original": {
+              "metrics": {
+                "n": 17998,
+                "accuracy": 0.5082231359039894,
+                "precision_macro": 0.3388728025013341,
+                "recall_macro": 0.33945808180333575,
+                "f1_macro": 0.3390415657343932,
+                "confusion_matrix": [
+                  [
+                    4446,
+                    0,
+                    4584
+                  ],
+                  [
+                    20,
+                    0,
+                    11
+                  ],
+                  [
+                    4236,
+                    0,
+                    4701
+                  ]
+                ],
+                "log_loss": 0.7038004543402876,
+                "brier_multiclass": 0.5015970461715342,
+                "roc_auc_ovr": 0.5872471681159109,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 100,
+                    "probability": 0.38740734137790156,
+                    "frequency": 0.47
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 9564,
+                    "probability": 0.47791416041669593,
+                    "frequency": 0.49289000418235046
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 8328,
+                    "probability": 0.5210562163786387,
+                    "frequency": 0.5120076849183477
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 6,
+                    "probability": 0.605917772036327,
+                    "frequency": 0.8333333333333334
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.0020957208336634683,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 6,
+                    "probability": 0.393856134953629,
+                    "frequency": 0.16666666666666666
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 9065,
+                    "probability": 0.47864423106423815,
+                    "frequency": 0.488030888030888
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 8828,
+                    "probability": 0.5217360495978146,
+                    "frequency": 0.505210693248754
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 99,
+                    "probability": 0.6123114967938112,
+                    "frequency": 0.5252525252525253
+                  }
+                ]
+              },
+              "ece": 0.012801293185385563,
+              "raw_metrics": {
+                "n": 17998,
+                "accuracy": 0.5115568396488499,
+                "precision_macro": 0.3412150151415052,
+                "recall_macro": 0.34176703393546876,
+                "f1_macro": 0.3408589665111221,
+                "confusion_matrix": [
+                  [
+                    4261,
+                    0,
+                    4769
+                  ],
+                  [
+                    20,
+                    0,
+                    11
+                  ],
+                  [
+                    3991,
+                    0,
+                    4946
+                  ]
+                ],
+                "log_loss": 0.7040264032657712,
+                "brier_multiclass": 0.501770431843521,
+                "roc_auc_ovr": 0.5874255144551922,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 210,
+                    "probability": 0.38085480395981175,
+                    "frequency": 0.4523809523809524
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 9943,
+                    "probability": 0.47576967944141885,
+                    "frequency": 0.49230614502665193
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 7844,
+                    "probability": 0.5197836866144885,
+                    "frequency": 0.5149158592554819
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 1,
+                    "probability": 0.6076755664785868,
+                    "frequency": 1.0
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.0025443551747432887,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 1,
+                    "probability": 0.392116704483564,
+                    "frequency": 0.0
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 8693,
+                    "probability": 0.4795692916695189,
+                    "frequency": 0.4836075002875877
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 9100,
+                    "probability": 0.5239815936436635,
+                    "frequency": 0.5078021978021978
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 204,
+                    "probability": 0.6193033300583682,
+                    "frequency": 0.5490196078431373
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.0012313776251830426,
+                "low": -0.0022303741578141908,
+                "high": -0.0002379330142847014,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            },
+            "xgboost_original": {
+              "metrics": {
+                "n": 17998,
+                "accuracy": 0.5142793643738193,
+                "precision_macro": 0.34282857422553326,
+                "recall_macro": 0.34341601992835047,
+                "f1_macro": 0.3431100476901284,
+                "confusion_matrix": [
+                  [
+                    4726,
+                    0,
+                    4304
+                  ],
+                  [
+                    19,
+                    0,
+                    12
+                  ],
+                  [
+                    4407,
+                    0,
+                    4530
+                  ]
+                ],
+                "log_loss": 0.7033726760630489,
+                "brier_multiclass": 0.5013935074211214,
+                "roc_auc_ovr": 0.5980858445171603,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 94,
+                    "probability": 0.3872839728736694,
+                    "frequency": 0.46808510638297873
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 9095,
+                    "probability": 0.47516385431835045,
+                    "frequency": 0.4873007146783947
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 8808,
+                    "probability": 0.5214756321173759,
+                    "frequency": 0.5169164396003633
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 1,
+                    "probability": 0.6051266396161052,
+                    "frequency": 1.0
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.002243679312964224,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 1,
+                    "probability": 0.3939338401615856,
+                    "frequency": 0.0
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 9507,
+                    "probability": 0.47795007546348534,
+                    "frequency": 0.4828021457873146
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 8402,
+                    "probability": 0.5246015005893266,
+                    "frequency": 0.5117829088312307
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 88,
+                    "probability": 0.6121444056505253,
+                    "frequency": 0.5340909090909091
+                  }
+                ]
+              },
+              "ece": 0.00894395623585513,
+              "raw_metrics": {
+                "n": 17998,
+                "accuracy": 0.5142238026447383,
+                "precision_macro": 0.34303561740416777,
+                "recall_macro": 0.34356272175190655,
+                "f1_macro": 0.3425307275636508,
+                "confusion_matrix": [
+                  [
+                    4247,
+                    0,
+                    4783
+                  ],
+                  [
+                    19,
+                    0,
+                    12
+                  ],
+                  [
+                    3929,
+                    0,
+                    5008
+                  ]
+                ],
+                "log_loss": 0.7033684521191345,
+                "brier_multiclass": 0.5014839187491049,
+                "roc_auc_ovr": 0.5978801598470832,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 110,
+                    "probability": 0.3873419243225338,
+                    "frequency": 0.4636363636363636
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 10040,
+                    "probability": 0.4746231559071139,
+                    "frequency": 0.48854581673306774
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 7848,
+                    "probability": 0.5190672690330512,
+                    "frequency": 0.5191131498470948
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.0020474099942883062,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 8497,
+                    "probability": 0.48013741990849207,
+                    "frequency": 0.4787572084265035
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 9400,
+                    "probability": 0.5253272466739729,
+                    "frequency": 0.512340425531915
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 101,
+                    "probability": 0.6127021274327478,
+                    "frequency": 0.5247524752475248
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.0016591559024217901,
+                "low": -0.002890958894885002,
+                "high": -0.0005690255126190868,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            },
+            "xgboost_contextual_regularized": {
+              "metrics": {
+                "n": 17998,
+                "accuracy": 0.5162240248916546,
+                "precision_macro": 0.3441114747942442,
+                "recall_macro": 0.34469264425235285,
+                "f1_macro": 0.34434967041335957,
+                "confusion_matrix": [
+                  [
+                    4801,
+                    0,
+                    4229
+                  ],
+                  [
+                    19,
+                    0,
+                    12
+                  ],
+                  [
+                    4447,
+                    0,
+                    4490
+                  ]
+                ],
+                "log_loss": 0.7034745826166964,
+                "brier_multiclass": 0.5013788253873029,
+                "roc_auc_ovr": 0.5977204286459923,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 129,
+                    "probability": 0.3878187376514785,
+                    "frequency": 0.46511627906976744
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 8924,
+                    "probability": 0.4746872306458799,
+                    "frequency": 0.4848722545943523
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 8944,
+                    "probability": 0.5217261612383609,
+                    "frequency": 0.5190071556350626
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.6000000000000001,
+                    "n": 1,
+                    "probability": 0.6024447557426185,
+                    "frequency": 1.0
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.002245822489626134,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.30000000000000004,
+                    "n": 1,
+                    "probability": 0.3964445425706449,
+                    "frequency": 0.0
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 9603,
+                    "probability": 0.47752397203350616,
+                    "frequency": 0.4813079246068937
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 8273,
+                    "probability": 0.5251391193173637,
+                    "frequency": 0.5133567025262903
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 121,
+                    "probability": 0.6114538051761196,
+                    "frequency": 0.5619834710743802
+                  }
+                ]
+              },
+              "ece": 0.007321783337036905,
+              "raw_metrics": {
+                "n": 17998,
+                "accuracy": 0.5166685187243027,
+                "precision_macro": 0.344691671637098,
+                "recall_macro": 0.34520153440268664,
+                "f1_macro": 0.3441151450200743,
+                "confusion_matrix": [
+                  [
+                    4253,
+                    0,
+                    4777
+                  ],
+                  [
+                    19,
+                    0,
+                    12
+                  ],
+                  [
+                    3891,
+                    0,
+                    5046
+                  ]
+                ],
+                "log_loss": 0.7034124359823433,
+                "brier_multiclass": 0.5013890298933744,
+                "roc_auc_ovr": 0.5976511197353008,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 111,
+                    "probability": 0.3896300972121722,
+                    "frequency": 0.44144144144144143
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 10055,
+                    "probability": 0.47506390849447266,
+                    "frequency": 0.4872202884137245
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 7832,
+                    "probability": 0.5185537387033544,
+                    "frequency": 0.5211950970377937
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.0021564986271201112,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 8511,
+                    "probability": 0.48063035133983517,
+                    "frequency": 0.47902714134649277
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 9384,
+                    "probability": 0.5247647736487138,
+                    "frequency": 0.5117220801364024
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 103,
+                    "probability": 0.6099064010590247,
+                    "frequency": 0.5631067961165048
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return",
+                "wick_imbalance",
+                "rejection_low",
+                "rejection_high",
+                "doji",
+                "doji_frequency_5",
+                "body_growth_3",
+                "range_compression_3",
+                "engulf_proxy",
+                "momentum_acceleration",
+                "trend_strength",
+                "range_to_atr",
+                "mean_reversion_pressure",
+                "taker_imbalance",
+                "activity_pressure",
+                "price_volume_agreement",
+                "rejection_at_extreme",
+                "direction_persistence"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.0015572493487742778,
+                "low": -0.002736093179771563,
+                "high": -0.0005151513496978143,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            },
+            "catboost_original": {
+              "metrics": {
+                "n": 17998,
+                "accuracy": 0.5103344816090677,
+                "precision_macro": 0.34016264137882296,
+                "recall_macro": 0.34071753164237767,
+                "f1_macro": 0.3402339426677788,
+                "confusion_matrix": [
+                  [
+                    4857,
+                    0,
+                    4173
+                  ],
+                  [
+                    22,
+                    0,
+                    9
+                  ],
+                  [
+                    4609,
+                    0,
+                    4328
+                  ]
+                ],
+                "log_loss": 0.704151972991665,
+                "brier_multiclass": 0.5015936592113603,
+                "roc_auc_ovr": 0.604781310068165,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 62,
+                    "probability": 0.3913265996447168,
+                    "frequency": 0.5
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 8740,
+                    "probability": 0.47498027689850086,
+                    "frequency": 0.4907322654462243
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 9196,
+                    "probability": 0.5197534490284429,
+                    "frequency": 0.5121792083514571
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.0020985030614003378,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 9806,
+                    "probability": 0.4794255351035067,
+                    "frequency": 0.48602896186008565
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 8138,
+                    "probability": 0.5248113095329865,
+                    "frequency": 0.509338903907594
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 54,
+                    "probability": 0.607913354815821,
+                    "frequency": 0.48148148148148145
+                  }
+                ]
+              },
+              "ece": 0.01128054732850615,
+              "raw_metrics": {
+                "n": 17998,
+                "accuracy": 0.5148349816646294,
+                "precision_macro": 0.3434505887164632,
+                "recall_macro": 0.3439768424498746,
+                "f1_macro": 0.3428908862053566,
+                "confusion_matrix": [
+                  [
+                    4237,
+                    0,
+                    4793
+                  ],
+                  [
+                    21,
+                    0,
+                    10
+                  ],
+                  [
+                    3908,
+                    0,
+                    5029
+                  ]
+                ],
+                "log_loss": 0.706331623831081,
+                "brier_multiclass": 0.5014951716890271,
+                "roc_auc_ovr": 0.604812815366117,
+                "calibration": [
+                  {
+                    "class": 0,
+                    "left": 0.30000000000000004,
+                    "n": 11,
+                    "probability": 0.39591329432996325,
+                    "frequency": 0.2727272727272727
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.4,
+                    "n": 10940,
+                    "probability": 0.47735034950984573,
+                    "frequency": 0.4893967093235832
+                  },
+                  {
+                    "class": 0,
+                    "left": 0.5,
+                    "n": 7047,
+                    "probability": 0.5132892700455957,
+                    "frequency": 0.5212147012913296
+                  },
+                  {
+                    "class": 1,
+                    "left": 0.0,
+                    "n": 17998,
+                    "probability": 0.0062740904460627635,
+                    "frequency": 0.001722413601511279
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.4,
+                    "n": 9256,
+                    "probability": 0.4842889885239067,
+                    "frequency": 0.48314606741573035
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.5,
+                    "n": 8741,
+                    "probability": 0.5214714535399858,
+                    "frequency": 0.510696716622812
+                  },
+                  {
+                    "class": 2,
+                    "left": 0.6000000000000001,
+                    "n": 1,
+                    "probability": 0.6007110948117679,
+                    "frequency": 1.0
+                  }
+                ]
+              },
+              "columns": [
+                "return_1",
+                "log_return",
+                "range_rel",
+                "body_rel",
+                "body_fraction",
+                "lower_wick",
+                "upper_wick",
+                "close_position",
+                "direction_balance_5",
+                "higher_high",
+                "higher_low",
+                "momentum_5",
+                "momentum_20",
+                "sma_distance_20",
+                "sma_slope_20",
+                "ema_distance_20",
+                "macd_rel",
+                "rsi_14",
+                "atr_rel_14",
+                "realized_vol_20",
+                "vol_ratio",
+                "bollinger_z",
+                "volume_rel_20",
+                "volume_change",
+                "trade_intensity",
+                "taker_buy_ratio",
+                "signed_volume",
+                "breakout_20",
+                "support_distance_20",
+                "hour_sin",
+                "hour_cos",
+                "weekday_sin",
+                "weekday_cos",
+                "closed_5m_return",
+                "closed_15m_return",
+                "closed_30m_return",
+                "closed_60m_return"
+              ],
+              "paired_delta_vs_frequency_ci": {
+                "mean": -0.0008798589738057032,
+                "low": -0.0017541297503308228,
+                "high": -3.905245137498067e-05,
+                "days": 92,
+                "method": "bootstrap 500 blocos diários; sem correção por múltiplos experimentos"
+              }
+            }
+          },
+          "category_ablations": {
+            "only:PREÇO": {
+              "log_loss": 0.7047420820518626,
+              "delta_vs_full": 0.0007434356360769279
+            },
+            "without:PREÇO": {
+              "log_loss": 0.7039934182568154,
+              "delta_vs_full": -5.228158970305152e-06
+            },
+            "only:PRICE ACTION": {
+              "log_loss": 0.7039647915053023,
+              "delta_vs_full": -3.3854910483355205e-05
+            },
+            "without:PRICE ACTION": {
+              "log_loss": 0.7041549180537323,
+              "delta_vs_full": 0.00015627163794662557
+            },
+            "only:TEMPO": {
+              "log_loss": 0.7045515106527479,
+              "delta_vs_full": 0.0005528642369622139
+            },
+            "without:TEMPO": {
+              "log_loss": 0.7040395894929296,
+              "delta_vs_full": 4.094307714386236e-05
+            },
+            "only:TENDÊNCIA": {
+              "log_loss": 0.7047561461512604,
+              "delta_vs_full": 0.000757499735474676
+            },
+            "without:TENDÊNCIA": {
+              "log_loss": 0.7037871386448524,
+              "delta_vs_full": -0.00021150777093326134
+            },
+            "only:VOLATILIDADE": {
+              "log_loss": 0.7037598525092668,
+              "delta_vs_full": -0.0002387939065189304
+            },
+            "without:VOLATILIDADE": {
+              "log_loss": 0.7040863959814622,
+              "delta_vs_full": 8.774956567647596e-05
+            },
+            "only:VOLUME": {
+              "log_loss": 0.7046083651448521,
+              "delta_vs_full": 0.0006097187290664552
+            },
+            "without:VOLUME": {
+              "log_loss": 0.7041074121969025,
+              "delta_vs_full": 0.00010876578111684854
+            }
+          }
+        }
+      }
+    }
+  },
+  "model_comparison": {},
+  "error_analysis": {},
+  "feature_relevance": {},
+  "economic_analysis": {},
+  "target_diagnostics": {}
+}

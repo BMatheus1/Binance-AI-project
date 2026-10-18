@@ -1,0 +1,18 @@
+{
+  "run_id": "20261017T223631458343Z-phase2",
+  "tests": {
+    "passed": 47,
+    "failed": 0,
+    "junit": "reports/phase_2/tests.xml"
+  },
+  "originals": {
+    "checked": 40,
+    "all_unchanged": true
+  },
+  "temporal_guard": {
+    "forbidden_start": "2026-07-01",
+    "forbidden_rows_loaded": 0,
+    "latest_development_decision": "2026-06-30 23:59:00+00:00"
+  },
+  "real_trades_executed": false
+}
