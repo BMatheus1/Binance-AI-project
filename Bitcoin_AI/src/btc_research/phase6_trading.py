@@ -81,7 +81,8 @@ class AssetSelector:
         self.config = config
 
     def evaluate(self, snapshot: MarketSnapshot, *, policy: str, news_event_ids: tuple[str, ...] = (),
-                 news_force_abstention: bool = False, news_adjustment_bps: float = 0.0) -> Opportunity:
+                 news_force_abstention: bool = False, news_adjustment_bps: float = 0.0,
+                 technical_reasons: tuple[str, ...] = ()) -> Opportunity:
         allowed_policies = {"A_without_news", "B_with_news", "A_quantitative",
                             "B_conservative_news", "C_finbert_sentiment",
                             "C_qwen3_structured_news",
@@ -90,7 +91,7 @@ class AssetSelector:
             raise ValueError("unknown experiment policy")
         if policy in {"A_without_news", "A_quantitative"} and (news_event_ids or news_force_abstention or news_adjustment_bps):
             raise ValueError("policy A cannot consume news")
-        reasons = []
+        reasons = list(technical_reasons)
         if not snapshot.data_complete:
             reasons.append("incomplete_market_data")
         if snapshot.stale_seconds > self.config.maximum_stale_seconds:
@@ -269,6 +270,56 @@ class DemoTransport(Protocol):
     def __call__(self, method: str, url: str, headers: dict[str, str], params: dict) -> dict: ...
 
 
+class BinanceDemoAPIError(RuntimeError):
+    """Sanitized API error that never includes request headers or signed URLs."""
+    def __init__(self, message: str, *, http_status: int | None = None,
+                 api_code: int | None = None):
+        super().__init__(message)
+        self.http_status = http_status
+        self.api_code = api_code
+
+
+class RequestsDemoTransport:
+    """Strict HTTPS transport for the single allowlisted Binance Demo host."""
+    def __init__(self, *, timeout_seconds: float = 15):
+        if timeout_seconds <= 0:
+            raise ValueError("timeout must be positive")
+        self.timeout_seconds = timeout_seconds
+
+    def __call__(self, method: str, url: str, headers: dict[str, str], params: dict) -> dict:
+        import requests
+
+        parsed = urlparse(url)
+        if (parsed.scheme != "https" or parsed.hostname != "demo-api.binance.com"
+                or not parsed.path.startswith("/api/") or parsed.username or parsed.password):
+            raise ValueError("request destination is not the Binance Demo allowlist")
+        method = method.upper()
+        if method not in {"GET", "POST", "DELETE"}:
+            raise ValueError("unsupported Binance Demo HTTP method")
+        try:
+            response = requests.request(method, url, headers=headers, params=params,
+                                        timeout=self.timeout_seconds, allow_redirects=False)
+        except requests.RequestException as exc:
+            raise BinanceDemoAPIError(
+                f"falha de transporte Binance Demo: {type(exc).__name__}") from None
+        if 300 <= response.status_code < 400:
+            raise BinanceDemoAPIError("redirecionamento bloqueado no endpoint Demo",
+                                      http_status=response.status_code)
+        try:
+            payload = response.json()
+        except ValueError:
+            payload = None
+        if not 200 <= response.status_code < 300:
+            code = payload.get("code") if isinstance(payload, dict) else None
+            message = payload.get("msg") if isinstance(payload, dict) else "resposta não JSON"
+            raise BinanceDemoAPIError(f"Binance Demo rejeitou a requisição: {message}",
+                                      http_status=response.status_code, api_code=code)
+        if not isinstance(payload, (dict, list)):
+            raise BinanceDemoAPIError("resposta inválida da Binance Demo",
+                                      http_status=response.status_code)
+        return payload
+
+
 class BinanceDemoBroker:
     """Demo-only API adapter. There is deliberately no production endpoint fallback."""
     def __init__(self, *, enabled: bool = False, base_url: str = DEMO_REST_BASE,
@@ -296,25 +347,71 @@ class BinanceDemoBroker:
                 "credentials_present": bool(self.api_key and self._api_secret),
                 "transport_present": self.transport is not None,
                 "base_url": self.base_url, "production_endpoint_accessible": False,
+                "authenticated_reads_ready": bool(self.api_key and self._api_secret and self.transport),
                 "ready": bool(self.enabled and self.api_key and self._api_secret and self.transport)}
 
-    def _call(self, method: str, path: str, params: dict, *, signed: bool = True) -> dict:
-        if not self.enabled:
+    def _call(self, method: str, path: str, params: dict, *, signed: bool = True,
+              order_action: bool = False) -> dict:
+        allowed = {("GET", "/v3/ping"), ("GET", "/v3/time"),
+                   ("GET", "/v3/account"), ("GET", "/v3/exchangeInfo"),
+                   ("GET", "/v3/avgPrice"), ("GET", "/v3/openOrders"),
+                   ("GET", "/v3/myTrades"), ("GET", "/v3/account/commission"),
+                   ("GET", "/v3/order"), ("POST", "/v3/order"),
+                   ("DELETE", "/v3/order")}
+        method = method.upper()
+        if (method, path) not in allowed:
+            raise ValueError("Binance Demo operation is not allowlisted")
+        if order_action and not self.enabled:
             raise RuntimeError("Binance Demo orders are disabled")
-        if not self.api_key or not self._api_secret or self.transport is None:
-            raise RuntimeError("Binance Demo credentials/transport are incomplete")
+        if self.transport is None:
+            if not self.enabled:
+                raise RuntimeError("Binance Demo orders are disabled; transport is incomplete")
+            raise RuntimeError("Binance Demo transport is incomplete")
+        if signed and (not self.api_key or not self._api_secret):
+            if not self.enabled:
+                raise RuntimeError("Binance Demo orders are disabled; credentials are incomplete")
+            raise RuntimeError("Binance Demo credentials are incomplete")
         values = dict(params)
         if signed:
             values.update(timestamp=self.clock_ms(), recvWindow=5000)
             signature = hmac.new(self._api_secret.encode(), urlencode(values).encode(), hashlib.sha256).hexdigest()
             values["signature"] = signature
-        return self.transport(method, f"{self.base_url}{path}", {"X-MBX-APIKEY": self.api_key}, values)
+        headers = {"X-MBX-APIKEY": self.api_key} if signed else {}
+        return self.transport(method, f"{self.base_url}{path}", headers, values)
+
+    def ping(self) -> dict:
+        return self._call("GET", "/v3/ping", {}, signed=False)
+
+    def server_time(self) -> dict:
+        return self._call("GET", "/v3/time", {}, signed=False)
 
     def balances(self) -> dict:
-        return self._call("GET", "/v3/account", {})
+        return self._call("GET", "/v3/account", {"omitZeroBalances": "true"})
 
     def exchange_info(self, symbol: str) -> dict:
+        if symbol not in UNIVERSE:
+            raise ValueError("symbol outside the frozen Demo universe")
         return self._call("GET", "/v3/exchangeInfo", {"symbol": symbol}, signed=False)
+
+    def average_price(self, symbol: str) -> dict:
+        if symbol not in UNIVERSE:
+            raise ValueError("symbol outside the frozen Demo universe")
+        return self._call("GET", "/v3/avgPrice", {"symbol": symbol}, signed=False)
+
+    def open_orders(self, symbol: str | None = None) -> list[dict]:
+        if symbol is not None and symbol not in UNIVERSE:
+            raise ValueError("symbol outside the frozen Demo universe")
+        return self._call("GET", "/v3/openOrders", {"symbol": symbol} if symbol else {})
+
+    def account_trades(self, symbol: str, *, limit: int = 100) -> list[dict]:
+        if symbol not in UNIVERSE or not 1 <= limit <= 1000:
+            raise ValueError("invalid Demo trade query")
+        return self._call("GET", "/v3/myTrades", {"symbol": symbol, "limit": limit})
+
+    def commission(self, symbol: str) -> dict:
+        if symbol not in UNIVERSE:
+            raise ValueError("symbol outside the frozen Demo universe")
+        return self._call("GET", "/v3/account/commission", {"symbol": symbol})
 
     def submit_market(self, *, symbol: str, side: str, quantity: str, client_order_id: str) -> dict:
         if symbol not in UNIVERSE or side not in {"BUY", "SELL"}:
@@ -322,15 +419,22 @@ class BinanceDemoBroker:
         if client_order_id in self._submitted_ids:
             raise ValueError("duplicate client order id")
         result = self._call("POST", "/v3/order", {"symbol": symbol, "side": side, "type": "MARKET",
-                                                    "quantity": quantity, "newClientOrderId": client_order_id})
+                                                    "quantity": quantity, "newClientOrderId": client_order_id,
+                                                    "newOrderRespType": "FULL"}, order_action=True)
         self._submitted_ids.add(client_order_id)
         return self.classify_order_response(result)
 
     def order_status(self, *, symbol: str, client_order_id: str) -> dict:
+        if symbol not in UNIVERSE or not client_order_id:
+            raise ValueError("invalid Demo order query")
         return self._call("GET", "/v3/order", {"symbol": symbol, "origClientOrderId": client_order_id})
 
     def cancel(self, *, symbol: str, client_order_id: str) -> dict:
-        return self._call("DELETE", "/v3/order", {"symbol": symbol, "origClientOrderId": client_order_id})
+        if symbol not in UNIVERSE or not client_order_id:
+            raise ValueError("invalid Demo cancel request")
+        return self._call("DELETE", "/v3/order", {"symbol": symbol,
+                                                    "origClientOrderId": client_order_id},
+                          order_action=True)
 
     @staticmethod
     def classify_order_response(response: dict) -> dict:

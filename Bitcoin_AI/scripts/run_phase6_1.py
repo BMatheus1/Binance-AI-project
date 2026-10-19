@@ -11,7 +11,8 @@ from btc_research.phase6 import MultiAssetMarketService, build_news_service
 from btc_research.phase6_news import NewsService, SourcePolicy
 from btc_research.phase6_nlp import (Qwen3Interpreter, download_qwen3,
                                      load_phase61_config, model_directory)
-from btc_research.phase6_runtime import Phase61Supervisor
+from btc_research.phase6_runtime import Phase61Supervisor, SingleInstanceLock
+from btc_research.phase6_decisions import ContinuousDecisionWorker
 
 
 UTC = timezone.utc
@@ -114,11 +115,14 @@ async def serve(seconds: float | None) -> dict:
                   for row in config["additional_sources"])
     news_service = NewsService((*base_news.sources, *extra), base_news.store, base_news.fetcher,
                                cycle_seconds=config["news_cycle_seconds"])
+    decision_worker = ContinuousDecisionWorker(ROOT)
+    market_service = MultiAssetMarketService(ROOT, event_callback=decision_worker.on_event)
     supervisor = Phase61Supervisor(
         news_service=news_service,
-        market_service=MultiAssetMarketService(ROOT),
+        market_service=market_service,
         heartbeat_path=ROOT / "runtime/phase_6_1/heartbeat.json",
-        log_path=ROOT / "runtime/phase_6_1/service.jsonl")
+        log_path=ROOT / "runtime/phase_6_1/service.jsonl",
+        decision_worker=decision_worker)
     result = await supervisor.run(duration_seconds=seconds)
     result["event_store_counts"] = news_service.store.counts()
     result["configured_sources"] = [source.source_id for source in news_service.sources]
@@ -140,7 +144,8 @@ def main() -> None:
     elif args.command == "nlp-smoke":
         print(json.dumps(nlp_smoke(), indent=2))
     else:
-        print(json.dumps(asyncio.run(serve(args.seconds)), indent=2))
+        with SingleInstanceLock(ROOT / "runtime/phase_6_1/service.lock"):
+            print(json.dumps(asyncio.run(serve(args.seconds)), indent=2))
 
 
 if __name__ == "__main__":

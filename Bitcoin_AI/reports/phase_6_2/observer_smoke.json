@@ -1,0 +1,62 @@
+{
+  "symbols": {
+    "BTCUSDT": {
+      "healthy": true,
+      "messages": 655,
+      "reconnections": 0,
+      "aggtrade_duplicates": 0,
+      "aggtrade_gap_events": 0,
+      "aggtrade_missing_ids": 0,
+      "depth_invalidations": 0,
+      "book": {
+        "valid": true,
+        "bid": 80890.72,
+        "ask": 80890.73,
+        "spread": 0.00999999999476131,
+        "spread_bps": 0.0012362356740851699,
+        "last_update_id": 101599633416
+      },
+      "real_orders": false
+    },
+    "ETHUSDT": {
+      "healthy": true,
+      "messages": 603,
+      "reconnections": 0,
+      "aggtrade_duplicates": 0,
+      "aggtrade_gap_events": 0,
+      "aggtrade_missing_ids": 0,
+      "depth_invalidations": 0,
+      "book": {
+        "valid": true,
+        "bid": 2338.48,
+        "ask": 2338.49,
+        "spread": 0.009999999999763531,
+        "spread_bps": 0.04276272885976832,
+        "last_update_id": 82208322673
+      },
+      "real_orders": false
+    },
+    "SOLUSDT": {
+      "healthy": true,
+      "messages": 129,
+      "reconnections": 0,
+      "aggtrade_duplicates": 0,
+      "aggtrade_gap_events": 0,
+      "aggtrade_missing_ids": 0,
+      "depth_invalidations": 0,
+      "book": {
+        "valid": true,
+        "bid": 100.95,
+        "ask": 100.96,
+        "spread": 0.009999999999990905,
+        "spread_bps": 0.9905403397544357,
+        "last_update_id": 30394563030
+      },
+      "real_orders": false
+    }
+  },
+  "all_healthy": true,
+  "real_orders": false,
+  "mode": "OBSERVE",
+  "orders_sent": false
+}

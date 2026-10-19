@@ -1,0 +1,49 @@
+{
+  "protocol_version": "phase6.2-v1-binance-demo",
+  "inherits": "configs/phase_6_1.json",
+  "default_mode": "OBSERVE",
+  "environment": "DEMO",
+  "real_trading_supported": false,
+  "automatic_promotion": false,
+  "endpoints": {
+    "rest": "https://demo-api.binance.com/api",
+    "websocket_api": "wss://demo-ws-api.binance.com/ws-api/v3",
+    "market_stream": "wss://demo-stream.binance.com/stream"
+  },
+  "universe": ["BTCUSDT", "ETHUSDT", "SOLUSDT"],
+  "demo_execution": {
+    "orders_enabled_by_default": false,
+    "diagnostic_confirmation": "I_AUTHORIZE_ONE_DEMO_DIAGNOSTIC",
+    "kill_switch_clear_confirmation": "I_AUTHORIZE_BINANCE_DEMO_ONLY",
+    "autonomous_confirmation": "I_AUTHORIZE_DEMO_AUTONOMOUS",
+    "maximum_position_quote": 25.0,
+    "maximum_total_exposure_quote": 50.0,
+    "maximum_open_positions": 1,
+    "maximum_daily_loss_quote": 5.0,
+    "maximum_drawdown_quote": 10.0,
+    "maximum_daily_entries": 10,
+    "maximum_spread_bps": 10.0,
+    "minimum_depth_quote": 10000.0,
+    "maximum_market_stale_seconds": 5.0,
+    "maximum_news_age_seconds": 600.0,
+    "maximum_planned_minutes": 20,
+    "maximum_extension_minutes": 3,
+    "maximum_absolute_minutes": 23,
+    "order_poll_seconds": 2.0,
+    "order_timeout_seconds": 20.0,
+    "reconciliation_interval_seconds": 30.0
+  },
+  "autonomous": {
+    "frozen_policy": "D_event_market_reaction",
+    "prospective_policy_approved": false,
+    "diagnostic_round_trip_validated": false,
+    "maximum_policies_active": 1
+  },
+  "news_inference": {
+    "cycle_seconds": 120,
+    "queue_size": 64,
+    "timeout_seconds": 120,
+    "maximum_age_seconds": 600,
+    "backlog_downgrade_fraction": 0.75
+  }
+}

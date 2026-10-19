@@ -15,6 +15,49 @@ from .common import save_json
 UTC = timezone.utc
 
 
+class SingleInstanceLock:
+    """OS-backed lock preventing two supervisors from writing the same runtime."""
+    def __init__(self, path: Path):
+        self.path = path
+        self.stream = None
+
+    def __enter__(self):
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.stream = self.path.open("a+", encoding="utf-8")
+        self.stream.seek(0)
+        if self.path.stat().st_size == 0:
+            self.stream.write(" ")
+            self.stream.flush()
+        self.stream.seek(0)
+        try:
+            if os.name == "nt":
+                import msvcrt
+                msvcrt.locking(self.stream.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(self.stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError as exc:
+            self.stream.close()
+            raise RuntimeError("phase6.1 service is already running") from exc
+        self.stream.seek(0)
+        self.stream.write(str(os.getpid()))
+        self.stream.truncate()
+        self.stream.flush()
+        return self
+
+    def __exit__(self, *_):
+        if self.stream is None:
+            return
+        self.stream.seek(0)
+        if os.name == "nt":
+            import msvcrt
+            msvcrt.locking(self.stream.fileno(), msvcrt.LK_UNLCK, 1)
+        else:
+            import fcntl
+            fcntl.flock(self.stream.fileno(), fcntl.LOCK_UN)
+        self.stream.close()
+
+
 class JsonFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord) -> str:
         return json.dumps({"time": datetime.now(UTC).isoformat(), "level": record.levelname,
@@ -36,7 +79,8 @@ def structured_logger(path: Path, *, max_bytes: int = 5_000_000, backups: int = 
 
 class Phase61Supervisor:
     def __init__(self, *, news_service, market_service, heartbeat_path: Path,
-                 log_path: Path, heartbeat_seconds: float = 30, neural_worker=None):
+                 log_path: Path, heartbeat_seconds: float = 30, neural_worker=None,
+                 decision_worker=None):
         if heartbeat_seconds <= 0:
             raise ValueError("heartbeat interval must be positive")
         self.news = news_service
@@ -45,6 +89,7 @@ class Phase61Supervisor:
         self.heartbeat_seconds = heartbeat_seconds
         self.logger = structured_logger(log_path)
         self.neural_worker = neural_worker
+        self.decision_worker = decision_worker
         self.started_at: datetime | None = None
         self.stopped_at: datetime | None = None
         self._stop = asyncio.Event()
@@ -56,7 +101,10 @@ class Phase61Supervisor:
                 "updated_at": datetime.now(UTC).isoformat(), "real_orders": False,
                 "news_cycle_seconds": getattr(self.news, "cycle_seconds", None),
                 "news_cycles_completed": getattr(self.news, "cycles_completed", None),
-                "last_news_cycle_completed_at": getattr(self.news, "last_cycle_completed_at", None)}
+                "last_news_cycle_completed_at": getattr(self.news, "last_cycle_completed_at", None),
+                "decision_worker": (self.decision_worker.status()
+                                    if self.decision_worker is not None else
+                                    {"state": "not_configured", "orders_sent": False})}
 
     async def _heartbeat(self) -> None:
         while not self._stop.is_set():
@@ -74,6 +122,8 @@ class Phase61Supervisor:
                  asyncio.create_task(self._heartbeat())]
         if self.neural_worker is not None:
             tasks.append(asyncio.create_task(self.neural_worker.run()))
+        if self.decision_worker is not None:
+            tasks.append(asyncio.create_task(self.decision_worker.run()))
         try:
             if duration_seconds is None:
                 await self._stop.wait()
@@ -97,3 +147,5 @@ class Phase61Supervisor:
         self.market.stop()
         if self.neural_worker is not None:
             self.neural_worker.stop()
+        if self.decision_worker is not None:
+            self.decision_worker.stop()

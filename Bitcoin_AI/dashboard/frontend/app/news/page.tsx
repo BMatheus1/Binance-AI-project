@@ -1,0 +1,17 @@
+"use client";
+
+import { Download, ExternalLink } from "lucide-react";
+import { useMemo, useState } from "react";
+import { useApiData } from "@/components/dashboard-provider";
+import { EmptyState, formatDate, formatNumber } from "@/components/ui";
+import { exportDataset } from "@/lib/api";
+
+interface NewsItem {event_id:string;source:string;title:string;url:string;published_at:string;received_at:string;assets:string[];category:string;sentiment:Record<string,string>;relevance:number|null;novelty:number|null;status:string;inference_latency_seconds:number|null;late:boolean;qwen_classification_available:boolean;}
+export default function NewsPage() {
+  const { data } = useApiData<{items:NewsItem[];count:number}>("/api/news?limit=200");
+  const [asset,setAsset]=useState(""); const [source,setSource]=useState(""); const [sentiment,setSentiment]=useState("");
+  const items = useMemo(() => (data?.items ?? []).filter((item) => (!asset || item.assets.includes(asset)) && (!source || item.source===source) && (!sentiment || Object.values(item.sentiment).includes(sentiment))),[data,asset,source,sentiment]);
+  const sources = [...new Set((data?.items ?? []).map((item)=>item.source))];
+  return <div className="page-stack"><section className="page-heading"><div><span className="eyebrow">EVENT STORE</span><h1>Notícias</h1><p>Metadados e classificações armazenadas, sem reproduzir o conteúdo completo das fontes.</p></div><button className="secondary-button" type="button" onClick={()=>void exportDataset("news")}><Download size={16}/>Exportar CSV</button></section><section className="filter-bar"><select value={asset} onChange={(e)=>setAsset(e.target.value)}><option value="">Todos os ativos</option><option>BTCUSDT</option><option>ETHUSDT</option><option>SOLUSDT</option></select><select value={source} onChange={(e)=>setSource(e.target.value)}><option value="">Todas as fontes</option>{sources.map((item)=><option key={item}>{item}</option>)}</select><select value={sentiment} onChange={(e)=>setSentiment(e.target.value)}><option value="">Todos os sentimentos</option>{["positive","negative","neutral","ambiguous","unreliable"].map((item)=><option key={item}>{item}</option>)}</select></section><section className="news-list">{items.length ? items.map((item)=><article className="news-item" key={item.event_id}><div><div className="news-meta"><span className="tag tag-gold">{item.source}</span><span className="tag">{item.category}</span>{item.late&&<span className="tag tag-red">atrasada</span>}{item.assets.map((a)=><span className="tag" key={a}>{a}</span>)}</div><h3>{item.title}</h3><p>Publicada {formatDate(item.published_at)} · recebida {formatDate(item.received_at)}</p>{item.url&&<a className="panel-link" target="_blank" rel="noreferrer" href={item.url}>Abrir fonte <ExternalLink size={13}/></a>}</div><div className="news-scores"><div><span>Relevância</span><strong>{formatNumber(item.relevance,2)}</strong></div><div><span>Novidade</span><strong>{formatNumber(item.novelty,2)}</strong></div><div><span>Qwen3</span><strong>{item.qwen_classification_available?"Disponível":"Sem dado"}</strong></div><div><span>Latência</span><strong>{item.inference_latency_seconds==null?"Sem dado":`${formatNumber(item.inference_latency_seconds,2)}s`}</strong></div></div></article>):<EmptyState title="Nenhuma notícia encontrada" detail="Ajuste os filtros ou execute o serviço de notícias."/>}</section></div>;
+}
+

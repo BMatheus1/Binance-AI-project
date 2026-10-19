@@ -62,7 +62,8 @@ def build_news_service(root: Path = ROOT, fetcher=None) -> NewsService:
 
 class MultiAssetMarketService:
     """Run the reused public collector independently for each frozen symbol."""
-    def __init__(self, root: Path = ROOT, collector_factory=BinancePublicCollector):
+    def __init__(self, root: Path = ROOT, collector_factory=BinancePublicCollector,
+                 event_callback=None):
         config = load_config(root)
         self.collectors = {
             symbol: collector_factory(
@@ -72,6 +73,7 @@ class MultiAssetMarketService:
                 symbol=symbol,
                 partition_minutes=5,
                 reconnect_seconds=[1, 2, 5, 10, 30],
+                event_callback=event_callback,
             ) for symbol in config["universe"]
         }
 

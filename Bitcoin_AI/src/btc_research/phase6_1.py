@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict, dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from .common import ROOT, save_json
@@ -105,13 +105,19 @@ class FourPolicyEngine:
         row["news_event_ids"] = list(row["news_event_ids"])
         return row
 
-    def evaluate(self, snapshots: list[MarketSnapshot], *, as_of: datetime) -> dict:
+    def evaluate(self, snapshots: list[MarketSnapshot], *, as_of: datetime,
+                 forecasts: dict[str, dict] | None = None,
+                 technical_reasons: dict[str, tuple[str, ...]] | None = None) -> dict:
         if as_of.tzinfo is None or any(snapshot.observed_at > as_of for snapshot in snapshots):
             raise ValueError("future or timezone-free policy evaluation")
         policies = {name: [] for name in POLICIES}
         neural_records = {}
+        forecasts = forecasts or {}
+        technical_reasons = technical_reasons or {}
         for snapshot in snapshots:
-            events = self.event_store.available(as_of, snapshot.symbol)
+            cutoff = as_of - timedelta(hours=6)
+            events = [event for event in self.event_store.available(as_of, snapshot.symbol)
+                      if event.first_received_at >= cutoff][-16:]
             conservative = context_for_decision(events, symbol=snapshot.symbol, as_of=as_of)
             scores = self._neural_scores(events)
             neural_records.update({event_id: score.as_record()
@@ -121,25 +127,42 @@ class FourPolicyEngine:
             reaction_confirmed = any(self._reaction_confirms(event, self.config["policy_d"]) for event in events)
             reaction_veto = bool(events) and not reaction_confirmed
             policies["A_quantitative"].append(
-                self.selector.evaluate(snapshot, policy="A_quantitative"))
+                self.selector.evaluate(snapshot, policy="A_quantitative",
+                                       technical_reasons=technical_reasons.get(snapshot.symbol, ())))
             policies["B_conservative_news"].append(
                 self.selector.evaluate(snapshot, policy="B_conservative_news",
                                        news_event_ids=conservative["event_ids"],
-                                       news_force_abstention=conservative["force_abstention"]))
+                                       news_force_abstention=conservative["force_abstention"],
+                                       technical_reasons=technical_reasons.get(snapshot.symbol, ())))
             policies["C_qwen3_structured_news"].append(
                 self.selector.evaluate(snapshot, policy="C_qwen3_structured_news",
-                                       news_event_ids=tuple(scores), news_force_abstention=neural_veto))
+                                       news_event_ids=tuple(scores), news_force_abstention=neural_veto,
+                                       technical_reasons=technical_reasons.get(snapshot.symbol, ())))
             policies["D_event_market_reaction"].append(
                 self.selector.evaluate(snapshot, policy="D_event_market_reaction",
                                        news_event_ids=tuple(scores),
-                                       news_force_abstention=(neural_veto or reaction_veto)))
+                                       news_force_abstention=(neural_veto or reaction_veto),
+                                       technical_reasons=technical_reasons.get(snapshot.symbol, ())))
         selected = {name: self.selector.choose(items) for name, items in policies.items()}
+        policy_records = {}
+        for name, items in policies.items():
+            opportunities = [self._record_opportunity(item) for item in items]
+            for opportunity in opportunities:
+                forecast = forecasts.get(opportunity["symbol"], {})
+                if forecast.get("expected_gross_return_bps") is None:
+                    opportunity["expected_gross_bps"] = None
+                    opportunity["expected_net_bps"] = None
+            selected_record = self._record_opportunity(selected[name]) if selected[name] else None
+            if selected_record is not None:
+                forecast = forecasts.get(selected_record["symbol"], {})
+                if forecast.get("expected_gross_return_bps") is None:
+                    selected_record["expected_gross_bps"] = None
+                    selected_record["expected_net_bps"] = None
+            policy_records[name] = {"opportunities": opportunities, "selected": selected_record}
         payload = {
-            "as_of": as_of.isoformat(), "policies": {
-                name: {"opportunities": [self._record_opportunity(item) for item in items],
-                       "selected": self._record_opportunity(selected[name]) if selected[name] else None}
-                for name, items in policies.items()},
+            "as_of": as_of.isoformat(), "policies": policy_records,
             "neural_interpretation": neural_records,
+            "forecasts": forecasts,
             "neural_confidence_is_price_probability": False,
             "orders_sent": False,
         }

@@ -2,43 +2,39 @@
   "symbols": {
     "BTCUSDT": {
       "healthy": true,
-      "messages": 363,
-      "reconnections": 0,
+      "messages": 15845,
+      "reconnections": 2,
       "aggtrade_duplicates": 0,
-      "aggtrade_gap_events": 0,
-      "aggtrade_missing_ids": 0,
-      "depth_invalidations": 0,
+      "aggtrade_gap_events": 1,
+      "aggtrade_missing_ids": 528,
+      "depth_invalidations": 2,
       "book": {
-        "valid": true,
-        "bid": 81198.06,
-        "ask": 81198.07,
-        "spread": 0.010000000009313226,
-        "spread_bps": 0.0012315564427937077,
-        "last_update_id": 101595443225
+        "valid": false,
+        "reason": "depth_not_synchronized"
       },
       "real_orders": false
     },
     "ETHUSDT": {
       "healthy": true,
-      "messages": 603,
-      "reconnections": 0,
+      "messages": 19702,
+      "reconnections": 2,
       "aggtrade_duplicates": 0,
-      "aggtrade_gap_events": 0,
-      "aggtrade_missing_ids": 0,
-      "depth_invalidations": 0,
+      "aggtrade_gap_events": 2,
+      "aggtrade_missing_ids": 1062,
+      "depth_invalidations": 2,
       "book": {
         "valid": true,
-        "bid": 2374.85,
-        "ask": 2374.86,
-        "spread": 0.010000000000218279,
-        "spread_bps": 0.04210783395288672,
-        "last_update_id": 82202645771
+        "bid": 2424.98,
+        "ask": 2424.99,
+        "spread": 0.009999999999763531,
+        "spread_bps": 0.04123736847759278,
+        "last_update_id": 82222576450
       },
       "real_orders": false
     },
     "SOLUSDT": {
       "healthy": true,
-      "messages": 150,
+      "messages": 10820,
       "reconnections": 0,
       "aggtrade_duplicates": 0,
       "aggtrade_gap_events": 0,
@@ -46,11 +42,11 @@
       "depth_invalidations": 0,
       "book": {
         "valid": true,
-        "bid": 102.4,
-        "ask": 102.41,
+        "bid": 105.23,
+        "ask": 105.24,
         "spread": 0.009999999999990905,
-        "spread_bps": 0.9765148186114843,
-        "last_update_id": 30393347051
+        "spread_bps": 0.9502541929957624,
+        "last_update_id": 30397672923
       },
       "real_orders": false
     }

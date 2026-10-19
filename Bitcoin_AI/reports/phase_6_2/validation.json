@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-10-18T20:09:32.582130+00:00",
+  "phase": "6.2",
+  "status": "demo_read_only_validated_diagnostic_order_pending_authorization",
+  "demo_rest_public_connected": true,
+  "demo_authentication_validated": true,
+  "account_type": "SPOT",
+  "can_trade": true,
+  "virtual_balances_observed": {
+    "USDT": "5000",
+    "USDC": "5000"
+  },
+  "btc_usdt_open_orders": 0,
+  "production_endpoints_rejected": true,
+  "orders_enabled": false,
+  "kill_switch_engaged": true,
+  "diagnostic_order_sent": false,
+  "autonomous_started": false,
+  "tests_passed": 139,
+  "compileall_passed": true,
+  "economic_claim": false,
+  "secrets_recorded": false
+}

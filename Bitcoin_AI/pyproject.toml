@@ -13,6 +13,8 @@ dependencies = ["numpy>=2", "pandas>=2.2", "pyarrow>=15", "scikit-learn>=1.5", "
 boosting = ["xgboost>=2", "catboost>=1.2"]
 kronos = ["torch>=2", "einops==0.8.1", "huggingface_hub==0.33.1", "safetensors==0.6.2"]
 nlp = ["torch>=2", "transformers>=4.51,<5", "huggingface_hub>=0.33", "safetensors>=0.6", "pydantic>=2.8,<3"]
+demo = ["requests>=2.32", "python-dotenv>=1.0"]
+dashboard = ["fastapi>=0.115", "uvicorn[standard]>=0.34", "httpx>=0.28", "psutil>=6"]
 dev = ["pytest>=8"]
 
 [project.scripts]

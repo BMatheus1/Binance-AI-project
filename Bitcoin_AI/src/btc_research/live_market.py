@@ -155,8 +155,13 @@ class LocalOrderBook:
         if not self.valid or not self.bids or not self.asks:
             return {"valid": False, "reason": "depth_not_synchronized"}
         bid, ask = max(self.bids), min(self.asks)
+        bid_levels = sorted(self.bids.items(), reverse=True)[:20]
+        ask_levels = sorted(self.asks.items())[:20]
         return {"valid": True, "bid": bid, "ask": ask, "spread": ask - bid,
                 "spread_bps": (ask - bid) / ((ask + bid) / 2) * 10_000,
+                "bid_depth_quote": sum(price * quantity for price, quantity in bid_levels),
+                "ask_depth_quote": sum(price * quantity for price, quantity in ask_levels),
+                "depth_levels": 20,
                 "last_update_id": self.last_update_id}
 
 

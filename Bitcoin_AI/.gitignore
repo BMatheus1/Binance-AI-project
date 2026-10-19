@@ -17,6 +17,14 @@ data/phase_5/
 runtime/phase_5/
 runtime/phase_6/
 runtime/phase_6_1/
+runtime/phase_6_2/
+runtime/phase_6_3/
+dashboard/frontend/node_modules/
+dashboard/frontend/.next/
+dashboard/frontend/.npm-cache/
+dashboard/frontend/.pnpm-store/
+dashboard/frontend/.env.local
+dashboard/frontend/*.tsbuildinfo
 .tmp_kronos_official/
 knowledge/references/
 tmp/
