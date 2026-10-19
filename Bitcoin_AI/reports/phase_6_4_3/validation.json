@@ -1,0 +1,49 @@
+{
+  "recorded_at": "2026-10-19T22:42:35.873890+00:00",
+  "technical_components_implemented": true,
+  "pytest": {
+    "tests": "244",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "130.963"
+  },
+  "frontend_build_passed": true,
+  "typescript_check_passed": true,
+  "prepared_session_id": "demo-20261019T221154-2da6a152",
+  "profile_sha256": "2f276a9f23aa1bc78e7475ad282ad381f5ce0d29fd203e0c4cd887659a961486",
+  "new_active_proposal_times": [
+    "2026-10-19T22:16:02.660482+00:00",
+    "2026-10-19T22:15:05.416894+00:00",
+    "2026-10-19T22:14:07.430891+00:00",
+    "2026-10-19T22:13:08.907071+00:00"
+  ],
+  "source_sha256": {
+    "src/btc_research/active_demo.py": "71ed5c3a5567671de40685d5798ac8db9582f5f2de6107afdb82fc67d7ddbe13",
+    "src/btc_research/phase6_4.py": "957dc2597d35916a8b1aea79619cfb9b7399d28ff30c68bedadf5eb8939f9524",
+    "src/btc_research/unified_intelligence.py": "2cdea095c4acb6882e25aca74d4fc0179d5e2179c133563b187ecc963e8d55f6",
+    "src/btc_research/phase6_decisions.py": "0614cf95376c1fd8ad06e04bb127fa11c404465432e53c37c1560e66bd510869",
+    "src/btc_research/dashboard_api.py": "bc744eb0ad9fc922923eaaec8fa5bfd4300fa2d74a69f273ee863d69b208edd9",
+    "configs/phase_6_4_3.json": "4e5f2d8b16d1eab5c7d1455c3bdfe1c97c96a0961f3db859b57262553845b460"
+  },
+  "real_trading_supported": false,
+  "orders_sent_during_development": false,
+  "actual_Demo_round_trip_completed_this_phase": true,
+  "minimum_24h_completed": false,
+  "state": "authorized_session_running_first_round_trip_exchange_verified",
+  "pending": [
+    "minimum_24h_operational_observation",
+    "independent_economic_validation"
+  ],
+  "economic_superiority_proven": false,
+  "specific_human_authorization_received": true,
+  "first_live_cycle": {
+    "position_id": "pos-d1a7dae45aa447bd9fb9bc7ef3c87d19",
+    "entry_order_id": 74984954594,
+    "exit_order_id": 74986113039,
+    "entry_category": "EXPLORATORY_PROBE",
+    "realized_net_quote": "-0.017408398938938938938938939",
+    "residual_BTC": "0.00000988",
+    "exchange_verified": true
+  }
+}

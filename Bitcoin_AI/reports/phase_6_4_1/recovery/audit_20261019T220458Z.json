@@ -1,0 +1,336 @@
+{
+  "recorded_at": "2026-10-19T22:05:04.293234+00:00",
+  "backup_directory": "runtime\\phase_6_4\\recovery_backups\\20261019T220458Z",
+  "consistent_sqlite_backups": [
+    "observation",
+    "autonomous",
+    "evaluations",
+    "execution"
+  ],
+  "first_demo_public_failure": "2026-10-19T13:48:18.715944+00:00",
+  "last_demo_public_failure": "2026-10-19T22:04:32.513331+00:00",
+  "demo_public_failed_samples": 90,
+  "recent_60m_samples": 103,
+  "recent_60m_demo_availability": 0.9223300970873787,
+  "latest_collectors": {
+    "BTCUSDT": {
+      "symbol": "BTCUSDT",
+      "messages": 40733,
+      "connection_state": "connected",
+      "reconnections": 0,
+      "last_message_at": "2026-10-19T22:04:32.512809+00:00",
+      "last_reconnect_at": null,
+      "last_error": null,
+      "last_error_details": null,
+      "aggtrade_duplicates": 0,
+      "aggtrade_gap_events": 0,
+      "aggtrade_missing_ids": 0,
+      "depth_invalidations": 0,
+      "book_valid": true
+    },
+    "ETHUSDT": {
+      "symbol": "ETHUSDT",
+      "messages": 29091,
+      "connection_state": "connected",
+      "reconnections": 1,
+      "last_message_at": "2026-10-19T22:04:29.461912+00:00",
+      "last_reconnect_at": "2026-10-19T21:55:53.722348+00:00",
+      "last_error": null,
+      "last_error_details": null,
+      "aggtrade_duplicates": 0,
+      "aggtrade_gap_events": 1,
+      "aggtrade_missing_ids": 46,
+      "depth_invalidations": 1,
+      "book_valid": true
+    },
+    "SOLUSDT": {
+      "symbol": "SOLUSDT",
+      "messages": 16869,
+      "connection_state": "disconnected",
+      "reconnections": 2,
+      "last_message_at": "2026-10-19T22:03:20.413322+00:00",
+      "last_reconnect_at": "2026-10-19T22:04:18.525261+00:00",
+      "last_error": "TimeoutError",
+      "last_error_details": {
+        "error_type": "TimeoutError",
+        "errno": null,
+        "winerror": null,
+        "received_close_code": null
+      },
+      "aggtrade_duplicates": 0,
+      "aggtrade_gap_events": 0,
+      "aggtrade_missing_ids": 0,
+      "depth_invalidations": 2,
+      "book_valid": false
+    }
+  },
+  "reconciliation_failures": [
+    {
+      "recorded_at": "2026-10-19T16:05:17.811142+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:05:22.881818+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:05:28.037516+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:05:33.232685+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:05:38.499098+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:05:43.566877+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:05:48.720023+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:05:53.882187+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:05:59.069513+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:06:04.117555+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:06:09.262068+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:06:14.388431+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:06:19.760863+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:06:24.938777+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:06:30.218147+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:06:35.345917+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:06:40.644307+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:06:45.717517+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:06:50.894286+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:06:55.947073+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:01.189078+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:06.238079+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:11.869826+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:17.005962+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:22.064169+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:27.155300+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:32.378998+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:37.745397+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:43.055269+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:48.114768+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:53.733185+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:07:58.775628+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:08:03.804450+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:08:08.879723+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:08:13.945631+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:08:19.002297+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:08:24.070584+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:08:29.104777+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:08:34.630643+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:08:39.915006+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T16:08:45.002722+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:RuntimeError\"}"
+    },
+    {
+      "recorded_at": "2026-10-19T19:44:02.663792+00:00",
+      "event_type": "reconciliation_failed",
+      "payload_json": "{\"error\":\"reconciliation_failed:BinanceDemoAPIError:demo_transport_transient\",\"category\":\"demo_transport_transient\",\"transient\":true,\"next_retry_at\":\"2026-10-19T19:44:07.564073+00:00\",\"traceback\":[{\"file\":\"phase6_4.py\",\"line\":754,\"function\":\"_reconcile\"},{\"file\":\"phase6_trading.py\",\"line\":406,\"function\":\"open_orders\"},{\"file\":\"phase6_trading.py\",\"line\":382,\"function\":\"_call\"},{\"file\":\"phase6_trading.py\",\"line\":317,\"function\":\"__call__\"}],\"http_status\":400,\"api_code\":-1021,\"authorization_invalidated\":false}"
+    }
+  ],
+  "sessions": [
+    {
+      "session_id": "demo-20261019T160225-63e40eb6",
+      "created_at": "2026-10-19T16:02:25.590354+00:00",
+      "authorized_at": null,
+      "state": "stopped",
+      "entries": 0,
+      "stop_reason": "superseded"
+    },
+    {
+      "session_id": "demo-20261019T160407-61a05d11",
+      "created_at": "2026-10-19T16:04:07.788181+00:00",
+      "authorized_at": "2026-10-19T16:05:02.907988+00:00",
+      "state": "stopped",
+      "entries": 0,
+      "stop_reason": "manual_stop"
+    },
+    {
+      "session_id": "demo-20261019T193606-e85a1827",
+      "created_at": "2026-10-19T19:36:06.717458+00:00",
+      "authorized_at": "2026-10-19T19:36:33.240476+00:00",
+      "state": "stopped",
+      "entries": 0,
+      "stop_reason": "manual_stop"
+    },
+    {
+      "session_id": "demo-20261019T194959-6806dab9",
+      "created_at": "2026-10-19T19:49:59.707267+00:00",
+      "authorized_at": "2026-10-19T19:50:07.088471+00:00",
+      "state": "stopped",
+      "entries": 0,
+      "stop_reason": "manual_stop"
+    },
+    {
+      "session_id": "demo-20261019T195934-afa9d3f7",
+      "created_at": "2026-10-19T19:59:34.642768+00:00",
+      "authorized_at": "2026-10-19T19:59:42.406554+00:00",
+      "state": "stopped",
+      "entries": 0,
+      "stop_reason": "manual_stop"
+    },
+    {
+      "session_id": "demo-20261019T213149-6d952a72",
+      "created_at": "2026-10-19T21:31:49.464218+00:00",
+      "authorized_at": "2026-10-19T21:32:06.463348+00:00",
+      "state": "stopped",
+      "entries": 0,
+      "stop_reason": "manual_stop"
+    }
+  ],
+  "experimental_positions": 0,
+  "execution_journal_states": {
+    "RECONCILED": 4
+  },
+  "credentials_read_or_displayed": false,
+  "network_requests": 0,
+  "orders_sent": false
+}

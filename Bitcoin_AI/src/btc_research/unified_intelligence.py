@@ -195,7 +195,7 @@ class UnifiedTradingIntelligenceEngine:
             self.limits["horizon_minutes"], prediction,
             {"directional_entropy_nats": entropy if probability else None,
              "favorable_net_move_probability": None, "confidence_interval": None},
-            {"estimated_round_trip_bps": cost, "source": "existing_selector_estimate",
+            {"estimated_round_trip_bps": cost, "source": "versioned_fee_ceiling_spread_slippage" if experiment else "existing_selector_estimate",
              "spread_bps": finite(market.get("spread_bps")), "fees_are_actual": False,
              "expected_gross_bps": None, "expected_net_bps": None,
              "economically_validated": False, "category": MODE if experiment else "EXPERIMENTAL_DEMO",

@@ -1,0 +1,47 @@
+{
+  "verified_at": "2026-10-19T22:36:51.987097+00:00",
+  "session_id": "demo-20261019T221154-2da6a152",
+  "position_id": "pos-d1a7dae45aa447bd9fb9bc7ef3c87d19",
+  "environment": "Binance Spot Demo",
+  "endpoint": "https://demo-api.binance.com/api",
+  "order": {
+    "symbol": "BTCUSDT",
+    "orderId": 74984954594,
+    "orderListId": -1,
+    "clientOrderId": "bai64-b-8ec45c9846514c11b70c",
+    "price": "0.00000000",
+    "origQty": "0.00012000",
+    "executedQty": "0.00012000",
+    "cummulativeQuoteQty": "9.84960120",
+    "status": "FILLED",
+    "timeInForce": "GTC",
+    "type": "MARKET",
+    "side": "BUY",
+    "stopPrice": "0.00000000",
+    "icebergQty": "0.00000000",
+    "time": 1792449369205,
+    "updateTime": 1792449369205,
+    "isWorking": true,
+    "workingTime": 1792449369205,
+    "origQuoteOrderQty": "0.00000000",
+    "selfTradePreventionMode": "EXPIRE_MAKER"
+  },
+  "actual_trades": [
+    {
+      "symbol": "BTCUSDT",
+      "id": 326123313,
+      "orderId": 74984954594,
+      "orderListId": -1,
+      "price": "82080.01000000",
+      "qty": "0.00012000",
+      "quoteQty": "9.84960120",
+      "commission": "0.00000012",
+      "commissionAsset": "BTC",
+      "time": 1792449369205,
+      "isBuyer": true,
+      "isMaker": false,
+      "isBestMatch": true
+    }
+  ],
+  "audit_sent_orders": false
+}

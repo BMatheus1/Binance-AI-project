@@ -25,6 +25,8 @@ def profile_hash(profile: dict) -> str:
 def load_profile(root: Path, allow_probes: bool = False) -> dict:
     value = json.loads((root / PROFILE_PATH).read_text(encoding="utf-8"))
     limits = value["limits"]
+    if any(isinstance(item, (int, float)) and not math.isfinite(item) for item in limits.values()):
+        raise ValueError("active profile limits must be finite")
     if value["mode"] != MODE or value["environment"] != "DEMO" or limits["symbol"] != "BTCUSDT":
         raise ValueError("active experiment is strictly BTC Spot Demo")
     caps = {"quote_amount": 10, "maximum_entries_per_session": 6, "session_maximum_minutes": 60,
@@ -36,6 +38,10 @@ def load_profile(root: Path, allow_probes: bool = False) -> dict:
         raise ValueError("initial active holding window must be between three and eight minutes")
     if limits["maximum_extension_minutes"] != 0 or limits["stop_loss_bps"] <= 0:
         raise ValueError("v1 has a fixed stop and no holding extension")
+    if (not 0 <= limits["maximum_probes_per_session"] <= 2 or
+            not 0 <= limits["maximum_spread_bps"] <= 3 or
+            not 0 <= limits["maximum_slippage_bps"] <= 5 or limits["minimum_depth_quote"] < 10000):
+        raise ValueError("active market/probe safety limit exceeded")
     if not .5 < limits["minimum_up_probability"] <= 1 or not 0 < limits["probe_after_seconds"] <= 600:
         raise ValueError("invalid versioned entry criteria")
     value["allow_probes"] = bool(allow_probes)

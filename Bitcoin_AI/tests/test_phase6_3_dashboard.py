@@ -99,7 +99,7 @@ def test_dashboard_preparation_reuses_cli_service_requires_csrf_and_never_author
     token = login(client)
     assert client.post("/api/control/prepare-session", json=payload).status_code == 403
     client.app.state.repository.kill.engage("test_only")
-    def prepare(root):
+    def prepare(root, **kwargs):
         calls.append(root)
         return {"session_id": "test-prepared", "state": "prepared", "orders_sent": False}
     monkeypatch.setattr("btc_research.dashboard_api.prepare_authorization", prepare)
@@ -108,7 +108,7 @@ def test_dashboard_preparation_reuses_cli_service_requires_csrf_and_never_author
     assert response.status_code == 200 and len(calls) == 1
     assert response.json()["data"]["state"] == "prepared"
     assert client.app.state.repository.kill.status()["engaged"]
-    assert client.post("/api/control/authorize-session", json={}).status_code == 404
+    assert client.post("/api/control/authorize-session", json={}).status_code in {403, 422}
 
 
 def test_intelligence_heartbeat_freshness_matches_actual_publication_interval(dashboard_root, monkeypatch):
@@ -247,6 +247,26 @@ def test_repository_reads_sqlite_in_query_only_mode(dashboard_root):
     repository = DashboardRepository(DashboardSettings(root=dashboard_root), fake_account)
     assert len(repository.operations()) == 1
     assert repository.health()["reconciliation"]["unresolved"] == 0
+
+
+@pytest.mark.parametrize("action,payload", [
+    ("authorize-session", {"session_id":"prepared-active", "confirmation":"explicit-test-confirmation"}),
+    ("stop-session", {"confirmation":"ENCERRAR SESSAO DEMO"})])
+def test_session_mutations_require_cookie_origin_and_csrf_and_reuse_engine(client, monkeypatch, action, payload):
+    url = f"/api/control/{action}"
+    assert client.post(url, json=payload).status_code == 401
+    token = login(client)
+    assert client.post(url, json=payload).status_code == 403
+    assert client.post(url, json=payload, headers={"Origin":"https://evil.test","X-CSRF-Token":token}).status_code == 403
+    calls = []
+    def operation(*args):
+        calls.append(args)
+        return {"state":"authorized" if action == "authorize-session" else "stopped"}
+    monkeypatch.setattr(f"btc_research.dashboard_api.{'authorize_session' if action == 'authorize-session' else 'stop_session'}", operation)
+    result = client.post(url, json=payload, headers={"Origin":"http://localhost:3000","X-CSRF-Token":token})
+    assert result.status_code == 200 and len(calls) == 1
+    if action == "authorize-session":
+        assert calls[0][:2] == (payload["session_id"], payload["confirmation"])
 
 
 def _authorized_runtime(now):

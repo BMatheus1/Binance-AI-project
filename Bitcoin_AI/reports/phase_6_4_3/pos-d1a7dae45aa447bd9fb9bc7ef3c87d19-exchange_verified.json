@@ -1,0 +1,125 @@
+{
+  "verified_at": "2026-10-19T22:41:46.477817+00:00",
+  "environment": "Binance Spot Demo",
+  "endpoint": "https://demo-api.binance.com/api",
+  "session_id": "demo-20261019T221154-2da6a152",
+  "position_id": "pos-d1a7dae45aa447bd9fb9bc7ef3c87d19",
+  "entry_category": "EXPLORATORY_PROBE",
+  "opened_at": "2026-10-19T22:36:08.227963+00:00",
+  "closed_at": "2026-10-19T22:41:14.931638+00:00",
+  "close_reason": "planned_horizon",
+  "orders": {
+    "entry": {
+      "symbol": "BTCUSDT",
+      "orderId": 74984954594,
+      "orderListId": -1,
+      "clientOrderId": "bai64-b-8ec45c9846514c11b70c",
+      "price": "0.00000000",
+      "origQty": "0.00012000",
+      "executedQty": "0.00012000",
+      "cummulativeQuoteQty": "9.84960120",
+      "status": "FILLED",
+      "timeInForce": "GTC",
+      "type": "MARKET",
+      "side": "BUY",
+      "stopPrice": "0.00000000",
+      "icebergQty": "0.00000000",
+      "time": 1792449369205,
+      "updateTime": 1792449369205,
+      "isWorking": true,
+      "workingTime": 1792449369205,
+      "origQuoteOrderQty": "0.00000000",
+      "selfTradePreventionMode": "EXPIRE_MAKER"
+    },
+    "exit": {
+      "symbol": "BTCUSDT",
+      "orderId": 74986113039,
+      "orderListId": -1,
+      "clientOrderId": "bai64-s-06a49b2dc966487e9028",
+      "price": "0.00000000",
+      "origQty": "0.00011000",
+      "executedQty": "0.00011000",
+      "cummulativeQuoteQty": "9.02946000",
+      "status": "FILLED",
+      "timeInForce": "GTC",
+      "type": "MARKET",
+      "side": "SELL",
+      "stopPrice": "0.00000000",
+      "icebergQty": "0.00000000",
+      "time": 1792449674189,
+      "updateTime": 1792449674189,
+      "isWorking": true,
+      "workingTime": 1792449674189,
+      "origQuoteOrderQty": "0.00000000",
+      "selfTradePreventionMode": "EXPIRE_MAKER"
+    }
+  },
+  "actual_trades": {
+    "entry": [
+      {
+        "symbol": "BTCUSDT",
+        "id": 326123313,
+        "orderId": 74984954594,
+        "orderListId": -1,
+        "price": "82080.01000000",
+        "qty": "0.00012000",
+        "quoteQty": "9.84960120",
+        "commission": "0.00000012",
+        "commissionAsset": "BTC",
+        "time": 1792449369205,
+        "isBuyer": true,
+        "isMaker": false,
+        "isBestMatch": true
+      }
+    ],
+    "exit": [
+      {
+        "symbol": "BTCUSDT",
+        "id": 326124398,
+        "orderId": 74986113039,
+        "orderListId": -1,
+        "price": "82086.00000000",
+        "qty": "0.00011000",
+        "quoteQty": "9.02946000",
+        "commission": "0.00902946",
+        "commissionAsset": "USDT",
+        "time": 1792449674189,
+        "isBuyer": false,
+        "isMaker": false,
+        "isBestMatch": true
+      }
+    ]
+  },
+  "fees_by_side": {
+    "entry": {
+      "BTC": "1.2E-7"
+    },
+    "exit": {
+      "USDT": "0.00902946"
+    }
+  },
+  "realized_net_quote": "-0.017408398938938938938938939",
+  "cash_flow_quote": "-0.82917066",
+  "residual_BTC": "0.00000988",
+  "residual_cost_basis_quote": "0.811762261061061061061061061",
+  "unknown_fee_assets": [],
+  "open_order_count": 0,
+  "unresolved_intents": 0,
+  "account_can_trade": true,
+  "virtual_balances": [
+    {
+      "asset": "BTC",
+      "free": "0.00002964",
+      "locked": "0.00000000"
+    },
+    {
+      "asset": "USDT",
+      "free": "4997.52490084",
+      "locked": "0.00000000"
+    }
+  ],
+  "actual_Demo_buy_and_sell_confirmed": true,
+  "audit_sent_orders": false,
+  "predictive_performance_eligible": false,
+  "economic_advantage_proven": false
+}

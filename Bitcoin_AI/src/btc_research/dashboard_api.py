@@ -1,8 +1,8 @@
 """Local, read-mostly FastAPI dashboard for Bitcoin AI Trader Phase 6.3.
 
 The API reuses Phase 6-6.2 stores and safety controls. It never exposes
-credentials, accepts arbitrary exchange endpoints, clears the kill switch or
-enables trading.
+credentials or accepts arbitrary exchange endpoints. Explicit Demo activation
+reuses CLI authorization behind local session, Origin and CSRF checks.
 """
 from __future__ import annotations
 
@@ -34,7 +34,9 @@ from .phase6_2 import (ExecutionJournal, PersistentKillSwitch,
                        load_local_dotenv, load_phase62_config,
                        summarize_account)
 from .phase6_trading import BinanceDemoBroker, RequestsDemoTransport, UNIVERSE
-from .phase6_4 import AutonomousStore, ObservationStore, load_phase64_config, prepare_authorization
+from .phase6_4 import (AutonomousStore, ObservationStore, load_phase64_config,
+                       prepare_authorization, authorize_session, stop_session)
+from .active_demo import MODE as ACTIVE_MODE, session_profile
 from .unified_intelligence import UnifiedDecisionStore
 
 
@@ -156,6 +158,17 @@ class KillSwitchRequest(BaseModel):
 
 class PrepareSessionRequest(BaseModel):
     confirmation: Literal["PREPARAR SESSAO DEMO"]
+    mode: Literal["EXPERIMENTAL_DEMO", "DEMO_ACTIVE_EXPERIMENTAL"] = "EXPERIMENTAL_DEMO"
+    allow_probes: bool = False
+
+
+class AuthorizeSessionRequest(BaseModel):
+    session_id: str = Field(min_length=1, max_length=100)
+    confirmation: str = Field(min_length=1, max_length=100)
+
+
+class StopSessionRequest(BaseModel):
+    confirmation: Literal["ENCERRAR SESSAO DEMO"]
 
 
 @dataclass(frozen=True)
@@ -401,7 +414,10 @@ class DashboardRepository:
                                      "amount": number(amount)})
             operations.append({
                 "operation_id": row["position_id"], "category": "demo_strategy",
-                "strategy_category": "EXPERIMENTAL_DEMO", "policy": row["policy"],
+                "strategy_category": payload.get("decision", {}).get("mode", "EXPERIMENTAL_DEMO"), "policy": row["policy"],
+                "entry_category": payload.get("decision", {}).get("entry_category", "AI_SIGNAL"),
+                "entry_reasons": payload.get("decision", {}).get("reasons", []),
+                "session_id": row["session_id"], "economics": payload.get("economics"),
                 "symbol": row["symbol"], "evaluation_id": row["evaluation_id"],
                 "entry_time": row["opened_at"], "exit_time": row["closed_at"],
                 "entry_price": number(safe_decimal(row["entry_price"])),
@@ -414,7 +430,7 @@ class DashboardRepository:
                 "stop_loss": None, "planned_duration_minutes": 5,
                 "planned_close_at": row["planned_close_at"],
                 "close_reason": row["close_reason"], "status": row["state"].lower(),
-                "exchange_states": [], "strategy_evaluation_eligible": True,
+                "exchange_states": [], "strategy_evaluation_eligible": payload.get("decision", {}).get("entry_category") != "EXPLORATORY_PROBE",
             })
         return operations
 
@@ -434,6 +450,8 @@ class DashboardRepository:
     def operations(self) -> list[dict]:
         grouped: dict[str, list[dict]] = defaultdict(list)
         for row in self._order_rows():
+            if str(row["diagnostic_id"]).startswith("pos-"):
+                continue  # Strategy fills appear once, through persisted positions.
             grouped[row["diagnostic_id"]].append(row)
         operations = []
         for diagnostic_id, rows in grouped.items():
@@ -499,7 +517,9 @@ class DashboardRepository:
     def performance(self) -> dict:
         operations = self.operations()
         diagnostic = [row for row in operations if row["category"] == "diagnostic"]
-        strategy = [row for row in operations if row["category"] in {"paper", "demo_strategy"}]
+        probes = [row for row in operations if row.get("entry_category") == "EXPLORATORY_PROBE"]
+        strategy = [row for row in operations if row["category"] in {"paper", "demo_strategy"}
+                    and row.get("entry_category") != "EXPLORATORY_PROBE"]
         completed = [row for row in strategy if row["net_result_quote"] is not None]
         returns = [row["net_result_quote"] for row in completed]
         wins = [value for value in returns if value > 0]
@@ -523,6 +543,8 @@ class DashboardRepository:
                          "max_drawdown": drawdown if known else None, "equity_curve": points},
             "diagnostic": {"operation_count": len(diagnostic), "operations": diagnostic,
                            "included_in_strategy_metrics": False},
+            "active_exploration": {"operation_count": len(probes), "operations": probes,
+                                   "included_in_strategy_metrics": False},
             "paper": {"available": False, "reason": "no persisted paper operations found"},
             "shadow": {"available": False, "reason": "no prospective paired decision ledger found"},
             "historical": {"available": True, "location": "reports/", "mixed_with_live": False},
@@ -699,12 +721,17 @@ class DashboardRepository:
             "economically_validated": False, "resolved_outcomes": 0,
             "limitations": ["economic report has not been generated"]}
         demo = config["experimental_demo"]
+        profile = session_profile(store.path, state["session"]["session_id"]) if state["session"] else None
+        if profile:
+            demo = {**demo, **profile["limits"]}
         limits = {key: demo[key] for key in (
             "symbol", "policy", "horizon_minutes", "minimum_up_probability",
             "quote_amount", "maximum_open_positions", "maximum_entries_per_session",
             "maximum_entries_per_day", "maximum_daily_loss_quote", "maximum_spread_bps",
             "maximum_slippage_bps", "cooldown_minutes", "planned_holding_minutes", "stop_loss_bps",
             "session_maximum_minutes")}
+        if profile:
+            limits.update(profile["limits"])
         account = self.account_snapshot()
         market = self.market("BTCUSDT")
         operations = self._strategy_operations()
@@ -732,15 +759,38 @@ class DashboardRepository:
                          "adaptive_exit_enabled": False,
                          "unrealized_net_quote_estimate": None,
                          "unrealized_net_reason": "future_execution_fees_and_slippage_unknown"}
+        management = (position or {}).get("payload", {}).get("management", {})
+        if management:
+            try:
+                mark_age = (utc_now() - datetime.fromisoformat(management["marked_at"])).total_seconds()
+            except (KeyError, ValueError, TypeError):
+                mark_age = float("inf")
+            position_plan.update(profit_target_quote=management.get("take_profit_net_quote"),
+                adaptive_exit_enabled=True, mark_age_seconds=mark_age,
+                unrealized_net_quote_estimate=float(management["estimated_net_quote"]) if 0 <= mark_age <= 15 else None,
+                unrealized_net_reason="bid after estimated sell fees and slippage; mark must be <=15s old",
+                management=management)
+        groups = {}
+        for row in operations:
+            key = f"{row['session_id']}:{row['entry_category']}"
+            group = groups.setdefault(key, {"session_id": row["session_id"], "entry_category": row["entry_category"], "completed": 0, "net_quote": 0.0, "unknown_results": 0})
+            if row["status"] == "closed":
+                group["completed"] += 1
+                if row["net_result_quote"] is None:
+                    group["unknown_results"] += 1
+                else:
+                    group["net_quote"] += row["net_result_quote"]
         connectivity_report = read_json(
             self.root / "reports/phase_6_4_1/connectivity_status.json") or {}
         rest_connected = bool(account.get("available"))
         stream_connected = market.get("stream_state") == "connected"
         signal_summary = self._autonomous_signal_summary(observation.get("started_at"))
         return {"state": engine.get("state", "not_running"), "engine": engine,
-                "mode": ("EXPERIMENTAL_DEMO" if engine.get("state") == "AUTHORIZED_DEMO"
+                "mode": ((ACTIVE_MODE if profile else "EXPERIMENTAL_DEMO") if engine.get("state") == "AUTHORIZED_DEMO"
                          else "OBSERVE"),
-                "authorization": "cli_only", "session_and_positions": state,
+                "authorization": "explicit_dashboard_or_cli", "session_and_positions": state,
+                "active_profile": profile, "results_by_session_and_category": list(groups.values()),
+                "latest_decision": next(iter(UnifiedDecisionStore.recent(self.root / "runtime/phase_6_1/evaluations.sqlite3", limit=1, symbol="BTCUSDT")), None),
                 "observation": observation, "economic": economics, "limits": limits,
                 "kill_switch": self.kill.status(), "environment": "Binance Spot Demo",
                 "connection": {
@@ -1023,10 +1073,32 @@ def create_app(settings: DashboardSettings | None = None,
         if not repository.kill.status()["engaged"]:
             raise HTTPException(status_code=409, detail="Acione o kill switch antes de preparar uma sessão")
         try:
-            prepared = await asyncio.to_thread(prepare_authorization, settings.root)
-        except (RuntimeError, PermissionError):
+            prepared = await asyncio.to_thread(prepare_authorization, settings.root, mode=payload.mode, allow_probes=payload.allow_probes)
+        except (RuntimeError, PermissionError, ValueError):
             raise HTTPException(status_code=409, detail="Não foi possível preparar: verifique heartbeat, reconciliação e posições") from None
         return envelope(prepared)
+
+    @app.post("/api/control/authorize-session", response_model=Envelope)
+    async def authorize_demo_session(payload: AuthorizeSessionRequest,
+                                     session: str = Depends(authenticated),
+                                     csrf: str | None = Header(default=None, alias="X-CSRF-Token"),
+                                     origin: str | None = Header(default=None)) -> Envelope:
+        if not valid_origin(origin) or not csrf or not sessions.validate(session, csrf):
+            raise HTTPException(status_code=403, detail="origem ou token CSRF inválido")
+        try:
+            result = await asyncio.to_thread(authorize_session, payload.session_id, payload.confirmation, settings.root)
+        except Exception:
+            raise HTTPException(status_code=409, detail="Autorização recusada. Revise sessão, custos, reconciliação e conta Demo pela CLI.") from None
+        return envelope(result)
+
+    @app.post("/api/control/stop-session", response_model=Envelope)
+    async def stop_demo_session(payload: StopSessionRequest,
+                                session: str = Depends(authenticated),
+                                csrf: str | None = Header(default=None, alias="X-CSRF-Token"),
+                                origin: str | None = Header(default=None)) -> Envelope:
+        if not valid_origin(origin) or not csrf or not sessions.validate(session, csrf):
+            raise HTTPException(status_code=403, detail="origem ou token CSRF inválido")
+        return envelope(await asyncio.to_thread(stop_session, settings.root, "dashboard_manual_stop"))
 
     @app.get("/api/export/{dataset}.csv")
     async def export_csv(dataset: Literal["operations", "news"],

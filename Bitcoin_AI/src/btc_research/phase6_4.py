@@ -30,6 +30,8 @@ from .phase6_2 import (KILL_SWITCH_CONFIRMATION, PersistentKillSwitch,
 from .phase6_trading import (BinanceDemoAPIError, DecisionLedger, MarketSnapshot,
                              Opportunity, RiskLimits, RiskManager)
 from .unified_intelligence import UnifiedDecisionStore, frozen_entry_reasons, timestamp
+from .active_demo import (MODE as ACTIVE_MODE, load_profile, session_profile, profile_hash,
+                          create_profile_tables, active_entry_reasons, commission_rates, mark_position)
 
 
 UTC = timezone.utc
@@ -465,6 +467,7 @@ class AutonomousStore:
                     evaluation_id TEXT PRIMARY KEY, consumed_at TEXT NOT NULL, outcome TEXT NOT NULL
                 );
             """)
+            create_profile_tables(db)
 
     def activity(self, event_type: str, payload: dict, session_id: str | None = None) -> None:
         with sqlite3.connect(self.path) as db:
@@ -515,6 +518,8 @@ class SupervisedDemoEngine:
         self.root = root
         self.config = load_phase64_config(root)
         self.demo = self.config["experimental_demo"]
+        self.base_demo = dict(self.demo)
+        self.active_profile = None
         self.store = AutonomousStore(root / "runtime/phase_6_4/autonomous.sqlite3")
         self.ledger = DecisionLedger(root / "runtime/phase_6_4/autonomous_ledger.jsonl")
         self.kill = PersistentKillSwitch(root / "runtime/phase_6_2/kill_switch.json")
@@ -555,6 +560,8 @@ class SupervisedDemoEngine:
                   "state": self.state, "last_error": self.last_error,
                   "updated_at": iso_now(), "orders_enabled": orders_enabled,
                   "reconciliation": self.reconciliation,
+                  "supports_active_experimental": True,
+                  "mode": ACTIVE_MODE if self.active_profile and self.state == "AUTHORIZED_DEMO" else "OBSERVE",
                   "environment": "DEMO", "real_trading_supported": False})
 
     def _authorization(self) -> dict | None:
@@ -599,6 +606,39 @@ class SupervisedDemoEngine:
         result["unified"] = unified
         return result
 
+    def _apply_profile(self, session: dict | None, position: dict | None = None) -> None:
+        profile = (position or {}).get("payload", {}).get("experiment_profile")
+        if profile is not None:
+            frozen = session_profile(self.store.path, position["session_id"])
+            if frozen is None or profile_hash(frozen) != profile_hash(profile):
+                raise RuntimeError("position experimental profile integrity failure")
+        if profile is None and session is not None:
+            profile = session_profile(self.store.path, session["session_id"])
+        self.active_profile = profile
+        self.demo = {**self.base_demo, **profile["limits"]} if profile else dict(self.base_demo)
+
+    def _session_risk(self, session_id: str) -> dict:
+        with sqlite3.connect(self.store.path) as db:
+            rows = db.execute("SELECT net_quote,state,payload_json FROM positions WHERE session_id=?", (session_id,)).fetchall()
+        planned = losses = 0.0
+        probes = 0
+        unknown = False
+        for net, state, payload in rows:
+            record = json.loads(payload)
+            decision = record.get("decision", {})
+            planned += float(decision.get("planned_risk", {}).get("planned_loss_quote_including_estimated_costs") or 0)
+            probes += decision.get("entry_category") == "EXPLORATORY_PROBE"
+            if state == "CLOSED":
+                unknown |= net is None
+                losses += min(float(net or 0), 0)
+        return {"planned_risk_spent": planned, "realized_losses": -losses,
+                "probe_entries": probes, "unknown_closed_economics": unknown}
+
+    def _residual_exposure(self, bid: Decimal) -> Decimal:
+        with sqlite3.connect(self.store.path) as db:
+            rows = db.execute("SELECT quantity FROM demo_residuals WHERE symbol='BTCUSDT'").fetchall()
+        return sum((Decimal(row[0]) * bid for row in rows), Decimal("0"))
+
     def _gate(self, session: dict, candidate: dict | None) -> tuple[bool, list[str]]:
         reasons = []
         reasons.extend(self._market_entry_reasons())
@@ -615,12 +655,49 @@ class SupervisedDemoEngine:
         if not 0 <= age <= self.demo["maximum_signal_age_seconds"]:
             reasons.append("signal_stale")
         unified = candidate.get("unified") or {}
-        current_policy_version = f"{self.config['protocol_version']}:{digest(self.root / PHASE64_CONFIG)}"
+        current_policy_version = (f"{self.active_profile['version']}:{profile_hash(self.active_profile)}"
+                                  if self.active_profile else f"{self.config['protocol_version']}:{digest(self.root / PHASE64_CONFIG)}")
         if unified.get("policy_version") != current_policy_version:
             reasons.append("unified_policy_version_mismatch")
         if unified.get("decision") != "COMPRAR":
             reasons.append("unified_proposal_not_eligible")
-        reasons.extend(frozen_entry_reasons(candidate["prediction"], candidate["market"], self.demo))
+        signal_reasons = frozen_entry_reasons(candidate["prediction"], candidate["market"], self.demo)
+        if self.active_profile:
+            signal_reasons = [reason for reason in signal_reasons if reason not in {
+                "frozen_signal_not_up", "up_probability_below_frozen_threshold"}]
+            signal_reasons.extend(active_entry_reasons(candidate["prediction"], candidate["market"], self.demo))
+            if profile_hash(load_profile(self.root, self.active_profile["allow_probes"])) != profile_hash(self.active_profile):
+                reasons.append("active_profile_changed_after_freeze")
+            if unified.get("session_id") != session["session_id"] or unified.get("mode") != ACTIVE_MODE:
+                reasons.append("active_proposal_session_mismatch")
+            category = unified.get("entry_category")
+            if category not in {"AI_SIGNAL", "EXPLORATORY_PROBE"}:
+                reasons.append("active_entry_category_invalid")
+            state = self._session_risk(session["session_id"])
+            if category == "EXPLORATORY_PROBE" and (not self.active_profile["allow_probes"] or state["probe_entries"] >= self.demo["maximum_probes_per_session"]):
+                reasons.append("exploration_not_authorized_or_limit")
+            if category == "EXPLORATORY_PROBE":
+                with sqlite3.connect(self.store.path) as db:
+                    anchor = db.execute("SELECT MAX(closed_at) FROM positions WHERE session_id=?", (session["session_id"],)).fetchone()[0]
+                anchor = anchor or session.get("authorized_at")
+                if not anchor or (datetime.now(UTC) - datetime.fromisoformat(anchor)).total_seconds() < self.demo["probe_after_seconds"]:
+                    reasons.append("probe_waiting_for_abstention_window")
+            if category == "AI_SIGNAL":
+                probabilities = candidate["prediction"].get("horizons", {}).get("5", {}).get("probabilities", {})
+                if (float(probabilities.get("up", 0)) < self.demo["minimum_up_probability"] or
+                        float(probabilities.get("up", 0)) <= float(probabilities.get("down", 1)) or
+                        float(candidate["market"].get("momentum_5m_bps") or 0) <= 0):
+                    reasons.append("active_ai_criteria_not_met")
+            risk_budget = unified.get("planned_risk", {}).get("planned_loss_quote_including_estimated_costs")
+            if risk_budget is None or not math.isfinite(float(risk_budget)) or not 0 < float(risk_budget) <= self.demo["maximum_loss_per_operation_quote"]:
+                reasons.append("planned_operation_loss_limit")
+            elif state["planned_risk_spent"] + float(risk_budget) > self.demo["maximum_session_loss_quote"] + 1e-9:
+                reasons.append("planned_session_loss_limit")
+            if state["realized_losses"] >= self.demo["maximum_session_loss_quote"]:
+                reasons.append("realized_session_loss_limit")
+            if state["unknown_closed_economics"]:
+                reasons.append("session_economics_unknown")
+        reasons.extend(signal_reasons)
         try:
             if timestamp(unified["valid_until"]) <= datetime.now(UTC):
                 reasons.append("unified_proposal_expired")
@@ -680,6 +757,17 @@ class SupervisedDemoEngine:
         if (status.get("connection_state") != "connected" or
                 not status.get("book_valid") or not 0 <= age <= 15):
             return ["live_market_disconnected_or_stale"]
+        if self.active_profile:
+            book = status.get("book", {})
+            try:
+                book_age = (datetime.now(UTC) - datetime.fromisoformat(status["last_book_at"])).total_seconds()
+            except (KeyError, ValueError, TypeError):
+                book_age = math.inf
+            spread = book.get("spread_bps")
+            if (not 0 <= book_age <= 5 or not book.get("valid") or spread is None or
+                    not math.isfinite(float(spread)) or not 0 <= float(spread) <= self.demo["maximum_spread_bps"] or
+                    min(float(book.get(key) or 0) for key in ("bid_depth_quote", "ask_depth_quote")) < self.demo["minimum_depth_quote"]):
+                return ["active_live_liquidity_gate"]
         return []
 
     @staticmethod
@@ -838,7 +926,34 @@ class SupervisedDemoEngine:
                 quantity -= Decimal(str(fill.get("commission", "0")))
         return max(Decimal("0"), quantity)
 
+    def _confirmed_order(self, service, order: dict, client_id: str) -> dict:
+        """Cancel an unfilled remainder, query it, and account actual fills.
+
+        No submission is retried. Ambiguity or incomplete history requires recovery.
+        """
+        if order.get("status") in {"NEW", "PARTIALLY_FILLED"}:
+            service.broker.cancel(symbol="BTCUSDT", client_order_id=client_id)
+            order = service.broker.order_status(symbol="BTCUSDT", client_order_id=client_id)
+        if order.get("status") not in {"FILLED", "CANCELED", "EXPIRED", "REJECTED"}:
+            raise RuntimeError("order state unknown; reconciliation required")
+        executed = Decimal(str(order.get("executedQty", "0")))
+        if executed > 0:
+            fills = order.get("fills") or []
+            if not fills:
+                trades = service.broker.account_trades("BTCUSDT", limit=1000)
+                fills = [{"price": t["price"], "qty": t["qty"], "commission": t["commission"],
+                          "commissionAsset": t["commissionAsset"], "tradeId": t["id"]}
+                         for t in trades if str(t["orderId"]) == str(order.get("orderId"))]
+            if (not fills or sum(Decimal(str(f["qty"])) for f in fills) != executed or
+                    any("commission" not in f or "commissionAsset" not in f for f in fills)):
+                raise RuntimeError("actual order fills incomplete; reconciliation required")
+            order = {**order, "fills": fills}
+        service.journal.transition(client_id, order["status"], order)
+        return order
+
     def _enter(self, session: dict, candidate: dict) -> None:
+        if not self._reconciled or self._reconciliation_blocked or self.reconciliation.get("state") != "healthy":
+            raise PermissionError("entry requires healthy reconciliation")
         service = self._service()
         plan = service.plan("BTCUSDT", Decimal("10"))
         rules = SymbolRules.from_exchange_info(service.broker.exchange_info("BTCUSDT"), "BTCUSDT")
@@ -846,8 +961,25 @@ class SupervisedDemoEngine:
         if not latest_price.is_finite() or latest_price <= 0:
             raise RuntimeError("executable Demo ask unavailable")
         # Avoid sizing from the rolling average when the executable ask moved.
-        quantity_to_buy = rules.quantity_for_quote(Decimal("10"), latest_price)
-        if Decimal(plan.available_quote_balance) < quantity_to_buy * latest_price:
+        target = Decimal(str(self.demo["quote_amount"]))
+        rates = None
+        if self.active_profile:
+            rates = commission_rates(service.broker.commission("BTCUSDT"))
+            ceiling = Decimal(str(self.demo["planning_fee_ceiling_bps_per_side"])) / 10000
+            if max(Decimal(rates["buy"]), Decimal(rates["sell"])) > ceiling:
+                raise RuntimeError("commission schedule exceeds frozen cost ceiling")
+            target = min(target, Decimal(str(self.demo["maximum_total_exposure_quote"])) - self._residual_exposure(latest_price))
+            target /= ((1 + Decimal(rates["buy"])) * (1 + Decimal(str(self.demo["maximum_slippage_bps"])) / 10000))
+            latest_price = Decimal(str(service.broker.book_ticker("BTCUSDT")["askPrice"]))
+            if not latest_price.is_finite() or latest_price <= 0:
+                raise RuntimeError("executable Demo ask unavailable after fee lookup")
+        quantity_to_buy = rules.quantity_for_quote(target, latest_price)
+        if rates:
+            # Conservative sellability after a BTC-paid buy commission. Do not
+            # buy a lot that would immediately be below the exchange exit minimum.
+            exit_quantity = quantity_to_buy * (1 - Decimal(rates["buy"]))
+            rules.quantity_for_quote(exit_quantity * latest_price, latest_price)
+        if Decimal(plan.available_quote_balance) < quantity_to_buy * latest_price * (1 + Decimal(rates["buy"]) if rates else 1):
             raise RuntimeError("virtual quote balance is insufficient at executable ask")
         decision_ask = Decimal(str(candidate["market"].get("ask") or "0"))
         if decision_ask <= 0:
@@ -865,18 +997,23 @@ class SupervisedDemoEngine:
         position_id = f"pos-{uuid.uuid4().hex}"
         client_id = f"bai64-b-{uuid.uuid4().hex[:20]}"
         now = datetime.now(UTC)
+        payload = {"decision": {"evaluated_at": candidate["evaluated_at"],
+                   "market": candidate["market"], "prediction": candidate["prediction"],
+                   "unified_decision_id": candidate["unified"]["decision_id"],
+                   "planned_risk": candidate["unified"]["planned_risk"],
+                   "reasons": candidate["unified"].get("reasons", []),
+                   "entry_category": candidate["unified"].get("entry_category", "AI_SIGNAL"),
+                   "mode": candidate["unified"].get("mode", "EXPERIMENTAL_DEMO"),
+                   "pre_submit_price": str(latest_price), "pre_submit_price_move_bps": str(price_move_bps)}}
+        if self.active_profile:
+            payload.update(experiment_profile=self.active_profile, commission_rates=rates,
+                           market_step_size=str(rules.market_step_size))
         with sqlite3.connect(self.store.path) as db:
             db.execute("""INSERT INTO positions VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
-                       (position_id, session["session_id"], "BTCUSDT", "A_quantitative",
+                       (position_id, session["session_id"], "BTCUSDT", self.demo["policy"],
                         "ENTRY_SUBMITTING", candidate["evaluation_id"], None, None, None,
                         None, None, None, None, None, "[]", None, client_id, None, None,
-                        json.dumps({"decision": {"evaluated_at": candidate["evaluated_at"],
-                                   "market": candidate["market"],
-                                   "prediction": candidate["prediction"],
-                                   "unified_decision_id": candidate["unified"]["decision_id"],
-                                   "planned_risk": candidate["unified"]["planned_risk"],
-                                   "pre_submit_price": str(latest_price),
-                                   "pre_submit_price_move_bps": str(price_move_bps)}})))
+                        json.dumps(payload)))
             db.execute("INSERT INTO consumed_evaluations VALUES(?,?,?)",
                        (candidate["evaluation_id"], now.isoformat(), "entry_attempt"))
         self.store.activity("risk_approved", {"position_id": position_id,
@@ -886,35 +1023,40 @@ class SupervisedDemoEngine:
             "session_id": session["session_id"], "position_id": position_id,
             "evaluation_id": candidate["evaluation_id"], "symbol": "BTCUSDT",
             "unified_decision_id": candidate["unified"]["decision_id"],
-            "policy": "A_quantitative", "quote_amount": "10",
-            "category": "EXPERIMENTAL_DEMO", "order_sent_at_record_time": False})
+            "policy": self.demo["policy"], "quote_amount": str(target),
+            "category": ACTIVE_MODE if self.active_profile else "EXPERIMENTAL_DEMO",
+            "entry_category": payload["decision"]["entry_category"], "order_sent_at_record_time": False})
         order = service._submit(diagnostic_id=position_id, symbol="BTCUSDT", side="BUY",
                                 quantity=str(quantity_to_buy), client_id=client_id)
-        if order.get("status") != "FILLED":
+        payload["entry"] = order
+        with sqlite3.connect(self.store.path) as db:
+            db.execute("UPDATE positions SET payload_json=? WHERE position_id=?", (json.dumps(payload), position_id))
+        if self.active_profile:
+            order = self._confirmed_order(service, order, client_id)
+            payload["entry"] = order
+        if order.get("status") != "FILLED" and not (self.active_profile and Decimal(str(order.get("executedQty", "0"))) > 0):
             self.kill.engage("phase64_entry_not_fully_filled")
             with sqlite3.connect(self.store.path) as db:
                 db.execute("UPDATE positions SET state='RECOVERY_REQUIRED',payload_json=? WHERE position_id=?",
-                           (json.dumps({"entry": order}), position_id))
+                           (json.dumps(payload), position_id))
             raise RuntimeError("entry not fully filled; recovery required")
         quantity = self._net_quantity(order, rules.base_asset)
         quote = Decimal(str(order.get("cummulativeQuoteQty", "0")))
         price = quote / Decimal(str(order["executedQty"])) if Decimal(str(order["executedQty"])) else Decimal("0")
+        payload["execution"] = {"entry_slippage_bps": str((price / latest_price - 1) * 10000),
+                                "entry_reference_ask": str(latest_price), "actual_fills": True}
         planned = now + timedelta(minutes=self.demo["planned_holding_minutes"])
         with sqlite3.connect(self.store.path) as db:
             db.execute("""UPDATE positions SET state='OPEN',opened_at=?,planned_close_at=?,quantity=?,
                           entry_quote=?,entry_price=?,fees_json=?,payload_json=? WHERE position_id=?""",
                        (now.isoformat(), planned.isoformat(), str(quantity), str(quote), str(price),
                         json.dumps(order.get("fills", [])),
-                        json.dumps({"decision": {"evaluated_at": candidate["evaluated_at"],
-                                   "market": candidate["market"],
-                                   "prediction": candidate["prediction"],
-                                   "unified_decision_id": candidate["unified"]["decision_id"],
-                                   "planned_risk": candidate["unified"]["planned_risk"],
-                                   "pre_submit_price": str(latest_price),
-                                   "pre_submit_price_move_bps": str(price_move_bps)},
-                                    "entry": order}), position_id))
+                        json.dumps(payload), position_id))
             db.execute("UPDATE sessions SET state='running',entries=entries+1 WHERE session_id=?",
                        (session["session_id"],))
+        if self.active_profile and (quote > Decimal(str(self.demo["quote_amount"])) or
+                abs(price / latest_price - 1) * 10000 > Decimal(str(self.demo["maximum_slippage_bps"]))):
+            self.kill.engage("actual_entry_execution_exceeded_planned_limits_exit_only")
         self.store.activity("demo_position_opened", {"position_id": position_id,
                             "quote_amount": "10", "category": "EXPERIMENTAL_DEMO"}, session["session_id"])
         self.ledger.append("experimental_demo_position_opened", {
@@ -932,12 +1074,43 @@ class SupervisedDemoEngine:
         current = Decimal(str(service.broker.book_ticker("BTCUSDT")["bidPrice"]))
         if not current.is_finite() or current <= 0:
             raise RuntimeError("executable Demo bid unavailable")
+        if self.active_profile:
+            if any(f.get("commissionAsset") not in {"BTC", "USDT"} and Decimal(str(f.get("commission", 0))) != 0
+                   for f in position["payload"]["entry"].get("fills", [])):
+                return "entry_fee_valuation_unknown"
+            mark = mark_position(position, current, Decimal(position["payload"]["market_step_size"]),
+                                 position["payload"]["commission_rates"], self.demo["maximum_slippage_bps"])
+            net = float(mark["estimated_net_quote"])
+            previous = position["payload"].get("management", {})
+            management = {**mark, "marked_at": now.isoformat(),
+                          "mfe_net_quote": max(float(previous.get("mfe_net_quote", net)), net),
+                          "mae_net_quote": min(float(previous.get("mae_net_quote", net)), net)}
+            # Freeze an adaptive target at entry from observed volatility, with
+            # explicit bounds. It is an experimental exit rule, not a forecast.
+            volatility = float(position["payload"]["decision"]["market"]["volatility_bps"])
+            target = min(self.demo["adaptive_take_profit_cap_quote"],
+                         max(self.demo["take_profit_net_quote"], float(position["entry_quote"]) * volatility / 10000))
+            management["take_profit_net_quote"] = target
+            payload = {**position["payload"], "management": management}
+            position["payload"] = payload
+            with sqlite3.connect(self.store.path) as db:
+                db.execute("UPDATE positions SET payload_json=? WHERE position_id=?", (json.dumps(payload), position["position_id"]))
+            if net <= -self.demo["maximum_loss_per_operation_quote"]:
+                return "net_loss_limit"
+            if net >= target:
+                return "take_profit_net_estimate"
+            if (management["mfe_net_quote"] >= self.demo["trailing_activation_net_quote"] and
+                    net <= management["mfe_net_quote"] - self.demo["trailing_giveback_quote"]):
+                return "trailing_net_giveback"
+            if self._market_entry_reasons():
+                return "market_deterioration"
         entry = Decimal(position["entry_price"])
         if entry and (current / entry - 1) * Decimal("10000") <= -Decimal(str(self.demo["stop_loss_bps"])):
             return "stop_loss"
         if now >= datetime.fromisoformat(position["planned_close_at"]):
             return "planned_horizon"
-        if candidate:
+        if (candidate and datetime.fromisoformat(candidate["evaluated_at"]) > opened and
+                0 <= (now - datetime.fromisoformat(candidate["evaluated_at"])).total_seconds() <= self.demo["maximum_signal_age_seconds"]):
             signal = candidate["prediction"].get("horizons", {}).get(
                 str(self.demo["horizon_minutes"]), {}).get("signal")
             if signal == "down":
@@ -957,12 +1130,22 @@ class SupervisedDemoEngine:
                        "WHERE position_id=?", (client_id, reason, position["position_id"]))
         order = service._submit(diagnostic_id=position["position_id"], symbol="BTCUSDT", side="SELL",
                                 quantity=str(quantity), client_id=client_id)
-        if order.get("status") != "FILLED":
+        payload = dict(position.get("payload", {})) | {"exit": order}
+        payload["exit_reference_bid"] = str(bid)
+        with sqlite3.connect(self.store.path) as db:
+            db.execute("UPDATE positions SET payload_json=? WHERE position_id=?", (json.dumps(payload), position["position_id"]))
+        if self.active_profile:
+            order = self._confirmed_order(service, order, client_id)
+            payload["exit"] = order
+        if order.get("status") != "FILLED" or (self.active_profile and Decimal(str(order.get("executedQty", "0"))) != quantity):
             self.kill.engage("phase64_exit_not_fully_filled")
             with sqlite3.connect(self.store.path) as db:
                 db.execute("UPDATE positions SET state='RECOVERY_REQUIRED',payload_json=? WHERE position_id=?",
-                           (json.dumps({"exit": order}), position["position_id"]))
+                           (json.dumps(payload), position["position_id"]))
             raise RuntimeError("exit not fully filled; recovery required")
+        self._finalize_close({**position, "payload": payload}, order, client_id, reason)
+
+    def _finalize_close(self, position: dict, order: dict, client_id: str, reason: str) -> None:
         exit_quote = Decimal(str(order.get("cummulativeQuoteQty", "0")))
         sold = Decimal(str(order.get("executedQty", "0")))
         price = exit_quote / sold if sold else Decimal("0")
@@ -975,13 +1158,34 @@ class SupervisedDemoEngine:
                                      and Decimal(str(fill.get("commission", "0"))) != 0})
         net = exit_quote - Decimal(position["entry_quote"]) - quote_fees
         payload = dict(position.get("payload", {})) | {"exit": order}
+        payload["exit_reference_bid"] = position.get("payload", {}).get("exit_reference_bid")
         residual = max(Decimal("0"), Decimal(position["quantity"]) - sold)
         payload["economics"] = {"net_quote_complete": not unknown_fee_assets,
                                 "unknown_fee_assets": unknown_fee_assets,
                                 "basis": "cash_flow_after_quote_fees_residual_not_marked_to_profit",
                                 "residual_base_quantity": str(residual),
                                 "residual_mark_to_bid_quote": None}
+        if self.active_profile:
+            if payload.get("exit_reference_bid"):
+                payload.setdefault("execution", {})["exit_slippage_bps"] = str((1-price/Decimal(payload["exit_reference_bid"]))*10000)
+            base_exit_fee = sum(Decimal(str(f.get("commission", "0"))) for f in order.get("fills", []) if f.get("commissionAsset") == "BTC")
+            disposed = sold + base_exit_fee
+            if disposed > Decimal(position["quantity"]):
+                raise RuntimeError("exit quantity/fee exceeds recorded position")
+            entry_quote_fees = sum(Decimal(str(f.get("commission", "0"))) for f in entry_order.get("fills", []) if f.get("commissionAsset") == "USDT")
+            exit_quote_fees = sum(Decimal(str(f.get("commission", "0"))) for f in order.get("fills", []) if f.get("commissionAsset") == "USDT")
+            total_basis = Decimal(position["entry_quote"]) + entry_quote_fees
+            allocated = total_basis * disposed / Decimal(position["quantity"])
+            cash_flow = net
+            net = exit_quote - exit_quote_fees - allocated
+            residual = Decimal(position["quantity"]) - disposed
+            payload["economics"].update(basis="proportional_actual_cost_basis_for_disposed_BTC",
+                cash_flow_quote=str(cash_flow), allocated_cost_basis_quote=str(allocated),
+                residual_cost_basis_quote=str(total_basis - allocated), residual_base_quantity=str(residual),
+                predictive_performance_eligible=payload["decision"]["entry_category"] == "AI_SIGNAL")
         with sqlite3.connect(self.store.path) as db:
+            if self.active_profile:
+                db.execute("INSERT OR REPLACE INTO demo_residuals VALUES(?,?,?,?,?,?)", (position["position_id"], position["session_id"], "BTCUSDT", str(residual), payload["economics"]["residual_cost_basis_quote"], iso_now()))
             db.execute("""UPDATE positions SET state='CLOSED',closed_at=?,exit_quote=?,exit_price=?,
                           net_quote=?,payload_json=? WHERE position_id=?""",
                        (iso_now(), str(exit_quote), str(price),
@@ -1002,14 +1206,27 @@ class SupervisedDemoEngine:
                                 (candidate["evaluation_id"], iso_now(), "abstention"))
         if cursor.rowcount:
             payload = {"evaluation_id": candidate["evaluation_id"], "reasons": reasons,
-                       "symbol": "BTCUSDT", "policy": "A_quantitative",
-                       "category": "EXPERIMENTAL_DEMO", "orders_sent": False}
+                       "symbol": "BTCUSDT", "policy": self.demo["policy"],
+                       "category": ACTIVE_MODE if self.active_profile else "EXPERIMENTAL_DEMO", "orders_sent": False}
             self.store.activity("entry_abstention", payload, session["session_id"])
             self.ledger.append("experimental_demo_entry_abstention", payload)
 
     def cycle(self) -> None:
         session = self._authorization()
         position = self.store.open_position()
+        self._apply_profile(session, position)
+        if position and position["state"] != "OPEN":
+            if self.active_profile and not self._reconciliation_blocked:
+                try:
+                    if self._recover_known_position(position):
+                        position = self.store.open_position()
+                        session = None  # A recovery never restores entry authorization.
+                        if position is None:
+                            self.state = "OBSERVE"
+                            return
+                except Exception as exc:
+                    self._reconciliation_failure(exc, session, position)
+                    return
         if position and position["state"] != "OPEN":
             if not self._reconciliation_blocked:
                 self._block_reconciliation(
@@ -1057,6 +1274,43 @@ class SupervisedDemoEngine:
             self.kill.engage(self.last_error)
             self.store.activity("entry_failure", {"error": self.last_error}, session["session_id"])
 
+    def _recover_known_position(self, position: dict) -> bool:
+        """Read a durable intent after restart; never resend or assume a fill.
+
+        Unknown/partial exits remain blocked for audited reconciliation. A
+        terminal entry can restore exactly the known inventory for safe exits.
+        """
+        service = self._service()
+        is_exit = bool(position.get("exit_client_id"))
+        client_id = position["exit_client_id" if is_exit else "entry_client_id"]
+        order = service.broker.order_status(symbol="BTCUSDT", client_order_id=client_id)
+        if order.get("status") not in {"FILLED", "CANCELED", "EXPIRED"}:
+            return False
+        order = self._confirmed_order(service, order, client_id)
+        if Decimal(str(order.get("executedQty", "0"))) <= 0:
+            return False
+        self._invalidate_session_for_recovery(self.store.active_session(), "known_position_recovery_requires_reauthorization")
+        self.kill.engage("known_position_recovery_exit_only")
+        if is_exit:
+            rules = SymbolRules.from_exchange_info(service.broker.exchange_info("BTCUSDT"), "BTCUSDT")
+            expected = Decimal(position["quantity"]) // rules.market_step_size * rules.market_step_size
+            if order["status"] != "FILLED" or Decimal(order["executedQty"]) != expected:
+                return False
+            self._finalize_close(position, order, client_id, position.get("close_reason") or "restart_confirmed_exit")
+        else:
+            now = datetime.now(UTC)
+            payload = {**position["payload"], "entry": order, "recovered_at": now.isoformat()}
+            # A restart does not reset the original holding deadline. If no
+            # local OPEN commit existed, use exchange execution time.
+            opened = datetime.fromtimestamp(int(order["time"]) / 1000, UTC)
+            quote, gross_qty = Decimal(order["cummulativeQuoteQty"]), Decimal(order["executedQty"])
+            with sqlite3.connect(self.store.path) as db:
+                db.execute("UPDATE positions SET state='OPEN',opened_at=?,planned_close_at=?,quantity=?,entry_quote=?,entry_price=?,fees_json=?,payload_json=? WHERE position_id=?",
+                    (opened.isoformat(), (opened + timedelta(minutes=self.demo["planned_holding_minutes"])).isoformat(),
+                     str(self._net_quantity(order, "BTC")), str(quote), str(quote/gross_qty), json.dumps(order["fills"]), json.dumps(payload), position["position_id"]))
+        self.store.activity("known_position_recovered_exit_only", {"position_id": position["position_id"], "side": "SELL" if is_exit else "BUY"}, position["session_id"])
+        return True
+
     async def run(self) -> None:
         self._write_control()
         self.store.activity("engine_started", {"boot_id": self.boot_id, "orders_sent": False})
@@ -1088,7 +1342,7 @@ def _fresh_engine_control(root: Path) -> dict:
         age = (datetime.now(UTC) - datetime.fromisoformat(engine["updated_at"])).total_seconds()
     except (KeyError, TypeError, ValueError):
         raise RuntimeError("Phase 6.4 engine heartbeat is invalid") from None
-    if age > 15:
+    if not 0 <= age <= 15:
         raise RuntimeError("Phase 6.4 engine heartbeat is stale")
     return engine
 
@@ -1108,32 +1362,46 @@ def _healthy_engine_control(root: Path) -> dict:
     return engine
 
 
-def prepare_authorization(root: Path = ROOT) -> dict:
+def prepare_authorization(root: Path = ROOT, *, mode: str = "EXPERIMENTAL_DEMO", allow_probes: bool = False) -> dict:
     config = load_phase64_config(root)
     engine = _healthy_engine_control(root)
     store = AutonomousStore(root / "runtime/phase_6_4/autonomous.sqlite3")
     if store.open_position():
         raise RuntimeError("an open or unresolved position already exists")
     session_id = f"demo-{datetime.now(UTC):%Y%m%dT%H%M%S}-{uuid.uuid4().hex[:8]}"
-    demo = config["experimental_demo"]
+    if mode not in {"EXPERIMENTAL_DEMO", ACTIVE_MODE} or (allow_probes and mode != ACTIVE_MODE):
+        raise ValueError("invalid Demo session mode")
+    profile = load_profile(root, allow_probes) if mode == ACTIVE_MODE else None
+    if profile and not engine.get("supports_active_experimental"):
+        raise RuntimeError("restart supervisor in OBSERVE before preparing an active session")
+    demo = {**config["experimental_demo"], **profile["limits"]} if profile else config["experimental_demo"]
     with sqlite3.connect(store.path) as db:
         db.execute("UPDATE sessions SET state='stopped',stop_reason='superseded' "
                    "WHERE state IN ('prepared','authorized','running')")
         db.execute("INSERT INTO sessions VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
                    (session_id, engine["boot_id"], iso_now(), None, None, "prepared",
                     demo["policy"], demo["symbol"], str(demo["quote_amount"]), None, 0, None))
+        if profile:
+            db.execute("INSERT INTO session_profiles VALUES(?,?,?,?)", (session_id, mode, json.dumps(profile), profile_hash(profile)))
     store.activity("session_prepared", {"boot_id": engine["boot_id"],
                    "quote_amount": str(demo["quote_amount"]), "orders_sent": False}, session_id)
     return {"session_id": session_id, "boot_id": engine["boot_id"], "state": "prepared",
             "policy": demo["policy"], "symbol": demo["symbol"],
             "quote_amount": demo["quote_amount"], "orders_sent": False,
+            "mode": mode, "allow_probes": allow_probes,
+            "limits": demo, "profile_sha256": profile_hash(profile) if profile else None,
+            "confirmation": profile["confirmation_probes" if allow_probes else "confirmation_ai"] if profile else demo["authorization_confirmation"],
             "next_step": "explicit authorization is still required"}
 
 
 def authorize_session(session_id: str, confirmation: str, root: Path = ROOT,
                       service_factory=None) -> dict:
     config = load_phase64_config(root)
-    expected = config["experimental_demo"]["authorization_confirmation"]
+    profile = session_profile(root / "runtime/phase_6_4/autonomous.sqlite3", session_id)
+    if profile and profile_hash(load_profile(root, profile["allow_probes"])) != profile_hash(profile):
+        raise PermissionError("active profile changed; prepare a new session")
+    expected = (profile["confirmation_probes" if profile["allow_probes"] else "confirmation_ai"]
+                if profile else config["experimental_demo"]["authorization_confirmation"])
     if confirmation != expected:
         raise PermissionError("explicit Phase 6.4 Demo authorization is invalid")
     if os.getenv("BITCOIN_AI_ENABLE_DEMO_ORDERS") != "I_UNDERSTAND_DEMO_ONLY":
@@ -1157,18 +1425,26 @@ def authorize_session(session_id: str, confirmation: str, root: Path = ROOT,
         if service.journal.unresolved() or service.broker.open_orders("BTCUSDT"):
             raise RuntimeError("Demo reconciliation is not clean")
         service.plan("BTCUSDT", Decimal("10"))
+        if profile:
+            rates = commission_rates(service.broker.commission("BTCUSDT"))
+            ceiling = Decimal(str(profile["limits"]["planning_fee_ceiling_bps_per_side"])) / 10000
+            if max(Decimal(rates["buy"]), Decimal(rates["sell"])) > ceiling:
+                raise RuntimeError("authenticated Demo commission exceeds the frozen planning ceiling")
         latest = _healthy_engine_control(root)
         if latest["boot_id"] != control["boot_id"] or store.open_position():
             raise RuntimeError("engine or position changed during authorization checks")
-        expires = datetime.now(UTC) + timedelta(minutes=config["experimental_demo"]["session_maximum_minutes"])
+        expires = datetime.now(UTC) + timedelta(minutes=(profile["limits"] if profile else config["experimental_demo"])["session_maximum_minutes"])
         confirmation_hash = hashlib.sha256(confirmation.encode()).hexdigest()
         db.execute("UPDATE sessions SET state='authorized',authorized_at=?,expires_at=?,confirmation_hash=? "
                    "WHERE session_id=?", (iso_now(), expires.isoformat(), confirmation_hash, session_id))
     PersistentKillSwitch(root / "runtime/phase_6_2/kill_switch.json").clear(KILL_SWITCH_CONFIRMATION)
     store.activity("session_authorized", {"expires_at": expires.isoformat(),
-                   "authorization_bound_to_boot": True}, session_id)
+                   "authorization_bound_to_boot": True, "mode": ACTIVE_MODE if profile else "EXPERIMENTAL_DEMO",
+                   "allow_probes": profile["allow_probes"] if profile else False,
+                   "profile_sha256": profile_hash(profile) if profile else None}, session_id)
     return {"session_id": session_id, "state": "authorized", "expires_at": expires.isoformat(),
             "environment": "DEMO", "quote_amount": 10.0,
+            "mode": ACTIVE_MODE if profile else "EXPERIMENTAL_DEMO",
             "warning": "the running engine may now submit Demo orders when every frozen gate passes"}
 
 
@@ -1196,6 +1472,7 @@ def emergency_close(root: Path, confirmation: str) -> dict:
     if not position or position["state"] != "OPEN":
         return {"closed": False, "reason": "no_open_strategy_position", "orders_sent": False}
     engine = SupervisedDemoEngine(root)
+    engine._apply_profile(None, position)
     engine._close(position, "explicit_emergency_close")
     engine.kill.engage("emergency_close_completed")
     return {"closed": True, "position_id": position["position_id"],

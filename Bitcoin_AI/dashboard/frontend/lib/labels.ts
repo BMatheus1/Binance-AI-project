@@ -1,4 +1,13 @@
 const reasons:Record<string,string> = {
+  exploration_not_authorized:"Exploração não autorizada nesta sessão",
+  active_session_not_authorized:"Sessão ativa ainda não autorizada",
+  probe_waiting_for_abstention_window:"Aguardando três minutos sem entrada",
+  probe_entry_limit:"Limite de explorações atingido",
+  active_volatility_limit:"Volatilidade acima do limite experimental",
+  planned_operation_loss_limit:"Perda planejada supera o limite por operação",
+  planned_session_loss_limit:"Orçamento de risco planejado da sessão esgotado",
+  versioned_active_ai_criteria_met:"Critérios experimentais de IA atendidos",
+  authorized_controlled_probe_not_ai_alpha:"Exploração controlada; não representa vantagem preditiva",
   frozen_signal_not_up:"O sinal congelado não indica compra",
   up_probability_below_frozen_threshold:"Probabilidade abaixo do limiar congelado",
   market_temporal_integrity_or_freshness:"Aguardando dados atuais e temporalmente válidos",
@@ -25,6 +34,9 @@ export function decisionLabel(value:string):string {
   return ({COMPRAR:"Proposta de compra",NAO_COMPRAR:"Não comprar",AGUARDAR_DADOS:"Aguardar dados",INDISPONIVEL_SEGURANCA:"Indisponível por segurança",abstain:"Abstenção",buy:"Compra"} as Record<string,string>)[value]??value;
 }
 export function stateLabel(value:string):string {
+  if(value==="DEMO_ACTIVE_EXPERIMENTAL")return "Demo experimental ativo";
+  if(value==="AI_SIGNAL")return "Sinal de IA";
+  if(value==="EXPLORATORY_PROBE")return "Exploração controlada";
   if(value==="DEMO_AUTONOMOUS_EXPERIMENTAL")return "Demo experimental";
   return ({ready:"Disponível",unavailable:"Indisponível",available_not_loaded:"Disponível, ainda não carregado",loading:"Carregando",degraded:"Degradado",connected:"Conectado",disconnected:"Desconectado",OBSERVE:"Observação",EXPERIMENTAL_DEMO:"Demo experimental",healthy:"Saudável",retry_wait:"Aguardando nova tentativa",blocked:"Bloqueado",prepared:"Preparada",authorized:"Autorizada",running:"Em execução",OPEN:"Aberta",CLOSED:"Encerrada",RECOVERY_REQUIRED:"Recuperação necessária"} as Record<string,string>)[value]??"Aguardando verificação";
 }

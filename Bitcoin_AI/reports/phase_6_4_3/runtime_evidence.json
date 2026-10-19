@@ -1,0 +1,1547 @@
+{
+  "checked_at": "2026-10-19T22:16:22.068896+00:00",
+  "http_status": 200,
+  "page_status": 200,
+  "active_controls_rendered": true,
+  "mode": "OBSERVE",
+  "kill_switch": {
+    "engaged": true,
+    "reason": "dashboard_observe_start",
+    "updated_at": "2026-10-19T22:10:05.087449+00:00"
+  },
+  "engine": {
+    "boot_id": "c7fe86b8970e43a7bea8dcca166d0866",
+    "pid": 28104,
+    "state": "OBSERVE",
+    "last_error": null,
+    "updated_at": "2026-10-19T22:16:16.384315+00:00",
+    "orders_enabled": false,
+    "reconciliation": {
+      "state": "healthy",
+      "last_attempt_at": "2026-10-19T22:16:05.314287+00:00",
+      "last_success_at": "2026-10-19T22:16:06.162714+00:00",
+      "failure_count": 0,
+      "transient": null,
+      "category": null,
+      "next_retry_at": null,
+      "error": null,
+      "unresolved_intents": 0,
+      "open_orders": 0,
+      "account_can_trade": true,
+      "position_present": false,
+      "credentials_present": true
+    },
+    "supports_active_experimental": true,
+    "mode": "OBSERVE",
+    "environment": "DEMO",
+    "real_trading_supported": false
+  },
+  "session": {
+    "session_id": "demo-20261019T221154-2da6a152",
+    "boot_id": "c7fe86b8970e43a7bea8dcca166d0866",
+    "created_at": "2026-10-19T22:11:54.681933+00:00",
+    "authorized_at": null,
+    "expires_at": null,
+    "state": "prepared",
+    "policy": "BTC_UNIFIED_ACTIVE_V1",
+    "symbol": "BTCUSDT",
+    "quote_amount": "10.0",
+    "entries": 0,
+    "stop_reason": null
+  },
+  "position": null,
+  "active_profile": {
+    "version": "phase6.4.3-active-v1",
+    "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+    "environment": "DEMO",
+    "policy": "BTC_UNIFIED_ACTIVE_V1",
+    "limits": {
+      "symbol": "BTCUSDT",
+      "policy": "BTC_UNIFIED_ACTIVE_V1",
+      "horizon_minutes": 5,
+      "quote_amount": 10.0,
+      "maximum_open_positions": 1,
+      "maximum_entries_per_session": 6,
+      "session_maximum_minutes": 60,
+      "maximum_loss_per_operation_quote": 0.1,
+      "maximum_session_loss_quote": 0.5,
+      "maximum_total_exposure_quote": 10.0,
+      "maximum_spread_bps": 3.0,
+      "maximum_slippage_bps": 5.0,
+      "planning_fee_ceiling_bps_per_side": 10.0,
+      "minimum_depth_quote": 10000.0,
+      "maximum_signal_age_seconds": 90,
+      "minimum_up_probability": 0.53,
+      "maximum_volatility_bps": 30.0,
+      "cooldown_minutes": 2,
+      "planned_holding_minutes": 5,
+      "maximum_holding_minutes": 8,
+      "maximum_absolute_minutes": 8,
+      "maximum_extension_minutes": 0,
+      "stop_loss_bps": 50.0,
+      "take_profit_net_quote": 0.02,
+      "adaptive_take_profit_cap_quote": 0.04,
+      "trailing_activation_net_quote": 0.015,
+      "trailing_giveback_quote": 0.01,
+      "probe_after_seconds": 180,
+      "maximum_probes_per_session": 2
+    },
+    "promotion": "experimental_only_no_economic_superiority_claim",
+    "ai_entry": "p_up_5m>=0.53 and p_up_5m>p_down_5m and momentum_5m_bps>0",
+    "probe_entry": "explicit_probe_authorization, >=180s without entry/after last close, healthy data and risk gates",
+    "confirmation_ai": "I_AUTHORIZE_60_MIN_10_USDT_DEMO_ACTIVE_AI_ONLY",
+    "confirmation_probes": "I_AUTHORIZE_60_MIN_10_USDT_DEMO_ACTIVE_WITH_PROBES",
+    "allow_probes": true
+  },
+  "last_proposals": [
+    {
+      "context": {
+        "experimental_criteria": {
+          "economic_advantage_required": false,
+          "entry_category": "EXPLORATORY_PROBE",
+          "minimum_up_probability": 0.53,
+          "momentum_5m_must_be_positive_for_ai": true,
+          "probe_elapsed_seconds": 0,
+          "probe_wait_seconds": 180
+        },
+        "fusion": {
+          "context_changes_entry": false,
+          "method": "frozen_single_specialist",
+          "news_optional": true,
+          "weights_fitted": false
+        },
+        "news": {
+          "reason": "optional_news_context_not_available_at_decision",
+          "state": "unavailable",
+          "used_for_entry": false
+        },
+        "patterns": {
+          "features_available_at": "2026-10-19T22:16:02.660482+00:00",
+          "operational": false,
+          "patterns": [
+            {
+              "detected": true,
+              "features": {
+                "log_return_20_bps": 21.515839731884398,
+                "log_return_5_bps": 7.86286426947148
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "trend_continuation",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "log_return_20_bps": 21.515839731884398,
+                "log_return_5_bps": 7.86286426947148
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "pullback",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": true,
+              "features": {
+                "previous_20_high": 82174.01,
+                "volume_ratio": 1.0728069312091353
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "breakout",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "zscore_previous_20": 1.9513879850646791
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "mean_reversion",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": true,
+              "features": {
+                "vol5": 0.0003227902178394013,
+                "vol60": 0.00022055553526046807
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "volatility_expansion",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": true,
+              "features": {
+                "delta_log_return_5_bps": 6.637843101010297
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "momentum_acceleration",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "imbalance": -0.8018778018179784
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "book_imbalance",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": null,
+              "features": {
+                "reason": "no_synchronized_aggtrade_window_in_contract"
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "aggressor_imbalance",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": null,
+              "features": {
+                "reason": "no_validated_temporal_event_effect_model"
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "event_reaction",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            }
+          ],
+          "state": "research_only"
+        },
+        "regime": {
+          "operational": false,
+          "state": "unvalidated"
+        }
+      },
+      "costs": {
+        "category": "DEMO_ACTIVE_EXPERIMENTAL",
+        "economically_validated": false,
+        "estimated_round_trip_bps": 30.001216683183518,
+        "expected_gross_bps": null,
+        "expected_net_bps": null,
+        "fees_are_actual": false,
+        "planning_fee_ceiling_bps_per_side": 10.0,
+        "source": "versioned_fee_ceiling_spread_slippage",
+        "spread_bps": 0.0012166831835174116
+      },
+      "data_available_at": "2026-10-19T22:16:01.748759+00:00",
+      "decision": "NAO_COMPRAR",
+      "decision_id": "03ef755cda3e78a179bf580039aa174aac831a8674b7a1e7134b627ef811e111",
+      "entry_category": "EXPLORATORY_PROBE",
+      "evaluated_at": "2026-10-19T22:16:02.660482+00:00",
+      "evaluation_id": "22d29bdee53f8f6b21841e2940ce0a75a725b9dba794546148070450ba1245d7",
+      "execution_state": "PROPOSAL_ONLY_REQUIRES_SESSION_AND_RISK",
+      "features_valid": true,
+      "horizon_minutes": 5,
+      "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+      "model_versions": {
+        "1": "20261018T013856021255Z-phase4:1m:xgboost",
+        "15": "20261018T013856021255Z-phase4:15m:xgboost",
+        "30": "20261018T013856021255Z-phase4:30m:catboost",
+        "5": "20261018T013856021255Z-phase4:5m:xgboost"
+      },
+      "planned_risk": {
+        "absolute_holding_minutes": 8,
+        "loss_is_guaranteed": false,
+        "maximum_loss_per_operation_quote": 0.1,
+        "maximum_session_loss_quote": 0.5,
+        "planned_holding_minutes": 5,
+        "planned_loss_quote_including_estimated_costs": 0.08000121668318352,
+        "planned_stop_loss_quote_excluding_costs": 0.05,
+        "quote_amount": 10.0,
+        "risk_reward_ratio": null,
+        "stop_loss_bps": 50.0,
+        "take_profit_net_quote": 0.02
+      },
+      "policy_version": "phase6.4.3-active-v1:2f276a9f23aa1bc78e7475ad282ad381f5ce0d29fd203e0c4cd887659a961486",
+      "prediction": {
+        "asset_scope": "BTCUSDT_only",
+        "expected_gross_return_bps": null,
+        "horizons": {
+          "1": {
+            "model_version": "20261018T013856021255Z-phase4:1m:xgboost",
+            "probabilities": {
+              "down": 0.4864988928187539,
+              "tie": 0.008019078726446284,
+              "up": 0.5054820284547998
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "15": {
+            "model_version": "20261018T013856021255Z-phase4:15m:xgboost",
+            "probabilities": {
+              "down": 0.5279817871675063,
+              "tie": 0.0004461059522240217,
+              "up": 0.4715721068802697
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "30": {
+            "model_version": "20261018T013856021255Z-phase4:30m:catboost",
+            "probabilities": {
+              "down": 0.5421297595035474,
+              "tie": 0.00014914238325175745,
+              "up": 0.4577210981132008
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "5": {
+            "model_version": "20261018T013856021255Z-phase4:5m:xgboost",
+            "probabilities": {
+              "down": 0.5266078345779186,
+              "tie": 0.000948477023715905,
+              "up": 0.47244368839836554
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          }
+        },
+        "primary_horizon_minutes": 1,
+        "primary_signal": "abstain",
+        "state": "ready"
+      },
+      "reasons": [
+        "active_session_not_authorized",
+        "probe_waiting_for_abstention_window"
+      ],
+      "schema_version": "unified-v1",
+      "session_id": "demo-20261019T221154-2da6a152",
+      "symbol": "BTCUSDT",
+      "uncertainty": {
+        "confidence_interval": null,
+        "directional_entropy_nats": 0.6985708027750044,
+        "favorable_net_move_probability": null
+      },
+      "valid_until": "2026-10-19T22:17:32.660482+00:00"
+    },
+    {
+      "context": {
+        "experimental_criteria": {
+          "economic_advantage_required": false,
+          "entry_category": "EXPLORATORY_PROBE",
+          "minimum_up_probability": 0.53,
+          "momentum_5m_must_be_positive_for_ai": true,
+          "probe_elapsed_seconds": 0,
+          "probe_wait_seconds": 180
+        },
+        "fusion": {
+          "context_changes_entry": false,
+          "method": "frozen_single_specialist",
+          "news_optional": true,
+          "weights_fitted": false
+        },
+        "news": {
+          "reason": "optional_news_context_not_available_at_decision",
+          "state": "unavailable",
+          "used_for_entry": false
+        },
+        "patterns": {
+          "features_available_at": "2026-10-19T22:15:05.416894+00:00",
+          "operational": false,
+          "patterns": [
+            {
+              "detected": false,
+              "features": {
+                "log_return_20_bps": 16.078220817332415,
+                "log_return_5_bps": -0.77298421428274
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "trend_continuation",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": true,
+              "features": {
+                "log_return_20_bps": 16.078220817332415,
+                "log_return_5_bps": -0.77298421428274
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "pullback",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "previous_20_high": 82174.01,
+                "volume_ratio": 2.078928907245344
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "breakout",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "zscore_previous_20": 1.087971198141563
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "mean_reversion",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": true,
+              "features": {
+                "vol5": 0.00029404000066058484,
+                "vol60": 0.00020922312575093516
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "volatility_expansion",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "delta_log_return_5_bps": -6.213140861318122
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "momentum_acceleration",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "imbalance": -0.21336929117860556
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "book_imbalance",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": null,
+              "features": {
+                "reason": "no_synchronized_aggtrade_window_in_contract"
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "aggressor_imbalance",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": null,
+              "features": {
+                "reason": "no_validated_temporal_event_effect_model"
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "event_reaction",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            }
+          ],
+          "state": "research_only"
+        },
+        "regime": {
+          "operational": false,
+          "state": "unvalidated"
+        }
+      },
+      "costs": {
+        "category": "DEMO_ACTIVE_EXPERIMENTAL",
+        "economically_validated": false,
+        "estimated_round_trip_bps": 30.001217344951105,
+        "expected_gross_bps": null,
+        "expected_net_bps": null,
+        "fees_are_actual": false,
+        "planning_fee_ceiling_bps_per_side": 10.0,
+        "source": "versioned_fee_ceiling_spread_slippage",
+        "spread_bps": 0.0012173449511029939
+      },
+      "data_available_at": "2026-10-19T22:15:04.034119+00:00",
+      "decision": "NAO_COMPRAR",
+      "decision_id": "20df6cfe3a517d980ddf34c7a5bb9a766dc353ee0e9f77305739e885402a6009",
+      "entry_category": "EXPLORATORY_PROBE",
+      "evaluated_at": "2026-10-19T22:15:05.416894+00:00",
+      "evaluation_id": "ceda9cc5202cd1e51ac2c199dc67b9f293d86666dd1dfaddfc39ed59e998fc28",
+      "execution_state": "PROPOSAL_ONLY_REQUIRES_SESSION_AND_RISK",
+      "features_valid": true,
+      "horizon_minutes": 5,
+      "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+      "model_versions": {
+        "1": "20261018T013856021255Z-phase4:1m:xgboost",
+        "15": "20261018T013856021255Z-phase4:15m:xgboost",
+        "30": "20261018T013856021255Z-phase4:30m:catboost",
+        "5": "20261018T013856021255Z-phase4:5m:xgboost"
+      },
+      "planned_risk": {
+        "absolute_holding_minutes": 8,
+        "loss_is_guaranteed": false,
+        "maximum_loss_per_operation_quote": 0.1,
+        "maximum_session_loss_quote": 0.5,
+        "planned_holding_minutes": 5,
+        "planned_loss_quote_including_estimated_costs": 0.0800012173449511,
+        "planned_stop_loss_quote_excluding_costs": 0.05,
+        "quote_amount": 10.0,
+        "risk_reward_ratio": null,
+        "stop_loss_bps": 50.0,
+        "take_profit_net_quote": 0.02
+      },
+      "policy_version": "phase6.4.3-active-v1:2f276a9f23aa1bc78e7475ad282ad381f5ce0d29fd203e0c4cd887659a961486",
+      "prediction": {
+        "asset_scope": "BTCUSDT_only",
+        "expected_gross_return_bps": null,
+        "horizons": {
+          "1": {
+            "model_version": "20261018T013856021255Z-phase4:1m:xgboost",
+            "probabilities": {
+              "down": 0.5058330790768708,
+              "tie": 0.010770011807755673,
+              "up": 0.48339690911537353
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "15": {
+            "model_version": "20261018T013856021255Z-phase4:15m:xgboost",
+            "probabilities": {
+              "down": 0.5164816696784844,
+              "tie": 0.00040514311555026744,
+              "up": 0.48311318720596524
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "30": {
+            "model_version": "20261018T013856021255Z-phase4:30m:catboost",
+            "probabilities": {
+              "down": 0.5396792235793593,
+              "tie": 0.0001451400328239473,
+              "up": 0.46017563638781683
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "5": {
+            "model_version": "20261018T013856021255Z-phase4:5m:xgboost",
+            "probabilities": {
+              "down": 0.5198649247670212,
+              "tie": 0.0009113940564424126,
+              "up": 0.4792236811765364
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          }
+        },
+        "primary_horizon_minutes": 1,
+        "primary_signal": "abstain",
+        "state": "ready"
+      },
+      "reasons": [
+        "active_session_not_authorized",
+        "probe_waiting_for_abstention_window"
+      ],
+      "schema_version": "unified-v1",
+      "session_id": "demo-20261019T221154-2da6a152",
+      "symbol": "BTCUSDT",
+      "uncertainty": {
+        "confidence_interval": null,
+        "directional_entropy_nats": 0.6989798382976508,
+        "favorable_net_move_probability": null
+      },
+      "valid_until": "2026-10-19T22:16:35.416894+00:00"
+    },
+    {
+      "context": {
+        "experimental_criteria": {
+          "economic_advantage_required": false,
+          "entry_category": "EXPLORATORY_PROBE",
+          "minimum_up_probability": 0.53,
+          "momentum_5m_must_be_positive_for_ai": true,
+          "probe_elapsed_seconds": 0,
+          "probe_wait_seconds": 180
+        },
+        "fusion": {
+          "context_changes_entry": false,
+          "method": "frozen_single_specialist",
+          "news_optional": true,
+          "weights_fitted": false
+        },
+        "news": {
+          "reason": "optional_news_context_not_available_at_decision",
+          "state": "unavailable",
+          "used_for_entry": false
+        },
+        "patterns": {
+          "features_available_at": "2026-10-19T22:14:07.430891+00:00",
+          "operational": false,
+          "patterns": [
+            {
+              "detected": false,
+              "features": {
+                "log_return_20_bps": 14.61973512464624,
+                "log_return_5_bps": -2.9983085893162325
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "trend_continuation",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": true,
+              "features": {
+                "log_return_20_bps": 14.61973512464624,
+                "log_return_5_bps": -2.9983085893162325
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "pullback",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "previous_20_high": 82174.01,
+                "volume_ratio": 1.326798636695983
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "breakout",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "zscore_previous_20": 0.9298953042513661
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "mean_reversion",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": true,
+              "features": {
+                "vol5": 0.00028002767668632126,
+                "vol60": 0.0002222901889731818
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "volatility_expansion",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "delta_log_return_5_bps": -9.40504369674899
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "momentum_acceleration",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": true,
+              "features": {
+                "imbalance": 0.47127708452450406
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "book_imbalance",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": null,
+              "features": {
+                "reason": "no_synchronized_aggtrade_window_in_contract"
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "aggressor_imbalance",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": null,
+              "features": {
+                "reason": "no_validated_temporal_event_effect_model"
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "event_reaction",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            }
+          ],
+          "state": "research_only"
+        },
+        "regime": {
+          "operational": false,
+          "state": "unvalidated"
+        }
+      },
+      "costs": {
+        "category": "DEMO_ACTIVE_EXPERIMENTAL",
+        "economically_validated": false,
+        "estimated_round_trip_bps": 30.001217463218733,
+        "expected_gross_bps": null,
+        "expected_net_bps": null,
+        "fees_are_actual": false,
+        "planning_fee_ceiling_bps_per_side": 10.0,
+        "source": "versioned_fee_ceiling_spread_slippage",
+        "spread_bps": 0.0012174632187330712
+      },
+      "data_available_at": "2026-10-19T22:14:06.760017+00:00",
+      "decision": "NAO_COMPRAR",
+      "decision_id": "1eebbbcd30fe785dd273712f5b2b9d2ab5adae5b8d339cf857afac7c80ba6210",
+      "entry_category": "EXPLORATORY_PROBE",
+      "evaluated_at": "2026-10-19T22:14:07.430891+00:00",
+      "evaluation_id": "9f3b1d3acd2ac5f55055ed46b394d54650531259f4c1718e650ec7b6414ef5a3",
+      "execution_state": "PROPOSAL_ONLY_REQUIRES_SESSION_AND_RISK",
+      "features_valid": true,
+      "horizon_minutes": 5,
+      "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+      "model_versions": {
+        "1": "20261018T013856021255Z-phase4:1m:xgboost",
+        "15": "20261018T013856021255Z-phase4:15m:xgboost",
+        "30": "20261018T013856021255Z-phase4:30m:catboost",
+        "5": "20261018T013856021255Z-phase4:5m:xgboost"
+      },
+      "planned_risk": {
+        "absolute_holding_minutes": 8,
+        "loss_is_guaranteed": false,
+        "maximum_loss_per_operation_quote": 0.1,
+        "maximum_session_loss_quote": 0.5,
+        "planned_holding_minutes": 5,
+        "planned_loss_quote_including_estimated_costs": 0.08000121746321874,
+        "planned_stop_loss_quote_excluding_costs": 0.05,
+        "quote_amount": 10.0,
+        "risk_reward_ratio": null,
+        "stop_loss_bps": 50.0,
+        "take_profit_net_quote": 0.02
+      },
+      "policy_version": "phase6.4.3-active-v1:2f276a9f23aa1bc78e7475ad282ad381f5ce0d29fd203e0c4cd887659a961486",
+      "prediction": {
+        "asset_scope": "BTCUSDT_only",
+        "expected_gross_return_bps": null,
+        "horizons": {
+          "1": {
+            "model_version": "20261018T013856021255Z-phase4:1m:xgboost",
+            "probabilities": {
+              "down": 0.4771026666357769,
+              "tie": 0.008428922254285414,
+              "up": 0.5144684111099377
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "15": {
+            "model_version": "20261018T013856021255Z-phase4:15m:xgboost",
+            "probabilities": {
+              "down": 0.49775424289017495,
+              "tie": 0.00039873935387992195,
+              "up": 0.5018470177559451
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "30": {
+            "model_version": "20261018T013856021255Z-phase4:30m:catboost",
+            "probabilities": {
+              "down": 0.5209159258800126,
+              "tie": 0.00015669140819740755,
+              "up": 0.47892738271179003
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "5": {
+            "model_version": "20261018T013856021255Z-phase4:5m:xgboost",
+            "probabilities": {
+              "down": 0.49576395869634915,
+              "tie": 0.000946798986220379,
+              "up": 0.5032892423174304
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          }
+        },
+        "primary_horizon_minutes": 1,
+        "primary_signal": "abstain",
+        "state": "ready"
+      },
+      "reasons": [
+        "active_session_not_authorized",
+        "probe_waiting_for_abstention_window"
+      ],
+      "schema_version": "unified-v1",
+      "session_id": "demo-20261019T221154-2da6a152",
+      "symbol": "BTCUSDT",
+      "uncertainty": {
+        "confidence_interval": null,
+        "directional_entropy_nats": 0.7000009338430045,
+        "favorable_net_move_probability": null
+      },
+      "valid_until": "2026-10-19T22:15:37.430891+00:00"
+    },
+    {
+      "context": {
+        "experimental_criteria": {
+          "economic_advantage_required": false,
+          "entry_category": "EXPLORATORY_PROBE",
+          "minimum_up_probability": 0.53,
+          "momentum_5m_must_be_positive_for_ai": true,
+          "probe_elapsed_seconds": 0,
+          "probe_wait_seconds": 180
+        },
+        "fusion": {
+          "context_changes_entry": false,
+          "method": "frozen_single_specialist",
+          "news_optional": true,
+          "weights_fitted": false
+        },
+        "news": {
+          "reason": "optional_news_context_not_available_at_decision",
+          "state": "unavailable",
+          "used_for_entry": false
+        },
+        "patterns": {
+          "features_available_at": "2026-10-19T22:13:08.907071+00:00",
+          "operational": false,
+          "patterns": [
+            {
+              "detected": false,
+              "features": {
+                "log_return_20_bps": 10.236662767219766,
+                "log_return_5_bps": -4.141651352987184
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "trend_continuation",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": true,
+              "features": {
+                "log_return_20_bps": 10.236662767219766,
+                "log_return_5_bps": -4.141651352987184
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "pullback",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "previous_20_high": 82174.01,
+                "volume_ratio": 0.35272524500452657
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "breakout",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "zscore_previous_20": 0.3330805902901834
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "mean_reversion",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": true,
+              "features": {
+                "vol5": 0.00023223306254582319,
+                "vol60": 0.00022031367622885826
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "volatility_expansion",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "delta_log_return_5_bps": -8.282084679253146
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "momentum_acceleration",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": false,
+              "features": {
+                "imbalance": -0.48544324430620334
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "book_imbalance",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": null,
+              "features": {
+                "reason": "no_synchronized_aggtrade_window_in_contract"
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "aggressor_imbalance",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            },
+            {
+              "detected": null,
+              "features": {
+                "reason": "no_validated_temporal_event_effect_model"
+              },
+              "horizons_minutes": [
+                1,
+                5,
+                15,
+                30
+              ],
+              "invalidated_by": "new_closed_candle_or_stale_market_data",
+              "name": "event_reaction",
+              "oos_net_result": null,
+              "promotion": "requires_chronological_cost_aware_validation",
+              "risk_reward": null
+            }
+          ],
+          "state": "research_only"
+        },
+        "regime": {
+          "operational": false,
+          "state": "unvalidated"
+        }
+      },
+      "costs": {
+        "category": "DEMO_ACTIVE_EXPERIMENTAL",
+        "economically_validated": false,
+        "estimated_round_trip_bps": 30.001218026721773,
+        "expected_gross_bps": null,
+        "expected_net_bps": null,
+        "fees_are_actual": false,
+        "planning_fee_ceiling_bps_per_side": 10.0,
+        "source": "versioned_fee_ceiling_spread_slippage",
+        "spread_bps": 0.001218026721771979
+      },
+      "data_available_at": "2026-10-19T22:13:08.142234+00:00",
+      "decision": "NAO_COMPRAR",
+      "decision_id": "03ecc82a17565e72907267361347f5b40eef71fdc2191b2705ff14ff9ea725cd",
+      "entry_category": "EXPLORATORY_PROBE",
+      "evaluated_at": "2026-10-19T22:13:08.907071+00:00",
+      "evaluation_id": "2f5fc4229e1360ecddae51e1575762522ea16c1d22c4862ab620a710aac765b9",
+      "execution_state": "PROPOSAL_ONLY_REQUIRES_SESSION_AND_RISK",
+      "features_valid": true,
+      "horizon_minutes": 5,
+      "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+      "model_versions": {
+        "1": "20261018T013856021255Z-phase4:1m:xgboost",
+        "15": "20261018T013856021255Z-phase4:15m:xgboost",
+        "30": "20261018T013856021255Z-phase4:30m:catboost",
+        "5": "20261018T013856021255Z-phase4:5m:xgboost"
+      },
+      "planned_risk": {
+        "absolute_holding_minutes": 8,
+        "loss_is_guaranteed": false,
+        "maximum_loss_per_operation_quote": 0.1,
+        "maximum_session_loss_quote": 0.5,
+        "planned_holding_minutes": 5,
+        "planned_loss_quote_including_estimated_costs": 0.08000121802672176,
+        "planned_stop_loss_quote_excluding_costs": 0.05,
+        "quote_amount": 10.0,
+        "risk_reward_ratio": null,
+        "stop_loss_bps": 50.0,
+        "take_profit_net_quote": 0.02
+      },
+      "policy_version": "phase6.4.3-active-v1:2f276a9f23aa1bc78e7475ad282ad381f5ce0d29fd203e0c4cd887659a961486",
+      "prediction": {
+        "asset_scope": "BTCUSDT_only",
+        "expected_gross_return_bps": null,
+        "horizons": {
+          "1": {
+            "model_version": "20261018T013856021255Z-phase4:1m:xgboost",
+            "probabilities": {
+              "down": 0.5183138150084566,
+              "tie": 0.02117176173851959,
+              "up": 0.4605144232530237
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "15": {
+            "model_version": "20261018T013856021255Z-phase4:15m:xgboost",
+            "probabilities": {
+              "down": 0.5035870043128852,
+              "tie": 0.0009477053320322877,
+              "up": 0.49546529035508263
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "30": {
+            "model_version": "20261018T013856021255Z-phase4:30m:catboost",
+            "probabilities": {
+              "down": 0.5326856057222281,
+              "tie": 0.00015100822750864002,
+              "up": 0.46716338605026314
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          },
+          "5": {
+            "model_version": "20261018T013856021255Z-phase4:5m:xgboost",
+            "probabilities": {
+              "down": 0.5212615569564645,
+              "tie": 0.0018157676994201254,
+              "up": 0.4769226753441154
+            },
+            "signal": "abstain",
+            "threshold": 0.6
+          }
+        },
+        "primary_horizon_minutes": 1,
+        "primary_signal": "abstain",
+        "state": "ready"
+      },
+      "reasons": [
+        "active_session_not_authorized",
+        "probe_waiting_for_abstention_window"
+      ],
+      "schema_version": "unified-v1",
+      "session_id": "demo-20261019T221154-2da6a152",
+      "symbol": "BTCUSDT",
+      "uncertainty": {
+        "confidence_interval": null,
+        "directional_entropy_nats": 0.7041773824118733,
+        "favorable_net_move_probability": null
+      },
+      "valid_until": "2026-10-19T22:14:38.907071+00:00"
+    }
+  ],
+  "observation": {
+    "session_id": "obs-20261019T134818-5f0db660",
+    "state": "in_progress",
+    "started_at": "2026-10-19T13:48:18.675423+00:00",
+    "completed_at": null,
+    "required_seconds": 86400,
+    "elapsed_seconds": 30482.028987,
+    "remaining_seconds": 55917.971013,
+    "minimum_24h_completed": false,
+    "samples": 918,
+    "maximum_sample_gap_seconds": 157.122282,
+    "sample_gaps_above_expected": 2,
+    "worker_availability_fraction": 0.9357298474945533,
+    "qwen_availability_fraction": 0.985838779956427,
+    "binance_demo_public_availability_fraction": 0.8954248366013072,
+    "binance_demo_latency_ms_p95": 4267.121510001012,
+    "resource_usage": {
+      "cpu_percent_mean": 2.97855579868709,
+      "cpu_percent_max": 87.7,
+      "memory_rss_bytes_mean": 1446065136.3834422,
+      "memory_rss_bytes_max": 4756844544
+    },
+    "valid_evaluations_added": 5319,
+    "evaluations_by_policy": {
+      "A_quantitative": 1371,
+      "B_conservative_news": 1317,
+      "C_qwen3_structured_news": 1317,
+      "D_event_market_reaction": 1317
+    },
+    "evaluations_by_symbol": {
+      "BTCUSDT": 1774,
+      "ETHUSDT": 1774,
+      "SOLUSDT": 1774
+    },
+    "abstentions_recorded": 5322,
+    "temporal_integrity_violations": 0,
+    "collector_totals": {
+      "reconnections": 240,
+      "aggtrade_gap_events": 12,
+      "aggtrade_missing_ids": 1633,
+      "depth_invalidations": 15,
+      "messages": 1151302
+    },
+    "problems": [
+      "binance_demo_public_failure_observed",
+      "decision_worker_degradation_observed",
+      "heartbeat_gap_above_expected_interval"
+    ],
+    "recent_60m": {
+      "first_sample_at": "2026-10-19T21:16:31.617507+00:00",
+      "last_sample_at": "2026-10-19T22:15:33.987973+00:00",
+      "samples": 94,
+      "worker_availability_fraction": 0.9893617021276596,
+      "demo_public_availability_fraction": 0.8617021276595744,
+      "latest_collectors": {
+        "BTCUSDT": {
+          "symbol": "BTCUSDT",
+          "messages": 4497,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:15:33.423462+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 82174.82,
+            "ask": 82174.83,
+            "spread": 0.00999999999476131,
+            "spread_bps": 0.0012169177110825985,
+            "bid_depth_quote": 413679.0678632,
+            "ask_depth_quote": 394046.7734961,
+            "depth_levels": 20,
+            "last_update_id": 6167503057
+          },
+          "last_book_at": "2026-10-19T22:15:33.420585+00:00"
+        },
+        "ETHUSDT": {
+          "symbol": "ETHUSDT",
+          "messages": 3388,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:15:33.987430+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 2412.6,
+            "ask": 2412.61,
+            "spread": 0.010000000000218279,
+            "spread_bps": 0.04144897320621602,
+            "bid_depth_quote": 119231.41716699999,
+            "ask_depth_quote": 203524.429478,
+            "depth_levels": 20,
+            "last_update_id": 5105722140
+          },
+          "last_book_at": "2026-10-19T22:15:33.984733+00:00"
+        },
+        "SOLUSDT": {
+          "symbol": "SOLUSDT",
+          "messages": 1933,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:15:33.778013+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 105.43,
+            "ask": 105.44,
+            "spread": 0.009999999999990905,
+            "spread_bps": 0.9484516526761422,
+            "bid_depth_quote": 2396074.18586,
+            "ask_depth_quote": 1833332.09289,
+            "depth_levels": 20,
+            "last_update_id": 1179623729
+          },
+          "last_book_at": "2026-10-19T22:15:33.775265+00:00"
+        }
+      },
+      "latest_engine": {
+        "state": "healthy",
+        "last_attempt_at": "2026-10-19T22:15:32.720467+00:00",
+        "last_success_at": "2026-10-19T22:15:33.573473+00:00",
+        "failure_count": 0,
+        "transient": null,
+        "category": null,
+        "next_retry_at": null,
+        "error": null,
+        "unresolved_intents": 0,
+        "open_orders": 0,
+        "account_can_trade": true,
+        "position_present": false,
+        "credentials_present": true
+      },
+      "basis": "sampled availability; whole-protocol failures remain preserved"
+    },
+    "current_process": {
+      "pid": 28104,
+      "first_sample_at": "2026-10-19T22:10:56.705884+00:00",
+      "last_sample_at": "2026-10-19T22:15:33.987973+00:00",
+      "samples": 7,
+      "worker_availability_fraction": 0.8571428571428571,
+      "demo_public_availability_fraction": 0.5714285714285714,
+      "latest_collectors": {
+        "BTCUSDT": {
+          "symbol": "BTCUSDT",
+          "messages": 4497,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:15:33.423462+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 82174.82,
+            "ask": 82174.83,
+            "spread": 0.00999999999476131,
+            "spread_bps": 0.0012169177110825985,
+            "bid_depth_quote": 413679.0678632,
+            "ask_depth_quote": 394046.7734961,
+            "depth_levels": 20,
+            "last_update_id": 6167503057
+          },
+          "last_book_at": "2026-10-19T22:15:33.420585+00:00"
+        },
+        "ETHUSDT": {
+          "symbol": "ETHUSDT",
+          "messages": 3388,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:15:33.987430+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 2412.6,
+            "ask": 2412.61,
+            "spread": 0.010000000000218279,
+            "spread_bps": 0.04144897320621602,
+            "bid_depth_quote": 119231.41716699999,
+            "ask_depth_quote": 203524.429478,
+            "depth_levels": 20,
+            "last_update_id": 5105722140
+          },
+          "last_book_at": "2026-10-19T22:15:33.984733+00:00"
+        },
+        "SOLUSDT": {
+          "symbol": "SOLUSDT",
+          "messages": 1933,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:15:33.778013+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 105.43,
+            "ask": 105.44,
+            "spread": 0.009999999999990905,
+            "spread_bps": 0.9484516526761422,
+            "bid_depth_quote": 2396074.18586,
+            "ask_depth_quote": 1833332.09289,
+            "depth_levels": 20,
+            "last_update_id": 1179623729
+          },
+          "last_book_at": "2026-10-19T22:15:33.775265+00:00"
+        }
+      },
+      "latest_engine": {
+        "state": "healthy",
+        "last_attempt_at": "2026-10-19T22:15:32.720467+00:00",
+        "last_success_at": "2026-10-19T22:15:33.573473+00:00",
+        "failure_count": 0,
+        "transient": null,
+        "category": null,
+        "next_retry_at": null,
+        "error": null,
+        "unresolved_intents": 0,
+        "open_orders": 0,
+        "account_can_trade": true,
+        "position_present": false,
+        "credentials_present": true
+      },
+      "basis": "sampled availability; whole-protocol failures remain preserved"
+    },
+    "claim": "24-hour validation is still in progress"
+  },
+  "orders_sent": false,
+  "live_round_trip_complete": false,
+  "security_http": {
+    "without_cookie": 401,
+    "without_csrf": 403
+  },
+  "order_journal_states": {
+    "RECONCILED": 4
+  },
+  "latest_order_created_at": "2026-10-19T19:48:04.861547+00:00"
+}

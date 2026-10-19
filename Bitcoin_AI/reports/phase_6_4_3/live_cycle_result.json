@@ -1,0 +1,476 @@
+{
+  "checked_at": "2026-10-19T22:42:35.853801+00:00",
+  "actual_Demo_buy_and_sell_confirmed": true,
+  "exchange_evidence": "pos-d1a7dae45aa447bd9fb9bc7ef3c87d19-exchange_verified.json",
+  "session": {
+    "session_id": "demo-20261019T221154-2da6a152",
+    "boot_id": "c7fe86b8970e43a7bea8dcca166d0866",
+    "created_at": "2026-10-19T22:11:54.681933+00:00",
+    "authorized_at": "2026-10-19T22:32:38.403747+00:00",
+    "expires_at": "2026-10-19T23:32:38.403726+00:00",
+    "state": "running",
+    "policy": "BTC_UNIFIED_ACTIVE_V1",
+    "symbol": "BTCUSDT",
+    "quote_amount": "10.0",
+    "entries": 1,
+    "stop_reason": null
+  },
+  "engine": {
+    "boot_id": "c7fe86b8970e43a7bea8dcca166d0866",
+    "pid": 28104,
+    "state": "AUTHORIZED_DEMO",
+    "last_error": null,
+    "updated_at": "2026-10-19T22:42:32.368971+00:00",
+    "orders_enabled": true,
+    "reconciliation": {
+      "state": "healthy",
+      "last_attempt_at": "2026-10-19T22:42:08.190629+00:00",
+      "last_success_at": "2026-10-19T22:42:11.201249+00:00",
+      "failure_count": 0,
+      "transient": null,
+      "category": null,
+      "next_retry_at": null,
+      "error": null,
+      "unresolved_intents": 0,
+      "open_orders": 0,
+      "account_can_trade": true,
+      "position_present": false,
+      "credentials_present": true
+    },
+    "supports_active_experimental": true,
+    "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+    "environment": "DEMO",
+    "real_trading_supported": false
+  },
+  "kill_switch": {
+    "engaged": false,
+    "reason": "explicit_demo_authorization",
+    "updated_at": "2026-10-19T22:32:38.520727+00:00"
+  },
+  "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+  "open_position": null,
+  "closed_operation": {
+    "operation_id": "pos-d1a7dae45aa447bd9fb9bc7ef3c87d19",
+    "category": "demo_strategy",
+    "strategy_category": "DEMO_ACTIVE_EXPERIMENTAL",
+    "policy": "BTC_UNIFIED_ACTIVE_V1",
+    "entry_category": "EXPLORATORY_PROBE",
+    "entry_reasons": [
+      "authorized_controlled_probe_not_ai_alpha"
+    ],
+    "session_id": "demo-20261019T221154-2da6a152",
+    "economics": {
+      "net_quote_complete": true,
+      "unknown_fee_assets": [],
+      "basis": "proportional_actual_cost_basis_for_disposed_BTC",
+      "residual_base_quantity": "0.00000988",
+      "residual_mark_to_bid_quote": null,
+      "cash_flow_quote": "-0.82917066",
+      "allocated_cost_basis_quote": "9.037838938938938938938938939",
+      "residual_cost_basis_quote": "0.811762261061061061061061061",
+      "predictive_performance_eligible": false
+    },
+    "symbol": "BTCUSDT",
+    "evaluation_id": "ef659a8e1705bfb8907122eab583e99deeac230fac31fb09f320b002457f7f72",
+    "entry_time": "2026-10-19T22:36:08.227963+00:00",
+    "exit_time": "2026-10-19T22:41:14.931638+00:00",
+    "entry_price": 82080.01,
+    "exit_price": 82086.0,
+    "quantity": 0.00011988,
+    "fees": [
+      {
+        "side": "entry",
+        "asset": "BTC",
+        "amount": 1.2e-07
+      },
+      {
+        "side": "exit",
+        "asset": "USDT",
+        "amount": 0.00902946
+      }
+    ],
+    "gross_result_quote": -0.8201412,
+    "net_result_quote": -0.01740839893893894,
+    "net_result_reason": "actual Demo fills",
+    "stop_loss": null,
+    "planned_duration_minutes": 5,
+    "planned_close_at": "2026-10-19T22:41:08.227963+00:00",
+    "close_reason": "planned_horizon",
+    "status": "closed",
+    "exchange_states": [],
+    "strategy_evaluation_eligible": false
+  },
+  "results_by_session_and_category": [
+    {
+      "session_id": "demo-20261019T221154-2da6a152",
+      "entry_category": "EXPLORATORY_PROBE",
+      "completed": 1,
+      "net_quote": -0.01740839893893894,
+      "unknown_results": 0
+    }
+  ],
+  "strategy_metrics": {
+    "trade_count": 0,
+    "completed_with_net_result": 0,
+    "net_result": null,
+    "win_rate": null,
+    "profit_factor": null,
+    "expectancy": null,
+    "average_win": null,
+    "average_loss": null,
+    "max_drawdown": null,
+    "equity_curve": []
+  },
+  "exploration_metrics": {
+    "operation_count": 1,
+    "operations": [
+      {
+        "operation_id": "pos-d1a7dae45aa447bd9fb9bc7ef3c87d19",
+        "category": "demo_strategy",
+        "strategy_category": "DEMO_ACTIVE_EXPERIMENTAL",
+        "policy": "BTC_UNIFIED_ACTIVE_V1",
+        "entry_category": "EXPLORATORY_PROBE",
+        "entry_reasons": [
+          "authorized_controlled_probe_not_ai_alpha"
+        ],
+        "session_id": "demo-20261019T221154-2da6a152",
+        "economics": {
+          "net_quote_complete": true,
+          "unknown_fee_assets": [],
+          "basis": "proportional_actual_cost_basis_for_disposed_BTC",
+          "residual_base_quantity": "0.00000988",
+          "residual_mark_to_bid_quote": null,
+          "cash_flow_quote": "-0.82917066",
+          "allocated_cost_basis_quote": "9.037838938938938938938938939",
+          "residual_cost_basis_quote": "0.811762261061061061061061061",
+          "predictive_performance_eligible": false
+        },
+        "symbol": "BTCUSDT",
+        "evaluation_id": "ef659a8e1705bfb8907122eab583e99deeac230fac31fb09f320b002457f7f72",
+        "entry_time": "2026-10-19T22:36:08.227963+00:00",
+        "exit_time": "2026-10-19T22:41:14.931638+00:00",
+        "entry_price": 82080.01,
+        "exit_price": 82086.0,
+        "quantity": 0.00011988,
+        "fees": [
+          {
+            "side": "entry",
+            "asset": "BTC",
+            "amount": 1.2e-07
+          },
+          {
+            "side": "exit",
+            "asset": "USDT",
+            "amount": 0.00902946
+          }
+        ],
+        "gross_result_quote": -0.8201412,
+        "net_result_quote": -0.01740839893893894,
+        "net_result_reason": "actual Demo fills",
+        "stop_loss": null,
+        "planned_duration_minutes": 5,
+        "planned_close_at": "2026-10-19T22:41:08.227963+00:00",
+        "close_reason": "planned_horizon",
+        "status": "closed",
+        "exchange_states": [],
+        "strategy_evaluation_eligible": false
+      }
+    ],
+    "included_in_strategy_metrics": false
+  },
+  "activity": [
+    {
+      "recorded_at": "2026-10-19T22:36:08.300988+00:00",
+      "event_type": "risk_approved",
+      "payload": {
+        "position_id": "pos-d1a7dae45aa447bd9fb9bc7ef3c87d19",
+        "evaluation_id": "ef659a8e1705bfb8907122eab583e99deeac230fac31fb09f320b002457f7f72",
+        "quote_amount": "10",
+        "orders_sent": false
+      }
+    },
+    {
+      "recorded_at": "2026-10-19T22:36:10.258892+00:00",
+      "event_type": "demo_position_opened",
+      "payload": {
+        "position_id": "pos-d1a7dae45aa447bd9fb9bc7ef3c87d19",
+        "quote_amount": "10",
+        "category": "EXPERIMENTAL_DEMO"
+      }
+    },
+    {
+      "recorded_at": "2026-10-19T22:41:15.016816+00:00",
+      "event_type": "demo_position_closed",
+      "payload": {
+        "position_id": "pos-d1a7dae45aa447bd9fb9bc7ef3c87d19",
+        "reason": "planned_horizon",
+        "net_quote": "-0.017408398938938938938938939",
+        "residual_base_quantity": "0.00000988"
+      }
+    }
+  ],
+  "observation": {
+    "session_id": "obs-20261019T134818-5f0db660",
+    "state": "in_progress",
+    "started_at": "2026-10-19T13:48:18.675423+00:00",
+    "completed_at": null,
+    "required_seconds": 86400,
+    "elapsed_seconds": 32055.213406,
+    "remaining_seconds": 54344.786594000005,
+    "minimum_24h_completed": false,
+    "samples": 961,
+    "maximum_sample_gap_seconds": 157.122282,
+    "sample_gaps_above_expected": 2,
+    "worker_availability_fraction": 0.9386056191467221,
+    "qwen_availability_fraction": 0.9864724245577523,
+    "binance_demo_public_availability_fraction": 0.8928199791883454,
+    "binance_demo_latency_ms_p95": 4761.841500012088,
+    "resource_usage": {
+      "cpu_percent_mean": 3.6806687565308263,
+      "cpu_percent_max": 87.7,
+      "memory_rss_bytes_mean": 1523980498.980229,
+      "memory_rss_bytes_max": 4756844544
+    },
+    "valid_evaluations_added": 5535,
+    "evaluations_by_policy": {
+      "A_quantitative": 1449,
+      "B_conservative_news": 1362,
+      "C_qwen3_structured_news": 1362,
+      "D_event_market_reaction": 1362
+    },
+    "evaluations_by_symbol": {
+      "BTCUSDT": 1845,
+      "ETHUSDT": 1845,
+      "SOLUSDT": 1845
+    },
+    "abstentions_recorded": 5535,
+    "temporal_integrity_violations": 0,
+    "collector_totals": {
+      "reconnections": 240,
+      "aggtrade_gap_events": 12,
+      "aggtrade_missing_ids": 1633,
+      "depth_invalidations": 15,
+      "messages": 1202942
+    },
+    "problems": [
+      "binance_demo_public_failure_observed",
+      "decision_worker_degradation_observed",
+      "heartbeat_gap_above_expected_interval"
+    ],
+    "recent_60m": {
+      "first_sample_at": "2026-10-19T21:43:01.661994+00:00",
+      "last_sample_at": "2026-10-19T22:42:10.578933+00:00",
+      "samples": 87,
+      "worker_availability_fraction": 0.9885057471264368,
+      "demo_public_availability_fraction": 0.7701149425287356,
+      "latest_collectors": {
+        "BTCUSDT": {
+          "symbol": "BTCUSDT",
+          "messages": 27394,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:42:10.352021+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 82080.0,
+            "ask": 82080.01,
+            "spread": 0.00999999999476131,
+            "spread_bps": 0.0012183235118907838,
+            "bid_depth_quote": 318111.94593710004,
+            "ask_depth_quote": 938480.0109420998,
+            "depth_levels": 20,
+            "last_update_id": 6167680728
+          },
+          "last_book_at": "2026-10-19T22:42:10.347341+00:00"
+        },
+        "ETHUSDT": {
+          "symbol": "ETHUSDT",
+          "messages": 21523,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:42:10.310960+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 2407.85,
+            "ask": 2407.86,
+            "spread": 0.010000000000218279,
+            "spread_bps": 0.0415307400163975,
+            "bid_depth_quote": 221716.406153,
+            "ask_depth_quote": 42539.886996,
+            "depth_levels": 20,
+            "last_update_id": 5105874935
+          },
+          "last_book_at": "2026-10-19T22:42:10.305776+00:00"
+        },
+        "SOLUSDT": {
+          "symbol": "SOLUSDT",
+          "messages": 12541,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:42:10.242785+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 105.09,
+            "ask": 105.1,
+            "spread": 0.009999999999990905,
+            "spread_bps": 0.9515200532842576,
+            "bid_depth_quote": 1760305.3579199999,
+            "ask_depth_quote": 2257135.90649,
+            "depth_levels": 20,
+            "last_update_id": 1179662257
+          },
+          "last_book_at": "2026-10-19T22:42:10.241022+00:00"
+        }
+      },
+      "latest_engine": {
+        "state": "healthy",
+        "last_attempt_at": "2026-10-19T22:41:35.319452+00:00",
+        "last_success_at": "2026-10-19T22:41:36.173557+00:00",
+        "failure_count": 0,
+        "transient": null,
+        "category": null,
+        "next_retry_at": null,
+        "error": null,
+        "unresolved_intents": 0,
+        "open_orders": 0,
+        "account_can_trade": true,
+        "position_present": false,
+        "credentials_present": true
+      },
+      "basis": "sampled availability; whole-protocol failures remain preserved"
+    },
+    "current_process": {
+      "pid": 28104,
+      "first_sample_at": "2026-10-19T22:10:56.705884+00:00",
+      "last_sample_at": "2026-10-19T22:42:10.578933+00:00",
+      "samples": 50,
+      "worker_availability_fraction": 0.98,
+      "demo_public_availability_fraction": 0.8,
+      "latest_collectors": {
+        "BTCUSDT": {
+          "symbol": "BTCUSDT",
+          "messages": 27394,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:42:10.352021+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 82080.0,
+            "ask": 82080.01,
+            "spread": 0.00999999999476131,
+            "spread_bps": 0.0012183235118907838,
+            "bid_depth_quote": 318111.94593710004,
+            "ask_depth_quote": 938480.0109420998,
+            "depth_levels": 20,
+            "last_update_id": 6167680728
+          },
+          "last_book_at": "2026-10-19T22:42:10.347341+00:00"
+        },
+        "ETHUSDT": {
+          "symbol": "ETHUSDT",
+          "messages": 21523,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:42:10.310960+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 2407.85,
+            "ask": 2407.86,
+            "spread": 0.010000000000218279,
+            "spread_bps": 0.0415307400163975,
+            "bid_depth_quote": 221716.406153,
+            "ask_depth_quote": 42539.886996,
+            "depth_levels": 20,
+            "last_update_id": 5105874935
+          },
+          "last_book_at": "2026-10-19T22:42:10.305776+00:00"
+        },
+        "SOLUSDT": {
+          "symbol": "SOLUSDT",
+          "messages": 12541,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T22:42:10.242785+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true,
+          "book": {
+            "valid": true,
+            "bid": 105.09,
+            "ask": 105.1,
+            "spread": 0.009999999999990905,
+            "spread_bps": 0.9515200532842576,
+            "bid_depth_quote": 1760305.3579199999,
+            "ask_depth_quote": 2257135.90649,
+            "depth_levels": 20,
+            "last_update_id": 1179662257
+          },
+          "last_book_at": "2026-10-19T22:42:10.241022+00:00"
+        }
+      },
+      "latest_engine": {
+        "state": "healthy",
+        "last_attempt_at": "2026-10-19T22:41:35.319452+00:00",
+        "last_success_at": "2026-10-19T22:41:36.173557+00:00",
+        "failure_count": 0,
+        "transient": null,
+        "category": null,
+        "next_retry_at": null,
+        "error": null,
+        "unresolved_intents": 0,
+        "open_orders": 0,
+        "account_can_trade": true,
+        "position_present": false,
+        "credentials_present": true
+      },
+      "basis": "sampled availability; whole-protocol failures remain preserved"
+    },
+    "claim": "24-hour validation is still in progress"
+  },
+  "session_continues_until_expiry_or_safety_stop": true
+}

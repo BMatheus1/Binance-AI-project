@@ -60,15 +60,23 @@ export function dashboardSocket(csrf: string): WebSocket {
   return new WebSocket(`${protocol}//${url.host}/api/ws?csrf=${encodeURIComponent(csrf)}`);
 }
 
-export async function prepareDemoSession():Promise<{session_id:string}> {
+export interface PreparedDemoSession {session_id:string;confirmation:string;mode:string;allow_probes:boolean;limits:Record<string,number|string>;}
+export async function prepareDemoSession(mode:string="EXPERIMENTAL_DEMO",allowProbes:boolean=false):Promise<PreparedDemoSession> {
   const token=await bootstrapSession();
   const response=await fetch(`${API_BASE}/api/control/prepare-session`,{
     method:"POST",credentials:"include",
     headers:{"Content-Type":"application/json","X-CSRF-Token":token},
-    body:JSON.stringify({confirmation:"PREPARAR SESSAO DEMO"}),
+    body:JSON.stringify({confirmation:"PREPARAR SESSAO DEMO",mode,allow_probes:allowProbes}),
   });
   if(!response.ok) throw new Error(`Preparação recusada (${response.status}). Verifique segurança e reconciliação.`);
-  return ((await response.json()) as ApiEnvelope<{session_id:string}>).data;
+  return ((await response.json()) as ApiEnvelope<PreparedDemoSession>).data;
+}
+
+export async function controlDemoSession(action:"authorize-session"|"stop-session",payload:Record<string,string>):Promise<void> {
+  const token=await bootstrapSession();
+  const response=await fetch(`${API_BASE}/api/control/${action}`,{method:"POST",credentials:"include",
+    headers:{"Content-Type":"application/json","X-CSRF-Token":token},body:JSON.stringify(payload)});
+  if(!response.ok)throw new Error(`Ação recusada (${response.status}). Consulte a reconciliação e os limites.`);
 }
 
 export async function exportDataset(dataset: "operations" | "news"): Promise<void> {

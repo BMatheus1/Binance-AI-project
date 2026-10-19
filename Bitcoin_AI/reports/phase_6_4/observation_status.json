@@ -4,42 +4,42 @@
   "started_at": "2026-10-19T13:48:18.675423+00:00",
   "completed_at": null,
   "required_seconds": 86400,
-  "elapsed_seconds": 28484.736654,
-  "remaining_seconds": 57915.263346,
+  "elapsed_seconds": 35676.710061,
+  "remaining_seconds": 50723.289939,
   "minimum_24h_completed": false,
-  "samples": 875,
-  "maximum_sample_gap_seconds": 112.477178,
-  "sample_gaps_above_expected": 1,
-  "worker_availability_fraction": 0.9325714285714286,
-  "qwen_availability_fraction": 0.9885714285714285,
-  "binance_demo_public_availability_fraction": 0.9051428571428571,
-  "binance_demo_latency_ms_p95": 3697.1046350066895,
+  "samples": 1067,
+  "maximum_sample_gap_seconds": 157.122282,
+  "sample_gaps_above_expected": 2,
+  "worker_availability_fraction": 0.9447047797563262,
+  "qwen_availability_fraction": 0.9878163074039362,
+  "binance_demo_public_availability_fraction": 0.8978444236176195,
+  "binance_demo_latency_ms_p95": 4922.944854995876,
   "resource_usage": {
-    "cpu_percent_mean": 2.5771788990825684,
+    "cpu_percent_mean": 4.509407337723424,
     "cpu_percent_max": 87.7,
-    "memory_rss_bytes_mean": 1384335535.5428572,
-    "memory_rss_bytes_max": 4258123776
+    "memory_rss_bytes_mean": 1500433641.2071228,
+    "memory_rss_bytes_max": 4756844544
   },
-  "valid_evaluations_added": 5022,
+  "valid_evaluations_added": 6255,
   "evaluations_by_policy": {
-    "A_quantitative": 1287,
-    "B_conservative_news": 1248,
-    "C_qwen3_structured_news": 1248,
-    "D_event_market_reaction": 1248
+    "A_quantitative": 1629,
+    "B_conservative_news": 1542,
+    "C_qwen3_structured_news": 1542,
+    "D_event_market_reaction": 1542
   },
   "evaluations_by_symbol": {
-    "BTCUSDT": 1677,
-    "ETHUSDT": 1677,
-    "SOLUSDT": 1677
+    "BTCUSDT": 2085,
+    "ETHUSDT": 2085,
+    "SOLUSDT": 2085
   },
-  "abstentions_recorded": 5031,
+  "abstentions_recorded": 6255,
   "temporal_integrity_violations": 0,
   "collector_totals": {
-    "reconnections": 235,
-    "aggtrade_gap_events": 10,
-    "aggtrade_missing_ids": 1348,
-    "depth_invalidations": 10,
-    "messages": 1099864
+    "reconnections": 240,
+    "aggtrade_gap_events": 12,
+    "aggtrade_missing_ids": 1633,
+    "depth_invalidations": 15,
+    "messages": 1293763
   },
   "problems": [
     "binance_demo_public_failure_observed",
@@ -47,18 +47,18 @@
     "heartbeat_gap_above_expected_interval"
   ],
   "recent_60m": {
-    "first_sample_at": "2026-10-19T20:43:05.440686+00:00",
-    "last_sample_at": "2026-10-19T21:43:01.661994+00:00",
-    "samples": 112,
-    "worker_availability_fraction": 0.9821428571428571,
-    "demo_public_availability_fraction": 0.9910714285714286,
+    "first_sample_at": "2026-10-19T22:43:15.751451+00:00",
+    "last_sample_at": "2026-10-19T23:42:47.827038+00:00",
+    "samples": 105,
+    "worker_availability_fraction": 1.0,
+    "demo_public_availability_fraction": 0.9428571428571428,
     "latest_collectors": {
       "BTCUSDT": {
         "symbol": "BTCUSDT",
-        "messages": 26226,
+        "messages": 69853,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T21:43:01.152831+00:00",
+        "last_message_at": "2026-10-19T23:42:47.655949+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -66,14 +66,26 @@
         "aggtrade_gap_events": 0,
         "aggtrade_missing_ids": 0,
         "depth_invalidations": 0,
-        "book_valid": true
+        "book_valid": true,
+        "book": {
+          "valid": true,
+          "bid": 82079.99,
+          "ask": 82080.0,
+          "spread": 0.00999999999476131,
+          "spread_bps": 0.00121832366032202,
+          "bid_depth_quote": 1033930.4466685,
+          "ask_depth_quote": 108315.6252267,
+          "depth_levels": 20,
+          "last_update_id": 6167992101
+        },
+        "last_book_at": "2026-10-19T23:42:47.128938+00:00"
       },
       "ETHUSDT": {
         "symbol": "ETHUSDT",
-        "messages": 18073,
+        "messages": 51665,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T21:43:01.583792+00:00",
+        "last_message_at": "2026-10-19T23:42:46.150388+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -81,14 +93,26 @@
         "aggtrade_gap_events": 0,
         "aggtrade_missing_ids": 0,
         "depth_invalidations": 0,
-        "book_valid": true
+        "book_valid": true,
+        "book": {
+          "valid": true,
+          "bid": 2410.9,
+          "ask": 2410.91,
+          "spread": 0.009999999999763531,
+          "spread_bps": 0.04147820009400425,
+          "bid_depth_quote": 416123.205015,
+          "ask_depth_quote": 60930.924135,
+          "depth_levels": 20,
+          "last_update_id": 5106142435
+        },
+        "last_book_at": "2026-10-19T23:42:46.127042+00:00"
       },
       "SOLUSDT": {
         "symbol": "SOLUSDT",
-        "messages": 10855,
+        "messages": 30761,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T21:43:01.228513+00:00",
+        "last_message_at": "2026-10-19T23:42:47.826985+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -96,13 +120,25 @@
         "aggtrade_gap_events": 0,
         "aggtrade_missing_ids": 0,
         "depth_invalidations": 0,
-        "book_valid": true
+        "book_valid": true,
+        "book": {
+          "valid": true,
+          "bid": 105.25,
+          "ask": 105.26,
+          "spread": 0.010000000000005116,
+          "spread_bps": 0.9500736307068659,
+          "bid_depth_quote": 2167713.60725,
+          "ask_depth_quote": 2007360.27414,
+          "depth_levels": 20,
+          "last_update_id": 1179722339
+        },
+        "last_book_at": "2026-10-19T23:42:47.825329+00:00"
       }
     },
     "latest_engine": {
       "state": "healthy",
-      "last_attempt_at": "2026-10-19T21:42:30.482941+00:00",
-      "last_success_at": "2026-10-19T21:42:31.366539+00:00",
+      "last_attempt_at": "2026-10-19T23:42:43.180168+00:00",
+      "last_success_at": "2026-10-19T23:42:44.085727+00:00",
       "failure_count": 0,
       "transient": null,
       "category": null,
@@ -117,19 +153,19 @@
     "basis": "sampled availability; whole-protocol failures remain preserved"
   },
   "current_process": {
-    "pid": 27200,
-    "first_sample_at": "2026-10-19T21:04:28.884572+00:00",
-    "last_sample_at": "2026-10-19T21:43:01.661994+00:00",
-    "samples": 73,
-    "worker_availability_fraction": 0.9863013698630136,
-    "demo_public_availability_fraction": 0.9863013698630136,
+    "pid": 28104,
+    "first_sample_at": "2026-10-19T22:10:56.705884+00:00",
+    "last_sample_at": "2026-10-19T23:42:47.827038+00:00",
+    "samples": 156,
+    "worker_availability_fraction": 0.9935897435897436,
+    "demo_public_availability_fraction": 0.8974358974358975,
     "latest_collectors": {
       "BTCUSDT": {
         "symbol": "BTCUSDT",
-        "messages": 26226,
+        "messages": 69853,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T21:43:01.152831+00:00",
+        "last_message_at": "2026-10-19T23:42:47.655949+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -137,14 +173,26 @@
         "aggtrade_gap_events": 0,
         "aggtrade_missing_ids": 0,
         "depth_invalidations": 0,
-        "book_valid": true
+        "book_valid": true,
+        "book": {
+          "valid": true,
+          "bid": 82079.99,
+          "ask": 82080.0,
+          "spread": 0.00999999999476131,
+          "spread_bps": 0.00121832366032202,
+          "bid_depth_quote": 1033930.4466685,
+          "ask_depth_quote": 108315.6252267,
+          "depth_levels": 20,
+          "last_update_id": 6167992101
+        },
+        "last_book_at": "2026-10-19T23:42:47.128938+00:00"
       },
       "ETHUSDT": {
         "symbol": "ETHUSDT",
-        "messages": 18073,
+        "messages": 51665,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T21:43:01.583792+00:00",
+        "last_message_at": "2026-10-19T23:42:46.150388+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -152,14 +200,26 @@
         "aggtrade_gap_events": 0,
         "aggtrade_missing_ids": 0,
         "depth_invalidations": 0,
-        "book_valid": true
+        "book_valid": true,
+        "book": {
+          "valid": true,
+          "bid": 2410.9,
+          "ask": 2410.91,
+          "spread": 0.009999999999763531,
+          "spread_bps": 0.04147820009400425,
+          "bid_depth_quote": 416123.205015,
+          "ask_depth_quote": 60930.924135,
+          "depth_levels": 20,
+          "last_update_id": 5106142435
+        },
+        "last_book_at": "2026-10-19T23:42:46.127042+00:00"
       },
       "SOLUSDT": {
         "symbol": "SOLUSDT",
-        "messages": 10855,
+        "messages": 30761,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T21:43:01.228513+00:00",
+        "last_message_at": "2026-10-19T23:42:47.826985+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -167,13 +227,25 @@
         "aggtrade_gap_events": 0,
         "aggtrade_missing_ids": 0,
         "depth_invalidations": 0,
-        "book_valid": true
+        "book_valid": true,
+        "book": {
+          "valid": true,
+          "bid": 105.25,
+          "ask": 105.26,
+          "spread": 0.010000000000005116,
+          "spread_bps": 0.9500736307068659,
+          "bid_depth_quote": 2167713.60725,
+          "ask_depth_quote": 2007360.27414,
+          "depth_levels": 20,
+          "last_update_id": 1179722339
+        },
+        "last_book_at": "2026-10-19T23:42:47.825329+00:00"
       }
     },
     "latest_engine": {
       "state": "healthy",
-      "last_attempt_at": "2026-10-19T21:42:30.482941+00:00",
-      "last_success_at": "2026-10-19T21:42:31.366539+00:00",
+      "last_attempt_at": "2026-10-19T23:42:43.180168+00:00",
+      "last_success_at": "2026-10-19T23:42:44.085727+00:00",
       "failure_count": 0,
       "transient": null,
       "category": null,

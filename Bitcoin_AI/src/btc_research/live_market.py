@@ -181,6 +181,7 @@ class BinancePublicCollector:
         self.reconnections = 0
         self.messages = 0
         self.last_message_at: str | None = None
+        self.last_book_at: str | None = None
         self.last_reconnect_at: str | None = None
         self.last_error: str | None = None
         self.connection_state = "disconnected"
@@ -220,6 +221,7 @@ class BinancePublicCollector:
             elif not self.book.apply(payload):
                 record["depth_error"] = "sequence_gap_invalidated"
             record["local_book"] = self.book.top()
+            self.last_book_at = received.isoformat() if self.book.valid else None
         self.storage.append(stream.replace("@", "_"), record)
         if self.event_callback is not None:
             callback_result = self.event_callback(record)
@@ -303,7 +305,8 @@ class BinancePublicCollector:
                 "aggtrade_gap_events": self.monitor.gap_events,
                 "aggtrade_missing_ids": self.monitor.missing_ids,
                 "depth_invalidations": self.book.invalidations,
-                "book_valid": self.book.valid}
+                "book_valid": self.book.valid, "book": self.book.top(),
+                "last_book_at": self.last_book_at}
 
     def stop(self) -> None:
         self.stop_event.set()

@@ -1,0 +1,332 @@
+{
+  "checked_at": "2026-10-19T22:37:57.907567+00:00",
+  "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+  "engine": {
+    "boot_id": "c7fe86b8970e43a7bea8dcca166d0866",
+    "pid": 28104,
+    "state": "AUTHORIZED_DEMO",
+    "last_error": null,
+    "updated_at": "2026-10-19T22:37:55.423653+00:00",
+    "orders_enabled": true,
+    "reconciliation": {
+      "state": "healthy",
+      "last_attempt_at": "2026-10-19T22:37:45.660331+00:00",
+      "last_success_at": "2026-10-19T22:37:47.083173+00:00",
+      "failure_count": 0,
+      "transient": null,
+      "category": null,
+      "next_retry_at": null,
+      "error": null,
+      "unresolved_intents": 0,
+      "open_orders": 0,
+      "account_can_trade": true,
+      "position_present": true,
+      "credentials_present": true
+    },
+    "supports_active_experimental": true,
+    "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+    "environment": "DEMO",
+    "real_trading_supported": false
+  },
+  "open_position": {
+    "position_id": "pos-d1a7dae45aa447bd9fb9bc7ef3c87d19",
+    "session_id": "demo-20261019T221154-2da6a152",
+    "symbol": "BTCUSDT",
+    "policy": "BTC_UNIFIED_ACTIVE_V1",
+    "state": "OPEN",
+    "evaluation_id": "ef659a8e1705bfb8907122eab583e99deeac230fac31fb09f320b002457f7f72",
+    "opened_at": "2026-10-19T22:36:08.227963+00:00",
+    "planned_close_at": "2026-10-19T22:41:08.227963+00:00",
+    "closed_at": null,
+    "quantity": "0.00011988",
+    "entry_quote": "9.84960120",
+    "exit_quote": null,
+    "entry_price": "82080.01",
+    "exit_price": null,
+    "net_quote": null,
+    "entry_client_id": "bai64-b-8ec45c9846514c11b70c",
+    "exit_client_id": null,
+    "close_reason": null,
+    "fees": [
+      {
+        "price": "82080.01000000",
+        "qty": "0.00012000",
+        "commission": "0.00000012",
+        "commissionAsset": "BTC",
+        "tradeId": 326123313
+      }
+    ],
+    "payload": {
+      "decision": {
+        "evaluated_at": "2026-10-19T22:36:00.966234+00:00",
+        "market": {
+          "ask": 82080.01,
+          "ask_depth_quote": 727773.9917511999,
+          "bid": 82080.0,
+          "bid_depth_quote": 418591.38704299997,
+          "book_received_at": "2026-10-19T22:36:00.245434+00:00",
+          "candle_close_time": "2026-10-19T22:35:59.999000+00:00",
+          "candle_open_time": "2026-10-19T22:35:00+00:00",
+          "close": 82080.01,
+          "closed_candle": true,
+          "data_available_at": "2026-10-19T22:36:00.584313+00:00",
+          "data_complete": true,
+          "momentum_5m_bps": -4.6273399632409555,
+          "quote_received_at": "2026-10-19T22:36:00.045167+00:00",
+          "quote_volume_24h": 1115644289.4720721,
+          "spread_bps": 0.0012183235118907838,
+          "stale_seconds": 0.539146,
+          "volatility_bps": 2.8109964776011136
+        },
+        "prediction": {
+          "asset_scope": "BTCUSDT_only",
+          "expected_gross_return_bps": null,
+          "horizons": {
+            "1": {
+              "model_version": "20261018T013856021255Z-phase4:1m:xgboost",
+              "probabilities": {
+                "down": 0.4846529585090679,
+                "tie": 0.061487572280781846,
+                "up": 0.4538594692101502
+              },
+              "signal": "abstain",
+              "threshold": 0.6
+            },
+            "15": {
+              "model_version": "20261018T013856021255Z-phase4:15m:xgboost",
+              "probabilities": {
+                "down": 0.4969166027974026,
+                "tie": 0.0006419927557282134,
+                "up": 0.5024414044468692
+              },
+              "signal": "abstain",
+              "threshold": 0.6
+            },
+            "30": {
+              "model_version": "20261018T013856021255Z-phase4:30m:catboost",
+              "probabilities": {
+                "down": 0.48759830148072736,
+                "tie": 0.00014886079341283254,
+                "up": 0.5122528377258598
+              },
+              "signal": "abstain",
+              "threshold": 0.6
+            },
+            "5": {
+              "model_version": "20261018T013856021255Z-phase4:5m:xgboost",
+              "probabilities": {
+                "down": 0.5005394379953255,
+                "tie": 0.004878544105411188,
+                "up": 0.4945820178992632
+              },
+              "signal": "abstain",
+              "threshold": 0.6
+            }
+          },
+          "primary_horizon_minutes": 1,
+          "primary_signal": "abstain",
+          "state": "ready"
+        },
+        "unified_decision_id": "36e80e1c1eaa6b84b71785d1a3e464f7f0240aa9f6e94fef767b971096a4f1d3",
+        "planned_risk": {
+          "absolute_holding_minutes": 8,
+          "loss_is_guaranteed": false,
+          "maximum_loss_per_operation_quote": 0.1,
+          "maximum_session_loss_quote": 0.5,
+          "planned_holding_minutes": 5,
+          "planned_loss_quote_including_estimated_costs": 0.0800012183235119,
+          "planned_stop_loss_quote_excluding_costs": 0.05,
+          "quote_amount": 10.0,
+          "risk_reward_ratio": null,
+          "stop_loss_bps": 50.0,
+          "take_profit_net_quote": 0.02
+        },
+        "reasons": [
+          "authorized_controlled_probe_not_ai_alpha"
+        ],
+        "entry_category": "EXPLORATORY_PROBE",
+        "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+        "pre_submit_price": "82080.01000000",
+        "pre_submit_price_move_bps": "0.000000"
+      },
+      "experiment_profile": {
+        "version": "phase6.4.3-active-v1",
+        "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+        "environment": "DEMO",
+        "policy": "BTC_UNIFIED_ACTIVE_V1",
+        "limits": {
+          "symbol": "BTCUSDT",
+          "policy": "BTC_UNIFIED_ACTIVE_V1",
+          "horizon_minutes": 5,
+          "quote_amount": 10.0,
+          "maximum_open_positions": 1,
+          "maximum_entries_per_session": 6,
+          "session_maximum_minutes": 60,
+          "maximum_loss_per_operation_quote": 0.1,
+          "maximum_session_loss_quote": 0.5,
+          "maximum_total_exposure_quote": 10.0,
+          "maximum_spread_bps": 3.0,
+          "maximum_slippage_bps": 5.0,
+          "planning_fee_ceiling_bps_per_side": 10.0,
+          "minimum_depth_quote": 10000.0,
+          "maximum_signal_age_seconds": 90,
+          "minimum_up_probability": 0.53,
+          "maximum_volatility_bps": 30.0,
+          "cooldown_minutes": 2,
+          "planned_holding_minutes": 5,
+          "maximum_holding_minutes": 8,
+          "maximum_absolute_minutes": 8,
+          "maximum_extension_minutes": 0,
+          "stop_loss_bps": 50.0,
+          "take_profit_net_quote": 0.02,
+          "adaptive_take_profit_cap_quote": 0.04,
+          "trailing_activation_net_quote": 0.015,
+          "trailing_giveback_quote": 0.01,
+          "probe_after_seconds": 180,
+          "maximum_probes_per_session": 2
+        },
+        "promotion": "experimental_only_no_economic_superiority_claim",
+        "ai_entry": "p_up_5m>=0.53 and p_up_5m>p_down_5m and momentum_5m_bps>0",
+        "probe_entry": "explicit_probe_authorization, >=180s without entry/after last close, healthy data and risk gates",
+        "confirmation_ai": "I_AUTHORIZE_60_MIN_10_USDT_DEMO_ACTIVE_AI_ONLY",
+        "confirmation_probes": "I_AUTHORIZE_60_MIN_10_USDT_DEMO_ACTIVE_WITH_PROBES",
+        "allow_probes": true
+      },
+      "commission_rates": {
+        "buy": "0.00100000",
+        "sell": "0.00100000",
+        "source": "authenticated_undiscounted_commission_schedule_estimate",
+        "actual_fees": false
+      },
+      "market_step_size": "0.00001000",
+      "entry": {
+        "symbol": "BTCUSDT",
+        "orderId": 74984954594,
+        "orderListId": -1,
+        "clientOrderId": "bai64-b-8ec45c9846514c11b70c",
+        "transactTime": 1792449369205,
+        "price": "0.00000000",
+        "origQty": "0.00012000",
+        "executedQty": "0.00012000",
+        "origQuoteOrderQty": "0.00000000",
+        "cummulativeQuoteQty": "9.84960120",
+        "status": "FILLED",
+        "timeInForce": "GTC",
+        "type": "MARKET",
+        "side": "BUY",
+        "workingTime": 1792449369205,
+        "fills": [
+          {
+            "price": "82080.01000000",
+            "qty": "0.00012000",
+            "commission": "0.00000012",
+            "commissionAsset": "BTC",
+            "tradeId": 326123313
+          }
+        ],
+        "selfTradePreventionMode": "EXPIRE_MAKER",
+        "execution_state": "filled",
+        "assumed_filled": true
+      },
+      "execution": {
+        "entry_slippage_bps": "0",
+        "entry_reference_ask": "82080.01000000",
+        "actual_fills": true
+      },
+      "management": {
+        "sellable_quantity": "0.00011000",
+        "allocated_cost_basis_quote": "9.037838938938938938938938939",
+        "estimated_net_quote": "-0.020380923438938938938938939",
+        "bid": "82100.00000000",
+        "residual_quantity": "0.00000988",
+        "actual_fees": false,
+        "source": "executable_bid_after_estimated_exit_costs",
+        "marked_at": "2026-10-19T22:37:54.758630+00:00",
+        "mfe_net_quote": -0.01621048640058894,
+        "mae_net_quote": -0.02038092343893894,
+        "take_profit_net_quote": 0.02
+      }
+    }
+  },
+  "position_plan": {
+    "stop_price": 81669.60995,
+    "stop_loss_bps": 50.0,
+    "planned_holding_minutes": 5,
+    "profit_target_quote": 0.02,
+    "profit_target_reason": "not_validated_for_frozen_strategy",
+    "adaptive_exit_enabled": true,
+    "unrealized_net_quote_estimate": -0.02038092343893894,
+    "unrealized_net_reason": "bid after estimated sell fees and slippage; mark must be <=15s old",
+    "mark_age_seconds": 3.074167,
+    "management": {
+      "sellable_quantity": "0.00011000",
+      "allocated_cost_basis_quote": "9.037838938938938938938938939",
+      "estimated_net_quote": "-0.020380923438938938938938939",
+      "bid": "82100.00000000",
+      "residual_quantity": "0.00000988",
+      "actual_fees": false,
+      "source": "executable_bid_after_estimated_exit_costs",
+      "marked_at": "2026-10-19T22:37:54.758630+00:00",
+      "mfe_net_quote": -0.01621048640058894,
+      "mae_net_quote": -0.02038092343893894,
+      "take_profit_net_quote": 0.02
+    }
+  },
+  "operations": [
+    {
+      "operation_id": "pos-d1a7dae45aa447bd9fb9bc7ef3c87d19",
+      "category": "demo_strategy",
+      "strategy_category": "DEMO_ACTIVE_EXPERIMENTAL",
+      "policy": "BTC_UNIFIED_ACTIVE_V1",
+      "entry_category": "EXPLORATORY_PROBE",
+      "entry_reasons": [
+        "authorized_controlled_probe_not_ai_alpha"
+      ],
+      "session_id": "demo-20261019T221154-2da6a152",
+      "economics": null,
+      "symbol": "BTCUSDT",
+      "evaluation_id": "ef659a8e1705bfb8907122eab583e99deeac230fac31fb09f320b002457f7f72",
+      "entry_time": "2026-10-19T22:36:08.227963+00:00",
+      "exit_time": null,
+      "entry_price": 82080.01,
+      "exit_price": null,
+      "quantity": 0.00011988,
+      "fees": [
+        {
+          "side": "entry",
+          "asset": "BTC",
+          "amount": 1.2e-07
+        }
+      ],
+      "gross_result_quote": null,
+      "net_result_quote": null,
+      "net_result_reason": "position is open or fill economics are incomplete",
+      "stop_loss": null,
+      "planned_duration_minutes": 5,
+      "planned_close_at": "2026-10-19T22:41:08.227963+00:00",
+      "close_reason": null,
+      "status": "open",
+      "exchange_states": [],
+      "strategy_evaluation_eligible": false
+    }
+  ],
+  "performance": {
+    "realized_net_usdt": null,
+    "unrealized_gross_usdt_estimate": 0.0023964012,
+    "unrealized_source": "fresh Demo best bid; gross before exit costs",
+    "fees_by_asset": {
+      "BTC": 1.2e-07
+    },
+    "completed_operations": 0,
+    "open_positions": 1
+  },
+  "results_by_session_and_category": [
+    {
+      "session_id": "demo-20261019T221154-2da6a152",
+      "entry_category": "EXPLORATORY_PROBE",
+      "completed": 0,
+      "net_quote": 0.0,
+      "unknown_results": 0
+    }
+  ]
+}

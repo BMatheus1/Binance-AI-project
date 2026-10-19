@@ -173,7 +173,9 @@ def main() -> None:
     sub.add_parser("limits")
     sub.add_parser("positions")
     sub.add_parser("results")
-    sub.add_parser("prepare-session")
+    prepare_session = sub.add_parser("prepare-session")
+    prepare_session.add_argument("--mode", choices=["EXPERIMENTAL_DEMO", "DEMO_ACTIVE_EXPERIMENTAL"], default="EXPERIMENTAL_DEMO")
+    prepare_session.add_argument("--allow-probes", action="store_true")
     sub.add_parser("reconciliation-check")
     authorize = sub.add_parser("authorize-session")
     authorize.add_argument("--session-id", required=True)
@@ -213,7 +215,7 @@ def main() -> None:
               "economic_validation": economic_report(ROOT),
               "diagnostic_results_are_separate": True})
     elif args.command == "prepare-session":
-        emit(prepare_authorization(ROOT))
+        emit(prepare_authorization(ROOT, mode=args.mode, allow_probes=args.allow_probes))
     elif args.command == "reconciliation-check":
         # A separate read-only audit; never changes the running engine boot ID
         # or authorizes a session and never calls cycle()/entry/exit.
