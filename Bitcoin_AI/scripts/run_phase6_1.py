@@ -13,6 +13,8 @@ from btc_research.phase6_nlp import (Qwen3Interpreter, download_qwen3,
                                      load_phase61_config, model_directory)
 from btc_research.phase6_runtime import Phase61Supervisor, SingleInstanceLock
 from btc_research.phase6_decisions import ContinuousDecisionWorker
+from btc_research.phase6_4 import (ObservationMonitor, SupervisedDemoEngine,
+                                   load_phase64_config)
 
 
 UTC = timezone.utc
@@ -115,14 +117,22 @@ async def serve(seconds: float | None) -> dict:
                   for row in config["additional_sources"])
     news_service = NewsService((*base_news.sources, *extra), base_news.store, base_news.fetcher,
                                cycle_seconds=config["news_cycle_seconds"])
-    decision_worker = ContinuousDecisionWorker(ROOT)
-    market_service = MultiAssetMarketService(ROOT, event_callback=decision_worker.on_event)
+    phase64 = load_phase64_config(ROOT)
+    decision_worker = ContinuousDecisionWorker(ROOT, rest_base=phase64["endpoints"]["rest_root"])
+    market_service = MultiAssetMarketService(
+        ROOT, event_callback=decision_worker.on_event,
+        websocket_base=phase64["endpoints"]["market_stream"],
+        rest_base=phase64["endpoints"]["rest_root"])
+    observation_monitor = ObservationMonitor(root=ROOT, decision_worker=decision_worker,
+                                             market_service=market_service)
+    autonomous_engine = SupervisedDemoEngine(ROOT)
     supervisor = Phase61Supervisor(
         news_service=news_service,
         market_service=market_service,
         heartbeat_path=ROOT / "runtime/phase_6_1/heartbeat.json",
         log_path=ROOT / "runtime/phase_6_1/service.jsonl",
-        decision_worker=decision_worker)
+        decision_worker=decision_worker, observation_monitor=observation_monitor,
+        autonomous_engine=autonomous_engine)
     result = await supervisor.run(duration_seconds=seconds)
     result["event_store_counts"] = news_service.store.counts()
     result["configured_sources"] = [source.source_id for source in news_service.sources]

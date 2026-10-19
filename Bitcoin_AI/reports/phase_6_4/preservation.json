@@ -1,0 +1,15 @@
+{
+  "reports/final_evaluation.json": "39297e6ceb3a13cd5b0c5f11e0608fc92cee8a298702124abf408040d722b584",
+  "reports/phase_2/validation.json": "ab1d86078e2e7f6a3bef0778d1bba93ed93ad206153548a94a087d6fae86f0d6",
+  "reports/phase_3/validation.json": "306a9cbc7b4eb0997f26467cf5425bac3f2b919aec0a40149f1408e0cd19d8e9",
+  "reports/phase_4/validation.json": "24a9cbdfac2e99960a40e53577de3d5bca12fc5785fea655f31d5f7de72c403b",
+  "reports/phase_5/validation.json": "9b3a56e570cf31aa2b4c16a6e70aee6cbd9570696754c67a489f455670d9a624",
+  "reports/phase_6/validation.json": "7251eacbe74d621d2026b10e69eb8d2b8af63b3a6f014e194a94a1b13479acd9",
+  "reports/phase_6_1/validation.json": "605b336f6dc0af826e358dea47c33c02a9aa569aabe0846aeec0d7efaa161322",
+  "reports/phase_6_2/validation.json": "411b4e9328d9625b8d0c532e92358120b378b7059273af3817c72ecfd395bc79",
+  "reports/phase_6_3/validation.json": "13ff84f836a8f25f1d702d3ee246244b6bded7b711376488aa10cfe8012f660b",
+  "reports/test_registry.json": "62f014e24df8521270c71c0a9cf6852c1552b1713cb96e9dc5e7d0dab008dedd",
+  "historical_artifacts_modified": false,
+  "july_september_2026_holdout_reused": false,
+  "generated_at": "2026-10-19T14:02:36.582439+00:00"
+}

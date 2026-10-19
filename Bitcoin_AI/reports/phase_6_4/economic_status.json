@@ -1,0 +1,102 @@
+{
+  "generated_at": "2026-10-19T14:04:42.913277+00:00",
+  "source": "prospective_runtime_only",
+  "training_performed": false,
+  "calibration_parameters_fitted": false,
+  "strategy_selection_performed": false,
+  "reserved_2026_07_to_09_holdout_consumed": false,
+  "resolved_outcomes": 0,
+  "pending_outcomes": 0,
+  "invalid_outcomes": 0,
+  "elapsed_prospective_days": 0.0,
+  "horizons": {
+    "1": {
+      "resolved_observations": 0,
+      "directional_accuracy": null,
+      "multiclass_log_loss": null,
+      "multiclass_brier": null,
+      "expected_calibration_error": null,
+      "mean_gross_return_bps": null,
+      "mean_net_return_bps_all_observations": null,
+      "mean_net_return_bps_long_signals": null,
+      "mean_net_return_bps_long_signals_ci95": null,
+      "economically_eligible_signal_frequency": null,
+      "abstention_rate": null,
+      "baselines": {
+        "always_abstain_net_bps": 0.0,
+        "long_every_observation_mean_net_bps": null,
+        "pre_registered_momentum": null,
+        "pre_registered_mean_reversion": null,
+        "unavailable_reason": "no causal baseline signal was pre-registered for these live instants"
+      }
+    },
+    "5": {
+      "resolved_observations": 0,
+      "directional_accuracy": null,
+      "multiclass_log_loss": null,
+      "multiclass_brier": null,
+      "expected_calibration_error": null,
+      "mean_gross_return_bps": null,
+      "mean_net_return_bps_all_observations": null,
+      "mean_net_return_bps_long_signals": null,
+      "mean_net_return_bps_long_signals_ci95": null,
+      "economically_eligible_signal_frequency": null,
+      "abstention_rate": null,
+      "baselines": {
+        "always_abstain_net_bps": 0.0,
+        "long_every_observation_mean_net_bps": null,
+        "pre_registered_momentum": null,
+        "pre_registered_mean_reversion": null,
+        "unavailable_reason": "no causal baseline signal was pre-registered for these live instants"
+      }
+    },
+    "15": {
+      "resolved_observations": 0,
+      "directional_accuracy": null,
+      "multiclass_log_loss": null,
+      "multiclass_brier": null,
+      "expected_calibration_error": null,
+      "mean_gross_return_bps": null,
+      "mean_net_return_bps_all_observations": null,
+      "mean_net_return_bps_long_signals": null,
+      "mean_net_return_bps_long_signals_ci95": null,
+      "economically_eligible_signal_frequency": null,
+      "abstention_rate": null,
+      "baselines": {
+        "always_abstain_net_bps": 0.0,
+        "long_every_observation_mean_net_bps": null,
+        "pre_registered_momentum": null,
+        "pre_registered_mean_reversion": null,
+        "unavailable_reason": "no causal baseline signal was pre-registered for these live instants"
+      }
+    },
+    "30": {
+      "resolved_observations": 0,
+      "directional_accuracy": null,
+      "multiclass_log_loss": null,
+      "multiclass_brier": null,
+      "expected_calibration_error": null,
+      "mean_gross_return_bps": null,
+      "mean_net_return_bps_all_observations": null,
+      "mean_net_return_bps_long_signals": null,
+      "mean_net_return_bps_long_signals_ci95": null,
+      "economically_eligible_signal_frequency": null,
+      "abstention_rate": null,
+      "baselines": {
+        "always_abstain_net_bps": 0.0,
+        "long_every_observation_mean_net_bps": null,
+        "pre_registered_momentum": null,
+        "pre_registered_mean_reversion": null,
+        "unavailable_reason": "no causal baseline signal was pre-registered for these live instants"
+      }
+    }
+  },
+  "economically_validated": false,
+  "category_ECONOMICALLY_VALIDATED_available": false,
+  "category_EXPERIMENTAL_DEMO_available_for_authorized_sessions": true,
+  "limitations": [
+    "Results are prospective estimates and do not prove profitability.",
+    "Costs use the decision-time estimate until actual Demo fills exist.",
+    "Unknown expected financial values remain null in the decision ledger."
+  ]
+}

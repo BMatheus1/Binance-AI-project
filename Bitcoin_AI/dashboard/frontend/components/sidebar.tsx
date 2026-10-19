@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Activity, BarChart3, Bot, Gauge, HeartPulse, LayoutDashboard, Newspaper, ScrollText } from "lucide-react";
+import { Activity, BarChart3, Bot, Cpu, Gauge, HeartPulse, LayoutDashboard, Newspaper, ScrollText } from "lucide-react";
 
 const links = [
   ["/", "Visão geral", LayoutDashboard],
@@ -10,6 +10,7 @@ const links = [
   ["/operations", "Operações", ScrollText],
   ["/performance", "Resultados", BarChart3],
   ["/intelligence", "Inteligência", Bot],
+  ["/autonomous", "Robô Autônomo", Cpu],
   ["/news", "Notícias", Newspaper],
   ["/health", "Saúde", HeartPulse],
 ] as const;

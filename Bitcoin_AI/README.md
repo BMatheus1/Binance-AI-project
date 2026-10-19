@@ -160,4 +160,12 @@ foi catalogado como baseline CC BY 4.0, também desabilitado. O supervisor compr
 dois ciclos de notícias em 120 segundos com seis fontes e nenhuma ordem. Consulte
 reports/phase_6_1/README.md.
 
+A Fase 6.4 integra o protocolo prospectivo mínimo de 24 horas, resolução causal
+dos horizontes de 1/5/15/30 minutos, avaliação econômica sem reutilizar o holdout
+de julho–setembro/2026 e um executor `EXPERIMENTAL_DEMO` para BTCUSDT. O modo
+inicial permanece OBSERVE; autorização de ordens virtuais é temporária, vinculada
+ao processo em execução e disponível somente pela CLI local. A página
+`/autonomous` mostra sessão, posição, atividade e progresso sem liberar ordens.
+Consulte `reports/phase_6_4/README.md`.
+
 Não publicar datasets, livros ou credenciais. O `.gitignore` cobre os originais e artefatos grandes. A leitura contextual dos livros foi parcial; consulte todas as pendências do relatório J antes de considerar a fase integralmente concluída.

@@ -179,6 +179,10 @@ class BinancePublicCollector:
         self.event_callback = event_callback
         self.stop_event = asyncio.Event()
         self.reconnections = 0
+        self.messages = 0
+        self.last_message_at: str | None = None
+        self.last_reconnect_at: str | None = None
+        self.last_error: str | None = None
 
     @property
     def url(self) -> str:
@@ -237,10 +241,14 @@ class BinancePublicCollector:
                         raw = await asyncio.wait_for(socket.recv(), timeout=timeout)
                         await self._handle(json.loads(raw))
                         messages += 1
+                        self.messages += 1
+                        self.last_message_at = utc_now().isoformat()
             except asyncio.TimeoutError:
                 break
             except Exception as exc:
                 self.reconnections += 1
+                self.last_reconnect_at = utc_now().isoformat()
+                self.last_error = type(exc).__name__
                 self.storage.append("collector", {"received_at": utc_now().isoformat(), "event": "reconnect",
                                                     "error": type(exc).__name__, "attempt": attempt})
                 delay = self.reconnect_seconds[min(attempt, len(self.reconnect_seconds) - 1)]
@@ -253,6 +261,19 @@ class BinancePublicCollector:
                 "aggtrade_duplicates": self.monitor.duplicates, "aggtrade_gap_events": self.monitor.gap_events,
                 "aggtrade_missing_ids": self.monitor.missing_ids, "depth_invalidations": self.book.invalidations,
                 "book": self.book.top(), "real_orders": False}
+
+    def status(self) -> dict:
+        """Live counters used by the long-running prospective audit."""
+        return {"symbol": self.symbol.upper(), "messages": self.messages,
+                "reconnections": self.reconnections,
+                "last_message_at": self.last_message_at,
+                "last_reconnect_at": self.last_reconnect_at,
+                "last_error": self.last_error,
+                "aggtrade_duplicates": self.monitor.duplicates,
+                "aggtrade_gap_events": self.monitor.gap_events,
+                "aggtrade_missing_ids": self.monitor.missing_ids,
+                "depth_invalidations": self.book.invalidations,
+                "book_valid": self.book.valid}
 
     def stop(self) -> None:
         self.stop_event.set()

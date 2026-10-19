@@ -1,0 +1,58 @@
+{
+  "protocol_version": "phase6.4-v1-supervised-demo",
+  "inherits": "configs/phase_6_2.json",
+  "environment": "DEMO",
+  "default_mode": "OBSERVE",
+  "real_trading_supported": false,
+  "automatic_promotion": false,
+  "endpoints": {
+    "rest": "https://demo-api.binance.com/api",
+    "rest_root": "https://demo-api.binance.com",
+    "websocket_api": "wss://demo-ws-api.binance.com/ws-api/v3",
+    "market_stream": "wss://demo-stream.binance.com"
+  },
+  "observation": {
+    "required_seconds": 86400,
+    "sample_seconds": 30,
+    "maximum_expected_sample_gap_seconds": 90,
+    "symbols": ["BTCUSDT", "ETHUSDT", "SOLUSDT"],
+    "policies": ["A_quantitative", "B_conservative_news", "C_qwen3_structured_news", "D_event_market_reaction"]
+  },
+  "economic_validation": {
+    "source": "prospective_runtime_only",
+    "forbidden_holdout_start": "2026-07-01T00:00:00Z",
+    "forbidden_holdout_end": "2026-10-01T00:00:00Z",
+    "minimum_resolved_opportunities": 200,
+    "minimum_elapsed_days": 30,
+    "confidence_level": 0.95,
+    "bootstrap_seed": 42,
+    "bootstrap_samples": 2000,
+    "allow_unknown_expected_value": false
+  },
+  "experimental_demo": {
+    "category": "EXPERIMENTAL_DEMO",
+    "symbol": "BTCUSDT",
+    "policy": "A_quantitative",
+    "horizon_minutes": 5,
+    "minimum_up_probability": 0.60,
+    "quote_amount": 10.0,
+    "maximum_open_positions": 1,
+    "maximum_entries_per_session": 5,
+    "maximum_entries_per_day": 10,
+    "maximum_daily_loss_quote": 5.0,
+    "maximum_total_exposure_quote": 10.0,
+    "maximum_spread_bps": 10.0,
+    "maximum_slippage_bps": 5.0,
+    "minimum_depth_quote": 10000.0,
+    "maximum_signal_age_seconds": 120,
+    "cooldown_minutes": 5,
+    "planned_holding_minutes": 5,
+    "maximum_holding_minutes": 20,
+    "maximum_extension_minutes": 3,
+    "maximum_absolute_minutes": 23,
+    "stop_loss_bps": 50.0,
+    "session_maximum_minutes": 120,
+    "authorization_confirmation": "I_AUTHORIZE_10_USDT_BINANCE_DEMO_EXPERIMENTAL",
+    "orders_enabled_by_default": false
+  }
+}

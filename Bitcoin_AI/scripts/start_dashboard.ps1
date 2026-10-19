@@ -117,7 +117,7 @@ $state | ConvertTo-Json | Set-Content -LiteralPath $statePath -Encoding UTF8
 Write-Host "Dashboard: http://127.0.0.1:3000"
 Write-Host "API local: http://127.0.0.1:8000"
 Write-Host "Worker de decisões: OBSERVE (PID $($decisionService.Id))"
-Write-Host "Kill switch não foi alterado; negociação autônoma continua bloqueada."
+Write-Host "Kill switch ativo; negociação autônoma continua bloqueada até autorização própria da Fase 6.4."
 
 if ($OpenBrowser) {
     Start-Process "http://127.0.0.1:3000"

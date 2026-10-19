@@ -63,19 +63,23 @@ def build_news_service(root: Path = ROOT, fetcher=None) -> NewsService:
 class MultiAssetMarketService:
     """Run the reused public collector independently for each frozen symbol."""
     def __init__(self, root: Path = ROOT, collector_factory=BinancePublicCollector,
-                 event_callback=None):
+                 event_callback=None, *, websocket_base: str | None = None,
+                 rest_base: str | None = None):
         config = load_config(root)
         self.collectors = {
             symbol: collector_factory(
                 output=root / "runtime/phase_6/market" / symbol,
-                websocket_base="wss://data-stream.binance.vision:443",
-                rest_base="https://data-api.binance.vision",
+                websocket_base=websocket_base or "wss://data-stream.binance.vision:443",
+                rest_base=rest_base or "https://data-api.binance.vision",
                 symbol=symbol,
                 partition_minutes=5,
                 reconnect_seconds=[1, 2, 5, 10, 30],
                 event_callback=event_callback,
             ) for symbol in config["universe"]
         }
+
+    def status(self) -> dict:
+        return {symbol: collector.status() for symbol, collector in self.collectors.items()}
 
     async def run(self, duration_seconds: float | None = None) -> dict:
         results = await asyncio.gather(

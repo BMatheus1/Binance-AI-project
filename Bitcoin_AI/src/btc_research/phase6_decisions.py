@@ -112,6 +112,19 @@ class DecisionStore:
                 );
                 CREATE INDEX IF NOT EXISTS idx_evaluations_recent
                     ON evaluations(evaluated_at DESC);
+                CREATE TABLE IF NOT EXISTS forecast_outcomes (
+                    cycle_id TEXT NOT NULL, horizon_minutes INTEGER NOT NULL,
+                    decision_at TEXT NOT NULL, feature_open_time TEXT NOT NULL,
+                    entry_open_time TEXT NOT NULL, exit_open_time TEXT NOT NULL,
+                    p_down REAL NOT NULL, p_tie REAL NOT NULL, p_up REAL NOT NULL,
+                    signal TEXT NOT NULL, estimated_cost_bps REAL,
+                    status TEXT NOT NULL DEFAULT 'pending',
+                    entry_price REAL, exit_price REAL, gross_return_bps REAL,
+                    net_return_bps REAL, resolved_at TEXT, invalid_reason TEXT,
+                    PRIMARY KEY(cycle_id, horizon_minutes)
+                );
+                CREATE INDEX IF NOT EXISTS idx_forecast_outcomes_status
+                    ON forecast_outcomes(status, exit_open_time);
             """)
             columns = {row[1] for row in db.execute("PRAGMA table_info(evaluations)")}
             if "causal_valid" not in columns:
@@ -151,7 +164,66 @@ class DecisionStore:
                     expected_net_bps,decision,reasons_json,market_json,news_json,orders_sent)
                 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             """, rows)
+            btc = forecasts.get("BTCUSDT", {})
+            opened = market.get("BTCUSDT", {}).get("candle_open_time")
+            if btc.get("state") == "ready" and opened:
+                feature_time = pd.Timestamp(opened)
+                costs = [row[8] for row in rows if row[4] == "BTCUSDT" and row[8] is not None]
+                cost = min(costs) if costs else None
+                pending = []
+                for key, forecast in btc.get("horizons", {}).items():
+                    horizon = int(key)
+                    probabilities = forecast["probabilities"]
+                    pending.append((cycle_id, horizon, result["as_of"], feature_time.isoformat(),
+                                    (feature_time + pd.Timedelta(minutes=1)).isoformat(),
+                                    (feature_time + pd.Timedelta(minutes=horizon)).isoformat(),
+                                    probabilities["down"], probabilities["tie"], probabilities["up"],
+                                    forecast["signal"], cost))
+                db.executemany("""
+                    INSERT OR IGNORE INTO forecast_outcomes(
+                        cycle_id,horizon_minutes,decision_at,feature_open_time,
+                        entry_open_time,exit_open_time,p_down,p_tie,p_up,signal,estimated_cost_bps)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?)
+                """, pending)
         return len(rows)
+
+    def resolve_outcomes(self, candles: pd.DataFrame) -> dict:
+        """Resolve labels only after the required candles have closed."""
+        if candles.empty:
+            return {"resolved": 0, "invalid": 0}
+        indexed = candles.drop_duplicates("open_time", keep="last").set_index("open_time")
+        with self._connect() as db:
+            db.row_factory = sqlite3.Row
+            pending = db.execute(
+                "SELECT * FROM forecast_outcomes WHERE status='pending' ORDER BY exit_open_time"
+            ).fetchall()
+            resolved = invalid = 0
+            now = datetime.now(UTC).isoformat()
+            for row in pending:
+                entry_time = pd.Timestamp(row["entry_open_time"])
+                exit_time = pd.Timestamp(row["exit_open_time"])
+                if exit_time not in indexed.index:
+                    continue
+                expected = pd.date_range(entry_time, exit_time, freq="1min")
+                if any(instant not in indexed.index for instant in expected):
+                    db.execute("""UPDATE forecast_outcomes SET status='invalid',invalid_reason=?,resolved_at=?
+                                  WHERE cycle_id=? AND horizon_minutes=?""",
+                               ("missing_candle_in_forward_window", now, row["cycle_id"],
+                                row["horizon_minutes"]))
+                    invalid += 1
+                    continue
+                entry_price = float(indexed.loc[entry_time, "open"])
+                exit_price = float(indexed.loc[exit_time, "close"])
+                gross = (exit_price / entry_price - 1.0) * 10_000.0
+                cost = row["estimated_cost_bps"]
+                net = gross - float(cost) if cost is not None else None
+                db.execute("""UPDATE forecast_outcomes SET status='resolved',entry_price=?,exit_price=?,
+                              gross_return_bps=?,net_return_bps=?,resolved_at=?
+                              WHERE cycle_id=? AND horizon_minutes=?""",
+                           (entry_price, exit_price, gross, net, now, row["cycle_id"],
+                            row["horizon_minutes"]))
+                resolved += 1
+        return {"resolved": resolved, "invalid": invalid}
 
     def count(self) -> int:
         with self._connect() as db:
@@ -184,6 +256,13 @@ class ContinuousDecisionWorker:
         self.cycles_completed = 0
         self.evaluations_recorded = 0
         self.dropped_events = 0
+        self.gap_repairs_succeeded = 0
+        self.gap_repairs_failed = 0
+        self.missing_candles_observed = 0
+        self.symbol_errors: dict[str, str] = {}
+        self.warmup_attempts = 0
+        self.warmup_failures = 0
+        self.last_warmup_attempt_at: str | None = None
         self.candles = {symbol: pd.DataFrame() for symbol in UNIVERSE}
         self.quotes: dict[str, dict] = {}
         self.books: dict[str, dict] = {}
@@ -253,6 +332,8 @@ class ContinuousDecisionWorker:
             self.dropped_events += 1
 
     async def warmup(self) -> None:
+        self.warmup_attempts += 1
+        self.last_warmup_attempt_at = datetime.now(UTC).isoformat()
         async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=30)) as session:
             for symbol in UNIVERSE:
                 async with session.get(f"{self.rest_base}/api/v3/klines",
@@ -299,27 +380,36 @@ class ContinuousDecisionWorker:
         self.last_closed_open_time[symbol] = open_time
         return True
 
-    async def _repair_gap(self, record: dict) -> None:
+    async def _repair_gap(self, record: dict) -> bool:
         symbol = self._symbol(record)
         payload = record.get("payload", {})
         if symbol is None or payload.get("e") != "kline":
-            return
+            return True
         incoming = pd.to_datetime(payload["k"]["t"], unit="ms", utc=True)
         current = self.candles[symbol]
         if current.empty:
-            return
+            return True
         expected = current.open_time.iloc[-1] + pd.Timedelta(minutes=1)
         if incoming <= expected:
-            return
+            return True
+        missing = max(1, int((incoming - expected) / pd.Timedelta(minutes=1)))
+        self.missing_candles_observed += missing
         params = {"symbol": symbol, "interval": "1m",
                   "startTime": int(expected.timestamp() * 1000),
                   "endTime": int(incoming.timestamp() * 1000) - 1, "limit": 1000}
-        async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=20)) as session:
-            async with session.get(f"{self.rest_base}/api/v3/klines", params=params) as response:
-                response.raise_for_status()
-                rows = await response.json()
+        try:
+            async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=8)) as session:
+                async with session.get(f"{self.rest_base}/api/v3/klines", params=params) as response:
+                    response.raise_for_status()
+                    rows = await response.json()
+        except Exception as exc:
+            self.gap_repairs_failed += 1
+            self.symbol_errors[symbol] = f"gap_repair_failed:{type(exc).__name__}"
+            return False
         if not rows:
-            return
+            self.gap_repairs_failed += 1
+            self.symbol_errors[symbol] = "gap_repair_failed:empty_response"
+            return False
         repair = _rest_klines(rows)
         now = pd.Timestamp.now(tz="UTC")
         repair = repair[(repair.close_time < now) & (repair.open_time < incoming)]
@@ -327,6 +417,15 @@ class ContinuousDecisionWorker:
             self.candles[symbol] = pd.concat([current, repair], ignore_index=True).drop_duplicates(
                 "open_time", keep="last").sort_values("open_time").tail(240).reset_index(drop=True)
             self.last_closed_open_time[symbol] = self.candles[symbol].open_time.iloc[-1]
+        repaired_times = set(repair.open_time) if not repair.empty else set()
+        required = set(pd.date_range(expected, incoming - pd.Timedelta(minutes=1), freq="1min"))
+        if not required.issubset(repaired_times):
+            self.gap_repairs_failed += 1
+            self.symbol_errors[symbol] = "gap_repair_failed:incomplete_response"
+            return False
+        self.gap_repairs_succeeded += 1
+        self.symbol_errors.pop(symbol, None)
+        return True
 
     async def _wait_for_nominal_close(self, record: dict) -> None:
         payload = record.get("payload", {})
@@ -349,6 +448,11 @@ class ContinuousDecisionWorker:
         return instant if self.last_cycle_open_time is None or instant > self.last_cycle_open_time else None
 
     def _forecast_btc(self) -> tuple[dict, tuple[str, ...]]:
+        recent = self.candles["BTCUSDT"].tail(max(61, max(SPECS[name].lookback for name in SPECS)))
+        if (len(recent) < 61 or
+                recent.open_time.diff().dropna().ne(pd.Timedelta(minutes=1)).any()):
+            return {"state": "unavailable", "reason": "candle_continuity_not_recovered"}, (
+                "forecast_unavailable_after_market_gap",)
         frame = make_features(self.candles["BTCUSDT"])
         row = frame.iloc[[-1]]
         if row[list(SPECS)].isna().any(axis=None) or not np.isfinite(row[list(SPECS)].to_numpy()).all():
@@ -434,6 +538,7 @@ class ContinuousDecisionWorker:
         self.cycles_completed += 1
         self.last_evaluation_at = result["as_of"]
         self.last_cycle_open_time = open_time
+        self.store.resolve_outcomes(self.candles["BTCUSDT"])
         self.state = "abstaining" if all(
             block["selected"] is None for block in result["policies"].values()) else "signal_ready"
 
@@ -444,26 +549,42 @@ class ContinuousDecisionWorker:
             await self.warmup()
             self.state = "waiting_for_closed_candles"
         except Exception as exc:
+            self.warmup_failures += 1
             self.last_error = f"warmup_failed:{type(exc).__name__}"
             self.state = "unavailable"
+        next_warmup_retry = asyncio.get_running_loop().time() + 60
         while not self._stop.is_set():
             try:
                 record = await asyncio.wait_for(self.queue.get(), timeout=1)
             except asyncio.TimeoutError:
+                if (len(self.last_closed_open_time) < len(UNIVERSE) and
+                        asyncio.get_running_loop().time() >= next_warmup_retry):
+                    self.state = "recovering_warmup"
+                    try:
+                        await asyncio.wait_for(self.warmup(), timeout=35)
+                        self.state = "waiting_for_closed_candles"
+                        self.last_error = None
+                    except Exception as exc:
+                        self.warmup_failures += 1
+                        self.last_error = f"warmup_retry_failed:{type(exc).__name__}"
+                        self.state = "unavailable"
+                    next_warmup_retry = asyncio.get_running_loop().time() + 60
                 continue
             if record is None:
                 break
             try:
                 await self._wait_for_nominal_close(record)
-                await self._repair_gap(record)
+                repaired = await self._repair_gap(record)
                 closed = self._update(record)
                 instant = self._ready_cycle() if closed else None
                 if instant is not None:
                     self.state = "analyzing"
                     await asyncio.to_thread(self._evaluate_cycle, instant)
+                    if not repaired:
+                        self.state = "degraded"
             except Exception as exc:
                 self.last_error = f"evaluation_failed:{type(exc).__name__}:{exc}"
-                self.state = "unavailable"
+                self.state = "degraded"
 
     def status(self) -> dict:
         return {"state": self.state, "started_at": self.started_at,
@@ -471,6 +592,13 @@ class ContinuousDecisionWorker:
                 "last_error": self.last_error, "cycles_completed": self.cycles_completed,
                 "evaluations_recorded": self.store.count(), "queue_size": self.queue.qsize(),
                 "dropped_events": self.dropped_events,
+                "gap_repairs_succeeded": self.gap_repairs_succeeded,
+                "gap_repairs_failed": self.gap_repairs_failed,
+                "missing_candles_observed": self.missing_candles_observed,
+                "symbol_errors": dict(self.symbol_errors),
+                "warmup_attempts": self.warmup_attempts,
+                "warmup_failures": self.warmup_failures,
+                "last_warmup_attempt_at": self.last_warmup_attempt_at,
                 "symbols": {symbol: {"warmup_candles": len(self.candles[symbol]),
                                       "last_closed_open_time": (self.last_closed_open_time[symbol].isoformat()
                                                                 if symbol in self.last_closed_open_time else None),

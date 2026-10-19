@@ -34,6 +34,7 @@ from .phase6_2 import (ExecutionJournal, PersistentKillSwitch,
                        load_local_dotenv, load_phase62_config,
                        summarize_account)
 from .phase6_trading import BinanceDemoBroker, RequestsDemoTransport, UNIVERSE
+from .phase6_4 import AutonomousStore, ObservationStore, load_phase64_config
 
 
 UTC = timezone.utc
@@ -311,6 +312,48 @@ class DashboardRepository:
             result.append(row)
         return result
 
+    def _strategy_operations(self) -> list[dict]:
+        path = self.root / "runtime/phase_6_4/autonomous.sqlite3"
+        if not path.exists():
+            return []
+        with self._readonly(path) as db:
+            rows = db.execute("SELECT * FROM positions ORDER BY COALESCE(opened_at,rowid) DESC").fetchall()
+        operations = []
+        for raw in rows:
+            row = dict(raw)
+            try:
+                payload = json.loads(row.get("payload_json") or "{}")
+            except json.JSONDecodeError:
+                payload = {}
+            entry_quote = safe_decimal(row.get("entry_quote"))
+            exit_quote = safe_decimal(row.get("exit_quote"))
+            gross = exit_quote - entry_quote if exit_quote is not None and entry_quote is not None else None
+            fees = []
+            for side in ("entry", "exit"):
+                for fill in payload.get(side, {}).get("fills", []):
+                    amount = safe_decimal(fill.get("commission"))
+                    if amount is not None:
+                        fees.append({"side": side, "asset": fill.get("commissionAsset"),
+                                     "amount": number(amount)})
+            operations.append({
+                "operation_id": row["position_id"], "category": "demo_strategy",
+                "strategy_category": "EXPERIMENTAL_DEMO", "policy": row["policy"],
+                "symbol": row["symbol"], "evaluation_id": row["evaluation_id"],
+                "entry_time": row["opened_at"], "exit_time": row["closed_at"],
+                "entry_price": number(safe_decimal(row["entry_price"])),
+                "exit_price": number(safe_decimal(row["exit_price"])),
+                "quantity": number(safe_decimal(row["quantity"])), "fees": fees,
+                "gross_result_quote": number(gross),
+                "net_result_quote": number(safe_decimal(row["net_quote"])),
+                "net_result_reason": ("actual Demo fills" if row["net_quote"] is not None
+                                      else "position is open or fill economics are incomplete"),
+                "stop_loss": None, "planned_duration_minutes": 5,
+                "planned_close_at": row["planned_close_at"],
+                "close_reason": row["close_reason"], "status": row["state"].lower(),
+                "exchange_states": [], "strategy_evaluation_eligible": True,
+            })
+        return operations
+
     @staticmethod
     def _fill_metrics(payload: dict) -> dict:
         quantity = safe_decimal(payload.get("executedQty"))
@@ -373,6 +416,7 @@ class DashboardRepository:
                                      "client_order_id": row["client_order_id"]} for row in rows],
                 "strategy_evaluation_eligible": False,
             })
+        operations.extend(self._strategy_operations())
         return sorted(operations, key=lambda row: row["entry_time"] or "", reverse=True)
 
     def operation_markers(self, symbol: str) -> list[dict]:
@@ -559,6 +603,40 @@ class DashboardRepository:
             "resources": resources, "checked_at": iso_now(),
         }
 
+    def autonomous(self) -> dict:
+        config_path = self.root / "configs/phase_6_4.json"
+        if not config_path.exists():
+            return {"state": "not_configured", "authorization": "cli_only",
+                    "orders_enabled": False}
+        config = load_phase64_config(self.root)
+        engine = read_json(self.root / "runtime/phase_6_4/engine.json") or {
+            "state": "not_running", "orders_enabled": False, "boot_id": None,
+            "last_error": None, "updated_at": None}
+        store = AutonomousStore(self.root / "runtime/phase_6_4/autonomous.sqlite3")
+        state = store.status()
+        if state["session"]:
+            state["session"].pop("confirmation_hash", None)
+        observation = ObservationStore(
+            self.root / "runtime/phase_6_4/observation.sqlite3", config).status()
+        economics = read_json(self.root / "reports/phase_6_4/economic_status.json") or {
+            "economically_validated": False, "resolved_outcomes": 0,
+            "limitations": ["economic report has not been generated"]}
+        demo = config["experimental_demo"]
+        limits = {key: demo[key] for key in (
+            "symbol", "policy", "horizon_minutes", "minimum_up_probability",
+            "quote_amount", "maximum_open_positions", "maximum_entries_per_session",
+            "maximum_entries_per_day", "maximum_daily_loss_quote", "maximum_spread_bps",
+            "maximum_slippage_bps", "cooldown_minutes", "planned_holding_minutes", "stop_loss_bps",
+            "session_maximum_minutes")}
+        return {"state": engine.get("state", "not_running"), "engine": engine,
+                "authorization": "cli_only", "session_and_positions": state,
+                "observation": observation, "economic": economics, "limits": limits,
+                "kill_switch": self.kill.status(), "environment": "Binance Spot Demo",
+                "production_trading_supported": False,
+                "economically_validated_category_available": bool(
+                    economics.get("economically_validated", False)),
+                "experimental_demo_ready_for_explicit_authorization": True}
+
     def logs(self, limit: int = 100) -> list[dict]:
         rows = []
         for path in (self.root / "runtime/phase_6_1/service.jsonl",
@@ -577,12 +655,16 @@ class DashboardRepository:
         operations = self.operations()
         performance = self.performance()
         health = self.health()
-        return {"system_state": "blocked" if self.kill.status()["engaged"] else "observation",
-                "environment": "DEMO", "mode": "OBSERVE",
+        autonomous = self.autonomous()
+        open_position = autonomous.get("session_and_positions", {}).get("open_position")
+        mode = "DEMO_AUTONOMOUS_EXPERIMENTAL" if autonomous.get("state") == "AUTHORIZED_DEMO" else "OBSERVE"
+        return {"system_state": "blocked" if self.kill.status()["engaged"] and not open_position else autonomous.get("state", "observation"),
+                "environment": "DEMO", "mode": mode,
                 "kill_switch": self.kill.status(), "autonomous": autonomous_readiness(self.root),
                 "account": account, "strategy_performance": performance["strategy"],
                 "diagnostic_operation_count": len([x for x in operations if x["category"] == "diagnostic"]),
-                "positions": [], "positions_reason": "no intentional open strategy position recorded",
+                "positions": [open_position] if open_position else [],
+                "positions_reason": None if open_position else "no intentional open strategy position recorded",
                 "connectors": {"binance_rest": health["binance_demo_rest"],
                                "market_websocket": {"state": "healthy" if health["market_websocket"].get("all_healthy") else "unknown"},
                                "news_store": health["news_store"]},
@@ -676,6 +758,10 @@ def create_app(settings: DashboardSettings | None = None,
     @app.get("/api/intelligence", response_model=Envelope)
     async def intelligence(_: str = Depends(authenticated_read)) -> Envelope:
         return envelope(await asyncio.to_thread(repository.intelligence))
+
+    @app.get("/api/autonomous", response_model=Envelope)
+    async def autonomous(_: str = Depends(authenticated_read)) -> Envelope:
+        return envelope(await asyncio.to_thread(repository.autonomous))
 
     @app.get("/api/news", response_model=Envelope)
     async def news(limit: int = Query(100, ge=1, le=500), asset: str | None = None,

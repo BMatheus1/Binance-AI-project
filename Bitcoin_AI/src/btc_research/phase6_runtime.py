@@ -80,7 +80,8 @@ def structured_logger(path: Path, *, max_bytes: int = 5_000_000, backups: int = 
 class Phase61Supervisor:
     def __init__(self, *, news_service, market_service, heartbeat_path: Path,
                  log_path: Path, heartbeat_seconds: float = 30, neural_worker=None,
-                 decision_worker=None):
+                 decision_worker=None, observation_monitor=None,
+                 autonomous_engine=None):
         if heartbeat_seconds <= 0:
             raise ValueError("heartbeat interval must be positive")
         self.news = news_service
@@ -90,9 +91,13 @@ class Phase61Supervisor:
         self.logger = structured_logger(log_path)
         self.neural_worker = neural_worker
         self.decision_worker = decision_worker
+        self.observation_monitor = observation_monitor
+        self.autonomous_engine = autonomous_engine
         self.started_at: datetime | None = None
         self.stopped_at: datetime | None = None
         self._stop = asyncio.Event()
+        self.service_restarts: dict[str, int] = {}
+        self.last_service_error: dict[str, str] = {}
 
     def status(self) -> dict:
         return {"pid": os.getpid(), "started_at": self.started_at.isoformat() if self.started_at else None,
@@ -102,9 +107,19 @@ class Phase61Supervisor:
                 "news_cycle_seconds": getattr(self.news, "cycle_seconds", None),
                 "news_cycles_completed": getattr(self.news, "cycles_completed", None),
                 "last_news_cycle_completed_at": getattr(self.news, "last_cycle_completed_at", None),
+                "service_restarts": dict(self.service_restarts),
+                "last_service_error": dict(self.last_service_error),
                 "decision_worker": (self.decision_worker.status()
                                     if self.decision_worker is not None else
-                                    {"state": "not_configured", "orders_sent": False})}
+                                    {"state": "not_configured", "orders_sent": False}),
+                "phase6_4_observation": (self.observation_monitor.status()
+                                         if self.observation_monitor is not None else
+                                         {"state": "not_configured"}),
+                "phase6_4_autonomous": ({"state": self.autonomous_engine.state,
+                                          "boot_id": self.autonomous_engine.boot_id,
+                                          "last_error": self.autonomous_engine.last_error}
+                                         if self.autonomous_engine is not None else
+                                         {"state": "not_configured"})}
 
     async def _heartbeat(self) -> None:
         while not self._stop.is_set():
@@ -114,16 +129,53 @@ class Phase61Supervisor:
             except asyncio.TimeoutError:
                 pass
 
+    async def _guard(self, name: str, runner) -> None:
+        """Restart an unexpectedly terminated long-running worker in-process."""
+        while not self._stop.is_set():
+            try:
+                await runner()
+                if self._stop.is_set():
+                    return
+                error = "unexpected_return"
+            except asyncio.CancelledError:
+                raise
+            except Exception as exc:
+                error = type(exc).__name__
+            self.service_restarts[name] = self.service_restarts.get(name, 0) + 1
+            self.last_service_error[name] = error
+            self.logger.error("service_restart:%s:%s", name, error)
+            try:
+                await asyncio.wait_for(self._stop.wait(), timeout=5)
+            except asyncio.TimeoutError:
+                pass
+
     async def run(self, duration_seconds: float | None = None) -> dict:
         self.started_at = datetime.now(UTC)
         self.logger.info("supervisor_started")
-        tasks = [asyncio.create_task(self.news.serve()),
-                 asyncio.create_task(self.market.run(duration_seconds=duration_seconds)),
-                 asyncio.create_task(self._heartbeat())]
+        if duration_seconds is None:
+            tasks = [asyncio.create_task(self._guard("news", self.news.serve)),
+                     asyncio.create_task(self._guard("market", self.market.run)),
+                     asyncio.create_task(self._guard("heartbeat", self._heartbeat))]
+        else:
+            tasks = [asyncio.create_task(self.news.serve()),
+                     asyncio.create_task(self.market.run(duration_seconds=duration_seconds)),
+                     asyncio.create_task(self._heartbeat())]
         if self.neural_worker is not None:
-            tasks.append(asyncio.create_task(self.neural_worker.run()))
+            coroutine = (self._guard("neural", self.neural_worker.run)
+                         if duration_seconds is None else self.neural_worker.run())
+            tasks.append(asyncio.create_task(coroutine))
         if self.decision_worker is not None:
-            tasks.append(asyncio.create_task(self.decision_worker.run()))
+            coroutine = (self._guard("decisions", self.decision_worker.run)
+                         if duration_seconds is None else self.decision_worker.run())
+            tasks.append(asyncio.create_task(coroutine))
+        if self.observation_monitor is not None:
+            coroutine = (self._guard("observation", self.observation_monitor.run)
+                         if duration_seconds is None else self.observation_monitor.run())
+            tasks.append(asyncio.create_task(coroutine))
+        if self.autonomous_engine is not None:
+            coroutine = (self._guard("autonomous", self.autonomous_engine.run)
+                         if duration_seconds is None else self.autonomous_engine.run())
+            tasks.append(asyncio.create_task(coroutine))
         try:
             if duration_seconds is None:
                 await self._stop.wait()
@@ -149,3 +201,7 @@ class Phase61Supervisor:
             self.neural_worker.stop()
         if self.decision_worker is not None:
             self.decision_worker.stop()
+        if self.observation_monitor is not None:
+            self.observation_monitor.stop()
+        if self.autonomous_engine is not None:
+            self.autonomous_engine.stop()

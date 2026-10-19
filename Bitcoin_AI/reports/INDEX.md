@@ -18,6 +18,11 @@ Fase 6.1: [Qwen3 local, políticas A/B/C/D, supervisor persistente e auditoria d
 licenças](phase_6_1/README.md). A engenharia passou em 123 testes; a validação
 econômica prospectiva permanece pendente e nenhuma ordem foi enviada.
 
+Fase 6.4: [protocolo de 24 horas, avaliação econômica e executor autônomo
+supervisionado Binance Demo](phase_6_4/README.md). A infraestrutura está preparada,
+mas a janela mínima continua em andamento, a categoria economicamente validada está
+bloqueada e nenhuma sessão de ordens foi autorizada.
+
 - 1m: xgboost, accuracy 50.6549%, log loss 0.809687; baseline frequência 0.861573. IC95% da diferença pareada de log loss: [-0.072525, -0.033281]. Valor negativo favorece modelo. Decisão congelada: abstenção integral.
 - 5m: xgboost, accuracy 51.6876%, log loss 0.717344; baseline frequência 0.729788. IC95% da diferença pareada de log loss: [-0.024622, -0.003589]. Valor negativo favorece modelo. Decisão congelada: abstenção integral.
 

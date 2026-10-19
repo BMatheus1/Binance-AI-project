@@ -112,3 +112,19 @@ falha. A suíte completa passou com 123 testes e compileall. Nenhuma ordem real,
 demo ou paper nova foi enviada. Validação econômica continua pendente por pelo
 menos 30 dias e 200 operações resolvidas por política. Consulte
 reports/phase_6_1/README.md.
+
+## Fase 6.4 — trading autônomo supervisionado Demo
+
+Implementação técnica preparada em 19/10/2026. O supervisor agora reinicia workers
+que terminem inesperadamente; o worker de decisões tolera falha de recomposição REST
+e tenta novo warmup sem descartar o candle recebido. O protocolo de 24 horas começou
+em `2026-10-19T13:48:18Z` e permanece em andamento. A Binance Demo estava
+indisponível no início da janela, fato preservado nas amostras, sem fallback para
+produção e sem envio de ordens.
+
+Foi criada uma política BTC quantitativa experimental de 10 USDT, com parâmetros
+congelados, autorização por sessão e por `boot_id`, reconciliação, diário de ordens,
+posição persistente e saídas por prazo, stop, invalidação e kill switch. A categoria
+economicamente validada continua bloqueada; nenhuma expectativa desconhecida foi
+preenchida. A suíte completa passou com 162 testes e o frontend compilou a rota
+`/autonomous`. Nenhuma operação autônoma Demo foi autorizada ou enviada.
