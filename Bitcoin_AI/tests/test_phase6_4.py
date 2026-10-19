@@ -9,6 +9,7 @@ from types import SimpleNamespace
 
 from btc_research.common import ROOT
 from btc_research.phase6_2 import PersistentKillSwitch
+from btc_research.phase6_connectivity import _assert_demo_url
 from btc_research.phase6_4 import (AutonomousStore, ObservationStore,
                                    SupervisedDemoEngine, authorize_session,
                                    economic_report, load_phase64_config,
@@ -177,3 +178,88 @@ def test_mocked_authorized_cycle_opens_and_closes_btc_only(tmp_path):
     assert store.open_position() is None
     assert broker.submissions == ["BUY", "SELL"]
     assert store.status()["closed_positions"][0]["net_quote"] == "0.1"
+
+
+def test_connectivity_allowlist_rejects_production_hosts():
+    assert _assert_demo_url("https://demo-api.binance.com/api", {"https"}) == (
+        "demo-api.binance.com", 443)
+    for url in ("https://api.binance.com/api", "wss://stream.binance.com/ws",
+                "http://demo-api.binance.com/api"):
+        with __import__("pytest").raises(ValueError, match="Demo allowlist"):
+            _assert_demo_url(url, {"https", "wss"})
+
+
+def test_engine_cannot_enter_without_a_bound_authorized_session(tmp_path):
+    root = phase64_root(tmp_path)
+    insert_candidate(root)
+    broker = FakeBroker()
+    engine = SupervisedDemoEngine(root, service_factory=lambda _: FakeService(broker))
+    engine.kill.clear("I_AUTHORIZE_BINANCE_DEMO_ONLY")
+    engine.cycle()
+    assert broker.submissions == []
+    assert engine.store.open_position() is None
+    assert engine.state == "OBSERVE"
+
+
+def test_connection_failure_blocks_entry_and_engages_kill_switch(tmp_path):
+    root = phase64_root(tmp_path)
+    insert_candidate(root)
+    engine = SupervisedDemoEngine(
+        root, service_factory=lambda _: (_ for _ in ()).throw(ConnectionError("offline")))
+    with sqlite3.connect(engine.store.path) as db:
+        db.execute("INSERT INTO sessions VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                   ("session-offline", engine.boot_id, datetime.now(UTC).isoformat(),
+                    datetime.now(UTC).isoformat(),
+                    (datetime.now(UTC)+timedelta(hours=1)).isoformat(), "authorized",
+                    "A_quantitative", "BTCUSDT", "10", "hash", 0, None))
+    engine.kill.clear("I_AUTHORIZE_BINANCE_DEMO_ONLY")
+    engine.cycle()
+    assert engine.store.open_position() is None
+    assert engine.kill.status()["engaged"]
+    assert engine.state == "RECOVERY_REQUIRED"
+
+
+def test_frozen_spread_limit_rejects_entry_without_submission(tmp_path):
+    root = phase64_root(tmp_path)
+    insert_candidate(root)
+    evaluations = root / "runtime/phase_6_1/evaluations.sqlite3"
+    with sqlite3.connect(evaluations) as db:
+        market = json.loads(db.execute(
+            "SELECT market_json FROM evaluations WHERE evaluation_id='eval-1'").fetchone()[0])
+        market["spread_bps"] = 11.0
+        db.execute("UPDATE evaluations SET market_json=? WHERE evaluation_id='eval-1'",
+                   (json.dumps(market),))
+    broker = FakeBroker()
+    engine = SupervisedDemoEngine(root, service_factory=lambda _: FakeService(broker))
+    with sqlite3.connect(engine.store.path) as db:
+        db.execute("INSERT INTO sessions VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                   ("session-spread", engine.boot_id, datetime.now(UTC).isoformat(),
+                    datetime.now(UTC).isoformat(),
+                    (datetime.now(UTC)+timedelta(hours=1)).isoformat(), "authorized",
+                    "A_quantitative", "BTCUSDT", "10", "hash", 0, None))
+    engine.kill.clear("I_AUTHORIZE_BINANCE_DEMO_ONLY")
+    engine.cycle()
+    assert broker.submissions == []
+    assert engine.store.open_position() is None
+    assert engine.store.status()["recent_activity"][0]["event_type"] == "entry_abstention"
+    assert "spread_limit" in engine.store.status()["recent_activity"][0]["payload"]["reasons"]
+
+
+def test_restart_preserves_position_but_invalidates_process_authorization(tmp_path):
+    root = phase64_root(tmp_path)
+    first = SupervisedDemoEngine(root, service_factory=lambda _: FakeService(FakeBroker()))
+    now = datetime.now(UTC)
+    with sqlite3.connect(first.store.path) as db:
+        db.execute("INSERT INTO sessions VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                   ("session-restart", first.boot_id, now.isoformat(), now.isoformat(),
+                    (now+timedelta(hours=1)).isoformat(), "running", "A_quantitative",
+                    "BTCUSDT", "10", "hash", 1, None))
+        db.execute("INSERT INTO positions VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                   ("position-restart", "session-restart", "BTCUSDT", "A_quantitative",
+                    "OPEN", "eval-restart", now.isoformat(),
+                    (now+timedelta(minutes=5)).isoformat(), None, "0.0002", "10", None,
+                    "50000", None, "[]", None, "entry-client", None, None, "{}"))
+    restarted = SupervisedDemoEngine(root, service_factory=lambda _: FakeService(FakeBroker()))
+    assert restarted.boot_id != first.boot_id
+    assert restarted._authorization() is None
+    assert restarted.store.open_position()["position_id"] == "position-restart"

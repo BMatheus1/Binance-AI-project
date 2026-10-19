@@ -46,6 +46,12 @@ $env:NEXT_PUBLIC_API_BASE = "http://127.0.0.1:8000"
 
 python (Join-Path $projectRoot "scripts\run_phase6_2.py") kill-switch engage --reason dashboard_observe_start
 
+Write-Host "Validando conectividade somente leitura com a Binance Demo..."
+python (Join-Path $projectRoot "scripts\diagnose_phase6_4_connectivity.py") --timeout 8 --summary
+if ($LASTEXITCODE -ne 0) {
+    Write-Warning "O diagnóstico Demo falhou. O dashboard será iniciado em OBSERVE com ordens bloqueadas."
+}
+
 $decisionScript = Join-Path $projectRoot "scripts\run_phase6_1.py"
 $decisionService = Start-Process -FilePath "python" `
     -ArgumentList @("`"$decisionScript`"", "serve") `

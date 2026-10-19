@@ -1,0 +1,43 @@
+{
+  "sampled_at": "2026-10-19T14:29:45.844362+00:00",
+  "mode": "OBSERVE",
+  "kill_switch_engaged": true,
+  "orders_enabled": false,
+  "session": null,
+  "open_position": null,
+  "demo_public": {
+    "available": true,
+    "latency_ms": 2221.6852999990806,
+    "error": null
+  },
+  "worker": {
+    "state": "abstaining",
+    "last_error": null,
+    "cycles_completed_since_final_restart": 1,
+    "evaluations_recorded_total": 312,
+    "last_evaluation_at": "2026-10-19T14:29:00.134518+00:00"
+  },
+  "prospective_evidence_since_2026_10_19T14_24Z": {
+    "causal_evaluations": 48,
+    "orders_sent": 0,
+    "abstentions": 48,
+    "by_policy": {
+      "A_quantitative": 12,
+      "B_conservative_news": 12,
+      "C_qwen3_structured_news": 12,
+      "D_event_market_reaction": 12
+    },
+    "by_symbol": {
+      "BTCUSDT": 16,
+      "ETHUSDT": 16,
+      "SOLUSDT": 16
+    }
+  },
+  "collectors_since_final_restart": {
+    "BTCUSDT": {"messages": 2170, "reconnections": 0, "last_error": null, "book_valid": true},
+    "ETHUSDT": {"messages": 2317, "reconnections": 0, "last_error": null, "book_valid": true},
+    "SOLUSDT": {"messages": 844, "reconnections": 0, "last_error": null, "book_valid": true}
+  },
+  "minimum_24h_completed": false,
+  "note": "immutable point-in-time evidence; live counters continue increasing"
+}

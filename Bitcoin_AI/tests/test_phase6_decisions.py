@@ -3,6 +3,9 @@ from __future__ import annotations
 import asyncio
 from datetime import datetime, timedelta, timezone
 
+import numpy as np
+import pandas as pd
+
 from btc_research.phase6_1 import POLICIES
 from btc_research.phase6_decisions import ContinuousDecisionWorker, DecisionStore
 from btc_research.phase6_runtime import SingleInstanceLock
@@ -64,3 +67,29 @@ def test_single_instance_lock_rejects_second_owner(tmp_path):
                 raise AssertionError("second owner was accepted")
         except RuntimeError as exc:
             assert "already running" in str(exc)
+
+
+def test_live_forecast_uses_tuple_feature_catalog_without_attribute_error():
+    class Model:
+        columns = ["return_1"]
+
+        def predict_proba(self, frame):
+            return np.asarray([[0.1, 0.1, 0.8]])
+
+    worker = ContinuousDecisionWorker.__new__(ContinuousDecisionWorker)
+    opened = pd.date_range("2026-10-19T00:00:00Z", periods=240, freq="1min")
+    close = np.linspace(80_000, 80_500, len(opened))
+    candles = pd.DataFrame({
+        "open_time": opened, "close_time": opened + pd.Timedelta(minutes=1),
+        "open": close - 1, "high": close + 2, "low": close - 2, "close": close,
+        "volume": np.full(len(opened), 10.0), "trades": np.full(len(opened), 100),
+        "taker_base": np.full(len(opened), 5.0),
+    })
+    worker.candles = {"BTCUSDT": candles}
+    worker.models = {5: Model()}
+    worker.model_versions = {5: "frozen-test-model"}
+    worker.threshold = 0.6
+    worker.payout = 0.8
+    forecast, _ = worker._forecast_btc()
+    assert forecast["state"] == "ready"
+    assert forecast["horizons"]["5"]["signal"] == "up"

@@ -1,0 +1,28 @@
+{
+  "phase": "6.4.1",
+  "environment": "DEMO",
+  "default_mode": "OBSERVE",
+  "strategy_frozen": true,
+  "symbol": "BTCUSDT",
+  "policy": "A_quantitative",
+  "horizon_minutes": 5,
+  "maximum_order_quote": 10,
+  "connectivity": {
+    "dns": true,
+    "tls": true,
+    "rest_public": true,
+    "rest_authenticated": true,
+    "market_websocket_443": true,
+    "market_websocket_9443": true,
+    "websocket_api": true
+  },
+  "python_tests_passed": 168,
+  "frontend_build_passed": true,
+  "kill_switch_engaged": true,
+  "session_authorized": false,
+  "orders_sent_during_phase_6_4_1": false,
+  "production_endpoint_tested": false,
+  "production_trading_supported": false,
+  "minimum_24h_completed": false,
+  "claim": "technical readiness validated; no profitability claim and no authorized session started"
+}

@@ -628,14 +628,125 @@ class DashboardRepository:
             "maximum_entries_per_day", "maximum_daily_loss_quote", "maximum_spread_bps",
             "maximum_slippage_bps", "cooldown_minutes", "planned_holding_minutes", "stop_loss_bps",
             "session_maximum_minutes")}
+        account = self.account_snapshot()
+        market = self.market("BTCUSDT")
+        operations = self._strategy_operations()
+        completed = [row for row in operations if row["net_result_quote"] is not None]
+        realized = sum((row["net_result_quote"] for row in completed), 0.0) if completed else None
+        fee_totals: dict[str, float] = defaultdict(float)
+        for operation in operations:
+            for fee in operation.get("fees", []):
+                if fee.get("asset") and fee.get("amount") is not None:
+                    fee_totals[str(fee["asset"])] += float(fee["amount"])
+        position = state.get("open_position")
+        unrealized = None
+        if position:
+            entry = safe_decimal(position.get("entry_price"))
+            quantity = safe_decimal(position.get("quantity"))
+            current = safe_decimal(market.get("price"))
+            if entry is not None and quantity is not None and current is not None:
+                unrealized = number((current - entry) * quantity)
+        connectivity_report = read_json(
+            self.root / "reports/phase_6_4_1/connectivity_status.json") or {}
+        rest_connected = bool(account.get("available"))
+        stream_connected = market.get("stream_state") == "connected"
+        signal_summary = self._autonomous_signal_summary(observation.get("started_at"))
         return {"state": engine.get("state", "not_running"), "engine": engine,
+                "mode": ("EXPERIMENTAL_DEMO" if engine.get("state") == "AUTHORIZED_DEMO"
+                         else "OBSERVE"),
                 "authorization": "cli_only", "session_and_positions": state,
                 "observation": observation, "economic": economics, "limits": limits,
                 "kill_switch": self.kill.status(), "environment": "Binance Spot Demo",
+                "connection": {
+                    "state": ("connected" if rest_connected and stream_connected else
+                              "degraded" if rest_connected or connectivity_report.get(
+                                  "public_connectivity_available") else "unavailable"),
+                    "rest_authenticated": rest_connected,
+                    "rest_error": account.get("error"),
+                    "market_stream": market.get("stream_state"),
+                    "market_last_update": market.get("last_update"),
+                    "last_full_diagnostic_at": connectivity_report.get("checked_at"),
+                    "last_full_diagnostic_public_ok": connectivity_report.get(
+                        "public_connectivity_available"),
+                    "last_full_diagnostic_auth_ok": connectivity_report.get(
+                        "authenticated_connectivity_available"),
+                },
+                "account": account,
+                "operations": operations[:100],
+                "performance": {
+                    "realized_net_usdt": realized,
+                    "unrealized_gross_usdt_estimate": unrealized,
+                    "unrealized_source": ("stored Binance Demo market stream midpoint"
+                                          if unrealized is not None else None),
+                    "fees_by_asset": dict(sorted(fee_totals.items())),
+                    "completed_operations": len(completed),
+                    "open_positions": 1 if position else 0,
+                },
+                "signals": signal_summary,
                 "production_trading_supported": False,
                 "economically_validated_category_available": bool(
                     economics.get("economically_validated", False)),
                 "experimental_demo_ready_for_explicit_authorization": True}
+
+    def _autonomous_signal_summary(self, since: str | None) -> dict:
+        generated = 0
+        by_signal: dict[str, int] = defaultdict(int)
+        policy_abstentions = 0
+        policy_reasons: dict[str, int] = defaultdict(int)
+        evaluations_path = self.root / "runtime/phase_6_1/evaluations.sqlite3"
+        if evaluations_path.exists():
+            with self._readonly(evaluations_path) as db:
+                query = ("SELECT prediction_json,decision,reasons_json FROM evaluations WHERE causal_valid=1 "
+                         "AND symbol='BTCUSDT' AND policy='A_quantitative'")
+                params: tuple[Any, ...] = ()
+                if since:
+                    query += " AND evaluated_at>=?"
+                    params = (since,)
+                for row in db.execute(query, params).fetchall():
+                    generated += 1
+                    try:
+                        prediction = json.loads(row["prediction_json"])
+                        signal = prediction.get("horizons", {}).get("5", {}).get("signal")
+                    except (TypeError, json.JSONDecodeError):
+                        signal = None
+                    by_signal[str(signal or "unknown")] += 1
+                    if row["decision"] == "abstain":
+                        policy_abstentions += 1
+                        try:
+                            reasons = json.loads(row["reasons_json"])
+                        except (TypeError, json.JSONDecodeError):
+                            reasons = []
+                        for reason in reasons:
+                            policy_reasons[str(reason)] += 1
+        consumed: dict[str, int] = {}
+        ignored_reasons: dict[str, int] = defaultdict(int)
+        store_path = self.root / "runtime/phase_6_4/autonomous.sqlite3"
+        if store_path.exists():
+            with self._readonly(store_path) as db:
+                consumed = dict(db.execute(
+                    "SELECT outcome,COUNT(*) FROM consumed_evaluations GROUP BY outcome").fetchall())
+                rows = db.execute(
+                    "SELECT payload_json FROM activity WHERE event_type='entry_abstention'").fetchall()
+                for row in rows:
+                    try:
+                        payload = json.loads(row["payload_json"])
+                    except (TypeError, json.JSONDecodeError):
+                        continue
+                    for reason in payload.get("reasons", []):
+                        ignored_reasons[str(reason)] += 1
+        processed = sum(int(value) for value in consumed.values())
+        return {
+            "generated_quantitative_evaluations": generated,
+            "generated_by_5m_signal": dict(sorted(by_signal.items())),
+            "processed_by_autonomous_engine": processed,
+            "entry_attempts": int(consumed.get("entry_attempt", 0)),
+            "ignored": policy_abstentions,
+            "ignored_reasons": dict(sorted(policy_reasons.items())),
+            "executor_abstentions": int(consumed.get("abstention", 0)),
+            "executor_abstention_reasons": dict(sorted(ignored_reasons.items())),
+            "not_processed_by_autonomous_engine": max(0, generated - processed),
+            "scope": "BTCUSDT / A_quantitative / 5 minutes / prospective observation",
+        }
 
     def logs(self, limit: int = 100) -> list[dict]:
         rows = []

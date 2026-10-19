@@ -448,7 +448,9 @@ class ContinuousDecisionWorker:
         return instant if self.last_cycle_open_time is None or instant > self.last_cycle_open_time else None
 
     def _forecast_btc(self) -> tuple[dict, tuple[str, ...]]:
-        recent = self.candles["BTCUSDT"].tail(max(61, max(SPECS[name].lookback for name in SPECS)))
+        # SPECS is the frozen tuple catalog from features.py:
+        # (category, formula, lookback_minutes, dependencies).
+        recent = self.candles["BTCUSDT"].tail(max(61, max(spec[2] for spec in SPECS.values())))
         if (len(recent) < 61 or
                 recent.open_time.diff().dropna().ne(pd.Timedelta(minutes=1)).any()):
             return {"state": "unavailable", "reason": "candle_continuity_not_recovered"}, (

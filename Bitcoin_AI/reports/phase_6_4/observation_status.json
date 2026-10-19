@@ -4,33 +4,42 @@
   "started_at": "2026-10-19T13:48:18.675423+00:00",
   "completed_at": null,
   "required_seconds": 86400,
-  "elapsed_seconds": 1245.306342,
-  "remaining_seconds": 85154.693658,
+  "elapsed_seconds": 8009.551101,
+  "remaining_seconds": 78390.448899,
   "minimum_24h_completed": false,
-  "samples": 42,
-  "maximum_sample_gap_seconds": 36.30577,
+  "samples": 253,
+  "maximum_sample_gap_seconds": 65.823777,
   "sample_gaps_above_expected": 0,
-  "worker_availability_fraction": 0.09523809523809523,
+  "worker_availability_fraction": 0.766798418972332,
   "qwen_availability_fraction": 1.0,
-  "binance_demo_public_availability_fraction": 0.0,
-  "binance_demo_latency_ms_p95": null,
+  "binance_demo_public_availability_fraction": 0.7351778656126482,
+  "binance_demo_latency_ms_p95": 2265.004399989266,
   "resource_usage": {
     "cpu_percent_mean": 0.0,
     "cpu_percent_max": 0.0,
-    "memory_rss_bytes_mean": 315734211.04761904,
-    "memory_rss_bytes_max": 327540736
+    "memory_rss_bytes_mean": 341630603.6363636,
+    "memory_rss_bytes_max": 360128512
   },
-  "valid_evaluations_added": 0,
-  "evaluations_by_policy": {},
-  "evaluations_by_symbol": {},
-  "abstentions_recorded": 0,
+  "valid_evaluations_added": 1152,
+  "evaluations_by_policy": {
+    "A_quantitative": 288,
+    "B_conservative_news": 288,
+    "C_qwen3_structured_news": 288,
+    "D_event_market_reaction": 288
+  },
+  "evaluations_by_symbol": {
+    "BTCUSDT": 384,
+    "ETHUSDT": 384,
+    "SOLUSDT": 384
+  },
+  "abstentions_recorded": 1152,
   "temporal_integrity_violations": 0,
   "collector_totals": {
-    "reconnections": 162,
+    "reconnections": 225,
     "aggtrade_gap_events": 0,
     "aggtrade_missing_ids": 0,
     "depth_invalidations": 0,
-    "messages": 0
+    "messages": 398617
   },
   "problems": [
     "binance_demo_public_failure_observed",
