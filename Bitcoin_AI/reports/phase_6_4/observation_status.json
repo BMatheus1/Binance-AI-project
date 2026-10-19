@@ -4,42 +4,42 @@
   "started_at": "2026-10-19T13:48:18.675423+00:00",
   "completed_at": null,
   "required_seconds": 86400,
-  "elapsed_seconds": 35676.710061,
-  "remaining_seconds": 50723.289939,
+  "elapsed_seconds": 35777.785479,
+  "remaining_seconds": 50622.214521,
   "minimum_24h_completed": false,
-  "samples": 1067,
+  "samples": 1070,
   "maximum_sample_gap_seconds": 157.122282,
   "sample_gaps_above_expected": 2,
-  "worker_availability_fraction": 0.9447047797563262,
-  "qwen_availability_fraction": 0.9878163074039362,
-  "binance_demo_public_availability_fraction": 0.8978444236176195,
-  "binance_demo_latency_ms_p95": 4922.944854995876,
+  "worker_availability_fraction": 0.9448598130841122,
+  "qwen_availability_fraction": 0.9878504672897196,
+  "binance_demo_public_availability_fraction": 0.8981308411214953,
+  "binance_demo_latency_ms_p95": 4921.415799995884,
   "resource_usage": {
-    "cpu_percent_mean": 4.509407337723424,
+    "cpu_percent_mean": 4.53030018761726,
     "cpu_percent_max": 87.7,
-    "memory_rss_bytes_mean": 1500433641.2071228,
+    "memory_rss_bytes_mean": 1497602250.8859813,
     "memory_rss_bytes_max": 4756844544
   },
-  "valid_evaluations_added": 6255,
+  "valid_evaluations_added": 6279,
   "evaluations_by_policy": {
-    "A_quantitative": 1629,
-    "B_conservative_news": 1542,
-    "C_qwen3_structured_news": 1542,
-    "D_event_market_reaction": 1542
+    "A_quantitative": 1635,
+    "B_conservative_news": 1548,
+    "C_qwen3_structured_news": 1548,
+    "D_event_market_reaction": 1548
   },
   "evaluations_by_symbol": {
-    "BTCUSDT": 2085,
-    "ETHUSDT": 2085,
-    "SOLUSDT": 2085
+    "BTCUSDT": 2093,
+    "ETHUSDT": 2093,
+    "SOLUSDT": 2093
   },
-  "abstentions_recorded": 6255,
+  "abstentions_recorded": 6279,
   "temporal_integrity_violations": 0,
   "collector_totals": {
     "reconnections": 240,
     "aggtrade_gap_events": 12,
     "aggtrade_missing_ids": 1633,
     "depth_invalidations": 15,
-    "messages": 1293763
+    "messages": 1296837
   },
   "problems": [
     "binance_demo_public_failure_observed",
@@ -47,18 +47,18 @@
     "heartbeat_gap_above_expected_interval"
   ],
   "recent_60m": {
-    "first_sample_at": "2026-10-19T22:43:15.751451+00:00",
-    "last_sample_at": "2026-10-19T23:42:47.827038+00:00",
+    "first_sample_at": "2026-10-19T22:44:52.983278+00:00",
+    "last_sample_at": "2026-10-19T23:44:34.972602+00:00",
     "samples": 105,
     "worker_availability_fraction": 1.0,
     "demo_public_availability_fraction": 0.9428571428571428,
     "latest_collectors": {
       "BTCUSDT": {
         "symbol": "BTCUSDT",
-        "messages": 69853,
+        "messages": 71410,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T23:42:47.655949+00:00",
+        "last_message_at": "2026-10-19T23:44:34.292241+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -69,23 +69,23 @@
         "book_valid": true,
         "book": {
           "valid": true,
-          "bid": 82079.99,
-          "ask": 82080.0,
+          "bid": 82078.0,
+          "ask": 82078.01,
           "spread": 0.00999999999476131,
-          "spread_bps": 0.00121832366032202,
-          "bid_depth_quote": 1033930.4466685,
-          "ask_depth_quote": 108315.6252267,
+          "spread_bps": 0.0012183531988577585,
+          "bid_depth_quote": 25067.2482118,
+          "ask_depth_quote": 825391.4532116,
           "depth_levels": 20,
-          "last_update_id": 6167992101
+          "last_update_id": 6168004550
         },
-        "last_book_at": "2026-10-19T23:42:47.128938+00:00"
+        "last_book_at": "2026-10-19T23:44:34.283683+00:00"
       },
       "ETHUSDT": {
         "symbol": "ETHUSDT",
-        "messages": 51665,
+        "messages": 52636,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T23:42:46.150388+00:00",
+        "last_message_at": "2026-10-19T23:44:34.970278+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -96,23 +96,23 @@
         "book_valid": true,
         "book": {
           "valid": true,
-          "bid": 2410.9,
-          "ask": 2410.91,
-          "spread": 0.009999999999763531,
-          "spread_bps": 0.04147820009400425,
-          "bid_depth_quote": 416123.205015,
-          "ask_depth_quote": 60930.924135,
+          "bid": 2411.04,
+          "ask": 2411.05,
+          "spread": 0.010000000000218279,
+          "spread_bps": 0.04147579161823308,
+          "bid_depth_quote": 7087.657431,
+          "ask_depth_quote": 495464.520486,
           "depth_levels": 20,
-          "last_update_id": 5106142435
+          "last_update_id": 5106151214
         },
-        "last_book_at": "2026-10-19T23:42:46.127042+00:00"
+        "last_book_at": "2026-10-19T23:44:34.883896+00:00"
       },
       "SOLUSDT": {
         "symbol": "SOLUSDT",
-        "messages": 30761,
+        "messages": 31307,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T23:42:47.826985+00:00",
+        "last_message_at": "2026-10-19T23:44:34.972560+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -127,18 +127,18 @@
           "ask": 105.26,
           "spread": 0.010000000000005116,
           "spread_bps": 0.9500736307068659,
-          "bid_depth_quote": 2167713.60725,
-          "ask_depth_quote": 2007360.27414,
+          "bid_depth_quote": 2045877.7371299998,
+          "ask_depth_quote": 2099836.3689,
           "depth_levels": 20,
-          "last_update_id": 1179722339
+          "last_update_id": 1179724040
         },
-        "last_book_at": "2026-10-19T23:42:47.825329+00:00"
+        "last_book_at": "2026-10-19T23:44:34.971012+00:00"
       }
     },
     "latest_engine": {
       "state": "healthy",
-      "last_attempt_at": "2026-10-19T23:42:43.180168+00:00",
-      "last_success_at": "2026-10-19T23:42:44.085727+00:00",
+      "last_attempt_at": "2026-10-19T23:44:21.993329+00:00",
+      "last_success_at": "2026-10-19T23:44:23.992789+00:00",
       "failure_count": 0,
       "transient": null,
       "category": null,
@@ -155,17 +155,17 @@
   "current_process": {
     "pid": 28104,
     "first_sample_at": "2026-10-19T22:10:56.705884+00:00",
-    "last_sample_at": "2026-10-19T23:42:47.827038+00:00",
-    "samples": 156,
-    "worker_availability_fraction": 0.9935897435897436,
-    "demo_public_availability_fraction": 0.8974358974358975,
+    "last_sample_at": "2026-10-19T23:44:34.972602+00:00",
+    "samples": 159,
+    "worker_availability_fraction": 0.9937106918238994,
+    "demo_public_availability_fraction": 0.89937106918239,
     "latest_collectors": {
       "BTCUSDT": {
         "symbol": "BTCUSDT",
-        "messages": 69853,
+        "messages": 71410,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T23:42:47.655949+00:00",
+        "last_message_at": "2026-10-19T23:44:34.292241+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -176,23 +176,23 @@
         "book_valid": true,
         "book": {
           "valid": true,
-          "bid": 82079.99,
-          "ask": 82080.0,
+          "bid": 82078.0,
+          "ask": 82078.01,
           "spread": 0.00999999999476131,
-          "spread_bps": 0.00121832366032202,
-          "bid_depth_quote": 1033930.4466685,
-          "ask_depth_quote": 108315.6252267,
+          "spread_bps": 0.0012183531988577585,
+          "bid_depth_quote": 25067.2482118,
+          "ask_depth_quote": 825391.4532116,
           "depth_levels": 20,
-          "last_update_id": 6167992101
+          "last_update_id": 6168004550
         },
-        "last_book_at": "2026-10-19T23:42:47.128938+00:00"
+        "last_book_at": "2026-10-19T23:44:34.283683+00:00"
       },
       "ETHUSDT": {
         "symbol": "ETHUSDT",
-        "messages": 51665,
+        "messages": 52636,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T23:42:46.150388+00:00",
+        "last_message_at": "2026-10-19T23:44:34.970278+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -203,23 +203,23 @@
         "book_valid": true,
         "book": {
           "valid": true,
-          "bid": 2410.9,
-          "ask": 2410.91,
-          "spread": 0.009999999999763531,
-          "spread_bps": 0.04147820009400425,
-          "bid_depth_quote": 416123.205015,
-          "ask_depth_quote": 60930.924135,
+          "bid": 2411.04,
+          "ask": 2411.05,
+          "spread": 0.010000000000218279,
+          "spread_bps": 0.04147579161823308,
+          "bid_depth_quote": 7087.657431,
+          "ask_depth_quote": 495464.520486,
           "depth_levels": 20,
-          "last_update_id": 5106142435
+          "last_update_id": 5106151214
         },
-        "last_book_at": "2026-10-19T23:42:46.127042+00:00"
+        "last_book_at": "2026-10-19T23:44:34.883896+00:00"
       },
       "SOLUSDT": {
         "symbol": "SOLUSDT",
-        "messages": 30761,
+        "messages": 31307,
         "connection_state": "connected",
         "reconnections": 0,
-        "last_message_at": "2026-10-19T23:42:47.826985+00:00",
+        "last_message_at": "2026-10-19T23:44:34.972560+00:00",
         "last_reconnect_at": null,
         "last_error": null,
         "last_error_details": null,
@@ -234,18 +234,18 @@
           "ask": 105.26,
           "spread": 0.010000000000005116,
           "spread_bps": 0.9500736307068659,
-          "bid_depth_quote": 2167713.60725,
-          "ask_depth_quote": 2007360.27414,
+          "bid_depth_quote": 2045877.7371299998,
+          "ask_depth_quote": 2099836.3689,
           "depth_levels": 20,
-          "last_update_id": 1179722339
+          "last_update_id": 1179724040
         },
-        "last_book_at": "2026-10-19T23:42:47.825329+00:00"
+        "last_book_at": "2026-10-19T23:44:34.971012+00:00"
       }
     },
     "latest_engine": {
       "state": "healthy",
-      "last_attempt_at": "2026-10-19T23:42:43.180168+00:00",
-      "last_success_at": "2026-10-19T23:42:44.085727+00:00",
+      "last_attempt_at": "2026-10-19T23:44:21.993329+00:00",
+      "last_success_at": "2026-10-19T23:44:23.992789+00:00",
       "failure_count": 0,
       "transient": null,
       "category": null,
