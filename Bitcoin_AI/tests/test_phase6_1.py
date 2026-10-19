@@ -78,6 +78,28 @@ def _event(title: str, summary: str):
     return classify_item(item, NOW)
 
 
+def test_independent_policy_a_matches_full_engine_without_reading_news(tmp_path):
+    store = EventStore(tmp_path / "news.sqlite3")
+    engine = FourPolicyEngine(event_store=store, ledger=DecisionLedger(tmp_path / "decisions.jsonl"),
+                              neural_classifier=FakeNeuralClassifier())
+    snapshots = [_snapshot()]
+    forecasts = {"BTCUSDT": {"expected_gross_return_bps": None}}
+    reasons = {"BTCUSDT": ("quantitative_threshold_abstention",)}
+    expected = engine.evaluate(snapshots, as_of=NOW, forecasts=forecasts,
+                                technical_reasons=reasons)["policies"]["A_quantitative"]
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("policy A must not wait for news or Qwen")
+
+    engine.event_store.available = forbidden
+    engine.neural.interpret = forbidden
+    actual = engine.evaluate_quantitative(snapshots, as_of=NOW, forecasts=forecasts,
+                                          technical_reasons=reasons)
+    assert actual["policies"]["A_quantitative"] == expected
+    assert actual["neural_interpretation"] == {}
+    assert actual["orders_sent"] is False
+
+
 @pytest.fixture(scope="module")
 def tiny_finbert(tmp_path_factory):
     torch = pytest.importorskip("torch")

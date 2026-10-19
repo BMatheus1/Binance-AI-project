@@ -1,0 +1,191 @@
+{
+  "environment": "BINANCE_DEMO",
+  "user_requested_execution": true,
+  "policy_parameters_changed": false,
+  "orders": {
+    "buy": {
+      "assumed_filled": true,
+      "clientOrderId": "bai62-b-3e6e8f18f0c74857a3c8",
+      "cummulativeQuoteQty": "9.83520120",
+      "executedQty": "0.00012000",
+      "execution_state": "filled",
+      "fills": [
+        {
+          "commission": "0.00000012",
+          "commissionAsset": "BTC",
+          "price": "81960.01000000",
+          "qty": "0.00012000",
+          "tradeId": 326088864
+        }
+      ],
+      "orderId": 74946712202,
+      "orderListId": -1,
+      "origQty": "0.00012000",
+      "origQuoteOrderQty": "0.00000000",
+      "price": "0.00000000",
+      "selfTradePreventionMode": "EXPIRE_MAKER",
+      "side": "BUY",
+      "status": "FILLED",
+      "symbol": "BTCUSDT",
+      "timeInForce": "GTC",
+      "transactTime": 1792439284743,
+      "type": "MARKET",
+      "workingTime": 1792439284743
+    },
+    "diagnostic_economics": {
+      "buy_quote": "9.8352012",
+      "net_quote": null,
+      "net_quote_complete": false,
+      "non_quote_fees": [
+        {
+          "amount": "0.00000012",
+          "asset": "BTC"
+        }
+      ],
+      "quote_fees": "0.0090156",
+      "sell_quote": "9.0156",
+      "strategy_evaluation_eligible": false
+    },
+    "diagnostic_id": "diag-20261019T194804-ff54a6e5",
+    "mode": "DEMO_DIAGNOSTIC",
+    "reconciled": true,
+    "remaining_open_orders": 0,
+    "sell": {
+      "assumed_filled": true,
+      "clientOrderId": "bai62-s-e38ad23b2af240468000",
+      "cummulativeQuoteQty": "9.01560000",
+      "executedQty": "0.00011000",
+      "execution_state": "filled",
+      "fills": [
+        {
+          "commission": "0.00901560",
+          "commissionAsset": "USDT",
+          "price": "81960.00000000",
+          "qty": "0.00011000",
+          "tradeId": 326088869
+        }
+      ],
+      "orderId": 74946715960,
+      "orderListId": -1,
+      "origQty": "0.00011000",
+      "origQuoteOrderQty": "0.00000000",
+      "price": "0.00000000",
+      "selfTradePreventionMode": "EXPIRE_MAKER",
+      "side": "SELL",
+      "status": "FILLED",
+      "symbol": "BTCUSDT",
+      "timeInForce": "GTC",
+      "transactTime": 1792439285252,
+      "type": "MARKET",
+      "workingTime": 1792439285252
+    },
+    "strategy_evaluation_eligible": false
+  },
+  "dashboard_operation": {
+    "operation_id": "diag-20261019T194804-ff54a6e5",
+    "category": "diagnostic",
+    "policy": null,
+    "symbol": "BTCUSDT",
+    "entry_time": "2026-10-19T19:48:04.360046+00:00",
+    "exit_time": "2026-10-19T19:48:05.694070+00:00",
+    "entry_price": 81960.01,
+    "exit_price": 81960.0,
+    "quantity": 0.00012,
+    "fees": [
+      {
+        "asset": "BTC",
+        "amount": 1.2e-07
+      },
+      {
+        "asset": "USDT",
+        "amount": 0.0090156
+      }
+    ],
+    "residual_base_quantity": 9.879999999999993e-06,
+    "residual_quote_value_at_exit": 0.8097647999999995,
+    "gross_result_quote": -0.009836400000001078,
+    "net_result_quote": -0.018852000000001076,
+    "net_result_reason": "diagnostic only; includes residual valued at exit price",
+    "stop_loss": null,
+    "planned_duration_minutes": null,
+    "close_reason": "controlled_diagnostic_round_trip",
+    "status": "reconciled",
+    "exchange_states": [
+      {
+        "side": "SELL",
+        "state": "RECONCILED",
+        "client_order_id": "bai62-s-e38ad23b2af240468000"
+      },
+      {
+        "side": "BUY",
+        "state": "RECONCILED",
+        "client_order_id": "bai62-b-3e6e8f18f0c74857a3c8"
+      }
+    ],
+    "strategy_evaluation_eligible": false
+  },
+  "rounding_residual_btc": "0.00000988",
+  "excluded_from_strategy_metrics": true,
+  "python_tests_passed": 187,
+  "resumed_autonomous_session": {
+    "session_id": "demo-20261019T194959-6806dab9",
+    "boot_id": "e325bdf776aa4361963800f08dcf937b",
+    "created_at": "2026-10-19T19:49:59.707267+00:00",
+    "authorized_at": "2026-10-19T19:50:07.088471+00:00",
+    "expires_at": "2026-10-19T21:50:07.088446+00:00",
+    "state": "authorized",
+    "policy": "A_quantitative",
+    "symbol": "BTCUSDT",
+    "quote_amount": "10.0",
+    "entries": 0,
+    "stop_reason": null
+  },
+  "final_engine": {
+    "boot_id": "e325bdf776aa4361963800f08dcf937b",
+    "pid": 21228,
+    "state": "AUTHORIZED_DEMO",
+    "last_error": null,
+    "updated_at": "2026-10-19T19:50:35.532063+00:00",
+    "orders_enabled": true,
+    "reconciliation": {
+      "state": "healthy",
+      "last_attempt_at": "2026-10-19T19:50:06.588343+00:00",
+      "last_success_at": "2026-10-19T19:50:09.394826+00:00",
+      "failure_count": 0,
+      "transient": null,
+      "category": null,
+      "next_retry_at": null,
+      "error": null,
+      "unresolved_intents": 0,
+      "open_orders": 0,
+      "account_can_trade": true,
+      "position_present": false,
+      "credentials_present": true
+    },
+    "environment": "DEMO",
+    "real_trading_supported": false
+  },
+  "final_kill_switch": {
+    "engaged": false,
+    "reason": "explicit_demo_authorization",
+    "updated_at": "2026-10-19T19:50:07.129344+00:00"
+  },
+  "dashboard_connection": {
+    "state": "connected",
+    "rest_authenticated": true,
+    "rest_error": null,
+    "market_stream": "connected",
+    "market_last_update": "2026-10-19T19:50:38.086074+00:00",
+    "last_full_diagnostic_at": "2026-10-19T19:49:21.199163+00:00",
+    "last_full_diagnostic_public_ok": true,
+    "last_full_diagnostic_auth_ok": true
+  },
+  "clock_correction": {
+    "persistent_https_session": true,
+    "monotonic_server_clock_anchor": true,
+    "timestamp_retry_only_get": true,
+    "recv_window_ms": 5000,
+    "order_replay_enabled": false,
+    "full_tests_passed": 187
+  }
+}

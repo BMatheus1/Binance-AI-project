@@ -7,6 +7,7 @@ import json
 import math
 import os
 import random
+import time
 import uuid
 from dataclasses import asdict, dataclass, field
 from datetime import date, datetime, timedelta, timezone
@@ -273,10 +274,11 @@ class DemoTransport(Protocol):
 class BinanceDemoAPIError(RuntimeError):
     """Sanitized API error that never includes request headers or signed URLs."""
     def __init__(self, message: str, *, http_status: int | None = None,
-                 api_code: int | None = None):
+                 api_code: int | None = None, transport_error: str | None = None):
         super().__init__(message)
         self.http_status = http_status
         self.api_code = api_code
+        self.transport_error = transport_error
 
 
 class RequestsDemoTransport:
@@ -285,6 +287,7 @@ class RequestsDemoTransport:
         if timeout_seconds <= 0:
             raise ValueError("timeout must be positive")
         self.timeout_seconds = timeout_seconds
+        self._session = None
 
     def __call__(self, method: str, url: str, headers: dict[str, str], params: dict) -> dict:
         import requests
@@ -297,11 +300,14 @@ class RequestsDemoTransport:
         if method not in {"GET", "POST", "DELETE"}:
             raise ValueError("unsupported Binance Demo HTTP method")
         try:
-            response = requests.request(method, url, headers=headers, params=params,
+            if self._session is None:
+                self._session = requests.Session()
+            response = self._session.request(method, url, headers=headers, params=params,
                                         timeout=self.timeout_seconds, allow_redirects=False)
         except requests.RequestException as exc:
             raise BinanceDemoAPIError(
-                f"falha de transporte Binance Demo: {type(exc).__name__}") from None
+                f"falha de transporte Binance Demo: {type(exc).__name__}",
+                transport_error=type(exc).__name__) from None
         if 300 <= response.status_code < 400:
             raise BinanceDemoAPIError("redirecionamento bloqueado no endpoint Demo",
                                       http_status=response.status_code)
@@ -354,7 +360,7 @@ class BinanceDemoBroker:
               order_action: bool = False) -> dict:
         allowed = {("GET", "/v3/ping"), ("GET", "/v3/time"),
                    ("GET", "/v3/account"), ("GET", "/v3/exchangeInfo"),
-                   ("GET", "/v3/avgPrice"), ("GET", "/v3/openOrders"),
+                   ("GET", "/v3/avgPrice"), ("GET", "/v3/ticker/bookTicker"), ("GET", "/v3/openOrders"),
                    ("GET", "/v3/myTrades"), ("GET", "/v3/account/commission"),
                    ("GET", "/v3/order"), ("POST", "/v3/order"),
                    ("DELETE", "/v3/order")}
@@ -371,13 +377,42 @@ class BinanceDemoBroker:
             if not self.enabled:
                 raise RuntimeError("Binance Demo orders are disabled; credentials are incomplete")
             raise RuntimeError("Binance Demo credentials are incomplete")
-        values = dict(params)
-        if signed:
-            values.update(timestamp=self.clock_ms(), recvWindow=5000)
-            signature = hmac.new(self._api_secret.encode(), urlencode(values).encode(), hashlib.sha256).hexdigest()
-            values["signature"] = signature
         headers = {"X-MBX-APIKEY": self.api_key} if signed else {}
-        return self.transport(method, f"{self.base_url}{path}", headers, values)
+        for attempt in range(2):
+            values = dict(params)
+            if signed:
+                values.update(timestamp=self.clock_ms(), recvWindow=5000)
+                signature = hmac.new(self._api_secret.encode(), urlencode(values).encode(), hashlib.sha256).hexdigest()
+                values["signature"] = signature
+            try:
+                return self.transport(method, f"{self.base_url}{path}", headers, values)
+            except BinanceDemoAPIError as exc:
+                # Only an explicitly rejected read may be repeated. Orders and
+                # cancels always go through the durable single-submit recovery.
+                if signed and method == "GET" and exc.api_code == -1021 and attempt == 0:
+                    self.synchronize_clock()
+                    continue
+                raise
+        raise RuntimeError("unreachable Demo read retry state")
+
+    def synchronize_clock(self, samples: int = 3) -> dict:
+        if not 1 <= samples <= 5:
+            raise ValueError("invalid Demo clock sample count")
+        candidates = []
+        for _ in range(samples):
+            started = time.monotonic()
+            server_ms = int(self.server_time()["serverTime"])
+            received = time.monotonic()
+            candidates.append((received - started, server_ms, received))
+        rtt, server_ms, anchor = min(candidates, key=lambda item: item[0])
+        if rtt * 1000 >= 2500:
+            raise RuntimeError("Demo clock synchronization latency exceeds safe 5000ms window")
+        # Conservative server-time anchor; monotonic time avoids local wall
+        # clock adjustments and the fastest sample limits response-path lag.
+        self.clock_ms = lambda: server_ms + int((time.monotonic() - anchor) * 1000)
+        return {"server_time_offset_ms": self.clock_ms() - int(time.time() * 1000),
+                "best_round_trip_ms": rtt * 1000, "samples": samples,
+                "recv_window_ms": 5000}
 
     def ping(self) -> dict:
         return self._call("GET", "/v3/ping", {}, signed=False)
@@ -397,6 +432,11 @@ class BinanceDemoBroker:
         if symbol not in UNIVERSE:
             raise ValueError("symbol outside the frozen Demo universe")
         return self._call("GET", "/v3/avgPrice", {"symbol": symbol}, signed=False)
+
+    def book_ticker(self, symbol: str) -> dict:
+        if symbol not in UNIVERSE:
+            raise ValueError("symbol outside the frozen Demo universe")
+        return self._call("GET", "/v3/ticker/bookTicker", {"symbol": symbol}, signed=False)
 
     def open_orders(self, symbol: str | None = None) -> list[dict]:
         if symbol is not None and symbol not in UNIVERSE:

@@ -81,7 +81,7 @@ class Phase61Supervisor:
     def __init__(self, *, news_service, market_service, heartbeat_path: Path,
                  log_path: Path, heartbeat_seconds: float = 30, neural_worker=None,
                  decision_worker=None, observation_monitor=None,
-                 autonomous_engine=None):
+                 autonomous_engine=None, news_decision_worker=None):
         if heartbeat_seconds <= 0:
             raise ValueError("heartbeat interval must be positive")
         self.news = news_service
@@ -91,6 +91,7 @@ class Phase61Supervisor:
         self.logger = structured_logger(log_path)
         self.neural_worker = neural_worker
         self.decision_worker = decision_worker
+        self.news_decision_worker = news_decision_worker
         self.observation_monitor = observation_monitor
         self.autonomous_engine = autonomous_engine
         self.started_at: datetime | None = None
@@ -104,6 +105,7 @@ class Phase61Supervisor:
                 "stopped_at": self.stopped_at.isoformat() if self.stopped_at else None,
                 "state": "stopped" if self.stopped_at else "running" if self.started_at else "created",
                 "updated_at": datetime.now(UTC).isoformat(), "real_orders": False,
+                "heartbeat_interval_seconds": self.heartbeat_seconds,
                 "news_cycle_seconds": getattr(self.news, "cycle_seconds", None),
                 "news_cycles_completed": getattr(self.news, "cycles_completed", None),
                 "last_news_cycle_completed_at": getattr(self.news, "last_cycle_completed_at", None),
@@ -112,6 +114,9 @@ class Phase61Supervisor:
                 "decision_worker": (self.decision_worker.status()
                                     if self.decision_worker is not None else
                                     {"state": "not_configured", "orders_sent": False}),
+                "news_decision_worker": (self.news_decision_worker.status()
+                                         if self.news_decision_worker is not None else
+                                         {"state": "not_configured"}),
                 "phase6_4_observation": (self.observation_monitor.status()
                                          if self.observation_monitor is not None else
                                          {"state": "not_configured"}),
@@ -168,6 +173,10 @@ class Phase61Supervisor:
             coroutine = (self._guard("decisions", self.decision_worker.run)
                          if duration_seconds is None else self.decision_worker.run())
             tasks.append(asyncio.create_task(coroutine))
+        if self.news_decision_worker is not None:
+            coroutine = (self._guard("news_decisions", self.news_decision_worker.run)
+                         if duration_seconds is None else self.news_decision_worker.run())
+            tasks.append(asyncio.create_task(coroutine))
         if self.observation_monitor is not None:
             coroutine = (self._guard("observation", self.observation_monitor.run)
                          if duration_seconds is None else self.observation_monitor.run())
@@ -201,6 +210,8 @@ class Phase61Supervisor:
             self.neural_worker.stop()
         if self.decision_worker is not None:
             self.decision_worker.stop()
+        if self.news_decision_worker is not None:
+            self.news_decision_worker.stop()
         if self.observation_monitor is not None:
             self.observation_monitor.stop()
         if self.autonomous_engine is not None:

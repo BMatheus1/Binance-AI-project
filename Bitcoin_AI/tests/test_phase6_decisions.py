@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 
 import numpy as np
 import pandas as pd
+from types import SimpleNamespace
 
 from btc_research.phase6_1 import POLICIES
 from btc_research.phase6_decisions import ContinuousDecisionWorker, DecisionStore
@@ -93,3 +94,31 @@ def test_live_forecast_uses_tuple_feature_catalog_without_attribute_error():
     forecast, _ = worker._forecast_btc()
     assert forecast["state"] == "ready"
     assert forecast["horizons"]["5"]["signal"] == "up"
+
+
+def test_independent_worker_publishes_while_news_path_is_unavailable(tmp_path):
+    worker = ContinuousDecisionWorker.__new__(ContinuousDecisionWorker)
+    worker.quantitative_only = True
+    worker.publish_quantitative = True
+    worker.evaluations_recorded = worker.cycles_completed = 0
+    worker.last_error = None
+    instant = pd.Timestamp("2026-10-19T00:00:00Z")
+    market = {"BTCUSDT": {"candle_close_time": "2026-10-19T00:00:59.999000+00:00"}}
+    result = {"as_of": "2026-10-19T00:01:00.100000+00:00",
+              "forecasts": {}, "policies": {"A_quantitative": {
+                  "selected": None, "opportunities": [{"symbol": "BTCUSDT",
+                  "cost_bps": 14., "expected_gross_bps": None, "expected_net_bps": None,
+                  "decision": "abstain", "reasons": ["threshold"], "news_event_ids": []}]}}}
+
+    def unavailable(**kwargs):
+        raise AssertionError("news path called")
+
+    worker.engine = SimpleNamespace(evaluate=unavailable,
+                                   evaluate_quantitative=lambda *args, **kwargs: result)
+    worker._build_cycle = lambda _: ([], {}, {}, market)
+    worker.candles = {"BTCUSDT": pd.DataFrame()}
+    worker.store = DecisionStore(tmp_path / "decisions.sqlite3")
+    worker._evaluate_cycle(instant)
+    assert worker.store.count() == 1
+    assert worker.last_evaluation_at == result["as_of"]
+    assert worker.cycles_completed == 1

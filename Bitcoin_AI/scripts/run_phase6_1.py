@@ -9,6 +9,7 @@ from pathlib import Path
 from btc_research.common import ROOT, digest, save_json, versions
 from btc_research.phase6 import MultiAssetMarketService, build_news_service
 from btc_research.phase6_news import NewsService, SourcePolicy
+from btc_research.phase6_2 import load_local_dotenv
 from btc_research.phase6_nlp import (Qwen3Interpreter, download_qwen3,
                                      load_phase61_config, model_directory)
 from btc_research.phase6_runtime import Phase61Supervisor, SingleInstanceLock
@@ -109,6 +110,9 @@ def nlp_smoke() -> dict:
 
 
 async def serve(seconds: float | None) -> dict:
+    # The long-running process must load the same Demo-only environment used by
+    # the authorization CLI. load_local_dotenv never prints or returns secrets.
+    load_local_dotenv(ROOT)
     config = load_phase61_config(ROOT)
     base_news = build_news_service(ROOT)
     extra = tuple(SourcePolicy(source_id=row["id"], url=row["url"], reliability=row["reliability"],
@@ -118,20 +122,34 @@ async def serve(seconds: float | None) -> dict:
     news_service = NewsService((*base_news.sources, *extra), base_news.store, base_news.fetcher,
                                cycle_seconds=config["news_cycle_seconds"])
     phase64 = load_phase64_config(ROOT)
-    decision_worker = ContinuousDecisionWorker(ROOT, rest_base=phase64["endpoints"]["rest_root"])
+    quantitative_worker = ContinuousDecisionWorker(
+        ROOT, rest_base=phase64["endpoints"]["rest_root"], quantitative_only=True)
+    decision_worker = ContinuousDecisionWorker(
+        ROOT, rest_base=phase64["endpoints"]["rest_root"], publish_quantitative=False,
+        shared_cycle_source=quantitative_worker)
+    # Expose real Qwen telemetry; the quantitative path never invokes it.
+    quantitative_worker.neural = decision_worker.neural
+    quantitative_worker.news_context_source = decision_worker
+
+    def market_event(record):
+        quantitative_worker.on_event(record)
+
     market_service = MultiAssetMarketService(
-        ROOT, event_callback=decision_worker.on_event,
+        ROOT, event_callback=market_event,
         websocket_base=phase64["endpoints"]["market_stream"],
         rest_base=phase64["endpoints"]["rest_root"])
-    observation_monitor = ObservationMonitor(root=ROOT, decision_worker=decision_worker,
-                                             market_service=market_service)
-    autonomous_engine = SupervisedDemoEngine(ROOT)
+    autonomous_engine = SupervisedDemoEngine(ROOT, market_status=market_service.status)
+    observation_monitor = ObservationMonitor(root=ROOT, decision_worker=quantitative_worker,
+                                             market_service=market_service,
+                                             autonomous_engine=autonomous_engine)
     supervisor = Phase61Supervisor(
         news_service=news_service,
         market_service=market_service,
         heartbeat_path=ROOT / "runtime/phase_6_1/heartbeat.json",
+        heartbeat_seconds=5,
         log_path=ROOT / "runtime/phase_6_1/service.jsonl",
-        decision_worker=decision_worker, observation_monitor=observation_monitor,
+        decision_worker=quantitative_worker, news_decision_worker=decision_worker,
+        observation_monitor=observation_monitor,
         autonomous_engine=autonomous_engine)
     result = await supervisor.run(duration_seconds=seconds)
     result["event_store_counts"] = news_service.store.counts()

@@ -1,0 +1,63 @@
+{
+  "verified_at": "2026-10-19T21:11:56.738634+00:00",
+  "endpoints": {
+    "overview": {
+      "http_status": 200,
+      "autonomous": {
+        "ready": false,
+        "policy": "A_quantitative",
+        "state": "OBSERVE",
+        "checks": {
+          "engine_authorized": false,
+          "engine_orders_enabled": false,
+          "engine_heartbeat_fresh": true,
+          "session_authorized": false,
+          "session_unexpired": false,
+          "session_bound_to_engine": false,
+          "kill_switch_cleared": false,
+          "reconciliation_healthy": true,
+          "reconciliation_fresh": true
+        },
+        "status_label": "Bloqueado pelo kill switch",
+        "status_tone": "bad",
+        "session_id": null,
+        "expires_at": null,
+        "source": "phase6_4_engine_and_session"
+      },
+      "latest_decision_id": "e95b8894fc6b8854f86859105f0b20e3bf503f957ced4f87e43478f33c3a77d4"
+    },
+    "intelligence": {
+      "http_status": 200,
+      "worker_state": "abstaining",
+      "unified_decisions": 30,
+      "context_state": "abstaining"
+    },
+    "autonomous": {
+      "http_status": 200,
+      "state": "OBSERVE",
+      "kill_switch": true,
+      "orders_enabled": false,
+      "account_available": true
+    },
+    "events": {
+      "http_status": 200,
+      "count": 35,
+      "unique_ids": 35
+    },
+    "system-health": {
+      "http_status": 200,
+      "resources": {
+        "cpu_percent": 87.1,
+        "memory_rss_bytes": 209948672
+      },
+      "market": {
+        "all_healthy": true,
+        "source": "current_market_timestamps"
+      },
+      "rest": {
+        "state": "available",
+        "last_error": null
+      }
+    }
+  }
+}

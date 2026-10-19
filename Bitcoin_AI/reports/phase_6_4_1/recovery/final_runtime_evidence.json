@@ -1,0 +1,203 @@
+{
+  "captured_at": "2026-10-19T19:26:32.849134+00:00",
+  "engine": {
+    "boot_id": "7e727d2057414f9481398231f35d3f61",
+    "pid": 24928,
+    "state": "OBSERVE",
+    "last_error": null,
+    "updated_at": "2026-10-19T19:26:10.950176+00:00",
+    "orders_enabled": false,
+    "reconciliation": {
+      "state": "healthy",
+      "last_attempt_at": "2026-10-19T19:25:39.426575+00:00",
+      "last_success_at": "2026-10-19T19:25:45.787183+00:00",
+      "failure_count": 0,
+      "transient": null,
+      "category": null,
+      "next_retry_at": null,
+      "error": null,
+      "unresolved_intents": 0,
+      "open_orders": 0,
+      "account_can_trade": true,
+      "position_present": false,
+      "credentials_present": true
+    },
+    "environment": "DEMO",
+    "real_trading_supported": false
+  },
+  "kill_switch": {
+    "engaged": true,
+    "reason": "dashboard_observe_start",
+    "updated_at": "2026-10-19T19:25:05.754513+00:00"
+  },
+  "dashboard_http_status": 200,
+  "connection": {
+    "state": "connected",
+    "rest_authenticated": true,
+    "rest_error": null,
+    "market_stream": "connected",
+    "market_last_update": "2026-10-19T19:26:31.092962+00:00",
+    "last_full_diagnostic_at": "2026-10-19T19:25:29.814158+00:00",
+    "last_full_diagnostic_public_ok": true,
+    "last_full_diagnostic_auth_ok": true
+  },
+  "active_session": null,
+  "open_position": null,
+  "experimental_operation_count": 0,
+  "execution_journal_states": {
+    "RECONCILED": 2
+  },
+  "observation": {
+    "session_id": "obs-20261019T134818-5f0db660",
+    "started_at": "2026-10-19T13:48:18.675423+00:00",
+    "minimum_24h_completed": false,
+    "recent_60m": {
+      "first_sample_at": "2026-10-19T18:26:26.365582+00:00",
+      "last_sample_at": "2026-10-19T19:26:10.598552+00:00",
+      "samples": 112,
+      "worker_availability_fraction": 0.9821428571428571,
+      "demo_public_availability_fraction": 1.0,
+      "latest_collectors": {
+        "BTCUSDT": {
+          "symbol": "BTCUSDT",
+          "messages": 545,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T19:26:10.598482+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true
+        },
+        "ETHUSDT": {
+          "symbol": "ETHUSDT",
+          "messages": 618,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T19:26:10.188446+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true
+        },
+        "SOLUSDT": {
+          "symbol": "SOLUSDT",
+          "messages": 256,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T19:26:10.364857+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true
+        }
+      },
+      "latest_engine": {
+        "state": "healthy",
+        "last_attempt_at": "2026-10-19T19:25:39.426575+00:00",
+        "last_success_at": "2026-10-19T19:25:45.787183+00:00",
+        "failure_count": 0,
+        "transient": null,
+        "category": null,
+        "next_retry_at": null,
+        "error": null,
+        "unresolved_intents": 0,
+        "open_orders": 0,
+        "account_can_trade": true,
+        "position_present": false,
+        "credentials_present": true
+      },
+      "basis": "sampled availability; whole-protocol failures remain preserved"
+    },
+    "current_process": {
+      "pid": 24928,
+      "first_sample_at": "2026-10-19T19:25:39.285477+00:00",
+      "last_sample_at": "2026-10-19T19:26:10.598552+00:00",
+      "samples": 2,
+      "worker_availability_fraction": 0.5,
+      "demo_public_availability_fraction": 1.0,
+      "latest_collectors": {
+        "BTCUSDT": {
+          "symbol": "BTCUSDT",
+          "messages": 545,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T19:26:10.598482+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true
+        },
+        "ETHUSDT": {
+          "symbol": "ETHUSDT",
+          "messages": 618,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T19:26:10.188446+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true
+        },
+        "SOLUSDT": {
+          "symbol": "SOLUSDT",
+          "messages": 256,
+          "connection_state": "connected",
+          "reconnections": 0,
+          "last_message_at": "2026-10-19T19:26:10.364857+00:00",
+          "last_reconnect_at": null,
+          "last_error": null,
+          "last_error_details": null,
+          "aggtrade_duplicates": 0,
+          "aggtrade_gap_events": 0,
+          "aggtrade_missing_ids": 0,
+          "depth_invalidations": 0,
+          "book_valid": true
+        }
+      },
+      "latest_engine": {
+        "state": "healthy",
+        "last_attempt_at": "2026-10-19T19:25:39.426575+00:00",
+        "last_success_at": "2026-10-19T19:25:45.787183+00:00",
+        "failure_count": 0,
+        "transient": null,
+        "category": null,
+        "next_retry_at": null,
+        "error": null,
+        "unresolved_intents": 0,
+        "open_orders": 0,
+        "account_can_trade": true,
+        "position_present": false,
+        "credentials_present": true
+      },
+      "basis": "sampled availability; whole-protocol failures remain preserved"
+    }
+  },
+  "validation": {
+    "python_tests_passed": 186,
+    "frontend_build_passed": true,
+    "compileall_passed": true,
+    "orders_sent_during_correction": false,
+    "production_trading_supported": false
+  }
+}

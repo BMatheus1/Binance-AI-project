@@ -183,6 +183,8 @@ class BinancePublicCollector:
         self.last_message_at: str | None = None
         self.last_reconnect_at: str | None = None
         self.last_error: str | None = None
+        self.connection_state = "disconnected"
+        self.last_error_details: dict | None = None
 
     @property
     def url(self) -> str:
@@ -233,29 +235,55 @@ class BinancePublicCollector:
                 break
             try:
                 async with websockets.connect(self.url, ping_interval=20, ping_timeout=20, close_timeout=5) as socket:
-                    attempt = 0
+                    self.connection_state = "connected"
                     while not self.stop_event.is_set():
-                        timeout = None if duration_seconds is None else max(.01, duration_seconds - (asyncio.get_running_loop().time() - started))
-                        if timeout is not None and timeout <= .01:
+                        remaining = None if duration_seconds is None else max(.01, duration_seconds - (asyncio.get_running_loop().time() - started))
+                        if remaining is not None and remaining <= .01:
                             break
+                        timeout = min(30.0, remaining) if remaining is not None else 30.0
                         raw = await asyncio.wait_for(socket.recv(), timeout=timeout)
                         await self._handle(json.loads(raw))
                         messages += 1
                         self.messages += 1
                         self.last_message_at = utc_now().isoformat()
-            except asyncio.TimeoutError:
-                break
+                        self.last_error = None
+                        self.last_error_details = None
+                        attempt = 0
             except Exception as exc:
+                if (isinstance(exc, asyncio.TimeoutError) and duration_seconds is not None and
+                        asyncio.get_running_loop().time() - started >= duration_seconds):
+                    break
+                self.connection_state = "disconnected"
+                self.book.invalidate()
                 self.reconnections += 1
                 self.last_reconnect_at = utc_now().isoformat()
                 self.last_error = type(exc).__name__
+                received_close = getattr(exc, "rcvd", None)
+                self.last_error_details = {
+                    "error_type": type(exc).__name__,
+                    "errno": getattr(exc, "errno", None),
+                    "winerror": getattr(exc, "winerror", None),
+                    "received_close_code": getattr(received_close, "code", None),
+                }
                 self.storage.append("collector", {"received_at": utc_now().isoformat(), "event": "reconnect",
-                                                    "error": type(exc).__name__, "attempt": attempt})
+                                                    "error": type(exc).__name__, "attempt": attempt,
+                                                    "details": self.last_error_details})
+                if self.event_callback is not None:
+                    notification = {"stream": f"{self.symbol}@collector",
+                                    "received_at": self.last_reconnect_at,
+                                    "payload": {"e": "collectorDisconnected"}}
+                    callback_result = self.event_callback(notification)
+                    if inspect.isawaitable(callback_result):
+                        await callback_result
                 delay = self.reconnect_seconds[min(attempt, len(self.reconnect_seconds) - 1)]
                 attempt += 1
                 if duration_seconds is not None and asyncio.get_running_loop().time() - started + delay >= duration_seconds:
                     break
-                await asyncio.sleep(delay)
+                try:
+                    await asyncio.wait_for(self.stop_event.wait(), timeout=delay)
+                except asyncio.TimeoutError:
+                    pass
+        self.connection_state = "stopped"
         self.storage.flush()
         return {"messages": messages, "reconnections": self.reconnections,
                 "aggtrade_duplicates": self.monitor.duplicates, "aggtrade_gap_events": self.monitor.gap_events,
@@ -265,10 +293,12 @@ class BinancePublicCollector:
     def status(self) -> dict:
         """Live counters used by the long-running prospective audit."""
         return {"symbol": self.symbol.upper(), "messages": self.messages,
+                "connection_state": self.connection_state,
                 "reconnections": self.reconnections,
                 "last_message_at": self.last_message_at,
                 "last_reconnect_at": self.last_reconnect_at,
                 "last_error": self.last_error,
+                "last_error_details": self.last_error_details,
                 "aggtrade_duplicates": self.monitor.duplicates,
                 "aggtrade_gap_events": self.monitor.gap_events,
                 "aggtrade_missing_ids": self.monitor.missing_ids,

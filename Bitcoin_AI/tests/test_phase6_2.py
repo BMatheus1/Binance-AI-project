@@ -13,7 +13,7 @@ from btc_research.phase6_2 import (DIAGNOSTIC_CONFIRMATION,
                                    DemoExecutionService, endpoint_safety_check,
                                    environment_diagnostic, floor_to_step,
                                    load_phase62_config)
-from btc_research.phase6_trading import (BinanceDemoBroker, DecisionLedger,
+from btc_research.phase6_trading import (BinanceDemoAPIError, BinanceDemoBroker, DecisionLedger,
                                          RequestsDemoTransport)
 
 
@@ -223,4 +223,29 @@ def test_authenticated_reads_do_not_enable_order_actions():
     with pytest.raises(RuntimeError, match="orders are disabled"):
         broker.submit_market(symbol="BTCUSDT", side="BUY", quantity="0.001", client_order_id="x")
     assert len(calls) == 1
+
+
+def test_timestamp_rejection_resynchronizes_only_reads():
+    calls = []
+
+    def transport(method, url, headers, params):
+        calls.append((method, url, dict(params)))
+        if url.endswith("/time"):
+            return {"serverTime": 1000000}
+        if sum(url == entry[1] for entry in calls) == 1:
+            raise BinanceDemoAPIError("timestamp", http_status=400, api_code=-1021)
+        return {"canTrade": True, "balances": []}
+
+    broker = BinanceDemoBroker(enabled=True, api_key="test", api_secret="test", transport=transport,
+                               clock_ms=lambda: 1)
+    assert broker.balances()["canTrade"]
+    account = [row for row in calls if row[1].endswith("/account")]
+    assert len(account) == 2
+    assert account[0][2]["timestamp"] == 1
+    assert account[1][2]["timestamp"] >= 1000000
+    calls.clear()
+    with pytest.raises(BinanceDemoAPIError):
+        broker.submit_market(symbol="BTCUSDT", side="BUY", quantity="0.00012", client_order_id="once")
+    assert len(calls) == 1
+    assert calls[0][0] == "POST"
 

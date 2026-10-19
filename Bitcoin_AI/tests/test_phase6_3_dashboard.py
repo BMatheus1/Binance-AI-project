@@ -4,12 +4,14 @@ import json
 import shutil
 import sqlite3
 from pathlib import Path
+from datetime import datetime, timedelta, timezone
 
 import pytest
 from fastapi.testclient import TestClient
 
 from btc_research.common import ROOT
-from btc_research.dashboard_api import DashboardRepository, DashboardSettings, create_app
+from btc_research.dashboard_api import (DashboardRepository, DashboardSettings, create_app,
+                                        autonomous_runtime_summary)
 
 
 @pytest.fixture()
@@ -88,6 +90,54 @@ def test_api_requires_local_session(client):
     assert client.get("/api/overview").status_code == 401
     login(client)
     assert client.get("/api/overview").status_code == 200
+
+
+def test_dashboard_preparation_reuses_cli_service_requires_csrf_and_never_authorizes(client, monkeypatch):
+    calls = []
+    payload = {"confirmation": "PREPARAR SESSAO DEMO"}
+    assert client.post("/api/control/prepare-session", json=payload).status_code == 401
+    token = login(client)
+    assert client.post("/api/control/prepare-session", json=payload).status_code == 403
+    client.app.state.repository.kill.engage("test_only")
+    def prepare(root):
+        calls.append(root)
+        return {"session_id": "test-prepared", "state": "prepared", "orders_sent": False}
+    monkeypatch.setattr("btc_research.dashboard_api.prepare_authorization", prepare)
+    response = client.post("/api/control/prepare-session", json=payload,
+        headers={"Origin": "http://localhost:3000", "X-CSRF-Token": token})
+    assert response.status_code == 200 and len(calls) == 1
+    assert response.json()["data"]["state"] == "prepared"
+    assert client.app.state.repository.kill.status()["engaged"]
+    assert client.post("/api/control/authorize-session", json={}).status_code == 404
+
+
+def test_intelligence_heartbeat_freshness_matches_actual_publication_interval(dashboard_root, monkeypatch):
+    repo = DashboardRepository(DashboardSettings(dashboard_root), account_loader=fake_account)
+    monkeypatch.setattr(repo, "autonomous", lambda: {})
+    path = dashboard_root / "runtime/phase_6_1/heartbeat.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    heartbeat = {"state": "running", "updated_at": (datetime.now(timezone.utc)-timedelta(seconds=20)).isoformat(),
+                 "heartbeat_interval_seconds": 30, "decision_worker": {"state": "abstaining"}}
+    path.write_text(json.dumps(heartbeat), encoding="utf-8")
+    assert repo.intelligence()["worker"]["state"] == "abstaining"
+    heartbeat["heartbeat_interval_seconds"] = 5
+    path.write_text(json.dumps(heartbeat), encoding="utf-8")
+    assert repo.intelligence()["worker"]["state"] == "not_running"
+
+
+def test_backend_cpu_requires_two_samples_and_reuses_process(dashboard_root, monkeypatch):
+    from types import SimpleNamespace
+    measurements = iter([0., 25.])
+    constructions = []
+    def process():
+        constructions.append(True)
+        return SimpleNamespace(cpu_percent=lambda interval=None: next(measurements),
+                               memory_info=lambda: SimpleNamespace(rss=1024))
+    monkeypatch.setattr("psutil.Process", process)
+    repo = DashboardRepository(DashboardSettings(dashboard_root), account_loader=fake_account)
+    assert repo.health()["resources"]["cpu_percent"] is None
+    assert repo.health()["resources"]["cpu_percent"] == 25.
+    assert len(constructions) == 1
 
 
 def test_session_rejects_untrusted_origin(client):
@@ -197,4 +247,50 @@ def test_repository_reads_sqlite_in_query_only_mode(dashboard_root):
     repository = DashboardRepository(DashboardSettings(root=dashboard_root), fake_account)
     assert len(repository.operations()) == 1
     assert repository.health()["reconciliation"]["unresolved"] == 0
+
+
+def _authorized_runtime(now):
+    return {"engine": {"state": "AUTHORIZED_DEMO", "orders_enabled": True,
+                       "boot_id": "current-worker", "updated_at": now.isoformat(),
+                       "reconciliation": {"state": "healthy", "last_success_at": now.isoformat()}},
+            "session_and_positions": {"session": {"state": "authorized",
+                "boot_id": "current-worker", "expires_at": (now+timedelta(hours=1)).isoformat()},
+                "open_position": None},
+            "kill_switch": {"engaged": False}, "limits": {"policy": "A_quantitative"}}
+
+
+def test_overview_reports_active_phase64_even_when_legacy_readiness_is_blocked(dashboard_root, monkeypatch):
+    repository = DashboardRepository(DashboardSettings(root=dashboard_root), fake_account)
+    payload = _authorized_runtime(datetime.now(timezone.utc))
+    monkeypatch.setattr(repository, "autonomous", lambda: payload)
+    result = repository.overview()["autonomous"]
+    assert result["ready"] is True
+    assert result["status_label"] == "Ativo · Demo"
+    assert result["status_tone"] == "good"
+    assert result["policy"] == "A_quantitative"
+    assert result["source"] == "phase6_4_engine_and_session"
+
+
+@pytest.mark.parametrize("failure", ["kill", "expired", "boot", "heartbeat", "reconciliation", "disabled", "observe"])
+def test_overview_never_labels_failed_runtime_checks_as_active(failure):
+    now = datetime.now(timezone.utc)
+    data = _authorized_runtime(now)
+    if failure == "kill":
+        data["kill_switch"]["engaged"] = True
+    elif failure == "expired":
+        data["session_and_positions"]["session"]["expires_at"] = (now-timedelta(seconds=1)).isoformat()
+    elif failure == "boot":
+        data["session_and_positions"]["session"]["boot_id"] = "old-worker"
+    elif failure == "heartbeat":
+        data["engine"]["updated_at"] = (now-timedelta(minutes=1)).isoformat()
+    elif failure == "reconciliation":
+        data["engine"]["reconciliation"]["state"] = "blocked"
+    elif failure == "disabled":
+        data["engine"]["orders_enabled"] = False
+    else:
+        data["engine"]["state"] = "OBSERVE"
+    result = autonomous_runtime_summary(data, now)
+    assert result["ready"] is False
+    assert result["status_tone"] != "good"
+    assert result["status_label"] != "Ativo · Demo"
 

@@ -10,6 +10,7 @@ import hashlib
 import json
 import math
 import sqlite3
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Sequence
@@ -29,6 +30,9 @@ from .phase6_nlp import (FinancialNewsAnalysis, NewsInterpretationResult,
                          QWEN3_MODEL_ID, QWEN3_REVISION, Qwen3Interpreter,
                          load_phase61_config, model_directory)
 from .phase6_trading import DecisionLedger, MarketSnapshot
+from .unified_intelligence import UnifiedDecisionStore, UnifiedTradingIntelligenceEngine
+from .opportunity_research import pattern_hypotheses
+from .active_demo import experiment_context, profile_hash
 
 
 UTC = timezone.utc
@@ -137,7 +141,7 @@ class DecisionStore:
     def _connect(self):
         return sqlite3.connect(self.path, timeout=20)
 
-    def add_cycle(self, cycle_id: str, result: dict, market: dict[str, dict]) -> int:
+    def add_cycle(self, cycle_id: str, result: dict, market: dict[str, dict], *, record_outcomes: bool = True) -> int:
         rows = []
         forecasts = result.get("forecasts", {})
         for policy, block in result["policies"].items():
@@ -166,7 +170,7 @@ class DecisionStore:
             """, rows)
             btc = forecasts.get("BTCUSDT", {})
             opened = market.get("BTCUSDT", {}).get("candle_open_time")
-            if btc.get("state") == "ready" and opened:
+            if record_outcomes and btc.get("state") == "ready" and opened:
                 feature_time = pd.Timestamp(opened)
                 costs = [row[8] for row in rows if row[4] == "BTCUSDT" and row[8] is not None]
                 cost = min(costs) if costs else None
@@ -244,8 +248,18 @@ class DecisionStore:
 
 class ContinuousDecisionWorker:
     """Turn synchronized public market events into auditable abstentions/signals."""
-    def __init__(self, root: Path = ROOT, *, rest_base: str = "https://data-api.binance.vision"):
+    def __init__(self, root: Path = ROOT, *, rest_base: str = "https://data-api.binance.vision",
+                 quantitative_only: bool = False, publish_quantitative: bool = True,
+                 shared_cycle_source=None):
         self.root = root
+        self.quantitative_only = quantitative_only
+        self.publish_quantitative = publish_quantitative
+        self.shared_cycle_source = shared_cycle_source
+        self.shared_cycle = None
+        self.news_context_source = None
+        self.news_context = None
+        self.skipped_context_cycles = 0
+        self._quantitative_executor = None
         self.rest_base = rest_base.rstrip("/")
         self.queue: asyncio.Queue[dict | None] = asyncio.Queue(maxsize=20_000)
         self._stop = asyncio.Event()
@@ -271,13 +285,21 @@ class ContinuousDecisionWorker:
         self.last_cycle_open_time: pd.Timestamp | None = None
         self.models: dict[int, object] = {}
         self.model_versions: dict[int, str] = {}
+        self.model_errors: dict[str, str] = {}
         self.threshold = .60
         self.payout = .80
         self.neural = LazyQwen3Interpreter(root)
         self.store = DecisionStore(root / "runtime/phase_6_1/evaluations.sqlite3")
+        self.unified_store = UnifiedDecisionStore(self.store.path) if quantitative_only else None
+        if quantitative_only:
+            config_path = root / "configs/phase_6_4.json"
+            config = json.loads(config_path.read_text(encoding="utf-8"))
+            self.unified_engine = UnifiedTradingIntelligenceEngine(
+                config["experimental_demo"], f"{config['protocol_version']}:{digest(config_path)}")
         self.engine = FourPolicyEngine(
             event_store=EventStore(root / "runtime/phase_6/events.sqlite3"),
-            ledger=DecisionLedger(root / "runtime/phase_6_1/decision_ledger.jsonl"),
+            ledger=DecisionLedger(root / ("runtime/phase_6_1/quantitative_ledger.jsonl"
+                                         if quantitative_only else "runtime/phase_6_1/decision_ledger.jsonl")),
             neural_classifier=self.neural, root=root)
         for cycle_id in self.store.invalidate_noncausal():
             self.engine.ledger.append("phase6_1_evaluation_invalidation", {
@@ -292,7 +314,15 @@ class ContinuousDecisionWorker:
                 "correction": "expected_gross_bps_and_expected_net_bps_are_null_when_forecast_is_uncalibrated",
                 "cost_bps_remains_observed_and_valid": True,
                 "orders_sent": False})
-        self._load_models()
+        if self.shared_cycle_source is None:
+            try:
+                self._load_models()
+            except Exception as exc:
+                # Position monitoring must still start if inference artifacts
+                # are missing/corrupt. No forecast is fabricated as a fallback.
+                self.models.clear()
+                self.model_versions.clear()
+                self.model_errors["registry"] = type(exc).__name__
 
     def _load_models(self) -> None:
         pointer = json.loads((self.root / "reports/phase_4/latest.json").read_text(encoding="utf-8"))
@@ -315,6 +345,10 @@ class ContinuousDecisionWorker:
         if symbol is None:
             return
         payload = record.get("payload", {})
+        if payload.get("e") == "collectorDisconnected":
+            self.quotes.pop(symbol, None)
+            self.books.pop(symbol, None)
+            return
         if "b" in payload and "a" in payload and (payload.get("e") == "bookTicker" or
                                                     record["stream"].endswith("@bookTicker")):
             self.quotes[symbol] = {"bid": float(payload["b"]), "ask": float(payload["a"]),
@@ -450,6 +484,8 @@ class ContinuousDecisionWorker:
     def _forecast_btc(self) -> tuple[dict, tuple[str, ...]]:
         # SPECS is the frozen tuple catalog from features.py:
         # (category, formula, lookback_minutes, dependencies).
+        if not self.models:
+            return {"state": "unavailable", "reason": "frozen_models_unavailable"}, ("forecast_unavailable",)
         recent = self.candles["BTCUSDT"].tail(max(61, max(spec[2] for spec in SPECS.values())))
         if (len(recent) < 61 or
                 recent.open_time.diff().dropna().ne(pd.Timedelta(minutes=1)).any()):
@@ -463,6 +499,10 @@ class ContinuousDecisionWorker:
         primary_signal = "unavailable"
         for horizon, model in self.models.items():
             probability = np.asarray(model.predict_proba(row)[0], dtype=float)
+            if (probability.shape != (3,) or not np.isfinite(probability).all()
+                    or (probability < 0).any() or (probability > 1).any()
+                    or not np.isclose(probability.sum(), 1, atol=1e-5)):
+                return {"state": "unavailable", "reason": "invalid_frozen_model_output"}, ("forecast_unavailable",)
             signal = int(decisions(probability[None, :], self.threshold, self.payout)[0])
             label = {-1: "abstain", 0: "down", 2: "up"}[signal]
             horizons[str(horizon)] = {
@@ -527,24 +567,87 @@ class ContinuousDecisionWorker:
                 "quote_volume_24h": self.quote_volume_24h.get(symbol),
                 "data_complete": complete, "stale_seconds": stale if math.isfinite(stale) else None,
                 "closed_candle": True,
+                "momentum_5m_bps": float(np.log(candles.close.iloc[-1] / candles.close.iloc[-6]) * 10000),
+                "volatility_bps": volatility,
+                "data_available_at": max(as_of, pd.Timestamp(candle.close_time).to_pydatetime(),
+                                         datetime.fromisoformat(quote["received_at"]) if quote.get("received_at") else as_of,
+                                         datetime.fromisoformat(book["received_at"]) if book.get("received_at") else as_of).isoformat(),
+                "quote_received_at": quote.get("received_at"),
+                "book_received_at": book.get("received_at"),
             }
         return snapshots, forecasts, reasons, market
 
-    def _evaluate_cycle(self, open_time: pd.Timestamp) -> None:
-        snapshots, forecasts, reasons, market = self._build_cycle(open_time)
+    def _evaluate_cycle(self, open_time: pd.Timestamp, shared_cycle=None) -> None:
+        cycle = shared_cycle if shared_cycle is not None else self._build_cycle(open_time)
+        snapshots, forecasts, reasons, market = cycle
         as_of = datetime.now(UTC)
-        result = self.engine.evaluate(snapshots, as_of=as_of, forecasts=forecasts,
-                                      technical_reasons=reasons)
+        evaluator = (self.engine.evaluate_quantitative if self.quantitative_only
+                     else self.engine.evaluate)
+        result = evaluator(snapshots, as_of=as_of, forecasts=forecasts,
+                           technical_reasons=reasons)
+        if not self.publish_quantitative:
+            # The slower news path cannot publish a late policy A forecast or
+            # seed retrospective outcomes after independent A is enabled.
+            result = {**result, "policies": {key: value for key, value in result["policies"].items()
+                                             if key != "A_quantitative"}}
         cycle_id = hashlib.sha256(f"{open_time.isoformat()}:phase6.1".encode()).hexdigest()
-        self.evaluations_recorded += self.store.add_cycle(cycle_id, result, market)
+        self.evaluations_recorded += self.store.add_cycle(
+            cycle_id, result, market, record_outcomes=self.publish_quantitative)
+        if self.quantitative_only and getattr(self, "unified_store", None) is not None:
+            experiment = experiment_context(self.root / "runtime/phase_6_4/autonomous.sqlite3", as_of)
+            unified_engine = self.unified_engine
+            if experiment is not None:
+                profile = experiment["profile"]
+                unified_engine = UnifiedTradingIntelligenceEngine(
+                    {**self.unified_engine.limits, **profile["limits"]},
+                    f"{profile['version']}:{profile_hash(profile)}")
+            for symbol in UNIVERSE:
+                evaluation_id = hashlib.sha256(f"{cycle_id}:{symbol}:A_quantitative".encode()).hexdigest()
+                opportunity = next(row for row in result["policies"]["A_quantitative"]["opportunities"]
+                                   if row["symbol"] == symbol)
+                patterns = pattern_hypotheses(self.candles[symbol], market[symbol], as_of=pd.Timestamp(as_of))
+                source = getattr(self, "news_context_source", None)
+                news_context = getattr(source, "news_context", None)
+                if news_context is None or datetime.fromisoformat(news_context["available_at"]) > as_of:
+                    news_context = {"state": "unavailable", "reason": "optional_news_context_not_available_at_decision"}
+                decision = unified_engine.evaluate(
+                    evaluation_id=evaluation_id, symbol=symbol, evaluated_at=result["as_of"],
+                    prediction=forecasts[symbol], market=market[symbol],
+                    estimated_cost_bps=opportunity["cost_bps"],
+                    context={"patterns": patterns, "news": {**news_context, "used_for_entry": False}},
+                    experiment=experiment)
+                # Ledger first: an SQLite proposal is never executable before
+                # its immutable audit record exists. Duplicate IDs are harmless.
+                self.engine.ledger.append("unified_operational_decision", decision.record(), as_of)
+                self.unified_store.add(decision)
+        if self.quantitative_only:
+            self.shared_cycle = (open_time, cycle)
+        elif getattr(self, "shared_cycle_source", None) is not None:
+            self.news_context = {
+                "state": "available", "available_at": datetime.now(UTC).isoformat(),
+                "market_candle_open_time": open_time.isoformat(),
+                "event_ids": sorted({event for block in result["policies"].values()
+                                     for row in block["opportunities"] for event in row["news_event_ids"]}),
+                "qwen3": self.neural.status(),
+                "interpretation_count": len(result.get("neural_interpretation", {})),
+                "predictive_or_economic_contribution_validated": False,
+            }
         self.cycles_completed += 1
         self.last_evaluation_at = result["as_of"]
         self.last_cycle_open_time = open_time
-        self.store.resolve_outcomes(self.candles["BTCUSDT"])
+        self.last_error = None
+        if self.publish_quantitative:
+            self.store.resolve_outcomes(self.candles["BTCUSDT"])
         self.state = "abstaining" if all(
             block["selected"] is None for block in result["policies"].values()) else "signal_ready"
 
     async def run(self) -> None:
+        if self.shared_cycle_source is not None:
+            await self._run_context()
+            return
+        if self.quantitative_only and self._quantitative_executor is None:
+            self._quantitative_executor = ThreadPoolExecutor(
+                max_workers=1, thread_name_prefix="quantitative-inference")
         self.started_at = datetime.now(UTC).isoformat()
         self.state = "warming_up"
         try:
@@ -581,19 +684,60 @@ class ContinuousDecisionWorker:
                 instant = self._ready_cycle() if closed else None
                 if instant is not None:
                     self.state = "analyzing"
-                    await asyncio.to_thread(self._evaluate_cycle, instant)
+                    if self.quantitative_only:
+                        await asyncio.get_running_loop().run_in_executor(
+                            self._quantitative_executor, self._evaluate_cycle, instant)
+                    else:
+                        await asyncio.to_thread(self._evaluate_cycle, instant)
                     if not repaired:
                         self.state = "degraded"
             except Exception as exc:
                 self.last_error = f"evaluation_failed:{type(exc).__name__}:{exc}"
                 self.state = "degraded"
 
+    async def _run_context(self) -> None:
+        """Optional B/C/D analysis consumes the single causal feature/forecast cycle.
+
+        A slow neural result cannot create a backlog of obsolete market analyses.
+        The next job uses the latest cycle, and does not reload models or REST data.
+        """
+        self.started_at = datetime.now(UTC).isoformat()
+        self.state = "waiting_for_closed_candles"
+        with ThreadPoolExecutor(max_workers=1, thread_name_prefix="optional-news-context") as executor:
+            while not self._stop.is_set():
+                shared = self.shared_cycle_source.shared_cycle
+                if shared and (self.last_cycle_open_time is None or shared[0] > self.last_cycle_open_time):
+                    if self.last_cycle_open_time is not None:
+                        self.skipped_context_cycles += max(0, int((shared[0] - self.last_cycle_open_time).total_seconds() / 60) - 1)
+                    try:
+                        self.state = "analyzing"
+                        await asyncio.get_running_loop().run_in_executor(executor, self._evaluate_cycle, shared[0], shared[1])
+                    except Exception as exc:
+                        self.last_error = f"context_evaluation_failed:{type(exc).__name__}"
+                        self.state = "degraded"
+                        self.last_cycle_open_time = shared[0]
+                try:
+                    await asyncio.wait_for(self._stop.wait(), timeout=1)
+                except asyncio.TimeoutError:
+                    pass
+
     def status(self) -> dict:
+        def fresh(items: dict, symbol: str) -> bool:
+            try:
+                age = (datetime.now(UTC) - datetime.fromisoformat(items[symbol]["received_at"])).total_seconds()
+                return 0 <= age <= 5
+            except (KeyError, ValueError, TypeError):
+                return False
         return {"state": self.state, "started_at": self.started_at,
+                "publication_path": ("independent_quantitative_worker" if self.quantitative_only
+                                     else "four_policy_news_worker"),
                 "last_evaluation_at": self.last_evaluation_at,
                 "last_error": self.last_error, "cycles_completed": self.cycles_completed,
                 "evaluations_recorded": self.store.count(), "queue_size": self.queue.qsize(),
                 "dropped_events": self.dropped_events,
+                "shared_feature_pipeline": self.shared_cycle_source is not None,
+                "model_versions": dict(self.model_versions), "model_errors": dict(self.model_errors),
+                "skipped_context_cycles": self.skipped_context_cycles,
                 "gap_repairs_succeeded": self.gap_repairs_succeeded,
                 "gap_repairs_failed": self.gap_repairs_failed,
                 "missing_candles_observed": self.missing_candles_observed,
@@ -604,13 +748,15 @@ class ContinuousDecisionWorker:
                 "symbols": {symbol: {"warmup_candles": len(self.candles[symbol]),
                                       "last_closed_open_time": (self.last_closed_open_time[symbol].isoformat()
                                                                 if symbol in self.last_closed_open_time else None),
-                                      "quote_available": symbol in self.quotes,
-                                      "depth_available": symbol in self.books}
+                                      "quote_available": fresh(self.quotes, symbol),
+                                      "depth_available": fresh(self.books, symbol)}
                             for symbol in UNIVERSE},
                 "qwen3": self.neural.status(), "orders_sent": False}
 
     def stop(self) -> None:
         self._stop.set()
+        if self._quantitative_executor is not None:
+            self._quantitative_executor.shutdown(wait=False)
         try:
             self.queue.put_nowait(None)
         except asyncio.QueueFull:

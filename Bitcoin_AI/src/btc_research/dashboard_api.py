@@ -17,7 +17,7 @@ import threading
 import time
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Callable, Literal
@@ -30,11 +30,12 @@ from pydantic import BaseModel, Field
 
 from .common import ROOT
 from .phase6_2 import (ExecutionJournal, PersistentKillSwitch,
-                       autonomous_readiness, environment_diagnostic,
+                       environment_diagnostic,
                        load_local_dotenv, load_phase62_config,
                        summarize_account)
 from .phase6_trading import BinanceDemoBroker, RequestsDemoTransport, UNIVERSE
-from .phase6_4 import AutonomousStore, ObservationStore, load_phase64_config
+from .phase6_4 import AutonomousStore, ObservationStore, load_phase64_config, prepare_authorization
+from .unified_intelligence import UnifiedDecisionStore
 
 
 UTC = timezone.utc
@@ -46,6 +47,57 @@ def utc_now() -> datetime:
 
 def iso_now() -> str:
     return utc_now().isoformat()
+
+
+def autonomous_runtime_summary(data: dict, now: datetime | None = None) -> dict:
+    """Describe the current Phase 6.4 process/session; never changes a gate."""
+    now = now or utc_now()
+    engine = data.get("engine", {})
+    session = data.get("session_and_positions", {}).get("session") or {}
+
+    def recent(value, maximum_seconds):
+        try:
+            age = (now - datetime.fromisoformat(value)).total_seconds()
+            return 0 <= age <= maximum_seconds
+        except (ValueError, TypeError):
+            return False
+
+    try:
+        unexpired = datetime.fromisoformat(session.get("expires_at")) > now
+    except (ValueError, TypeError):
+        unexpired = False
+    reconciliation = engine.get("reconciliation") or {}
+    checks = {
+        "engine_authorized": engine.get("state") == "AUTHORIZED_DEMO",
+        "engine_orders_enabled": bool(engine.get("orders_enabled")),
+        "engine_heartbeat_fresh": recent(engine.get("updated_at"), 15),
+        "session_authorized": session.get("state") in {"authorized", "running"},
+        "session_unexpired": unexpired,
+        "session_bound_to_engine": bool(engine.get("boot_id")) and session.get("boot_id") == engine.get("boot_id"),
+        "kill_switch_cleared": data.get("kill_switch", {}).get("engaged") is False,
+        "reconciliation_healthy": reconciliation.get("state") == "healthy",
+        "reconciliation_fresh": recent(reconciliation.get("last_success_at"), 45),
+    }
+    ready = all(checks.values())
+    if ready:
+        label, tone = "Ativo · Demo", "good"
+    elif not checks["engine_heartbeat_fresh"]:
+        label, tone = "Sem telemetria recente", "warn"
+    elif not checks["kill_switch_cleared"]:
+        label, tone = "Bloqueado pelo kill switch", "bad"
+    elif str(engine.get("state", "")).startswith("RECOVERY"):
+        label, tone = "Em recuperação", "bad"
+    elif engine.get("state") == "OBSERVE":
+        label, tone = "Em observação", "neutral"
+    elif not checks["session_unexpired"] or not checks["session_authorized"]:
+        label, tone = "Sem autorização válida", "warn"
+    else:
+        label, tone = "Entradas bloqueadas", "warn"
+    return {"ready": ready, "policy": data.get("limits", {}).get("policy", "A_quantitative"),
+            "state": engine.get("state", "not_running"), "checks": checks,
+            "status_label": label, "status_tone": tone,
+            "session_id": session.get("session_id"), "expires_at": session.get("expires_at"),
+            "source": "phase6_4_engine_and_session"}
 
 
 def safe_decimal(value: Any) -> Decimal | None:
@@ -100,6 +152,10 @@ class SessionResponse(BaseModel):
 class KillSwitchRequest(BaseModel):
     reason: str = Field(min_length=3, max_length=200)
     confirmation: Literal["ACIONAR KILL SWITCH"]
+
+
+class PrepareSessionRequest(BaseModel):
+    confirmation: Literal["PREPARAR SESSAO DEMO"]
 
 
 @dataclass(frozen=True)
@@ -158,14 +214,18 @@ class CachedDemoAccount:
         self.ttl_seconds = ttl_seconds
         self._value: dict | None = None
         self._loaded_at = 0.0
+        self._last_attempt_at = 0.0
         self._lock = threading.Lock()
         self.last_error: str | None = None
 
     def get(self, force: bool = False) -> dict | None:
         with self._lock:
+            if self.last_error and not force and time.time() - self._last_attempt_at < self.ttl_seconds:
+                return self._value
             if self._value is not None and not force and time.time() - self._loaded_at < self.ttl_seconds:
                 return self._value
             try:
+                self._last_attempt_at = time.time()
                 self._value = self.loader()
                 self._loaded_at = time.time()
                 self.last_error = None
@@ -197,6 +257,8 @@ class DashboardRepository:
         self.kill = PersistentKillSwitch(self.root / "runtime/phase_6_2/kill_switch.json")
         self.account = CachedDemoAccount(account_loader or default_account_loader,
                                          settings.account_cache_seconds)
+        self._resource_process = None
+        self._resource_lock = threading.Lock()
 
     def _readonly(self, path: Path) -> sqlite3.Connection:
         uri = f"file:{path.resolve().as_posix()}?mode=ro"
@@ -207,8 +269,10 @@ class DashboardRepository:
 
     def account_snapshot(self, force: bool = False) -> dict:
         value = self.account.get(force)
-        if value is None:
+        if value is None or self.account.last_error:
             return {"available": False, "error": self.account.last_error,
+                    "stale": value is not None,
+                    "last_success_at": value.get("received_at") if value else None,
                     "balances": [], "open_orders": [], "prices": {}, "received_at": None}
         summary = summarize_account(value["account"])
         balances = []
@@ -509,7 +573,8 @@ class DashboardRepository:
         return events
 
     def intelligence(self) -> dict:
-        ledger_paths = [self.root / "runtime/phase_6/decision_ledger.jsonl",
+        ledger_paths = [self.root / "runtime/phase_6_1/quantitative_ledger.jsonl",
+                        self.root / "runtime/phase_6/decision_ledger.jsonl",
                         self.root / "runtime/phase_6_1/decision_ledger.jsonl"]
         ledger_records = []
         for path in ledger_paths:
@@ -551,7 +616,12 @@ class DashboardRepository:
         worker = dict(heartbeat.get("decision_worker") or
                       {"state": "not_running", "orders_sent": False})
         worker["service_state"] = heartbeat.get("state", "not_running")
-        if heartbeat.get("state") != "running":
+        try:
+            heartbeat_max_age = 2 * float(heartbeat.get("heartbeat_interval_seconds", 30)) + 5
+            heartbeat_fresh = 0 <= (utc_now() - datetime.fromisoformat(heartbeat["updated_at"])).total_seconds() <= heartbeat_max_age
+        except (KeyError, TypeError, ValueError):
+            heartbeat_fresh = False
+        if heartbeat.get("state") != "running" or not heartbeat_fresh:
             worker["last_state"] = worker.get("state")
             worker["state"] = "not_running"
         return {"policies": policies, "recent_decisions": decisions[:50],
@@ -560,12 +630,13 @@ class DashboardRepository:
                 "invalidated_evaluations": invalidated if database.exists() else 0,
                 "explanation_source": "recorded decision ledger only",
                 "internal_chain_of_thought_exposed": False,
-                "active_demo_policy": self.config["autonomous"]["frozen_policy"],
-                "autonomous": autonomous_readiness(self.root)}
+                "active_demo_policy": "A_quantitative",
+                "unified_decisions": UnifiedDecisionStore.recent(database, 30),
+                "context_worker": heartbeat.get("news_decision_worker", {}),
+                "autonomous": autonomous_runtime_summary(self.autonomous())}
 
     def health(self) -> dict:
         heartbeat = read_json(self.root / "runtime/phase_6_1/heartbeat.json")
-        observer = read_json(self.root / "reports/phase_6_2/observer_smoke.json")
         env = environment_diagnostic(self.root)
         event_counts = {"events": 0, "revisions": 0}
         events_path = self.root / "runtime/phase_6/events.sqlite3"
@@ -575,9 +646,13 @@ class DashboardRepository:
                                 "revisions": db.execute("SELECT COUNT(*) FROM revisions").fetchone()[0]}
         try:
             import psutil
-            process = psutil.Process()
-            resources = {"cpu_percent": process.cpu_percent(interval=None),
-                         "memory_rss_bytes": process.memory_info().rss}
+            with self._resource_lock:
+                first_sample = self._resource_process is None
+                if first_sample:
+                    self._resource_process = psutil.Process()
+                measured = self._resource_process.cpu_percent(interval=None)
+                resources = {"cpu_percent": None if first_sample else measured,
+                             "memory_rss_bytes": self._resource_process.memory_info().rss}
         except Exception:
             resources = {"cpu_percent": None, "memory_rss_bytes": None}
         unresolved_count = 0
@@ -590,9 +665,11 @@ class DashboardRepository:
                     f"SELECT COUNT(*) FROM order_intents WHERE state NOT IN ({placeholders})", terminal
                 ).fetchone()[0]
         return {
-            "binance_demo_rest": {"state": "available" if self.account.get() else "unavailable",
+            "binance_demo_rest": {"state": "available" if self.account.get() and not self.account.last_error else "unavailable",
                                   "last_error": self.account.last_error},
-            "market_websocket": observer or {"all_healthy": None, "reason": "no smoke record"},
+            "market_websocket": {"all_healthy": all(self.market(symbol).get("stream_state") == "connected"
+                                                   for symbol in UNIVERSE),
+                                 "source": "current_market_timestamps"},
             "heartbeat": heartbeat,
             "qwen3": ((heartbeat or {}).get("decision_worker", {}).get("qwen3") or
                       {"state": "unknown", "reason": "no active worker telemetry"}),
@@ -643,9 +720,18 @@ class DashboardRepository:
         if position:
             entry = safe_decimal(position.get("entry_price"))
             quantity = safe_decimal(position.get("quantity"))
-            current = safe_decimal(market.get("price"))
-            if entry is not None and quantity is not None and current is not None:
+            current = safe_decimal(market.get("bid"))
+            if (entry is not None and quantity is not None and current is not None
+                    and market.get("stream_state") == "connected"):
                 unrealized = number((current - entry) * quantity)
+        entry_price = safe_decimal((position or {}).get("entry_price"))
+        position_plan = {"stop_price": number(entry_price * (1 - Decimal(str(limits["stop_loss_bps"])) / 10000)) if entry_price else None,
+                         "stop_loss_bps": limits["stop_loss_bps"],
+                         "planned_holding_minutes": limits["planned_holding_minutes"],
+                         "profit_target_quote": None, "profit_target_reason": "not_validated_for_frozen_strategy",
+                         "adaptive_exit_enabled": False,
+                         "unrealized_net_quote_estimate": None,
+                         "unrealized_net_reason": "future_execution_fees_and_slippage_unknown"}
         connectivity_report = read_json(
             self.root / "reports/phase_6_4_1/connectivity_status.json") or {}
         rest_connected = bool(account.get("available"))
@@ -672,11 +758,12 @@ class DashboardRepository:
                         "authenticated_connectivity_available"),
                 },
                 "account": account,
+                "position_plan": position_plan,
                 "operations": operations[:100],
                 "performance": {
                     "realized_net_usdt": realized,
                     "unrealized_gross_usdt_estimate": unrealized,
-                    "unrealized_source": ("stored Binance Demo market stream midpoint"
+                    "unrealized_source": ("fresh Demo best bid; gross before exit costs"
                                           if unrealized is not None else None),
                     "fees_by_asset": dict(sorted(fee_totals.items())),
                     "completed_operations": len(completed),
@@ -686,7 +773,10 @@ class DashboardRepository:
                 "production_trading_supported": False,
                 "economically_validated_category_available": bool(
                     economics.get("economically_validated", False)),
-                "experimental_demo_ready_for_explicit_authorization": True}
+                "experimental_demo_ready_for_explicit_authorization": (
+                    engine.get("state") == "OBSERVE" and
+                    engine.get("reconciliation", {}).get("state") == "healthy" and
+                    not position and rest_connected and stream_connected)}
 
     def _autonomous_signal_summary(self, since: str | None) -> dict:
         generated = 0
@@ -767,11 +857,15 @@ class DashboardRepository:
         performance = self.performance()
         health = self.health()
         autonomous = self.autonomous()
+        runtime_status = autonomous_runtime_summary(autonomous)
         open_position = autonomous.get("session_and_positions", {}).get("open_position")
         mode = "DEMO_AUTONOMOUS_EXPERIMENTAL" if autonomous.get("state") == "AUTHORIZED_DEMO" else "OBSERVE"
+        latest = UnifiedDecisionStore.recent(self.root / "runtime/phase_6_1/evaluations.sqlite3", 1, "BTCUSDT")
         return {"system_state": "blocked" if self.kill.status()["engaged"] and not open_position else autonomous.get("state", "observation"),
+                "latest_decision": latest[0] if latest else None,
+                "next_nominal_candle_close": (utc_now().replace(second=0, microsecond=0) + timedelta(minutes=1)).isoformat(),
                 "environment": "DEMO", "mode": mode,
-                "kill_switch": self.kill.status(), "autonomous": autonomous_readiness(self.root),
+                "kill_switch": autonomous.get("kill_switch", self.kill.status()), "autonomous": runtime_status,
                 "account": account, "strategy_performance": performance["strategy"],
                 "diagnostic_operation_count": len([x for x in operations if x["category"] == "diagnostic"]),
                 "positions": [open_position] if open_position else [],
@@ -782,7 +876,22 @@ class DashboardRepository:
                 "last_update": iso_now()}
 
     def snapshot(self) -> dict:
-        return {"overview": self.overview(), "markets": self.markets(), "health": self.health()}
+        return {"overview": self.overview(), "markets": self.markets(), "health": self.health(),
+                "operational_events": self.operational_events()}
+
+    def operational_events(self) -> list[dict]:
+        decisions = UnifiedDecisionStore.recent(self.root / "runtime/phase_6_1/evaluations.sqlite3", 15)
+        events = [{"event_id": f"decision:{row['decision_id']}", "timestamp": row["evaluated_at"],
+                   "type": "unified_decision", "symbol": row["symbol"], "session_id": None,
+                   "decision": row["decision"], "reasons": row["reasons"]} for row in decisions]
+        path = self.root / "runtime/phase_6_4/autonomous.sqlite3"
+        if path.exists():
+            with self._readonly(path) as db:
+                rows = db.execute("SELECT activity_id,recorded_at,session_id,event_type,payload_json "
+                                  "FROM activity ORDER BY activity_id DESC LIMIT 20").fetchall()
+            events.extend({"event_id": f"engine:{row[0]}", "timestamp": row[1],
+                           "session_id": row[2], "type": row[3], "payload": json.loads(row[4])} for row in rows)
+        return sorted(events, key=lambda row: row["timestamp"], reverse=True)
 
 
 def create_app(settings: DashboardSettings | None = None,
@@ -885,6 +994,10 @@ def create_app(settings: DashboardSettings | None = None,
     async def system_health(_: str = Depends(authenticated_read)) -> Envelope:
         return envelope(await asyncio.to_thread(repository.health))
 
+    @app.get("/api/events", response_model=Envelope)
+    async def operational_events(_: str = Depends(authenticated_read)) -> Envelope:
+        return envelope({"items": await asyncio.to_thread(repository.operational_events)})
+
     @app.get("/api/logs", response_model=Envelope)
     async def logs(limit: int = Query(100, ge=1, le=500),
                    _: str = Depends(authenticated_read)) -> Envelope:
@@ -899,6 +1012,21 @@ def create_app(settings: DashboardSettings | None = None,
             raise HTTPException(status_code=403, detail="origem ou token CSRF inválido")
         state = await asyncio.to_thread(repository.kill.engage, f"dashboard:{payload.reason}")
         return envelope({"kill_switch": state, "new_entries_blocked": True})
+
+    @app.post("/api/control/prepare-session", response_model=Envelope)
+    async def prepare_demo_session(payload: PrepareSessionRequest,
+                                   session: str = Depends(authenticated),
+                                   csrf: str | None = Header(default=None, alias="X-CSRF-Token"),
+                                   origin: str | None = Header(default=None)) -> Envelope:
+        if not valid_origin(origin) or not csrf or not sessions.validate(session, csrf):
+            raise HTTPException(status_code=403, detail="origem ou token CSRF inválido")
+        if not repository.kill.status()["engaged"]:
+            raise HTTPException(status_code=409, detail="Acione o kill switch antes de preparar uma sessão")
+        try:
+            prepared = await asyncio.to_thread(prepare_authorization, settings.root)
+        except (RuntimeError, PermissionError):
+            raise HTTPException(status_code=409, detail="Não foi possível preparar: verifique heartbeat, reconciliação e posições") from None
+        return envelope(prepared)
 
     @app.get("/api/export/{dataset}.csv")
     async def export_csv(dataset: Literal["operations", "news"],

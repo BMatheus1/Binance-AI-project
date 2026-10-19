@@ -22,11 +22,14 @@ export interface StrategyPerformance {
 }
 
 export interface OverviewData {
+  latest_decision?:UnifiedDecision|null;
+  next_nominal_candle_close?:string;
   system_state: string;
   environment: string;
   mode: string;
   kill_switch: { engaged: boolean; reason: string; updated_at: string | null };
-  autonomous: { ready: boolean; policy: string; checks: Record<string, boolean> };
+  autonomous: { ready: boolean; policy: string; checks: Record<string, boolean>;
+    state: string; status_label: string; status_tone: "good" | "warn" | "bad" | "neutral" };
   account: {
     available: boolean;
     balances: Balance[];
@@ -76,4 +79,17 @@ export interface DashboardSnapshot {
 export interface ApiEnvelope<T> {
   generated_at: string;
   data: T;
+}
+
+export interface UnifiedDecision {
+  schema_version:string; decision_id:string; evaluation_id:string; evaluated_at:string;
+  data_available_at:string|null; symbol:string; policy_version:string;
+  horizon_minutes:number; features_valid:boolean; valid_until:string;
+  model_versions:Record<string,string>;
+  prediction:{horizons?:Record<string,{probabilities:{down:number;tie:number;up:number};signal:string}>};
+  costs:{estimated_round_trip_bps:number|null;expected_net_bps:number|null;economically_validated:boolean};
+  planned_risk:{quote_amount:number;stop_loss_bps:number;planned_holding_minutes:number;planned_loss_quote_including_estimated_costs:number|null};
+  context:{patterns?:{patterns:{name:string;detected:boolean|null}[]};fusion:{method:string}};
+  decision:"COMPRAR"|"NAO_COMPRAR"|"AGUARDAR_DADOS"|"INDISPONIVEL_SEGURANCA";
+  reasons:string[]; execution_state:string;
 }

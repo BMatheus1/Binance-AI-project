@@ -1,0 +1,69 @@
+{
+  "verified_at": "2026-10-19T21:00:42.878817+00:00",
+  "endpoints": {
+    "overview": {
+      "http_status": 200,
+      "autonomous": {
+        "ready": false,
+        "policy": "A_quantitative",
+        "state": "OBSERVE",
+        "checks": {
+          "engine_authorized": false,
+          "engine_orders_enabled": false,
+          "engine_heartbeat_fresh": true,
+          "session_authorized": false,
+          "session_unexpired": false,
+          "session_bound_to_engine": false,
+          "kill_switch_cleared": false,
+          "reconciliation_healthy": true,
+          "reconciliation_fresh": true
+        },
+        "status_label": "Bloqueado pelo kill switch",
+        "status_tone": "bad",
+        "session_id": null,
+        "expires_at": null,
+        "source": "phase6_4_engine_and_session"
+      },
+      "latest_decision_id": "7dec5b003343f074a640b5034704cc0005a6a83eadaa3e6ce395a308c6f4a7d4"
+    },
+    "intelligence": {
+      "http_status": 200,
+      "worker_state": "not_running",
+      "unified_decisions": 30,
+      "context_state": "analyzing"
+    },
+    "autonomous": {
+      "http_status": 200,
+      "state": "OBSERVE",
+      "kill_switch": true,
+      "orders_enabled": false,
+      "position_plan": {
+        "stop_price": null,
+        "stop_loss_bps": 50.0,
+        "planned_holding_minutes": 5,
+        "profit_target_quote": null,
+        "profit_target_reason": "not_validated_for_frozen_strategy",
+        "adaptive_exit_enabled": false,
+        "unrealized_net_quote_estimate": null,
+        "unrealized_net_reason": "future_execution_fees_and_slippage_unknown"
+      },
+      "account_available": true
+    },
+    "events": {
+      "http_status": 200,
+      "count": 35,
+      "unique_ids": 35
+    },
+    "system-health": {
+      "http_status": 200,
+      "rest": {
+        "state": "available",
+        "last_error": null
+      },
+      "market": {
+        "all_healthy": true,
+        "source": "current_market_timestamps"
+      }
+    }
+  }
+}

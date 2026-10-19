@@ -1,0 +1,24 @@
+{
+  "phase": "6.4.2",
+  "generated_at": "2026-10-19T21:10:37.401194+00:00",
+  "python_tests": 225,
+  "failures": 0,
+  "errors": 0,
+  "frontend_build_passed": true,
+  "frontend_command": "npm.cmd run build",
+  "production_supported": false,
+  "orders_sent_during_implementation": false,
+  "new_session_authorized": false,
+  "minimum_24h_completed": false,
+  "economic_superiority_demonstrated": false,
+  "adaptive_exits_promoted": false,
+  "fusion_promoted": false,
+  "all_scientific_acceptance_criteria_satisfied": false,
+  "preservation": {
+    "checked_at": "2026-10-19T21:10:43.181174+00:00",
+    "files": 257,
+    "differences": [],
+    "datasets_and_books_touched": false,
+    "reserved_holdout_used_for_fitting": false
+  }
+}

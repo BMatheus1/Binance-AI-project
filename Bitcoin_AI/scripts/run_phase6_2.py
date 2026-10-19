@@ -38,11 +38,8 @@ def load_environment() -> None:
 
 def synced_service():
     service = build_demo_service(ROOT)
-    server = service.broker.server_time()
-    server_ms = int(server["serverTime"])
-    offset_ms = server_ms - int(time.time() * 1000)
-    service.broker.clock_ms = lambda: int(time.time() * 1000) + offset_ms
-    return service, offset_ms
+    sync = service.broker.synchronize_clock()
+    return service, sync["server_time_offset_ms"]
 
 
 def journal_summary(path: Path) -> dict:

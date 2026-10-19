@@ -105,6 +105,32 @@ class FourPolicyEngine:
         row["news_event_ids"] = list(row["news_event_ids"])
         return row
 
+    def evaluate_quantitative(self, snapshots: list[MarketSnapshot], *, as_of: datetime,
+                              forecasts: dict[str, dict],
+                              technical_reasons: dict[str, tuple[str, ...]]) -> dict:
+        """Identical policy A, published without touching news or neural inference."""
+        if as_of.tzinfo is None or any(snapshot.observed_at > as_of for snapshot in snapshots):
+            raise ValueError("future or timezone-free policy evaluation")
+        items = [self.selector.evaluate(snapshot, policy="A_quantitative",
+                                       technical_reasons=technical_reasons.get(snapshot.symbol, ()))
+                 for snapshot in snapshots]
+        opportunities = [self._record_opportunity(item) for item in items]
+        selected = self.selector.choose(items)
+        selected_record = self._record_opportunity(selected) if selected else None
+        for row in opportunities + ([selected_record] if selected_record is not None else []):
+            if forecasts.get(row["symbol"], {}).get("expected_gross_return_bps") is None:
+                row["expected_gross_bps"] = None
+                row["expected_net_bps"] = None
+        payload = {
+            "as_of": as_of.isoformat(),
+            "policies": {"A_quantitative": {"opportunities": opportunities, "selected": selected_record}},
+            "neural_interpretation": {}, "forecasts": forecasts,
+            "neural_confidence_is_price_probability": False, "orders_sent": False,
+            "publication_path": "independent_quantitative_worker",
+        }
+        self.ledger.append("phase6_1_quantitative_decision", payload, as_of)
+        return payload
+
     def evaluate(self, snapshots: list[MarketSnapshot], *, as_of: datetime,
                  forecasts: dict[str, dict] | None = None,
                  technical_reasons: dict[str, tuple[str, ...]] | None = None) -> dict:

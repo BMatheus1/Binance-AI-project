@@ -13,7 +13,9 @@ import math
 import os
 import sqlite3
 import time
+import traceback
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from pathlib import Path
@@ -25,7 +27,9 @@ import numpy as np
 from .common import ROOT, digest, save_json
 from .phase6_2 import (KILL_SWITCH_CONFIRMATION, PersistentKillSwitch,
                        SymbolRules, build_demo_service)
-from .phase6_trading import DecisionLedger
+from .phase6_trading import (BinanceDemoAPIError, DecisionLedger, MarketSnapshot,
+                             Opportunity, RiskLimits, RiskManager)
+from .unified_intelligence import UnifiedDecisionStore, frozen_entry_reasons, timestamp
 
 
 UTC = timezone.utc
@@ -176,6 +180,33 @@ class ObservationStore:
             problems.append("decision_worker_degradation_observed")
         if any(not p.get("demo_public", {}).get("available", False) for p in payloads):
             problems.append("binance_demo_public_failure_observed")
+        # Keep the original whole-protocol evidence while exposing recovery
+        # separately. A historical failure must never disappear from the audit.
+        recent_payloads = [p for p in payloads if p.get("sampled_at") and
+                           datetime.fromisoformat(p["sampled_at"]) >= now - timedelta(hours=1)]
+        current_pid = payloads[-1].get("pid") if payloads else None
+        current_payloads = []
+        for payload in reversed(payloads):
+            if payload.get("pid") != current_pid:
+                break
+            current_payloads.append(payload)
+        current_payloads.reverse()
+
+        def availability_window(items: list[dict]) -> dict:
+            ready_states = {"waiting_for_closed_candles", "abstaining", "signal_ready", "analyzing"}
+            count = len(items)
+            return {
+                "first_sample_at": items[0].get("sampled_at") if items else None,
+                "last_sample_at": items[-1].get("sampled_at") if items else None,
+                "samples": count,
+                "worker_availability_fraction": (sum(p.get("decision_worker", {}).get("state")
+                                                     in ready_states for p in items) / count if count else None),
+                "demo_public_availability_fraction": (sum(bool(p.get("demo_public", {}).get("available"))
+                                                          for p in items) / count if count else None),
+                "latest_collectors": items[-1].get("collectors", {}) if items else {},
+                "latest_engine": items[-1].get("autonomous_engine", {}) if items else {},
+                "basis": "sampled availability; whole-protocol failures remain preserved",
+            }
         policy_counts: dict[str, int] = {}
         symbol_counts: dict[str, int] = {}
         abstentions = temporal_violations = 0
@@ -217,6 +248,8 @@ class ObservationStore:
             "abstentions_recorded": abstentions,
             "temporal_integrity_violations": temporal_violations,
             "collector_totals": collector_totals, "problems": sorted(set(problems)),
+            "recent_60m": availability_window(recent_payloads),
+            "current_process": {"pid": current_pid, **availability_window(current_payloads)},
             "claim": ("minimum elapsed time completed; inspect availability and problems"
                       if complete else "24-hour validation is still in progress"),
         }
@@ -224,14 +257,16 @@ class ObservationStore:
 
 class ObservationMonitor:
     def __init__(self, *, root: Path, decision_worker, market_service,
-                 sample_seconds: float | None = None):
+                 sample_seconds: float | None = None, autonomous_engine=None):
         self.root = root
         self.config = load_phase64_config(root)
         self.worker = decision_worker
         self.market = market_service
+        self.autonomous_engine = autonomous_engine
         self.sample_seconds = sample_seconds or self.config["observation"]["sample_seconds"]
         self.store = ObservationStore(root / "runtime/phase_6_4/observation.sqlite3", self.config)
         self.session_id: str | None = None
+        self._resource_process = None
         self._stop = asyncio.Event()
 
     async def _demo_public_health(self) -> dict:
@@ -253,7 +288,12 @@ class ObservationMonitor:
     def _resources(self) -> dict:
         try:
             import psutil
-            process = psutil.Process(os.getpid())
+            if self._resource_process is None:
+                self._resource_process = psutil.Process(os.getpid())
+                self._resource_process.cpu_percent(interval=None)
+                return {"cpu_percent": None, "memory_rss_bytes": self._resource_process.memory_info().rss,
+                        "reason": "first_cpu_sample_requires_previous_observation"}
+            process = self._resource_process
             return {"cpu_percent": process.cpu_percent(interval=None),
                     "memory_rss_bytes": process.memory_info().rss}
         except Exception as exc:
@@ -265,6 +305,8 @@ class ObservationMonitor:
         while not self._stop.is_set():
             payload = {"sampled_at": iso_now(), "pid": os.getpid(),
                        "decision_worker": self.worker.status(),
+                       "autonomous_engine": (self.autonomous_engine.reconciliation
+                                             if self.autonomous_engine is not None else {}),
                        "collectors": self.market.status(), "resources": self._resources(),
                        "demo_public": await self._demo_public_health()}
             await asyncio.to_thread(self.store.add_sample, self.session_id, payload)
@@ -456,7 +498,7 @@ class AutonomousStore:
         with sqlite3.connect(self.path) as db:
             db.row_factory = sqlite3.Row
             recent = [dict(row) for row in db.execute(
-                "SELECT recorded_at,session_id,event_type,payload_json FROM activity "
+                "SELECT activity_id,recorded_at,session_id,event_type,payload_json FROM activity "
                 "ORDER BY activity_id DESC LIMIT 100").fetchall()]
             closed = [dict(row) for row in db.execute(
                 "SELECT * FROM positions WHERE state='CLOSED' ORDER BY closed_at DESC LIMIT 100").fetchall()]
@@ -468,7 +510,8 @@ class AutonomousStore:
 
 class SupervisedDemoEngine:
     """One-policy Demo executor; remains inert until per-boot authorization."""
-    def __init__(self, root: Path = ROOT, *, service_factory=build_demo_service):
+    def __init__(self, root: Path = ROOT, *, service_factory=build_demo_service,
+                 market_status=None):
         self.root = root
         self.config = load_phase64_config(root)
         self.demo = self.config["experimental_demo"]
@@ -476,18 +519,42 @@ class SupervisedDemoEngine:
         self.ledger = DecisionLedger(root / "runtime/phase_6_4/autonomous_ledger.jsonl")
         self.kill = PersistentKillSwitch(root / "runtime/phase_6_2/kill_switch.json")
         self.service_factory = service_factory
+        self._cached_service = None
+        self.market_status = market_status
         self.boot_id = uuid.uuid4().hex
         self.state = "OBSERVE"
         self.last_error: str | None = None
         self._reconciled = False
         self._last_reconcile_monotonic = 0.0
+        self._next_reconcile_monotonic = 0.0
+        self._reconcile_failures = 0
+        self._reconciliation_blocked = False
+        self._clock_offset_ms = 0
+        self.reconciliation = {
+            "state": "pending", "last_attempt_at": None, "last_success_at": None,
+            "failure_count": 0, "transient": None, "category": None,
+            "next_retry_at": None, "error": None,
+        }
         self._stop = asyncio.Event()
         self.control_path = root / "runtime/phase_6_4/engine.json"
 
+    def _service(self):
+        if self._cached_service is None:
+            self._cached_service = self.service_factory(self.root)
+        service = self._cached_service
+        # Reuse the latest read-only clock synchronization for every broker
+        # instance, including position monitoring and exits.
+        service.broker.clock_ms = lambda: int(datetime.now(UTC).timestamp() * 1000) + self._clock_offset_ms
+        return service
+
     def _write_control(self) -> None:
+        orders_enabled = (self.state == "AUTHORIZED_DEMO" and
+                          not self.kill.status()["engaged"] and
+                          self.reconciliation.get("state") == "healthy")
         save_json(self.control_path, {"boot_id": self.boot_id, "pid": os.getpid(),
                   "state": self.state, "last_error": self.last_error,
-                  "updated_at": iso_now(), "orders_enabled": self.state == "AUTHORIZED_DEMO",
+                  "updated_at": iso_now(), "orders_enabled": orders_enabled,
+                  "reconciliation": self.reconciliation,
                   "environment": "DEMO", "real_trading_supported": False})
 
     def _authorization(self) -> dict | None:
@@ -496,6 +563,7 @@ class SupervisedDemoEngine:
             return None
         if session["boot_id"] != self.boot_id:
             self.store.activity("authorization_rejected_boot_mismatch", {}, session["session_id"])
+            self._stop_session(session["session_id"], "engine_restarted_authorization_invalidated")
             return None
         if not session["expires_at"] or datetime.fromisoformat(session["expires_at"]) <= datetime.now(UTC):
             self._stop_session(session["session_id"], "authorization_expired")
@@ -512,23 +580,28 @@ class SupervisedDemoEngine:
 
     def _latest_candidate(self) -> dict | None:
         path = self.root / "runtime/phase_6_1/evaluations.sqlite3"
-        if not path.exists():
-            return None
+        decisions = UnifiedDecisionStore.recent(path, limit=1, symbol=self.demo["symbol"])
+        if not decisions:
+            return None  # Historical research evaluations cannot authorize orders.
+        unified = decisions[0]
         uri = f"file:{path.resolve().as_posix()}?mode=ro"
         with sqlite3.connect(uri, uri=True) as db:
             db.row_factory = sqlite3.Row
             row = db.execute("""SELECT evaluation_id,evaluated_at,prediction_json,market_json
                                 FROM evaluations WHERE causal_valid=1 AND symbol='BTCUSDT'
-                                AND policy='A_quantitative' ORDER BY evaluated_at DESC LIMIT 1""").fetchone()
+                                AND policy='A_quantitative' AND evaluation_id=?""",
+                             (unified["evaluation_id"],)).fetchone()
         if not row:
             return None
         result = dict(row)
         result["prediction"] = json.loads(result.pop("prediction_json"))
         result["market"] = json.loads(result.pop("market_json"))
+        result["unified"] = unified
         return result
 
     def _gate(self, session: dict, candidate: dict | None) -> tuple[bool, list[str]]:
         reasons = []
+        reasons.extend(self._market_entry_reasons())
         if self.kill.status()["engaged"]:
             reasons.append("kill_switch_engaged")
         if self.store.open_position() is not None:
@@ -539,21 +612,20 @@ class SupervisedDemoEngine:
             reasons.append("no_quantitative_evaluation")
             return False, reasons
         age = (datetime.now(UTC) - datetime.fromisoformat(candidate["evaluated_at"])).total_seconds()
-        if age > self.demo["maximum_signal_age_seconds"]:
+        if not 0 <= age <= self.demo["maximum_signal_age_seconds"]:
             reasons.append("signal_stale")
-        forecast = candidate["prediction"].get("horizons", {}).get(str(self.demo["horizon_minutes"]), {})
-        if forecast.get("signal") != "up":
-            reasons.append("frozen_signal_not_up")
-        if float(forecast.get("probabilities", {}).get("up", 0)) < self.demo["minimum_up_probability"]:
-            reasons.append("up_probability_below_frozen_threshold")
-        market = candidate["market"]
-        if not market.get("data_complete"):
-            reasons.append("market_data_incomplete")
-        if market.get("spread_bps") is None or market["spread_bps"] > self.demo["maximum_spread_bps"]:
-            reasons.append("spread_limit")
-        if min(float(market.get("bid_depth_quote") or 0),
-               float(market.get("ask_depth_quote") or 0)) < self.demo["minimum_depth_quote"]:
-            reasons.append("depth_limit")
+        unified = candidate.get("unified") or {}
+        current_policy_version = f"{self.config['protocol_version']}:{digest(self.root / PHASE64_CONFIG)}"
+        if unified.get("policy_version") != current_policy_version:
+            reasons.append("unified_policy_version_mismatch")
+        if unified.get("decision") != "COMPRAR":
+            reasons.append("unified_proposal_not_eligible")
+        reasons.extend(frozen_entry_reasons(candidate["prediction"], candidate["market"], self.demo))
+        try:
+            if timestamp(unified["valid_until"]) <= datetime.now(UTC):
+                reasons.append("unified_proposal_expired")
+        except (KeyError, TypeError, ValueError):
+            reasons.append("unified_proposal_invalid")
         with sqlite3.connect(self.store.path) as db:
             consumed = db.execute("SELECT 1 FROM consumed_evaluations WHERE evaluation_id=?",
                                   (candidate["evaluation_id"],)).fetchone()
@@ -569,50 +641,194 @@ class SupervisedDemoEngine:
             reasons.append("daily_entry_limit")
         if float(pnl) <= -float(self.demo["maximum_daily_loss_quote"]):
             reasons.append("daily_loss_limit")
+        risk = RiskManager(RiskLimits(
+            maximum_open_positions=self.demo["maximum_open_positions"],
+            maximum_asset_exposure_quote=self.demo["quote_amount"],
+            maximum_total_exposure_quote=self.demo["maximum_total_exposure_quote"],
+            maximum_daily_loss_quote=self.demo["maximum_daily_loss_quote"],
+            maximum_spread_bps=self.demo["maximum_spread_bps"],
+            minimum_depth_quote=self.demo["minimum_depth_quote"]))
+        risk.state.kill_switch = self.kill.status()["engaged"]
+        risk.state.realized_pnl_today = float(pnl)
+        current_position = self.store.open_position()
+        if current_position:
+            risk.state.open_positions[current_position["symbol"]] = float(current_position.get("entry_quote") or 10)
+        market = candidate["market"]
+        if not reasons:
+            snapshot = MarketSnapshot(
+                "BTCUSDT", datetime.now(UTC), float(market["bid"]), float(market["ask"]),
+                float(market.get("quote_volume_24h") or 0), float(market["bid_depth_quote"]),
+                float(market["ask_depth_quote"]), 0, 0, 0, bool(market.get("data_complete")))
+            proposal = Opportunity("BTCUSDT", datetime.now(UTC), self.demo["policy"],
+                                   True, "buy", 0, 0, 0, 0, ())
+            _, vetoes = risk.can_enter(proposal, self.demo["quote_amount"], snapshot)
+            reasons.extend(f"independent_risk:{reason}" for reason in vetoes)
         if last_closed and last_closed[0]:
             elapsed = (datetime.now(UTC) - datetime.fromisoformat(last_closed[0])).total_seconds()
             if elapsed < float(self.demo["cooldown_minutes"]) * 60:
                 reasons.append("cooldown_active")
         return not reasons, reasons
 
-    def _reconcile(self, session: dict | None, position: dict | None) -> bool:
-        """Reconcile local state with Demo before allowing an entry after startup."""
-        if session is None and position is None:
-            self._reconciled = True
-            self._last_reconcile_monotonic = time.monotonic()
-            return True
+    def _market_entry_reasons(self) -> list[str]:
+        if self.market_status is None:
+            return []  # Standalone tests/emergency tools do not construct a collector.
+        status = self.market_status().get("BTCUSDT", {})
         try:
-            service = self.service_factory(self.root)
+            age = (datetime.now(UTC) - datetime.fromisoformat(status["last_message_at"])).total_seconds()
+        except (KeyError, ValueError, TypeError):
+            age = math.inf
+        if (status.get("connection_state") != "connected" or
+                not status.get("book_valid") or not 0 <= age <= 15):
+            return ["live_market_disconnected_or_stale"]
+        return []
+
+    @staticmethod
+    def _classify_reconciliation_error(exc: BaseException) -> tuple[str, bool, dict]:
+        """Classify conservatively; unknown, auth and state errors never auto-recover."""
+        details: dict[str, Any] = {"error_type": type(exc).__name__}
+        if isinstance(exc, BinanceDemoAPIError):
+            details.update(http_status=exc.http_status, api_code=exc.api_code)
+            if exc.http_status in {401, 403} or exc.api_code in {-2014, -2015}:
+                return "authentication", False, details
+            if (getattr(exc, "transport_error", None) in {"ConnectionError", "Timeout", "ConnectTimeout", "ReadTimeout"} or
+                    exc.http_status in {408, 429} or
+                    (exc.http_status is not None and exc.http_status >= 500) or
+                    exc.api_code in {-1001, -1003, -1006, -1007, -1021}):
+                return "demo_transport_transient", True, details
+            return "demo_api_rejected", False, details
+        if isinstance(exc, RuntimeError):
+            message = str(exc).lower()
+            if "credentials are incomplete" in message or "transport is incomplete" in message:
+                return "runtime_configuration", False, details
+            if "orders are disabled" in message:
+                return "runtime_configuration", False, details
+            return "runtime_state", False, details
+        if isinstance(exc, PermissionError):
+            return "permissions_or_authentication", False, details
+        if isinstance(exc, (TimeoutError, ConnectionError)):
+            details.update(errno=getattr(exc, "errno", None),
+                           winerror=getattr(exc, "winerror", None))
+            return "transport_transient", True, details
+        return "unexpected_internal_error", False, details
+
+    def _invalidate_session_for_recovery(self, session: dict | None, reason: str) -> None:
+        if session and session.get("state") in {"authorized", "running"}:
+            self._stop_session(session["session_id"], reason)
+
+    def _block_reconciliation(self, category: str, details: dict,
+                              session: dict | None, position: dict | None) -> bool:
+        self._reconciled = False
+        self._reconciliation_blocked = True
+        self._next_reconcile_monotonic = math.inf
+        self.last_error = f"reconciliation_blocked:{category}"
+        self.kill.engage(self.last_error)
+        self._invalidate_session_for_recovery(session, self.last_error)
+        self.state = "RECOVERY_REQUIRED"
+        self.reconciliation = {
+            "state": "blocked", "last_attempt_at": iso_now(),
+            "last_success_at": self.reconciliation.get("last_success_at"),
+            "failure_count": self._reconcile_failures, "transient": False,
+            "category": category, "next_retry_at": None, "error": details,
+        }
+        self.store.activity("reconciliation_blocked", {
+            "category": category, "transient": False, **details,
+            "position_present": bool(position), "authorization_invalidated": bool(session),
+        }, position.get("session_id") if position else (session or {}).get("session_id"))
+        return False
+
+    def _reconciliation_failure(self, exc: BaseException, session: dict | None,
+                                position: dict | None) -> bool:
+        category, transient, details = self._classify_reconciliation_error(exc)
+        frames = traceback.extract_tb(exc.__traceback__)[-6:]
+        details["traceback"] = [{"file": Path(frame.filename).name, "line": frame.lineno,
+                                  "function": frame.name} for frame in frames]
+        self._reconciled = False
+        self._reconcile_failures += 1
+        delays = (5, 15, 30, 60)
+        delay = delays[min(self._reconcile_failures - 1, len(delays) - 1)] if transient else None
+        self._next_reconcile_monotonic = time.monotonic() + delay if delay else math.inf
+        next_retry = (datetime.now(UTC) + timedelta(seconds=delay)).isoformat() if delay else None
+        self.last_error = f"reconciliation_failed:{type(exc).__name__}:{category}"
+        self.kill.engage(self.last_error)
+        self._invalidate_session_for_recovery(session, self.last_error)
+        self._reconciliation_blocked = not transient
+        self.state = "RECOVERY_RETRY_WAIT" if transient else "RECOVERY_REQUIRED"
+        self.reconciliation = {
+            "state": "retry_wait" if transient else "blocked",
+            "last_attempt_at": iso_now(),
+            "last_success_at": self.reconciliation.get("last_success_at"),
+            "failure_count": self._reconcile_failures, "transient": transient,
+            "category": category, "next_retry_at": next_retry, "error": details,
+        }
+        self.store.activity("reconciliation_failed", {
+            "error": self.last_error, "category": category, "transient": transient,
+            "next_retry_at": next_retry, "traceback": details["traceback"],
+            "http_status": details.get("http_status"), "api_code": details.get("api_code"),
+            "authorization_invalidated": bool(session),
+        }, position.get("session_id") if position else (session or {}).get("session_id"))
+        return False
+
+    def _reconcile(self, session: dict | None, position: dict | None) -> bool:
+        """Reconcile durable local state and authenticated Binance Demo reads."""
+        attempted_at = iso_now()
+        try:
+            service = self._service()
+            readiness = service.broker.readiness()
+            if not readiness.get("authenticated_reads_ready"):
+                raise RuntimeError("Binance Demo credentials are incomplete for reconciliation")
             unresolved = service.journal.unresolved()
+            if unresolved:
+                return self._block_reconciliation(
+                    "unresolved_or_open_orders", {"unresolved_intents": len(unresolved)}, session, position)
+            if position and position["state"] != "OPEN":
+                return self._block_reconciliation(
+                    "position_state_unknown", {"position_state": position["state"]}, session, position)
+            server = service.broker.server_time()
+            offset = int(server["serverTime"]) - int(datetime.now(UTC).timestamp() * 1000)
+            self._clock_offset_ms = offset
+            service.broker.clock_ms = lambda: int(datetime.now(UTC).timestamp() * 1000) + offset
             open_orders = service.broker.open_orders("BTCUSDT")
+            account = service.broker.balances()
             if unresolved or open_orders:
-                self.state = "RECOVERY_REQUIRED"
-                self.kill.engage("phase64_reconciliation_unresolved_orders")
-                self.store.activity("reconciliation_blocked", {
-                    "unresolved_intents": len(unresolved), "open_orders": len(open_orders)})
-                return False
-            if position and position["state"] == "OPEN":
-                account = service.broker.balances()
-                available = next((Decimal(str(row.get("free", "0"))) for row in account.get("balances", [])
-                                  if row.get("asset") == "BTC"), Decimal("0"))
-                if available < Decimal(position["quantity"]):
-                    self.state = "RECOVERY_REQUIRED"
-                    self.kill.engage("phase64_reconciliation_balance_mismatch")
-                    self.store.activity("reconciliation_blocked", {
-                        "reason": "available_base_below_recorded_position"}, position["session_id"])
-                    return False
+                return self._block_reconciliation(
+                    "unresolved_or_open_orders",
+                    {"unresolved_intents": len(unresolved), "open_orders": len(open_orders)},
+                    session, position)
+            if not account.get("canTrade"):
+                return self._block_reconciliation(
+                    "account_trading_permission", {"can_trade": False}, session, position)
+            available = next((Decimal(str(row.get("free", "0")))
+                              for row in account.get("balances", [])
+                              if row.get("asset") == "BTC"), Decimal("0"))
+            if position and position["state"] == "OPEN" and available < Decimal(position["quantity"]):
+                return self._block_reconciliation(
+                    "balance_divergence",
+                    {"reason": "available_base_below_recorded_position",
+                     "recorded_quantity": position["quantity"],
+                     "available_quantity": str(available)}, session, position)
             self._reconciled = True
+            self._reconciliation_blocked = False
+            self._reconcile_failures = 0
             self._last_reconcile_monotonic = time.monotonic()
+            self._next_reconcile_monotonic = self._last_reconcile_monotonic + 30
+            self.last_error = None
+            self.reconciliation = {
+                "state": "healthy", "last_attempt_at": attempted_at,
+                "last_success_at": iso_now(), "failure_count": 0,
+                "transient": None, "category": None,
+                "next_retry_at": None, "error": None,
+                "unresolved_intents": 0, "open_orders": 0,
+                "account_can_trade": True, "position_present": bool(position),
+                "credentials_present": bool(readiness.get("credentials_present")),
+            }
             self.store.activity("reconciliation_completed", {
                 "unresolved_intents": 0, "open_orders": 0,
-                "position_present": bool(position)})
+                "account_can_trade": True, "position_present": bool(position),
+                "authenticated_demo_read": True,
+            }, position.get("session_id") if position else (session or {}).get("session_id"))
             return True
         except Exception as exc:
-            self.last_error = f"reconciliation_failed:{type(exc).__name__}"
-            self.state = "RECOVERY_REQUIRED"
-            self.kill.engage(self.last_error)
-            self.store.activity("reconciliation_failed", {"error": self.last_error})
-            return False
+            return self._reconciliation_failure(exc, session, position)
 
     @staticmethod
     def _net_quantity(order: dict, base_asset: str) -> Decimal:
@@ -623,16 +839,29 @@ class SupervisedDemoEngine:
         return max(Decimal("0"), quantity)
 
     def _enter(self, session: dict, candidate: dict) -> None:
-        service = self.service_factory(self.root)
+        service = self._service()
         plan = service.plan("BTCUSDT", Decimal("10"))
         rules = SymbolRules.from_exchange_info(service.broker.exchange_info("BTCUSDT"), "BTCUSDT")
-        latest_price = Decimal(str(service.broker.average_price("BTCUSDT")["price"]))
+        latest_price = Decimal(str(service.broker.book_ticker("BTCUSDT")["askPrice"]))
+        if not latest_price.is_finite() or latest_price <= 0:
+            raise RuntimeError("executable Demo ask unavailable")
+        # Avoid sizing from the rolling average when the executable ask moved.
+        quantity_to_buy = rules.quantity_for_quote(Decimal("10"), latest_price)
+        if Decimal(plan.available_quote_balance) < quantity_to_buy * latest_price:
+            raise RuntimeError("virtual quote balance is insufficient at executable ask")
         decision_ask = Decimal(str(candidate["market"].get("ask") or "0"))
         if decision_ask <= 0:
             raise RuntimeError("decision-time ask is unavailable")
         price_move_bps = abs(latest_price / decision_ask - 1) * Decimal("10000")
         if price_move_bps > Decimal(str(self.demo["maximum_slippage_bps"])):
             raise RuntimeError("pre-submit price movement exceeds the frozen slippage limit")
+        current_session = self._authorization()
+        if (self.kill.status()["engaged"] or self._market_entry_reasons() or
+                not current_session or current_session["session_id"] != session["session_id"]):
+            raise PermissionError("Demo entry authorization or live market was invalidated")
+        allowed, vetoes = self._gate(current_session, candidate)
+        if not allowed:
+            raise PermissionError("Demo entry revalidation failed: " + ",".join(vetoes))
         position_id = f"pos-{uuid.uuid4().hex}"
         client_id = f"bai64-b-{uuid.uuid4().hex[:20]}"
         now = datetime.now(UTC)
@@ -644,6 +873,8 @@ class SupervisedDemoEngine:
                         json.dumps({"decision": {"evaluated_at": candidate["evaluated_at"],
                                    "market": candidate["market"],
                                    "prediction": candidate["prediction"],
+                                   "unified_decision_id": candidate["unified"]["decision_id"],
+                                   "planned_risk": candidate["unified"]["planned_risk"],
                                    "pre_submit_price": str(latest_price),
                                    "pre_submit_price_move_bps": str(price_move_bps)}})))
             db.execute("INSERT INTO consumed_evaluations VALUES(?,?,?)",
@@ -654,10 +885,11 @@ class SupervisedDemoEngine:
         self.ledger.append("experimental_demo_entry_approved", {
             "session_id": session["session_id"], "position_id": position_id,
             "evaluation_id": candidate["evaluation_id"], "symbol": "BTCUSDT",
+            "unified_decision_id": candidate["unified"]["decision_id"],
             "policy": "A_quantitative", "quote_amount": "10",
             "category": "EXPERIMENTAL_DEMO", "order_sent_at_record_time": False})
         order = service._submit(diagnostic_id=position_id, symbol="BTCUSDT", side="BUY",
-                                quantity=plan.quantity, client_id=client_id)
+                                quantity=str(quantity_to_buy), client_id=client_id)
         if order.get("status") != "FILLED":
             self.kill.engage("phase64_entry_not_fully_filled")
             with sqlite3.connect(self.store.path) as db:
@@ -676,6 +908,8 @@ class SupervisedDemoEngine:
                         json.dumps({"decision": {"evaluated_at": candidate["evaluated_at"],
                                    "market": candidate["market"],
                                    "prediction": candidate["prediction"],
+                                   "unified_decision_id": candidate["unified"]["decision_id"],
+                                   "planned_risk": candidate["unified"]["planned_risk"],
                                    "pre_submit_price": str(latest_price),
                                    "pre_submit_price_move_bps": str(price_move_bps)},
                                     "entry": order}), position_id))
@@ -695,7 +929,9 @@ class SupervisedDemoEngine:
         opened = datetime.fromisoformat(position["opened_at"])
         if now >= opened + timedelta(minutes=self.demo["maximum_absolute_minutes"]):
             return "absolute_duration_limit"
-        current = Decimal(str(service.broker.average_price("BTCUSDT")["price"]))
+        current = Decimal(str(service.broker.book_ticker("BTCUSDT")["bidPrice"]))
+        if not current.is_finite() or current <= 0:
+            raise RuntimeError("executable Demo bid unavailable")
         entry = Decimal(position["entry_price"])
         if entry and (current / entry - 1) * Decimal("10000") <= -Decimal(str(self.demo["stop_loss_bps"])):
             return "stop_loss"
@@ -709,11 +945,12 @@ class SupervisedDemoEngine:
         return None
 
     def _close(self, position: dict, reason: str) -> None:
-        service = self.service_factory(self.root)
+        service = self._service()
         rules = SymbolRules.from_exchange_info(service.broker.exchange_info("BTCUSDT"), "BTCUSDT")
-        quantity = rules.quantity_for_quote(Decimal(position["quantity"]) *
-                                            Decimal(str(service.broker.average_price("BTCUSDT")["price"])),
-                                            Decimal(str(service.broker.average_price("BTCUSDT")["price"])))
+        bid = Decimal(str(service.broker.book_ticker("BTCUSDT")["bidPrice"]))
+        if not bid.is_finite() or bid <= 0:
+            raise RuntimeError("executable Demo bid unavailable")
+        quantity = rules.quantity_for_quote(Decimal(position["quantity"]) * bid, bid)
         client_id = f"bai64-s-{uuid.uuid4().hex[:20]}"
         with sqlite3.connect(self.store.path) as db:
             db.execute("UPDATE positions SET state='EXIT_SUBMITTING',exit_client_id=?,close_reason=? "
@@ -738,8 +975,12 @@ class SupervisedDemoEngine:
                                      and Decimal(str(fill.get("commission", "0"))) != 0})
         net = exit_quote - Decimal(position["entry_quote"]) - quote_fees
         payload = dict(position.get("payload", {})) | {"exit": order}
+        residual = max(Decimal("0"), Decimal(position["quantity"]) - sold)
         payload["economics"] = {"net_quote_complete": not unknown_fee_assets,
-                                "unknown_fee_assets": unknown_fee_assets}
+                                "unknown_fee_assets": unknown_fee_assets,
+                                "basis": "cash_flow_after_quote_fees_residual_not_marked_to_profit",
+                                "residual_base_quantity": str(residual),
+                                "residual_mark_to_bid_quote": None}
         with sqlite3.connect(self.store.path) as db:
             db.execute("""UPDATE positions SET state='CLOSED',closed_at=?,exit_quote=?,exit_price=?,
                           net_quote=?,payload_json=? WHERE position_id=?""",
@@ -747,7 +988,8 @@ class SupervisedDemoEngine:
                         str(net) if not unknown_fee_assets else None, json.dumps(payload),
                         position["position_id"]))
         self.store.activity("demo_position_closed", {"position_id": position["position_id"],
-                            "reason": reason, "net_quote": str(net)}, position["session_id"])
+                            "reason": reason, "net_quote": str(net) if not unknown_fee_assets else None,
+                            "residual_base_quantity": str(residual)}, position["session_id"])
         self.ledger.append("experimental_demo_position_closed", {
             "session_id": position["session_id"], "position_id": position["position_id"],
             "client_order_id": client_id, "exchange_status": order.get("status"),
@@ -768,24 +1010,40 @@ class SupervisedDemoEngine:
     def cycle(self) -> None:
         session = self._authorization()
         position = self.store.open_position()
-        reconciliation_due = (not self._reconciled or
-                              time.monotonic() - self._last_reconcile_monotonic >= 30)
+        if position and position["state"] != "OPEN":
+            if not self._reconciliation_blocked:
+                self._block_reconciliation(
+                    "position_state_unknown", {"position_state": position["state"]}, session, position)
+            return
+        now_monotonic = time.monotonic()
+        reconciliation_due = (
+            not self._reconciliation_blocked and
+            now_monotonic >= self._next_reconcile_monotonic)
+        if self._reconciliation_blocked:
+            self.state = "RECOVERY_REQUIRED"
+            return
+        if not self._reconciled and not reconciliation_due:
+            self.state = "RECOVERY_RETRY_WAIT"
+            return
         if reconciliation_due and not self._reconcile(session, position):
             return
-        candidate = self._latest_candidate()
         if position:
             try:
-                service = self.service_factory(self.root)
-                reason = self._exit_reason(position, candidate, service)
+                service = self._service()
+                # Exit limits/kill switch remain usable even if inference SQLite is busy.
+                reason = self._exit_reason(position, None, service)
+                candidate = self._latest_candidate() if reason is None else None
+                if reason is None:
+                    reason = self._exit_reason(position, candidate, service)
                 if reason:
                     self._close(position, reason)
             except Exception as exc:
-                self.last_error = f"position_monitor:{type(exc).__name__}"
-                self.kill.engage(self.last_error)
+                self._reconciliation_failure(exc, session, position)
             return
         if not session:
             self.state = "OBSERVE"
             return
+        candidate = self._latest_candidate()
         self.state = "AUTHORIZED_DEMO"
         allowed, reasons = self._gate(session, candidate)
         if not allowed:
@@ -802,13 +1060,20 @@ class SupervisedDemoEngine:
     async def run(self) -> None:
         self._write_control()
         self.store.activity("engine_started", {"boot_id": self.boot_id, "orders_sent": False})
-        while not self._stop.is_set():
-            await asyncio.to_thread(self.cycle)
-            self._write_control()
-            try:
-                await asyncio.wait_for(self._stop.wait(), timeout=5)
-            except asyncio.TimeoutError:
-                pass
+        # Dedicated capacity: a slow Qwen/news job in asyncio's default pool
+        # cannot queue ahead of position management. Cycles never overlap.
+        with ThreadPoolExecutor(max_workers=1, thread_name_prefix="demo-position-manager") as executor:
+            while not self._stop.is_set():
+                try:
+                    await asyncio.get_running_loop().run_in_executor(executor, self.cycle)
+                except Exception as exc:
+                    self._reconciliation_failure(exc, self.store.active_session(),
+                                                 self.store.open_position())
+                self._write_control()
+                try:
+                    await asyncio.wait_for(self._stop.wait(), timeout=5)
+                except asyncio.TimeoutError:
+                    pass
 
     def stop(self) -> None:
         self._stop.set()
@@ -828,9 +1093,24 @@ def _fresh_engine_control(root: Path) -> dict:
     return engine
 
 
+def _healthy_engine_control(root: Path) -> dict:
+    engine = _fresh_engine_control(root)
+    reconciliation = engine.get("reconciliation") or {}
+    if engine.get("state") != "OBSERVE" or reconciliation.get("state") != "healthy":
+        raise RuntimeError("engine reconciliation is not healthy; keep the kill switch engaged")
+    try:
+        reconciliation_age = (datetime.now(UTC) - datetime.fromisoformat(
+            reconciliation["last_success_at"])).total_seconds()
+    except (KeyError, TypeError, ValueError):
+        raise RuntimeError("engine reconciliation evidence is invalid") from None
+    if not 0 <= reconciliation_age <= 45:
+        raise RuntimeError("engine reconciliation evidence is stale")
+    return engine
+
+
 def prepare_authorization(root: Path = ROOT) -> dict:
     config = load_phase64_config(root)
-    engine = _fresh_engine_control(root)
+    engine = _healthy_engine_control(root)
     store = AutonomousStore(root / "runtime/phase_6_4/autonomous.sqlite3")
     if store.open_position():
         raise RuntimeError("an open or unresolved position already exists")
@@ -858,7 +1138,7 @@ def authorize_session(session_id: str, confirmation: str, root: Path = ROOT,
         raise PermissionError("explicit Phase 6.4 Demo authorization is invalid")
     if os.getenv("BITCOIN_AI_ENABLE_DEMO_ORDERS") != "I_UNDERSTAND_DEMO_ONLY":
         raise PermissionError("BITCOIN_AI_ENABLE_DEMO_ORDERS is not enabled for Demo")
-    control = _fresh_engine_control(root)
+    control = _healthy_engine_control(root)
     store = AutonomousStore(root / "runtime/phase_6_4/autonomous.sqlite3")
     with sqlite3.connect(store.path) as db:
         db.row_factory = sqlite3.Row
@@ -877,6 +1157,9 @@ def authorize_session(session_id: str, confirmation: str, root: Path = ROOT,
         if service.journal.unresolved() or service.broker.open_orders("BTCUSDT"):
             raise RuntimeError("Demo reconciliation is not clean")
         service.plan("BTCUSDT", Decimal("10"))
+        latest = _healthy_engine_control(root)
+        if latest["boot_id"] != control["boot_id"] or store.open_position():
+            raise RuntimeError("engine or position changed during authorization checks")
         expires = datetime.now(UTC) + timedelta(minutes=config["experimental_demo"]["session_maximum_minutes"])
         confirmation_hash = hashlib.sha256(confirmation.encode()).hexdigest()
         db.execute("UPDATE sessions SET state='authorized',authorized_at=?,expires_at=?,confirmation_hash=? "

@@ -4,7 +4,8 @@ import { AlertOctagon, ArrowRight, Database, ShieldCheck, WalletCards } from "lu
 import Link from "next/link";
 import { useState } from "react";
 import { useDashboard } from "@/components/dashboard-provider";
-import { EmptyState, ErrorState, MetricCard, StatusBadge, formatMoney, formatNumber } from "@/components/ui";
+import { EmptyState, ErrorState, MetricCard, StatusBadge, formatMoney, formatNumber, formatDate } from "@/components/ui";
+import { decisionLabel, reasonLabel, stateLabel } from "@/lib/labels";
 import { engageKillSwitch } from "@/lib/api";
 
 export default function OverviewPage() {
@@ -22,9 +23,12 @@ export default function OverviewPage() {
     {error && <ErrorState message={error} />}
     <section className="status-strip">
       <div><span>Ambiente</span><StatusBadge state="good" label="Binance Demo" /></div>
-      <div><span>Modo</span><StatusBadge state="neutral" label={overview?.mode ?? "Sem dados"} /></div>
+      <div><span>Modo</span><StatusBadge state="neutral" label={stateLabel(overview?.mode ?? "unknown")} /></div>
       <div><span>Kill switch</span><StatusBadge state={overview?.kill_switch.engaged ? "bad" : "warn"} label={overview?.kill_switch.engaged ? "Ativo" : "Liberado"} /></div>
-      <div><span>Autônomo</span><StatusBadge state="bad" label={overview?.autonomous.ready ? "Pronto, não iniciado" : "Bloqueado"} /></div>
+      <div><span>Autônomo</span><StatusBadge state={overview?.autonomous.status_tone ?? "neutral"} label={overview?.autonomous.status_label ?? "Sem telemetria"} /></div>
+    </section>
+    <section className="panel"><div className="panel-title"><h2>O que o robô está decidindo</h2><Link href="/intelligence" className="panel-link">Acompanhar inteligência <ArrowRight size={15}/></Link></div>
+      {overview?.latest_decision ? <><strong>{decisionLabel(overview.latest_decision.decision)} · BTCUSDT</strong><p>{overview.latest_decision.reasons.map(reasonLabel).join("; ")}</p><p className="muted">Última avaliação: {formatDate(overview.latest_decision.evaluated_at)}. Próximo fechamento previsto: {formatDate(overview.next_nominal_candle_close)}; a análise depende da chegada de dados válidos.</p></> : <EmptyState title="Aguardando a primeira decisão central" detail="Acompanhe o serviço na página Inteligência."/>}
     </section>
     <section className="metrics-grid">
       <MetricCard label="Patrimônio virtual" value={formatMoney(overview?.account.equity_usdt)} hint={overview?.account.equity_complete ? "Preços de referência identificados" : `Parcial · sem cotação: ${overview?.account.unvalued_assets?.join(", ") || "Sem dados"}`} />

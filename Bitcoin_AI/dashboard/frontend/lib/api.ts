@@ -60,6 +60,17 @@ export function dashboardSocket(csrf: string): WebSocket {
   return new WebSocket(`${protocol}//${url.host}/api/ws?csrf=${encodeURIComponent(csrf)}`);
 }
 
+export async function prepareDemoSession():Promise<{session_id:string}> {
+  const token=await bootstrapSession();
+  const response=await fetch(`${API_BASE}/api/control/prepare-session`,{
+    method:"POST",credentials:"include",
+    headers:{"Content-Type":"application/json","X-CSRF-Token":token},
+    body:JSON.stringify({confirmation:"PREPARAR SESSAO DEMO"}),
+  });
+  if(!response.ok) throw new Error(`Preparação recusada (${response.status}). Verifique segurança e reconciliação.`);
+  return ((await response.json()) as ApiEnvelope<{session_id:string}>).data;
+}
+
 export async function exportDataset(dataset: "operations" | "news"): Promise<void> {
   const token = await bootstrapSession();
   const response = await fetch(`${API_BASE}/api/export/${dataset}.csv`, {

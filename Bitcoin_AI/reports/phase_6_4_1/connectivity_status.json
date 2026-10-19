@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-19T14:29:39.054411+00:00",
+  "checked_at": "2026-10-19T21:04:15.528337+00:00",
   "environment": "DEMO",
   "mode": "OBSERVE",
   "configured_endpoints": {
@@ -20,7 +20,7 @@
         "13.193.100.16",
         "35.79.94.187"
       ],
-      "latency_ms": 7.451,
+      "latency_ms": 27.297,
       "error": null
     },
     "demo-stream.binance.com": {
@@ -29,7 +29,7 @@
         "13.113.176.107",
         "35.75.223.176"
       ],
-      "latency_ms": 40.596,
+      "latency_ms": 16.581,
       "error": null
     },
     "demo-ws-api.binance.com": {
@@ -38,7 +38,7 @@
         "52.193.23.27",
         "54.178.204.127"
       ],
-      "latency_ms": 10.015,
+      "latency_ms": 49.44,
       "error": null
     }
   },
@@ -47,36 +47,36 @@
       "available": true,
       "host": "demo-api.binance.com",
       "port": 443,
-      "peer": "35.79.94.187",
+      "peer": "13.193.100.16",
       "tls_version": "TLSv1.3",
       "cipher": "TLS_AES_128_GCM_SHA256",
       "certificate_not_after": "Jan  9 23:59:59 2027 GMT",
       "hostname_verified": true,
-      "latency_ms": 644.943,
+      "latency_ms": 625.333,
       "error": null
     },
     "market_443": {
       "available": true,
       "host": "demo-stream.binance.com",
       "port": 443,
-      "peer": "13.113.176.107",
+      "peer": "35.75.223.176",
       "tls_version": "TLSv1.3",
       "cipher": "TLS_AES_128_GCM_SHA256",
       "certificate_not_after": "Jan  9 23:59:59 2027 GMT",
       "hostname_verified": true,
-      "latency_ms": 577.544,
+      "latency_ms": 600.343,
       "error": null
     },
     "market_9443": {
       "available": true,
       "host": "demo-stream.binance.com",
       "port": 9443,
-      "peer": "13.113.176.107",
+      "peer": "35.75.223.176",
       "tls_version": "TLSv1.3",
       "cipher": "TLS_AES_128_GCM_SHA256",
       "certificate_not_after": "Jan  9 23:59:59 2027 GMT",
       "hostname_verified": true,
-      "latency_ms": 598.619,
+      "latency_ms": 596.545,
       "error": null
     },
     "websocket_api": {
@@ -88,7 +88,7 @@
       "cipher": "TLS_AES_128_GCM_SHA256",
       "certificate_not_after": "Jan  9 23:59:59 2027 GMT",
       "hostname_verified": true,
-      "latency_ms": 605.349,
+      "latency_ms": 585.634,
       "error": null
     }
   },
@@ -98,7 +98,7 @@
     "ping": {},
     "server_time_received": true,
     "btcusdt_status": "TRADING",
-    "latency_ms": 4894.032,
+    "latency_ms": 2590.236,
     "error": null
   },
   "websockets": {
@@ -107,7 +107,7 @@
       "url": "wss://demo-stream.binance.com/ws/btcusdt@trade",
       "event_type": "trade",
       "symbol": "BTCUSDT",
-      "latency_ms": 1153.26,
+      "latency_ms": 3422.54,
       "error": null
     },
     "market_9443": {
@@ -115,7 +115,7 @@
       "url": "wss://demo-stream.binance.com:9443/ws/btcusdt@trade",
       "event_type": "trade",
       "symbol": "BTCUSDT",
-      "latency_ms": 1129.889,
+      "latency_ms": 928.926,
       "error": null
     },
     "websocket_api": {
@@ -123,7 +123,7 @@
       "url": "wss://demo-ws-api.binance.com/ws-api/v3",
       "response_id": "phase641-read-only-ping",
       "status": 200,
-      "latency_ms": 1273.858,
+      "latency_ms": 1299.95,
       "error": null
     }
   },
@@ -138,12 +138,12 @@
     "nonzero_balances": [
       {
         "asset": "BTC",
-        "free": "0.00000988",
+        "free": "0.00001976",
         "locked": "0"
       },
       {
         "asset": "USDT",
-        "free": "4999.1826883",
+        "free": "4998.3540715",
         "locked": "0"
       },
       {
@@ -156,11 +156,11 @@
     "ten_usdt_plan": {
       "valid": true,
       "quantity": "0.00012",
-      "notional": "9.8473909854972",
+      "notional": "9.8449991296656",
       "minimum_notional": "5",
       "error": null
     },
-    "latency_ms": 9301.987,
+    "latency_ms": 3284.063,
     "error": null,
     "orders_sent": false
   },
@@ -169,7 +169,7 @@
   "kill_switch": {
     "engaged": true,
     "reason": "dashboard_observe_start",
-    "updated_at": "2026-10-19T14:27:43.324577+00:00"
+    "updated_at": "2026-10-19T21:03:59.435497+00:00"
   },
   "authorization_active": false,
   "orders_sent": false,

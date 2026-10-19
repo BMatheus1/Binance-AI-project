@@ -1,0 +1,35 @@
+{
+  "context": "isolated reproduction of former serve startup without load_local_dotenv",
+  "readiness": {
+    "mode": "binance_demo",
+    "enabled": false,
+    "credentials_present": false,
+    "transport_present": true,
+    "base_url": "https://demo-api.binance.com/api",
+    "production_endpoint_accessible": false,
+    "authenticated_reads_ready": false,
+    "ready": false
+  },
+  "historic_traceback_logged": false,
+  "orders_sent": false,
+  "exception_type": "RuntimeError",
+  "traceback_frames": [
+    {
+      "file": "<string>",
+      "function": "<module>",
+      "line": 3
+    },
+    {
+      "file": "phase6_trading.py",
+      "function": "open_orders",
+      "line": 406
+    },
+    {
+      "file": "phase6_trading.py",
+      "function": "_call",
+      "line": 374
+    }
+  ],
+  "message": "Binance Demo credentials are incomplete",
+  "request_sent": false
+}

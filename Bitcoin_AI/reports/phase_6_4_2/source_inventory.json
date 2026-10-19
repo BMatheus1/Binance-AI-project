@@ -1,0 +1,6835 @@
+{
+  "audited_at": "2026-10-19T21:10:42.057634+00:00",
+  "python_sources": [
+    {
+      "path": "src/btc_research/__init__.py",
+      "sha256": "c11036ab4e6e6c8322ffb7a93d3286072f966ad6089debbf856b08f0671f811d",
+      "lines": 2,
+      "definitions": [],
+      "imports": []
+    },
+    {
+      "path": "src/btc_research/audit.py",
+      "sha256": "04cdc6a028e793e306380d7de77c9e1caa51b033e2ddf6341081f3451abc9a9b",
+      "lines": 62,
+      "definitions": [
+        {
+          "name": "classify",
+          "line": 15,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "audit",
+          "line": 21,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        "__future__",
+        "json",
+        "pathlib",
+        "pypdf",
+        "re",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "src/btc_research/backtesting.py",
+      "sha256": "413b68d0f9238d5c4954140570e6ccb4dcfbace3fd46aa9999dc2c8160e12395",
+      "lines": 77,
+      "definitions": [
+        {
+          "name": "break_even",
+          "line": 11,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "simulate",
+          "line": 17,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".decision",
+        ".validation",
+        "__future__",
+        "numpy",
+        "pandas"
+      ]
+    },
+    {
+      "path": "src/btc_research/cli.py",
+      "sha256": "9741e257b34ece5aa27d8fc1e890734f6690ac861fe355734c2267e80433e289",
+      "lines": 39,
+      "definitions": [
+        {
+          "name": "main",
+          "line": 7,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".audit",
+        ".common",
+        ".features",
+        ".ingestion",
+        ".knowledge",
+        ".reporting",
+        ".training",
+        "argparse",
+        "logging"
+      ]
+    },
+    {
+      "path": "src/btc_research/common.py",
+      "sha256": "ee62fc6b61ad9bb5758ece711cd8372d86bbd3fc5b0df644e230a9f8cf9cc002",
+      "lines": 57,
+      "definitions": [
+        {
+          "name": "digest",
+          "line": 14,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "save_json",
+          "line": 22,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "config",
+          "line": 37,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "versions",
+          "line": 44,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "write_text",
+          "line": 55,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "hashlib",
+        "importlib.metadata",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "src/btc_research/dashboard_api.py",
+      "sha256": "67d024b45a0ca32c55054ac6b2302217a4fb74b70c559df8b87fea48e02ec68a",
+      "lines": 1067,
+      "definitions": [
+        {
+          "name": "utc_now",
+          "line": 44,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "iso_now",
+          "line": 48,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "autonomous_runtime_summary",
+          "line": 52,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "safe_decimal",
+          "line": 103,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "number",
+          "line": 111,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "read_json",
+          "line": 115,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "read_jsonl",
+          "line": 123,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "Envelope",
+          "line": 141,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "SessionResponse",
+          "line": 146,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "KillSwitchRequest",
+          "line": 152,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "PrepareSessionRequest",
+          "line": 157,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "DashboardSettings",
+          "line": 162,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "SessionStore",
+          "line": 170,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "CachedDemoAccount",
+          "line": 210,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "default_account_loader",
+          "line": 237,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "DashboardRepository",
+          "line": 251,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "create_app",
+          "line": 897,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        ".phase6_2",
+        ".phase6_4",
+        ".phase6_trading",
+        ".unified_intelligence",
+        "__future__",
+        "asyncio",
+        "collections",
+        "csv",
+        "dataclasses",
+        "datetime",
+        "decimal",
+        "fastapi",
+        "fastapi.middleware.cors",
+        "fastapi.responses",
+        "io",
+        "json",
+        "os",
+        "pathlib",
+        "psutil",
+        "pydantic",
+        "secrets",
+        "sqlite3",
+        "threading",
+        "time",
+        "typing"
+      ]
+    },
+    {
+      "path": "src/btc_research/decision.py",
+      "sha256": "2bcd8516748a11e3daecc2f9a5376af1b0f90fce98c4c5b3b09b9a9d4311fa35",
+      "lines": 14,
+      "definitions": [
+        {
+          "name": "decisions",
+          "line": 4,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "numpy"
+      ]
+    },
+    {
+      "path": "src/btc_research/external.py",
+      "sha256": "0346744721911b106b3995159e1c2ed20d6cd2576f701f2c11163c9bceaf6222",
+      "lines": 104,
+      "definitions": [
+        {
+          "name": "ExternalEvent",
+          "line": 11,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "ClosedCandleSource",
+          "line": 33,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "EventSource",
+          "line": 37,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "MacroRiskState",
+          "line": 42,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "macro_risk_filter",
+          "line": 56,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "EventCalendar",
+          "line": 70,
+          "kind": "ClassDef"
+        }
+      ],
+      "imports": [
+        "dataclasses",
+        "datetime",
+        "json",
+        "os",
+        "pathlib",
+        "typing"
+      ]
+    },
+    {
+      "path": "src/btc_research/features.py",
+      "sha256": "4bfacfdf2ffa6fa3d45148972b78df9e1ca5fb49f89594f70df02691ccdc98ad",
+      "lines": 170,
+      "definitions": [
+        {
+          "name": "catalog",
+          "line": 55,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "finite_ema",
+          "line": 63,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_segment",
+          "line": 69,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "make_features",
+          "line": 124,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "build",
+          "line": 136,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        ".ingestion",
+        ".labeling",
+        "__future__",
+        "json",
+        "logging",
+        "numpy",
+        "pandas",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "src/btc_research/inference.py",
+      "sha256": "77ad739bfccecfe6560389e271848d592d6ea84c405066a39d2e20ef3d975f97",
+      "lines": 23,
+      "definitions": [
+        {
+          "name": "predict_closed_candles",
+          "line": 11,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        ".features",
+        "joblib",
+        "pandas",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "src/btc_research/ingestion.py",
+      "sha256": "0c717a8d011aba375f2ae07569d1563e67308f962669f7cce0e31fd527058a90",
+      "lines": 193,
+      "definitions": [
+        {
+          "name": "DataQualityError",
+          "line": 24,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "read_zip",
+          "line": 28,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "validate_values",
+          "line": 89,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "deduplicate",
+          "line": 105,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "ingest",
+          "line": 114,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "require_quality",
+          "line": 181,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".audit",
+        ".common",
+        "__future__",
+        "json",
+        "logging",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "src/btc_research/knowledge.py",
+      "sha256": "5bd78a3a2064dba2ae66af0487605515e67c83222382f4bd7f75e820382dda30",
+      "lines": 52,
+      "definitions": [
+        {
+          "name": "index_books",
+          "line": 24,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        "__future__",
+        "logging",
+        "pathlib",
+        "pypdf"
+      ]
+    },
+    {
+      "path": "src/btc_research/kronos_adapter.py",
+      "sha256": "04565c106aadd370c3302f2c970d4ef49b8fa75f3d19085f7a6d4485e64cc467",
+      "lines": 86,
+      "definitions": [
+        {
+          "name": "paths_to_probabilities",
+          "line": 16,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "verify_identity",
+          "line": 44,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "KronosCandidateSpec",
+          "line": 51,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "record_shadow_paths",
+          "line": 68,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "dataclasses",
+        "datetime",
+        "hashlib",
+        "json",
+        "numpy",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "src/btc_research/labeling.py",
+      "sha256": "505b2d2b1062eade1d3c831e1f1222a330496dc8d4807c511d74f29ca0636898",
+      "lines": 21,
+      "definitions": [
+        {
+          "name": "make_targets",
+          "line": 7,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "numpy",
+        "pandas"
+      ]
+    },
+    {
+      "path": "src/btc_research/live_market.py",
+      "sha256": "33a28e770a709406bce40b07f5d5f20f8591fe087f957c4b7617083a3fbf6653",
+      "lines": 309,
+      "definitions": [
+        {
+          "name": "utc_now",
+          "line": 17,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "PartitionedJsonl",
+          "line": 21,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "SequenceMonitor",
+          "line": 57,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "LocalOrderBook",
+          "line": 81,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "BinancePublicCollector",
+          "line": 168,
+          "kind": "ClassDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "aiohttp",
+        "asyncio",
+        "dataclasses",
+        "datetime",
+        "inspect",
+        "json",
+        "os",
+        "pathlib",
+        "time",
+        "websockets"
+      ]
+    },
+    {
+      "path": "src/btc_research/microstructure.py",
+      "sha256": "dfe8456f4f557a6aa83569e5ee98d50d624b3036361dd01e5887f5afa7e3ce50",
+      "lines": 288,
+      "definitions": [
+        {
+          "name": "AggTradeQualityError",
+          "line": 53,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "official_urls",
+          "line": 57,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_download",
+          "line": 63,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "download_pilot",
+          "line": 72,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_bool_series",
+          "line": 101,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "read_aggtrade_chunks",
+          "line": 108,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_partial_minutes",
+          "line": 141,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "ingest_archive",
+          "line": 159,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "ingest_pilot",
+          "line": 218,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "load_minutes",
+          "line": 231,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "reconstructed_candles",
+          "line": 241,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_micro_segment",
+          "line": 251,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "make_micro_features",
+          "line": 277,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        "__future__",
+        "datetime",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "pyarrow",
+        "pyarrow.parquet",
+        "shutil",
+        "urllib.request",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "src/btc_research/models.py",
+      "sha256": "d18a50fe2ee0459d325ef960e7c8bea713f029aa8b45213a48ddb65c1d156309",
+      "lines": 114,
+      "definitions": [
+        {
+          "name": "align_probabilities",
+          "line": 16,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "create_model",
+          "line": 22,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "Baseline",
+          "line": 38,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "ModelBundle",
+          "line": 73,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "select_columns",
+          "line": 94,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "feature_groups",
+          "line": 107,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".features",
+        ".validation",
+        "__future__",
+        "catboost",
+        "dataclasses",
+        "numpy",
+        "pandas",
+        "sklearn.ensemble",
+        "sklearn.linear_model",
+        "sklearn.pipeline",
+        "sklearn.preprocessing",
+        "xgboost"
+      ]
+    },
+    {
+      "path": "src/btc_research/opportunity_research.py",
+      "sha256": "56fc5688c9ee7f218a90c18d7c6e6fbc48678b565c986d1314a6229b6abee435",
+      "lines": 155,
+      "definitions": [
+        {
+          "name": "executable_net",
+          "line": 16,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "pattern_hypotheses",
+          "line": 35,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "ExitExperiment",
+          "line": 91,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "exit_candidate",
+          "line": 105,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "chronological_roles",
+          "line": 131,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "dataclasses",
+        "decimal",
+        "math",
+        "numpy",
+        "pandas"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase2.py",
+      "sha256": "1300eee75eeb5c1dde2d0c66cd7d2dcbf9105abbdd7fc975806251d066ed7212",
+      "lines": 659,
+      "definitions": [
+        {
+          "name": "ProbabilityModel",
+          "line": 53,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "_phase2_config",
+          "line": 74,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_assert_feature_frame",
+          "line": 78,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "make_context_features",
+          "line": 90,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "load_development_data",
+          "line": 127,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_create_estimator",
+          "line": 164,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_candidate_definitions",
+          "line": 192,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_fit_candidate",
+          "line": 206,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_ece",
+          "line": 219,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_losses",
+          "line": 232,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_daily_delta_ci",
+          "line": 236,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_sign_flip_pvalue",
+          "line": 242,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_holm",
+          "line": 254,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_group_metric",
+          "line": 264,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_error_analysis",
+          "line": 278,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_permutation_importance",
+          "line": 302,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_economic_analysis",
+          "line": 321,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_target_diagnostics",
+          "line": 346,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_audit_phase1",
+          "line": 355,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_render_reports",
+          "line": 396,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "run",
+          "line": 521,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".backtesting",
+        ".common",
+        ".features",
+        ".models",
+        ".validation",
+        "__future__",
+        "catboost",
+        "dataclasses",
+        "datetime",
+        "json",
+        "logging",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sklearn.ensemble",
+        "sklearn.linear_model",
+        "sklearn.multiclass",
+        "sklearn.pipeline",
+        "sklearn.preprocessing",
+        "xgboost"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase3.py",
+      "sha256": "e85da463be2d48cad0ae2944945c6cb0dd8010c5175bcde7965d9105e1fd2df4",
+      "lines": 300,
+      "definitions": [
+        {
+          "name": "_cfg",
+          "line": 24,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_ece",
+          "line": 28,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "CalibratedResearchModel",
+          "line": 38,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "_selected_columns",
+          "line": 65,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_binary_half_baseline",
+          "line": 75,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_frequency_probabilities",
+          "line": 83,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_uncertainty",
+          "line": 88,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_audit_phase2",
+          "line": 97,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "build_dataset",
+          "line": 118,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_render",
+          "line": 139,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "run",
+          "line": 229,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".backtesting",
+        ".common",
+        ".features",
+        ".labeling",
+        ".microstructure",
+        ".models",
+        ".validation",
+        "__future__",
+        "datetime",
+        "joblib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sklearn.linear_model",
+        "sklearn.pipeline",
+        "sklearn.preprocessing"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase4.py",
+      "sha256": "eac743bcd4b13553fc0a37387232642cacff49ed504746c9c3990325a8101f3a",
+      "lines": 363,
+      "definitions": [
+        {
+          "name": "_config",
+          "line": 21,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_ece",
+          "line": 25,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_probability_distribution",
+          "line": 35,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_period",
+          "line": 42,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_binary_half",
+          "line": 46,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "audit_previous",
+          "line": 52,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "freeze_existing_models",
+          "line": 73,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "build_extended_targets",
+          "line": 110,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "load_development",
+          "line": 138,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_regime_report",
+          "line": 157,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_economic",
+          "line": 175,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "run",
+          "line": 195,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "render_reports",
+          "line": 286,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "main",
+          "line": 362,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".backtesting",
+        ".common",
+        ".features",
+        ".labeling",
+        ".models",
+        ".regimes",
+        ".validation",
+        "__future__",
+        "datetime",
+        "joblib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase4_live.py",
+      "sha256": "60c104274f6d4ee0b567e07e8382c09a48a6556a2ecf882c78aabdfecb69683b",
+      "lines": 227,
+      "definitions": [
+        {
+          "name": "_rest_klines",
+          "line": 24,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_stream_kline",
+          "line": 34,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "Phase4ShadowRunner",
+          "line": 45,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "run_shadow",
+          "line": 226,
+          "kind": "AsyncFunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        ".features",
+        ".live_market",
+        ".prospective",
+        "__future__",
+        "aiohttp",
+        "asyncio",
+        "datetime",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase5.py",
+      "sha256": "c280b7a23805a6fbeceef7305047ab8d62f52b9b91000d40ae490b51276cf33b",
+      "lines": 248,
+      "definitions": [
+        {
+          "name": "config",
+          "line": 21,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_load_candles",
+          "line": 25,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_kronos_frame",
+          "line": 43,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_select_even",
+          "line": 51,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_calibration_rows",
+          "line": 59,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_validation_rows",
+          "line": 73,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "export_colab",
+          "line": 94,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_economic",
+          "line": 144,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_same_instants",
+          "line": 154,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "import_colab_results",
+          "line": 161,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".backtesting",
+        ".common",
+        ".phase4",
+        ".validation",
+        "__future__",
+        "datetime",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase6.py",
+      "sha256": "70ccb29206bf567e13cf15ee49faee2a4643d608c4acd0270c6678a8008ef390",
+      "lines": 249,
+      "definitions": [
+        {
+          "name": "load_config",
+          "line": 23,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "AiohttpFeedFetcher",
+          "line": 36,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "build_news_service",
+          "line": 54,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "MultiAssetMarketService",
+          "line": 63,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "Phase6Runtime",
+          "line": 102,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "Phase6DecisionEngine",
+          "line": 121,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "preservation_manifest",
+          "line": 187,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "prepare",
+          "line": 201,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        ".live_market",
+        ".phase6_news",
+        ".phase6_trading",
+        "__future__",
+        "aiohttp",
+        "asyncio",
+        "dataclasses",
+        "datetime",
+        "hashlib",
+        "json",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase6_1.py",
+      "sha256": "e759d2801af2316548e7c7627b2eeb8d1ce9ef85fbed225bc457fbf2e2f53db7",
+      "lines": 229,
+      "definitions": [
+        {
+          "name": "EventSignal",
+          "line": 24,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "MarketEventDetector",
+          "line": 31,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "FourPolicyEngine",
+          "line": 59,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "evaluate_four_policies",
+          "line": 199,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "extension_counterfactual",
+          "line": 214,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "save_four_policy_evaluation",
+          "line": 226,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        ".phase6_news",
+        ".phase6_nlp",
+        ".phase6_trading",
+        "__future__",
+        "dataclasses",
+        "datetime",
+        "json",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase6_2.py",
+      "sha256": "939e86c4e354c83da45f73ca0cbeb5ca7a743bba32dcaa8a8c6cf7aff6be50ff",
+      "lines": 567,
+      "definitions": [
+        {
+          "name": "ExecutionMode",
+          "line": 39,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "load_phase62_config",
+          "line": 46,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "load_local_dotenv",
+          "line": 68,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "environment_diagnostic",
+          "line": 81,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_atomic_json",
+          "line": 103,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "PersistentKillSwitch",
+          "line": 110,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "_decimal",
+          "line": 143,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "floor_to_step",
+          "line": 153,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "decimal_text",
+          "line": 159,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "SymbolRules",
+          "line": 164,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "summarize_account",
+          "line": 230,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "DiagnosticPlan",
+          "line": 250,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "ExecutionJournal",
+          "line": 262,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "_balance",
+          "line": 326,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "DemoExecutionService",
+          "line": 331,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "PrioritizedNewsJob",
+          "line": 477,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "PriorityInferenceQueue",
+          "line": 485,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "endpoint_safety_check",
+          "line": 529,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "build_demo_service",
+          "line": 541,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "autonomous_readiness",
+          "line": 553,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        ".phase6_trading",
+        "__future__",
+        "asyncio",
+        "dataclasses",
+        "datetime",
+        "decimal",
+        "dotenv",
+        "enum",
+        "json",
+        "os",
+        "pathlib",
+        "sqlite3",
+        "time",
+        "typing",
+        "uuid"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase6_4.py",
+      "sha256": "76e7e1104e0cb97fd85cc513aec2f6310740a3175d6d1657117fd45c70d78703",
+      "lines": 1215,
+      "definitions": [
+        {
+          "name": "iso_now",
+          "line": 40,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "load_phase64_config",
+          "line": 44,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "ObservationStore",
+          "line": 70,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "ObservationMonitor",
+          "line": 258,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "_mean_ci",
+          "line": 327,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "economic_report",
+          "line": 341,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "AutonomousStore",
+          "line": 436,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "SupervisedDemoEngine",
+          "line": 511,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "_fresh_engine_control",
+          "line": 1082,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_healthy_engine_control",
+          "line": 1096,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "prepare_authorization",
+          "line": 1111,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "authorize_session",
+          "line": 1133,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "stop_session",
+          "line": 1175,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "emergency_close",
+          "line": 1190,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "preservation_manifest",
+          "line": 1205,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        ".phase6_2",
+        ".phase6_trading",
+        ".unified_intelligence",
+        "__future__",
+        "aiohttp",
+        "asyncio",
+        "concurrent.futures",
+        "datetime",
+        "decimal",
+        "hashlib",
+        "json",
+        "math",
+        "numpy",
+        "os",
+        "pathlib",
+        "psutil",
+        "sqlite3",
+        "time",
+        "traceback",
+        "typing",
+        "uuid"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase6_connectivity.py",
+      "sha256": "81174de6718b2a72e338637a50b17fee700352585c91b6b78a8ce3711959fe24",
+      "lines": 236,
+      "definitions": [
+        {
+          "name": "_safe_error",
+          "line": 35,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_assert_demo_url",
+          "line": 46,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "dns_check",
+          "line": 55,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "tls_check",
+          "line": 70,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "rest_check",
+          "line": 95,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_websocket_check",
+          "line": 117,
+          "kind": "AsyncFunctionDef"
+        },
+        {
+          "name": "websocket_checks",
+          "line": 142,
+          "kind": "AsyncFunctionDef"
+        },
+        {
+          "name": "authenticated_read_check",
+          "line": 154,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "diagnose_connectivity",
+          "line": 183,
+          "kind": "AsyncFunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        ".phase6_2",
+        ".phase6_4",
+        ".phase6_trading",
+        "__future__",
+        "asyncio",
+        "json",
+        "pathlib",
+        "socket",
+        "ssl",
+        "time",
+        "typing",
+        "urllib.parse",
+        "websockets"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase6_decisions.py",
+      "sha256": "d46a2e330df2b06800aaf29d5f414c782a400bedd661339668585de569326391",
+      "lines": 752,
+      "definitions": [
+        {
+          "name": "LazyQwen3Interpreter",
+          "line": 41,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "DecisionStore",
+          "line": 96,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "ContinuousDecisionWorker",
+          "line": 248,
+          "kind": "ClassDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        ".decision",
+        ".features",
+        ".opportunity_research",
+        ".phase4_live",
+        ".phase6_1",
+        ".phase6_news",
+        ".phase6_nlp",
+        ".phase6_trading",
+        ".unified_intelligence",
+        "__future__",
+        "aiohttp",
+        "asyncio",
+        "concurrent.futures",
+        "datetime",
+        "hashlib",
+        "joblib",
+        "json",
+        "math",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sqlite3",
+        "typing"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase6_news.py",
+      "sha256": "45281258a4f51a3141ca030b88fe6866f170c5bb8b642bc22019d44a02237763",
+      "lines": 389,
+      "definitions": [
+        {
+          "name": "_utc",
+          "line": 39,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "SourcePolicy",
+          "line": 46,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "NewsEvent",
+          "line": 64,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "RawFeedItem",
+          "line": 118,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "_clean",
+          "line": 128,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_story_key",
+          "line": 133,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_parse_feed_time",
+          "line": 138,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "parse_rss",
+          "line": 145,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "classify_item",
+          "line": 175,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "assess_market_reaction",
+          "line": 205,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "context_for_decision",
+          "line": 222,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "EventStore",
+          "line": 236,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "event_from_record",
+          "line": 300,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "FeedFetcher",
+          "line": 308,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "NewsService",
+          "line": 312,
+          "kind": "ClassDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "asyncio",
+        "dataclasses",
+        "datetime",
+        "email.utils",
+        "hashlib",
+        "html",
+        "json",
+        "pathlib",
+        "re",
+        "sqlite3",
+        "time",
+        "typing",
+        "urllib.parse",
+        "xml.etree.ElementTree"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase6_nlp.py",
+      "sha256": "d4f1ca5c8a915edff37808d9e5f24c277db9d173f3e5d3970fc6d7482d1cb436",
+      "lines": 651,
+      "definitions": [
+        {
+          "name": "SentimentResult",
+          "line": 43,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "FinancialSentimentClassifier",
+          "line": 66,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "AssetImpact",
+          "line": 72,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "FinancialNewsAnalysis",
+          "line": 80,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "NewsInterpretationResult",
+          "line": 138,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "FinancialNewsInterpreter",
+          "line": 163,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "load_phase61_config",
+          "line": 169,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "model_directory",
+          "line": 191,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "finbert_model_directory",
+          "line": 195,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "download_qwen3",
+          "line": 199,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_extract_json",
+          "line": 244,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "validate_qwen_output",
+          "line": 260,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "Qwen3Interpreter",
+          "line": 277,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "NeuralInferenceWorker",
+          "line": 445,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "FinBERTClassifier",
+          "line": 521,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "evaluate_labeled_cases",
+          "line": 620,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        "__future__",
+        "asyncio",
+        "collections",
+        "dataclasses",
+        "hashlib",
+        "huggingface_hub",
+        "json",
+        "math",
+        "numpy",
+        "pathlib",
+        "pydantic",
+        "re",
+        "threading",
+        "time",
+        "torch",
+        "transformers",
+        "typing"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase6_runtime.py",
+      "sha256": "486fd597042341eb50b03d4fb016b9872464d12efced929f09c8c08264253878",
+      "lines": 218,
+      "definitions": [
+        {
+          "name": "SingleInstanceLock",
+          "line": 18,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "JsonFormatter",
+          "line": 61,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "structured_logger",
+          "line": 68,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "Phase61Supervisor",
+          "line": 80,
+          "kind": "ClassDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        "__future__",
+        "asyncio",
+        "datetime",
+        "fcntl",
+        "json",
+        "logging",
+        "logging.handlers",
+        "msvcrt",
+        "os",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "src/btc_research/phase6_trading.py",
+      "sha256": "92a49b52a9768f2ca0dafef2ad5fe78febe4f43271dc2efccf690badc9f90a3d",
+      "lines": 587,
+      "definitions": [
+        {
+          "name": "MarketSnapshot",
+          "line": 26,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "SelectionConfig",
+          "line": 55,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "Opportunity",
+          "line": 66,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "AssetSelector",
+          "line": 80,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "RiskLimits",
+          "line": 124,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "RiskState",
+          "line": 139,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "RiskManager",
+          "line": 149,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "PaperOrder",
+          "line": 234,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "LocalPaperBroker",
+          "line": 246,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "DemoTransport",
+          "line": 270,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "BinanceDemoAPIError",
+          "line": 274,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "RequestsDemoTransport",
+          "line": 284,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "BinanceDemoBroker",
+          "line": 329,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "DecisionLedger",
+          "line": 494,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "_performance",
+          "line": 536,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "evaluate_paired",
+          "line": 554,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "evaluate_simple_benchmarks",
+          "line": 572,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "dataclasses",
+        "datetime",
+        "hashlib",
+        "hmac",
+        "json",
+        "math",
+        "os",
+        "pathlib",
+        "random",
+        "requests",
+        "time",
+        "typing",
+        "urllib.parse",
+        "uuid"
+      ]
+    },
+    {
+      "path": "src/btc_research/prospective.py",
+      "sha256": "87f443253cccd9c5c8baae6fb26d4e35adad4d0e2b0781d0e9345694ed54d487",
+      "lines": 259,
+      "definitions": [
+        {
+          "name": "_canonical",
+          "line": 21,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "ImmutableLedger",
+          "line": 25,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "PaperSpotConfig",
+          "line": 108,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "paper_spot_long",
+          "line": 115,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "paper_fixed_payout",
+          "line": 130,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "feature_snapshot_hash",
+          "line": 138,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "ProspectiveObserver",
+          "line": 142,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "PaperSession",
+          "line": 187,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "prospective_evaluation",
+          "line": 237,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "write_prospective_report",
+          "line": 256,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        ".decision",
+        ".validation",
+        "__future__",
+        "dataclasses",
+        "datetime",
+        "hashlib",
+        "joblib",
+        "json",
+        "numpy",
+        "os",
+        "pandas",
+        "pathlib",
+        "uuid"
+      ]
+    },
+    {
+      "path": "src/btc_research/regimes.py",
+      "sha256": "8b984a9d94c37dc4d5882f8e512be7a8d1304e678cfd177c15f9ba2ee017a605",
+      "lines": 15,
+      "definitions": [
+        {
+          "name": "fit_regimes",
+          "line": 5,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "regimes",
+          "line": 11,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "numpy",
+        "pandas"
+      ]
+    },
+    {
+      "path": "src/btc_research/reporting.py",
+      "sha256": "ad2d6bb89d1593aeaed6083b3437c09f9189834fff047d7bb97db272c69569e6",
+      "lines": 127,
+      "definitions": [
+        {
+          "name": "table",
+          "line": 10,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "report_all",
+          "line": 14,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".common",
+        "json",
+        "pandas",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "src/btc_research/training.py",
+      "sha256": "ce10ea98b5ec1ab56a4ebea14735ef238afd3844b9ca2ebd650f95be1208a002",
+      "lines": 260,
+      "definitions": [
+        {
+          "name": "load_data",
+          "line": 22,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_period",
+          "line": 49,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "permutation_report",
+          "line": 53,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "walk_forward",
+          "line": 74,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "train",
+          "line": 97,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "evaluate",
+          "line": 176,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".backtesting",
+        ".common",
+        ".features",
+        ".ingestion",
+        ".models",
+        ".regimes",
+        ".validation",
+        "__future__",
+        "datetime",
+        "joblib",
+        "json",
+        "logging",
+        "numpy",
+        "pandas",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "src/btc_research/unified_intelligence.py",
+      "sha256": "9bb98b7b5d158541e0af02c2f0866b909551f9751417595b24aa6dba3e9f8b31",
+      "lines": 198,
+      "definitions": [
+        {
+          "name": "finite",
+          "line": 22,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "timestamp",
+          "line": 30,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "frozen_entry_reasons",
+          "line": 37,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "UnifiedDecision",
+          "line": 68,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "UnifiedTradingIntelligenceEngine",
+          "line": 93,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "UnifiedDecisionStore",
+          "line": 165,
+          "kind": "ClassDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "dataclasses",
+        "datetime",
+        "hashlib",
+        "json",
+        "math",
+        "pathlib",
+        "sqlite3",
+        "typing"
+      ]
+    },
+    {
+      "path": "src/btc_research/validation.py",
+      "sha256": "1f91f796d1bfe800e8bc34aa16fd1c3e33d924f76c0eb18b186306397d0164ed",
+      "lines": 72,
+      "definitions": [
+        {
+          "name": "assert_inputs",
+          "line": 10,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "split_period",
+          "line": 21,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "assert_disjoint",
+          "line": 29,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "metrics",
+          "line": 34,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "daily_block_ci",
+          "line": 58,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "by_period",
+          "line": 70,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        ".features",
+        "__future__",
+        "numpy",
+        "pandas",
+        "sklearn.metrics"
+      ]
+    },
+    {
+      "path": "scripts/analyze_phase5_results.py",
+      "sha256": "c61a4bf4ce3fd3e277813be66a81cc66ee7e77dd1c0cbf7487222786aaf92f89",
+      "lines": 138,
+      "definitions": [
+        {
+          "name": "_best_scenario",
+          "line": 13,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "analyze",
+          "line": 18,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "markdown",
+          "line": 73,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "main",
+          "line": 127,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "argparse",
+        "btc_research.common",
+        "json",
+        "numpy",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "scripts/audit_book_study.py",
+      "sha256": "f464fbfa045f1f1675f1f2a2eedbaefe66f64b0cf3a0b7bc2d81e25f06289f7e",
+      "lines": 134,
+      "definitions": [
+        {
+          "name": "pages",
+          "line": 15,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "digest",
+          "line": 49,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "main",
+          "line": 57,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "hashlib",
+        "json",
+        "pathlib",
+        "sys"
+      ]
+    },
+    {
+      "path": "scripts/audit_phase6_recovery.py",
+      "sha256": "910f878759fbede9aebf112545818280942004fe7346adc69db74cf1402aa57c",
+      "lines": 63,
+      "definitions": [
+        {
+          "name": "fraction",
+          "line": 39,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "datetime",
+        "json",
+        "pathlib",
+        "sqlite3"
+      ]
+    },
+    {
+      "path": "scripts/book_corpus.py",
+      "sha256": "a46794abf25530b4855fefad5e5bf0450745dbb90ce8a14bac83b0a4f183c6d0",
+      "lines": 25,
+      "definitions": [],
+      "imports": [
+        "hashlib",
+        "json",
+        "pathlib",
+        "pypdf"
+      ]
+    },
+    {
+      "path": "scripts/build_phase5_notebook.py",
+      "sha256": "4643993a8909888ac6434456e74e11c632f9c32e92d9b9df0a6563814e3581e4",
+      "lines": 384,
+      "definitions": [
+        {
+          "name": "code",
+          "line": 12,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "markdown",
+          "line": 16,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "nbformat",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "scripts/diagnose_phase6_4_connectivity.py",
+      "sha256": "b8ba72fc1453f092a203be162754ccbea885157de2cf29da7d8869515393d63f",
+      "lines": 41,
+      "definitions": [
+        {
+          "name": "main",
+          "line": 16,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "argparse",
+        "asyncio",
+        "btc_research.phase6_connectivity",
+        "json",
+        "pathlib",
+        "sys"
+      ]
+    },
+    {
+      "path": "scripts/export_phase5_colab.py",
+      "sha256": "c4b3c86c35e5ad3ffa6439dc85f7480ef21201b6982285b226f049774d8af5c0",
+      "lines": 5,
+      "definitions": [],
+      "imports": [
+        "btc_research.phase5"
+      ]
+    },
+    {
+      "path": "scripts/import_phase5_results.py",
+      "sha256": "853f9075f250f0f51050a7cb42f423feb3899fe48a032b8cc312177d280c9130",
+      "lines": 15,
+      "definitions": [
+        {
+          "name": "main",
+          "line": 7,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "argparse",
+        "btc_research.phase5",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "scripts/plot_results.py",
+      "sha256": "f712fac4ccb2082e795192d427742eedf0a0477468bc976c5679a5c10feda3d0",
+      "lines": 38,
+      "definitions": [],
+      "imports": [
+        "json",
+        "matplotlib",
+        "matplotlib.pyplot",
+        "numpy",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "scripts/prepare_phase6_2_reports.py",
+      "sha256": "bed4e9cd2addbd85a0f81e22f520a52a9dc957bc50306c995a1976a8a9d244f6",
+      "lines": 245,
+      "definitions": [
+        {
+          "name": "write",
+          "line": 18,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "digest",
+          "line": 22,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "datetime",
+        "hashlib",
+        "json",
+        "pathlib",
+        "sys"
+      ]
+    },
+    {
+      "path": "scripts/read_book_pages.py",
+      "sha256": "dc754af4fc9a146bf07ffbdae694ecfe87c3525de4df0922d346a08b5123f1de",
+      "lines": 31,
+      "definitions": [],
+      "imports": [
+        "argparse",
+        "json",
+        "pathlib",
+        "re",
+        "sys"
+      ]
+    },
+    {
+      "path": "scripts/run_phase2.py",
+      "sha256": "3232721975d92a45b038ed9fbb387d585932571ba22ca5fd831d7936b9ae1d1b",
+      "lines": 8,
+      "definitions": [],
+      "imports": [
+        "btc_research.phase2",
+        "logging"
+      ]
+    },
+    {
+      "path": "scripts/run_phase3.py",
+      "sha256": "169c6f2af73f91560e897eb2f7c4685fc29531488f9128d05813c3b458331a99",
+      "lines": 23,
+      "definitions": [
+        {
+          "name": "main",
+          "line": 9,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "argparse",
+        "btc_research.common",
+        "btc_research.microstructure",
+        "btc_research.phase3",
+        "logging"
+      ]
+    },
+    {
+      "path": "scripts/run_phase4.py",
+      "sha256": "b9ffff2164c6a1a0be5ece5961272c7d81500cb10366c065843d405ee7a56744",
+      "lines": 5,
+      "definitions": [],
+      "imports": [
+        "btc_research.phase4"
+      ]
+    },
+    {
+      "path": "scripts/run_phase4_shadow.py",
+      "sha256": "df98e9bf92a1a9a0d3b6a65badf62d12111121a255c917edae24bf55a01ef44a",
+      "lines": 20,
+      "definitions": [
+        {
+          "name": "main",
+          "line": 9,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "argparse",
+        "asyncio",
+        "btc_research.phase4_live",
+        "json"
+      ]
+    },
+    {
+      "path": "scripts/run_phase6.py",
+      "sha256": "15ac95c5794e9dabd2f53394e431a61b1995b01e5f424c5d26cf9dc4bdd1389f",
+      "lines": 43,
+      "definitions": [
+        {
+          "name": "main_async",
+          "line": 11,
+          "kind": "AsyncFunctionDef"
+        },
+        {
+          "name": "main",
+          "line": 34,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "argparse",
+        "asyncio",
+        "btc_research.common",
+        "btc_research.phase6",
+        "json"
+      ]
+    },
+    {
+      "path": "scripts/run_phase6_1.py",
+      "sha256": "82548fc14ec1f1299bc14d98a4dca0d5e74cfe362d0d37148a5a726d0c4b7a79",
+      "lines": 180,
+      "definitions": [
+        {
+          "name": "preservation",
+          "line": 24,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "prepare",
+          "line": 41,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "nlp_smoke",
+          "line": 93,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "serve",
+          "line": 112,
+          "kind": "AsyncFunctionDef"
+        },
+        {
+          "name": "main",
+          "line": 163,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "argparse",
+        "asyncio",
+        "btc_research.common",
+        "btc_research.phase6",
+        "btc_research.phase6_2",
+        "btc_research.phase6_4",
+        "btc_research.phase6_decisions",
+        "btc_research.phase6_news",
+        "btc_research.phase6_nlp",
+        "btc_research.phase6_runtime",
+        "datetime",
+        "json",
+        "pathlib"
+      ]
+    },
+    {
+      "path": "scripts/run_phase6_2.py",
+      "sha256": "821784ad6d2f25772de761f62161802f76e4a80be5a11283dfec55909f981062",
+      "lines": 199,
+      "definitions": [
+        {
+          "name": "emit",
+          "line": 31,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "load_environment",
+          "line": 35,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "synced_service",
+          "line": 39,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "journal_summary",
+          "line": 45,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "observe",
+          "line": 53,
+          "kind": "AsyncFunctionDef"
+        },
+        {
+          "name": "main",
+          "line": 60,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "argparse",
+        "asyncio",
+        "btc_research.common",
+        "btc_research.phase6",
+        "btc_research.phase6_2",
+        "btc_research.phase6_trading",
+        "collections",
+        "dataclasses",
+        "decimal",
+        "json",
+        "os",
+        "pathlib",
+        "sys",
+        "time"
+      ]
+    },
+    {
+      "path": "scripts/run_phase6_4.py",
+      "sha256": "1c8d29c35956dd46470eae85fb0c19ecd09934cb8e9fd2406fd9490ec9642f7a",
+      "lines": 242,
+      "definitions": [
+        {
+          "name": "emit",
+          "line": 22,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "prepare",
+          "line": 126,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "status",
+          "line": 152,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "main",
+          "line": 164,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "argparse",
+        "btc_research.common",
+        "btc_research.phase6_2",
+        "btc_research.phase6_4",
+        "datetime",
+        "json",
+        "pathlib",
+        "sys"
+      ]
+    },
+    {
+      "path": "scripts/run_phase6_4_2.py",
+      "sha256": "cee9864e6a801c399809f4c0441e9d3df7b75270129167e2664d9eee035a9c4d",
+      "lines": 180,
+      "definitions": [
+        {
+          "name": "audit",
+          "line": 21,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "evidence",
+          "line": 84,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "benchmarks",
+          "line": 104,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "argparse",
+        "ast",
+        "btc_research.common",
+        "btc_research.unified_intelligence",
+        "datetime",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pathlib",
+        "sklearn.metrics",
+        "sqlite3",
+        "sys"
+      ]
+    },
+    {
+      "path": "tests/conftest.py",
+      "sha256": "b481178cfeeb3e5e1ffa17b1eccb7cca667f6c0494fe01151f5be4b1bf2e98d9",
+      "lines": 16,
+      "definitions": [
+        {
+          "name": "candles",
+          "line": 7,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "numpy",
+        "pandas",
+        "pytest"
+      ]
+    },
+    {
+      "path": "tests/test_phase3.py",
+      "sha256": "18e4f5fae60263018777e59d8d97c0cd5654689706119f8e1064f218cc860e91",
+      "lines": 179,
+      "definitions": [
+        {
+          "name": "DummyProspectiveModel",
+          "line": 22,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "_agg_frame",
+          "line": 29,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_zip",
+          "line": 42,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_aggtrade_chunk_parse_and_incremental_ingest",
+          "line": 47,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_aggtrade_duplicate_detected",
+          "line": 61,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_micro_features_are_causal_and_restart_after_gap",
+          "line": 70,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_sequence_monitor_and_depth_gap_invalidation",
+          "line": 86,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_depth_can_sync_on_first_event_after_snapshot",
+          "line": 99,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_immutable_ledger_detects_tampering",
+          "line": 107,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_technical_abstention_and_paper_costs",
+          "line": 130,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_prospective_observer_writes_before_outcome_and_abstains",
+          "line": 142,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_paper_session_tracks_drawdown_abstention_and_stop",
+          "line": 160,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_macro_filter_never_uses_future_event",
+          "line": 172,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "btc_research.external",
+        "btc_research.live_market",
+        "btc_research.microstructure",
+        "btc_research.prospective",
+        "datetime",
+        "joblib",
+        "json",
+        "numpy",
+        "pandas",
+        "pandas.testing",
+        "pytest",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "tests/test_phase4.py",
+      "sha256": "76a4229a092d7170b126942b0872314b4bbc0ea1fd7ae60323318db07a17dbb8",
+      "lines": 77,
+      "definitions": [
+        {
+          "name": "test_targets_support_15_and_30_minutes",
+          "line": 16,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_30m_target_and_split_do_not_cross_gap_or_boundary",
+          "line": 25,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase4_baselines_and_probability_distribution",
+          "line": 37,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_public_kline_parsers",
+          "line": 47,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_collector_callback_receives_persisted_event",
+          "line": 58,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_event_calendar_is_causal_and_deduplicated",
+          "line": 69,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "asyncio",
+        "btc_research.external",
+        "btc_research.labeling",
+        "btc_research.live_market",
+        "btc_research.phase4",
+        "btc_research.phase4_live",
+        "btc_research.validation",
+        "datetime",
+        "numpy",
+        "pandas",
+        "pytest"
+      ]
+    },
+    {
+      "path": "tests/test_phase5.py",
+      "sha256": "5ca542f2339a2af5a0692343b928e899a060a31000c5053d166c311687abba01",
+      "lines": 121,
+      "definitions": [
+        {
+          "name": "test_kronos_paths_follow_next_open_convention_and_are_smoothed",
+          "line": 14,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_kronos_paths_reject_invalid_shape_or_horizon",
+          "line": 24,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase5_even_selection_is_deterministic_and_ordered",
+          "line": 31,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase5_timestamp_alignment_accepts_equivalent_parquet_units",
+          "line": 40,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase5_export_manifest_excludes_consumed_final_period",
+          "line": 46,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_kronos_shadow_integration_records_probabilities_but_always_abstains",
+          "line": 57,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase5_import_accepts_aligned_smoke_and_rejects_economic_mismatch",
+          "line": 70,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase5_colab_bootstrap_is_isolated_and_upload_is_cwd_independent",
+          "line": 112,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "btc_research.kronos_adapter",
+        "btc_research.phase5",
+        "btc_research.prospective",
+        "datetime",
+        "hashlib",
+        "json",
+        "numpy",
+        "pandas",
+        "pytest"
+      ]
+    },
+    {
+      "path": "tests/test_phase6.py",
+      "sha256": "817c78d257a3146ad30dea676659f8d8b39f652d7dbe123fd9345f6a54fa2ce4",
+      "lines": 438,
+      "definitions": [
+        {
+          "name": "_source",
+          "line": 25,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_rss",
+          "line": 29,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_snapshot",
+          "line": 36,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase6_config_is_observation_only",
+          "line": 46,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_source_rejects_http_and_too_fast_interval",
+          "line": 53,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_rss_parse_and_classifier_timestamps_are_causal",
+          "line": 60,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_feed_ignores_items_published_after_receipt",
+          "line": 69,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_prompt_injection_is_data_and_never_a_trade_instruction",
+          "line": 74,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_market_reaction_marks_information_already_moved_before_receipt",
+          "line": 83,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_news_context_is_causal_ignores_injection_and_never_adds_direction",
+          "line": 97,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_event_store_deduplicates_and_preserves_first_receipt",
+          "line": 107,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_event_store_records_update_as_revision",
+          "line": 117,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_event_store_links_same_story_across_sources",
+          "line": 127,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_news_cycle_rate_limits_and_deduplicates",
+          "line": 140,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_news_cycle_isolates_provider_failure",
+          "line": 162,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_news_cycle_skips_overlap",
+          "line": 177,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_asset_selection_uses_net_edge_and_can_abstain",
+          "line": 200,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_policy_a_cannot_consume_news_and_policy_b_can_veto",
+          "line": 209,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_asset_filters_spread_liquidity_staleness_and_data",
+          "line": 217,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_risk_manager_blocks_ineligible_limits_and_kill_switch",
+          "line": 226,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_risk_manager_blocks_correlated_exposure",
+          "line": 237,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_extension_requires_net_profit_signal_and_benefit",
+          "line": 246,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_absolute_duration_is_23_minutes",
+          "line": 265,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_early_close_on_stop_signal_spread_or_data_failure",
+          "line": 274,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_paper_broker_is_idempotent_and_uses_ask_for_buy",
+          "line": 287,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_demo_adapter_rejects_every_production_or_custom_endpoint",
+          "line": 296,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_demo_adapter_disabled_by_default_and_requires_separate_credentials",
+          "line": 302,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_demo_order_is_signed_and_duplicate_prevented",
+          "line": 311,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_demo_order_states_are_explicit",
+          "line": 332,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_decision_ledger_records_abstention_and_detects_tampering",
+          "line": 338,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_paired_experiment_counts_abstention_and_costed_returns",
+          "line": 349,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_paired_experiment_rejects_duplicate_instants",
+          "line": 361,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_reproducible_simple_benchmarks_match_reference_frequency",
+          "line": 367,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_multi_asset_service_builds_exact_frozen_universe",
+          "line": 381,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_prior_phase_hashes_still_match",
+          "line": 403,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_decision_engine_records_paired_observation_without_order",
+          "line": 410,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_decision_engine_news_can_veto_b_without_changing_a",
+          "line": 420,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_decision_engine_requires_explicit_paper_mode_to_fill",
+          "line": 432,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "asyncio",
+        "btc_research.phase6",
+        "btc_research.phase6_news",
+        "btc_research.phase6_trading",
+        "dataclasses",
+        "datetime",
+        "json",
+        "pytest"
+      ]
+    },
+    {
+      "path": "tests/test_phase6_1.py",
+      "sha256": "37215c3964f172952c3cc3b296260c1969f9bf883dc2c9538cf726ecf9192c62",
+      "lines": 322,
+      "definitions": [
+        {
+          "name": "FakeNeuralClassifier",
+          "line": 30,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "_snapshot",
+          "line": 69,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_event",
+          "line": 74,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_independent_policy_a_matches_full_engine_without_reading_news",
+          "line": 81,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "tiny_finbert",
+          "line": 104,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase61_license_gate_and_fixed_identity",
+          "line": 123,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_finbert_loads_and_infers_on_cpu_without_network",
+          "line": 136,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_finbert_rejects_empty_text_and_unavailable_cuda",
+          "line": 145,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_sentiment_result_validates_three_probabilities",
+          "line": 155,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_valid_qwen_json",
+          "line": 161,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_qwen_output_is_strictly_structured_and_has_no_order",
+          "line": 176,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_prompt_injection_forces_unreliable_result",
+          "line": 187,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_async_neural_worker_times_out_without_blocking_other_tasks",
+          "line": 194,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_synthetic_labeled_set_is_authored_and_evaluable",
+          "line": 220,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_four_policies_use_same_snapshot_and_send_no_order",
+          "line": 228,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_negative_neural_event_vetoes_c_and_d",
+          "line": 238,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_reaction_policy_requires_observed_confirmation",
+          "line": 249,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_four_policy_evaluator_and_duplicate_guard",
+          "line": 263,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_extension_counterfactual_is_separate_and_bounded",
+          "line": 273,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_market_event_detector_uses_chronological_snapshots",
+          "line": 282,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_supervisor_writes_heartbeat_and_stops_cleanly",
+          "line": 293,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "asyncio",
+        "btc_research.phase6_1",
+        "btc_research.phase6_news",
+        "btc_research.phase6_nlp",
+        "btc_research.phase6_runtime",
+        "btc_research.phase6_trading",
+        "datetime",
+        "hashlib",
+        "json",
+        "pytest",
+        "time",
+        "torch"
+      ]
+    },
+    {
+      "path": "tests/test_phase6_2.py",
+      "sha256": "dddbe9beb9ff98d44b5d6d37a0ba096154b7ad81a0d8996b371bb634ea2c54a2",
+      "lines": 251,
+      "definitions": [
+        {
+          "name": "exchange_info",
+          "line": 20,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "FakeBroker",
+          "line": 32,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "build_service",
+          "line": 71,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_config_is_fail_closed_and_demo_only",
+          "line": 81,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_environment_diagnostic_never_returns_values",
+          "line": 89,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_production_endpoints_are_rejected",
+          "line": 98,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_kill_switch_defaults_engaged_and_persists",
+          "line": 104,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_corrupt_kill_switch_fails_closed",
+          "line": 116,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_symbol_rules_fall_back_to_lot_step_and_floor_quantity",
+          "line": 122,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_symbol_rules_reject_below_minimum_notional",
+          "line": 129,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_journal_reserves_before_submission_and_blocks_duplicate",
+          "line": 135,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_diagnostic_plan_is_read_only",
+          "line": 145,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_diagnostic_requires_both_confirmation_and_cleared_kill_switch",
+          "line": 153,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_diagnostic_round_trip_reconciles_and_rearms_kill_switch",
+          "line": 162,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_ambiguous_submit_queries_status_without_retry",
+          "line": 174,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_unknown_order_status_engages_kill_switch",
+          "line": 184,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_priority_queue_deduplicates_and_rejects_stale",
+          "line": 195,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_requests_transport_rejects_non_demo_before_network",
+          "line": 209,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_authenticated_reads_do_not_enable_order_actions",
+          "line": 215,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_timestamp_rejection_resynchronizes_only_reads",
+          "line": 228,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "asyncio",
+        "btc_research.phase6_2",
+        "btc_research.phase6_trading",
+        "decimal",
+        "json",
+        "pytest",
+        "time"
+      ]
+    },
+    {
+      "path": "tests/test_phase6_3_dashboard.py",
+      "sha256": "b90f99cf29713301bd5ada34bbf5bd73dbd862d340a56d4232867dcb032b5157",
+      "lines": 296,
+      "definitions": [
+        {
+          "name": "dashboard_root",
+          "line": 18,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "fake_account",
+          "line": 61,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "client",
+          "line": 71,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "login",
+          "line": 78,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_healthz_has_no_trading_control",
+          "line": 84,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_api_requires_local_session",
+          "line": 89,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_dashboard_preparation_reuses_cli_service_requires_csrf_and_never_authorizes",
+          "line": 95,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_intelligence_heartbeat_freshness_matches_actual_publication_interval",
+          "line": 114,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_backend_cpu_requires_two_samples_and_reuses_process",
+          "line": 128,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_session_rejects_untrusted_origin",
+          "line": 143,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_read_token_supports_embedded_browser_without_weakening_mutations",
+          "line": 148,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_overview_uses_real_store_and_marks_residual_dust",
+          "line": 162,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_diagnostic_is_separate_from_strategy_metrics",
+          "line": 172,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_news_contract_uses_metadata_not_summary_body",
+          "line": 185,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_kill_switch_requires_csrf_and_cannot_be_cleared",
+          "line": 194,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_credentials_never_appear_in_api",
+          "line": 207,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_market_unknown_state_does_not_invent_candles",
+          "line": 216,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_invalid_market_symbol_is_rejected",
+          "line": 224,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_csv_export_requires_authentication",
+          "line": 229,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_websocket_requires_session_and_streams_snapshot",
+          "line": 237,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_repository_reads_sqlite_in_query_only_mode",
+          "line": 246,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_authorized_runtime",
+          "line": 252,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_overview_reports_active_phase64_even_when_legacy_readiness_is_blocked",
+          "line": 262,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_overview_never_labels_failed_runtime_checks_as_active",
+          "line": 275,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "btc_research.common",
+        "btc_research.dashboard_api",
+        "datetime",
+        "fastapi.testclient",
+        "json",
+        "pathlib",
+        "pytest",
+        "shutil",
+        "sqlite3",
+        "types"
+      ]
+    },
+    {
+      "path": "tests/test_phase6_4.py",
+      "sha256": "01f75ba3be2dfb28aeb5bed4ecb4c5d3b31da2e55d1d79ab28e41d002ae81f26",
+      "lines": 461,
+      "definitions": [
+        {
+          "name": "phase64_root",
+          "line": 28,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "exchange_info",
+          "line": 34,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "FakeJournal",
+          "line": 46,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "FakeBroker",
+          "line": 51,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "FakeService",
+          "line": 83,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "insert_candidate",
+          "line": 98,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase64_config_is_demo_only_and_frozen",
+          "line": 123,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_observation_cannot_complete_before_real_24_hours",
+          "line": 131,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_economic_report_keeps_validation_blocked_for_small_sample",
+          "line": 147,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_authorization_is_bound_to_running_boot_and_does_not_send_order",
+          "line": 163,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_mocked_authorized_cycle_opens_and_closes_btc_only",
+          "line": 185,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_connectivity_allowlist_rejects_production_hosts",
+          "line": 212,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_engine_cannot_enter_without_a_bound_authorized_session",
+          "line": 221,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_connection_failure_blocks_entry_and_engages_kill_switch",
+          "line": 233,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_frozen_spread_limit_rejects_entry_without_submission",
+          "line": 251,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_restart_preserves_position_but_invalidates_process_authorization",
+          "line": 277,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_authorize_fake",
+          "line": 297,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_transient_rest_failure_respects_backoff_and_recovery_never_reauthorizes",
+          "line": 307,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_permanent_reconciliation_errors_require_intervention",
+          "line": 346,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_unknown_intent_blocks_without_retry_or_new_order",
+          "line": 367,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_position_divergences_remain_blocked_across_restart",
+          "line": 387,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_websocket_disconnect_blocks_fresh_candidate",
+          "line": 402,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_position_manager_has_capacity_when_default_worker_pool_is_busy",
+          "line": 417,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_session_preparation_requires_healthy_authenticated_worker",
+          "line": 453,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "asyncio",
+        "btc_research.common",
+        "btc_research.phase6_2",
+        "btc_research.phase6_4",
+        "btc_research.phase6_connectivity",
+        "btc_research.phase6_trading",
+        "btc_research.unified_intelligence",
+        "concurrent.futures",
+        "datetime",
+        "json",
+        "pathlib",
+        "pytest",
+        "shutil",
+        "sqlite3",
+        "threading",
+        "types"
+      ]
+    },
+    {
+      "path": "tests/test_phase6_4_2.py",
+      "sha256": "1b982572ac8024e78e8bca6a7166e458d6d065cc7d23a2472cf52e8e62350698",
+      "lines": 224,
+      "definitions": [
+        {
+          "name": "inputs",
+          "line": 24,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "intelligence",
+          "line": 36,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_unified_proposal_is_not_authorization_and_does_not_invent_economics",
+          "line": 40,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_malformed_market_blocks_central_proposal",
+          "line": 55,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_temporal_contract_blocks_future_or_old_information",
+          "line": 63,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_invalid_probabilities_never_become_eligible",
+          "line": 70,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_optional_qwen_context_cannot_promote_or_veto_frozen_a",
+          "line": 76,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_gross_gain_can_be_net_loss_and_unknown_costs_stay_unknown",
+          "line": 85,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_exit_experiment_does_not_extend_losses_or_take_gross_only_profit",
+          "line": 94,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_exit_trailing_never_loosens_and_requires_net_profit",
+          "line": 108,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_pattern_hypotheses_are_causal_and_research_only",
+          "line": 114,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_research_roles_purge_labels_and_reject_consumed_holdout",
+          "line": 127,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_news_context_path_does_not_load_models_or_build_features",
+          "line": 139,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_account_failure_never_labels_cached_balance_current",
+          "line": 154,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_market_features_model_central_decision_risk_fills_dashboard_end_to_end",
+          "line": 167,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "btc_research.common",
+        "btc_research.dashboard_api",
+        "btc_research.features",
+        "btc_research.opportunity_research",
+        "btc_research.phase6_4",
+        "btc_research.phase6_decisions",
+        "btc_research.unified_intelligence",
+        "datetime",
+        "decimal",
+        "json",
+        "numpy",
+        "pandas",
+        "pytest",
+        "shutil",
+        "sqlite3",
+        "test_phase6_4",
+        "types"
+      ]
+    },
+    {
+      "path": "tests/test_phase6_decisions.py",
+      "sha256": "b8cecc4780b701aa6876da3bdf40f7a8a647f56fcb49319707868e6267a0471e",
+      "lines": 124,
+      "definitions": [
+        {
+          "name": "test_decision_store_invalidates_evaluation_before_candle_close",
+          "line": 18,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_worker_waits_until_nominal_candle_close",
+          "line": 40,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_high_frequency_quotes_are_coalesced_outside_candle_queue",
+          "line": 50,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_single_instance_lock_rejects_second_owner",
+          "line": 63,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_live_forecast_uses_tuple_feature_catalog_without_attribute_error",
+          "line": 73,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_independent_worker_publishes_while_news_path_is_unavailable",
+          "line": 99,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "__future__",
+        "asyncio",
+        "btc_research.phase6_1",
+        "btc_research.phase6_decisions",
+        "btc_research.phase6_runtime",
+        "datetime",
+        "numpy",
+        "pandas",
+        "types"
+      ]
+    },
+    {
+      "path": "tests/test_phase6_websocket_recovery.py",
+      "sha256": "fcac401f665340d7d7a6955cfde2e91c2a584a026137ed0e9f67d3564058a709",
+      "lines": 52,
+      "definitions": [
+        {
+          "name": "test_websocket_failure_invalidates_book_and_recovers",
+          "line": 11,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_disconnect_removes_stale_worker_quote_and_book",
+          "line": 46,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "asyncio",
+        "btc_research.live_market",
+        "btc_research.phase6_decisions",
+        "json",
+        "pytest"
+      ]
+    },
+    {
+      "path": "tests/test_pipeline.py",
+      "sha256": "705111a7b01a46c3371a91c4acb97373451f82d2f2a743068a6bc6514cd98616",
+      "lines": 338,
+      "definitions": [
+        {
+          "name": "zip_candles",
+          "line": 22,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_zip_milliseconds",
+          "line": 31,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_zip_microseconds",
+          "line": 40,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_wrong_timestamp_precision",
+          "line": 50,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_wrong_month",
+          "line": 57,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_invalid_zip",
+          "line": 64,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_unknown_file",
+          "line": 71,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_wrong_schema",
+          "line": 77,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_bad_checksum",
+          "line": 85,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_impossible_values",
+          "line": 94,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_duplicate_and_conflict",
+          "line": 101,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_incremental_ingest_and_gap_report",
+          "line": 110,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_catalog_matches_features",
+          "line": 122,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_causality_append_and_modify_future",
+          "line": 130,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_no_features_across_gap",
+          "line": 139,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_missing_input_rejected",
+          "line": 146,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_closed_multiscale_only",
+          "line": 152,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_partition_context_equivalence",
+          "line": 160,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_flat_candle_and_indicators",
+          "line": 166,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_targets_exact",
+          "line": 177,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_targets_invalidate_cross_gap",
+          "line": 186,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_purged_time_split",
+          "line": 192,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_future_feature_detection",
+          "line": 202,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_models_and_persistence",
+          "line": 212,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_reproducible_training",
+          "line": 227,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_metrics_and_bootstrap",
+          "line": 237,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_payout_equilibrium",
+          "line": 248,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_abstention",
+          "line": 252,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_backtest_no_overlap_and_ties",
+          "line": 258,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_spot_long_only_and_costs",
+          "line": 267,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_risk_stops",
+          "line": 277,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_external_availability",
+          "line": 285,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_final_test_cannot_be_reused",
+          "line": 292,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_incomplete_multiscale_candle_is_not_reused_across_gap",
+          "line": 303,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase2_context_features_are_causal",
+          "line": 312,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase2_sequences_restart_after_gap",
+          "line": 322,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_holm_adjustment_is_monotone_and_bounded",
+          "line": 329,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_phase2_logistic_supports_three_classes",
+          "line": 334,
+          "kind": "FunctionDef"
+        }
+      ],
+      "imports": [
+        "btc_research.audit",
+        "btc_research.backtesting",
+        "btc_research.decision",
+        "btc_research.external",
+        "btc_research.features",
+        "btc_research.ingestion",
+        "btc_research.labeling",
+        "btc_research.models",
+        "btc_research.phase2",
+        "btc_research.training",
+        "btc_research.validation",
+        "joblib",
+        "json",
+        "numpy",
+        "pandas",
+        "pandas.testing",
+        "pytest",
+        "zipfile"
+      ]
+    }
+  ],
+  "dependency_edges": [
+    {
+      "consumer": "src/btc_research/audit.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/audit.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/audit.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/audit.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/audit.py",
+      "dependency": "pypdf"
+    },
+    {
+      "consumer": "src/btc_research/audit.py",
+      "dependency": "re"
+    },
+    {
+      "consumer": "src/btc_research/audit.py",
+      "dependency": "zipfile"
+    },
+    {
+      "consumer": "src/btc_research/backtesting.py",
+      "dependency": ".decision"
+    },
+    {
+      "consumer": "src/btc_research/backtesting.py",
+      "dependency": ".validation"
+    },
+    {
+      "consumer": "src/btc_research/backtesting.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/backtesting.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/backtesting.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/cli.py",
+      "dependency": ".audit"
+    },
+    {
+      "consumer": "src/btc_research/cli.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/cli.py",
+      "dependency": ".features"
+    },
+    {
+      "consumer": "src/btc_research/cli.py",
+      "dependency": ".ingestion"
+    },
+    {
+      "consumer": "src/btc_research/cli.py",
+      "dependency": ".knowledge"
+    },
+    {
+      "consumer": "src/btc_research/cli.py",
+      "dependency": ".reporting"
+    },
+    {
+      "consumer": "src/btc_research/cli.py",
+      "dependency": ".training"
+    },
+    {
+      "consumer": "src/btc_research/cli.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "src/btc_research/cli.py",
+      "dependency": "logging"
+    },
+    {
+      "consumer": "src/btc_research/common.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/common.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "src/btc_research/common.py",
+      "dependency": "importlib.metadata"
+    },
+    {
+      "consumer": "src/btc_research/common.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/common.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/common.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/common.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": ".phase6_2"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": ".phase6_4"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": ".phase6_trading"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": ".unified_intelligence"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "collections"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "csv"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "decimal"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "fastapi"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "fastapi.middleware.cors"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "fastapi.responses"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "io"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "os"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "psutil"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "pydantic"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "secrets"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "sqlite3"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "threading"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "time"
+    },
+    {
+      "consumer": "src/btc_research/dashboard_api.py",
+      "dependency": "typing"
+    },
+    {
+      "consumer": "src/btc_research/decision.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/external.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/external.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/external.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/external.py",
+      "dependency": "os"
+    },
+    {
+      "consumer": "src/btc_research/external.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/external.py",
+      "dependency": "typing"
+    },
+    {
+      "consumer": "src/btc_research/features.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/features.py",
+      "dependency": ".ingestion"
+    },
+    {
+      "consumer": "src/btc_research/features.py",
+      "dependency": ".labeling"
+    },
+    {
+      "consumer": "src/btc_research/features.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/features.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/features.py",
+      "dependency": "logging"
+    },
+    {
+      "consumer": "src/btc_research/features.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/features.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/features.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/inference.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/inference.py",
+      "dependency": ".features"
+    },
+    {
+      "consumer": "src/btc_research/inference.py",
+      "dependency": "joblib"
+    },
+    {
+      "consumer": "src/btc_research/inference.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/inference.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/ingestion.py",
+      "dependency": ".audit"
+    },
+    {
+      "consumer": "src/btc_research/ingestion.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/ingestion.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/ingestion.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/ingestion.py",
+      "dependency": "logging"
+    },
+    {
+      "consumer": "src/btc_research/ingestion.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/ingestion.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/ingestion.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/ingestion.py",
+      "dependency": "zipfile"
+    },
+    {
+      "consumer": "src/btc_research/knowledge.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/knowledge.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/knowledge.py",
+      "dependency": "logging"
+    },
+    {
+      "consumer": "src/btc_research/knowledge.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/knowledge.py",
+      "dependency": "pypdf"
+    },
+    {
+      "consumer": "src/btc_research/kronos_adapter.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/kronos_adapter.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/kronos_adapter.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/kronos_adapter.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "src/btc_research/kronos_adapter.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/kronos_adapter.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/kronos_adapter.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/labeling.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/labeling.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/labeling.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/live_market.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/live_market.py",
+      "dependency": "aiohttp"
+    },
+    {
+      "consumer": "src/btc_research/live_market.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "src/btc_research/live_market.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/live_market.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/live_market.py",
+      "dependency": "inspect"
+    },
+    {
+      "consumer": "src/btc_research/live_market.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/live_market.py",
+      "dependency": "os"
+    },
+    {
+      "consumer": "src/btc_research/live_market.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/live_market.py",
+      "dependency": "time"
+    },
+    {
+      "consumer": "src/btc_research/live_market.py",
+      "dependency": "websockets"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "pyarrow"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "pyarrow.parquet"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "shutil"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "urllib.request"
+    },
+    {
+      "consumer": "src/btc_research/microstructure.py",
+      "dependency": "zipfile"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": ".features"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": ".validation"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": "catboost"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": "sklearn.ensemble"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": "sklearn.linear_model"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": "sklearn.pipeline"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": "sklearn.preprocessing"
+    },
+    {
+      "consumer": "src/btc_research/models.py",
+      "dependency": "xgboost"
+    },
+    {
+      "consumer": "src/btc_research/opportunity_research.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/opportunity_research.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/opportunity_research.py",
+      "dependency": "decimal"
+    },
+    {
+      "consumer": "src/btc_research/opportunity_research.py",
+      "dependency": "math"
+    },
+    {
+      "consumer": "src/btc_research/opportunity_research.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/opportunity_research.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": ".backtesting"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": ".features"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": ".models"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": ".validation"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "catboost"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "logging"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "sklearn.ensemble"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "sklearn.linear_model"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "sklearn.multiclass"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "sklearn.pipeline"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "sklearn.preprocessing"
+    },
+    {
+      "consumer": "src/btc_research/phase2.py",
+      "dependency": "xgboost"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": ".backtesting"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": ".features"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": ".labeling"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": ".microstructure"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": ".models"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": ".validation"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": "joblib"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": "sklearn.linear_model"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": "sklearn.pipeline"
+    },
+    {
+      "consumer": "src/btc_research/phase3.py",
+      "dependency": "sklearn.preprocessing"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": ".backtesting"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": ".features"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": ".labeling"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": ".models"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": ".regimes"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": ".validation"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": "joblib"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/phase4.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": ".features"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": ".live_market"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": ".prospective"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": "aiohttp"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/phase4_live.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase5.py",
+      "dependency": ".backtesting"
+    },
+    {
+      "consumer": "src/btc_research/phase5.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase5.py",
+      "dependency": ".phase4"
+    },
+    {
+      "consumer": "src/btc_research/phase5.py",
+      "dependency": ".validation"
+    },
+    {
+      "consumer": "src/btc_research/phase5.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase5.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase5.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase5.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/phase5.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/phase5.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase5.py",
+      "dependency": "zipfile"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": ".live_market"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": ".phase6_news"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": ".phase6_trading"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": "aiohttp"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase6.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_1.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase6_1.py",
+      "dependency": ".phase6_news"
+    },
+    {
+      "consumer": "src/btc_research/phase6_1.py",
+      "dependency": ".phase6_nlp"
+    },
+    {
+      "consumer": "src/btc_research/phase6_1.py",
+      "dependency": ".phase6_trading"
+    },
+    {
+      "consumer": "src/btc_research/phase6_1.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase6_1.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/phase6_1.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase6_1.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase6_1.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": ".phase6_trading"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "decimal"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "dotenv"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "enum"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "os"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "sqlite3"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "time"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "typing"
+    },
+    {
+      "consumer": "src/btc_research/phase6_2.py",
+      "dependency": "uuid"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": ".phase6_2"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": ".phase6_trading"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": ".unified_intelligence"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "aiohttp"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "concurrent.futures"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "decimal"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "math"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "os"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "psutil"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "sqlite3"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "time"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "traceback"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "typing"
+    },
+    {
+      "consumer": "src/btc_research/phase6_4.py",
+      "dependency": "uuid"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": ".phase6_2"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": ".phase6_4"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": ".phase6_trading"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": "socket"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": "ssl"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": "time"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": "typing"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": "urllib.parse"
+    },
+    {
+      "consumer": "src/btc_research/phase6_connectivity.py",
+      "dependency": "websockets"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": ".decision"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": ".features"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": ".opportunity_research"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": ".phase4_live"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": ".phase6_1"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": ".phase6_news"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": ".phase6_nlp"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": ".phase6_trading"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": ".unified_intelligence"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "aiohttp"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "concurrent.futures"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "joblib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "math"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "sqlite3"
+    },
+    {
+      "consumer": "src/btc_research/phase6_decisions.py",
+      "dependency": "typing"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "email.utils"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "html"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "re"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "sqlite3"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "time"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "typing"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "urllib.parse"
+    },
+    {
+      "consumer": "src/btc_research/phase6_news.py",
+      "dependency": "xml.etree.ElementTree"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "collections"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "huggingface_hub"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "math"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "pydantic"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "re"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "threading"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "time"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "torch"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "transformers"
+    },
+    {
+      "consumer": "src/btc_research/phase6_nlp.py",
+      "dependency": "typing"
+    },
+    {
+      "consumer": "src/btc_research/phase6_runtime.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/phase6_runtime.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase6_runtime.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "src/btc_research/phase6_runtime.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase6_runtime.py",
+      "dependency": "fcntl"
+    },
+    {
+      "consumer": "src/btc_research/phase6_runtime.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase6_runtime.py",
+      "dependency": "logging"
+    },
+    {
+      "consumer": "src/btc_research/phase6_runtime.py",
+      "dependency": "logging.handlers"
+    },
+    {
+      "consumer": "src/btc_research/phase6_runtime.py",
+      "dependency": "msvcrt"
+    },
+    {
+      "consumer": "src/btc_research/phase6_runtime.py",
+      "dependency": "os"
+    },
+    {
+      "consumer": "src/btc_research/phase6_runtime.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "hmac"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "math"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "os"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "random"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "requests"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "time"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "typing"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "urllib.parse"
+    },
+    {
+      "consumer": "src/btc_research/phase6_trading.py",
+      "dependency": "uuid"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": ".decision"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": ".validation"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": "joblib"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": "os"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/prospective.py",
+      "dependency": "uuid"
+    },
+    {
+      "consumer": "src/btc_research/regimes.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/regimes.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/reporting.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/reporting.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/reporting.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/reporting.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": ".backtesting"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": ".common"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": ".features"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": ".ingestion"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": ".models"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": ".regimes"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": ".validation"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": "joblib"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": "logging"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/training.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/unified_intelligence.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/unified_intelligence.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "src/btc_research/unified_intelligence.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "src/btc_research/unified_intelligence.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "src/btc_research/unified_intelligence.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "src/btc_research/unified_intelligence.py",
+      "dependency": "math"
+    },
+    {
+      "consumer": "src/btc_research/unified_intelligence.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "src/btc_research/unified_intelligence.py",
+      "dependency": "sqlite3"
+    },
+    {
+      "consumer": "src/btc_research/unified_intelligence.py",
+      "dependency": "typing"
+    },
+    {
+      "consumer": "src/btc_research/validation.py",
+      "dependency": ".features"
+    },
+    {
+      "consumer": "src/btc_research/validation.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "src/btc_research/validation.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "src/btc_research/validation.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "src/btc_research/validation.py",
+      "dependency": "sklearn.metrics"
+    },
+    {
+      "consumer": "scripts/analyze_phase5_results.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "scripts/analyze_phase5_results.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "scripts/analyze_phase5_results.py",
+      "dependency": "btc_research.common"
+    },
+    {
+      "consumer": "scripts/analyze_phase5_results.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/analyze_phase5_results.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "scripts/analyze_phase5_results.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/audit_book_study.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "scripts/audit_book_study.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/audit_book_study.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/audit_book_study.py",
+      "dependency": "sys"
+    },
+    {
+      "consumer": "scripts/audit_phase6_recovery.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "scripts/audit_phase6_recovery.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/audit_phase6_recovery.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/audit_phase6_recovery.py",
+      "dependency": "sqlite3"
+    },
+    {
+      "consumer": "scripts/book_corpus.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "scripts/book_corpus.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/book_corpus.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/book_corpus.py",
+      "dependency": "pypdf"
+    },
+    {
+      "consumer": "scripts/build_phase5_notebook.py",
+      "dependency": "nbformat"
+    },
+    {
+      "consumer": "scripts/build_phase5_notebook.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/diagnose_phase6_4_connectivity.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "scripts/diagnose_phase6_4_connectivity.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "scripts/diagnose_phase6_4_connectivity.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "scripts/diagnose_phase6_4_connectivity.py",
+      "dependency": "btc_research.phase6_connectivity"
+    },
+    {
+      "consumer": "scripts/diagnose_phase6_4_connectivity.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/diagnose_phase6_4_connectivity.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/diagnose_phase6_4_connectivity.py",
+      "dependency": "sys"
+    },
+    {
+      "consumer": "scripts/export_phase5_colab.py",
+      "dependency": "btc_research.phase5"
+    },
+    {
+      "consumer": "scripts/import_phase5_results.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "scripts/import_phase5_results.py",
+      "dependency": "btc_research.phase5"
+    },
+    {
+      "consumer": "scripts/import_phase5_results.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/plot_results.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/plot_results.py",
+      "dependency": "matplotlib"
+    },
+    {
+      "consumer": "scripts/plot_results.py",
+      "dependency": "matplotlib.pyplot"
+    },
+    {
+      "consumer": "scripts/plot_results.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "scripts/plot_results.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/prepare_phase6_2_reports.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "scripts/prepare_phase6_2_reports.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "scripts/prepare_phase6_2_reports.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "scripts/prepare_phase6_2_reports.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/prepare_phase6_2_reports.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/prepare_phase6_2_reports.py",
+      "dependency": "sys"
+    },
+    {
+      "consumer": "scripts/read_book_pages.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "scripts/read_book_pages.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/read_book_pages.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/read_book_pages.py",
+      "dependency": "re"
+    },
+    {
+      "consumer": "scripts/read_book_pages.py",
+      "dependency": "sys"
+    },
+    {
+      "consumer": "scripts/run_phase2.py",
+      "dependency": "btc_research.phase2"
+    },
+    {
+      "consumer": "scripts/run_phase2.py",
+      "dependency": "logging"
+    },
+    {
+      "consumer": "scripts/run_phase3.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "scripts/run_phase3.py",
+      "dependency": "btc_research.common"
+    },
+    {
+      "consumer": "scripts/run_phase3.py",
+      "dependency": "btc_research.microstructure"
+    },
+    {
+      "consumer": "scripts/run_phase3.py",
+      "dependency": "btc_research.phase3"
+    },
+    {
+      "consumer": "scripts/run_phase3.py",
+      "dependency": "logging"
+    },
+    {
+      "consumer": "scripts/run_phase4.py",
+      "dependency": "btc_research.phase4"
+    },
+    {
+      "consumer": "scripts/run_phase4_shadow.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "scripts/run_phase4_shadow.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "scripts/run_phase4_shadow.py",
+      "dependency": "btc_research.phase4_live"
+    },
+    {
+      "consumer": "scripts/run_phase4_shadow.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/run_phase6.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "scripts/run_phase6.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "scripts/run_phase6.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "scripts/run_phase6.py",
+      "dependency": "btc_research.common"
+    },
+    {
+      "consumer": "scripts/run_phase6.py",
+      "dependency": "btc_research.phase6"
+    },
+    {
+      "consumer": "scripts/run_phase6.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "btc_research.common"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "btc_research.phase6"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "btc_research.phase6_2"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "btc_research.phase6_4"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "btc_research.phase6_decisions"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "btc_research.phase6_news"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "btc_research.phase6_nlp"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "btc_research.phase6_runtime"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/run_phase6_1.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "btc_research.common"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "btc_research.phase6"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "btc_research.phase6_2"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "btc_research.phase6_trading"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "collections"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "decimal"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "os"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "sys"
+    },
+    {
+      "consumer": "scripts/run_phase6_2.py",
+      "dependency": "time"
+    },
+    {
+      "consumer": "scripts/run_phase6_4.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "scripts/run_phase6_4.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "scripts/run_phase6_4.py",
+      "dependency": "btc_research.common"
+    },
+    {
+      "consumer": "scripts/run_phase6_4.py",
+      "dependency": "btc_research.phase6_2"
+    },
+    {
+      "consumer": "scripts/run_phase6_4.py",
+      "dependency": "btc_research.phase6_4"
+    },
+    {
+      "consumer": "scripts/run_phase6_4.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "scripts/run_phase6_4.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/run_phase6_4.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/run_phase6_4.py",
+      "dependency": "sys"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "argparse"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "ast"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "btc_research.common"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "btc_research.unified_intelligence"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "sklearn.metrics"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "sqlite3"
+    },
+    {
+      "consumer": "scripts/run_phase6_4_2.py",
+      "dependency": "sys"
+    },
+    {
+      "consumer": "tests/conftest.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "tests/conftest.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "tests/conftest.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "btc_research.external"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "btc_research.live_market"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "btc_research.microstructure"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "btc_research.prospective"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "joblib"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "pandas.testing"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_phase3.py",
+      "dependency": "zipfile"
+    },
+    {
+      "consumer": "tests/test_phase4.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "tests/test_phase4.py",
+      "dependency": "btc_research.external"
+    },
+    {
+      "consumer": "tests/test_phase4.py",
+      "dependency": "btc_research.labeling"
+    },
+    {
+      "consumer": "tests/test_phase4.py",
+      "dependency": "btc_research.live_market"
+    },
+    {
+      "consumer": "tests/test_phase4.py",
+      "dependency": "btc_research.phase4"
+    },
+    {
+      "consumer": "tests/test_phase4.py",
+      "dependency": "btc_research.phase4_live"
+    },
+    {
+      "consumer": "tests/test_phase4.py",
+      "dependency": "btc_research.validation"
+    },
+    {
+      "consumer": "tests/test_phase4.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "tests/test_phase4.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "tests/test_phase4.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "tests/test_phase4.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_phase5.py",
+      "dependency": "btc_research.kronos_adapter"
+    },
+    {
+      "consumer": "tests/test_phase5.py",
+      "dependency": "btc_research.phase5"
+    },
+    {
+      "consumer": "tests/test_phase5.py",
+      "dependency": "btc_research.prospective"
+    },
+    {
+      "consumer": "tests/test_phase5.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "tests/test_phase5.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "tests/test_phase5.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "tests/test_phase5.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "tests/test_phase5.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "tests/test_phase5.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_phase6.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "tests/test_phase6.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "tests/test_phase6.py",
+      "dependency": "btc_research.phase6"
+    },
+    {
+      "consumer": "tests/test_phase6.py",
+      "dependency": "btc_research.phase6_news"
+    },
+    {
+      "consumer": "tests/test_phase6.py",
+      "dependency": "btc_research.phase6_trading"
+    },
+    {
+      "consumer": "tests/test_phase6.py",
+      "dependency": "dataclasses"
+    },
+    {
+      "consumer": "tests/test_phase6.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "tests/test_phase6.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "tests/test_phase6.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "btc_research.phase6_1"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "btc_research.phase6_news"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "btc_research.phase6_nlp"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "btc_research.phase6_runtime"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "btc_research.phase6_trading"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "hashlib"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "time"
+    },
+    {
+      "consumer": "tests/test_phase6_1.py",
+      "dependency": "torch"
+    },
+    {
+      "consumer": "tests/test_phase6_2.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "tests/test_phase6_2.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "tests/test_phase6_2.py",
+      "dependency": "btc_research.phase6_2"
+    },
+    {
+      "consumer": "tests/test_phase6_2.py",
+      "dependency": "btc_research.phase6_trading"
+    },
+    {
+      "consumer": "tests/test_phase6_2.py",
+      "dependency": "decimal"
+    },
+    {
+      "consumer": "tests/test_phase6_2.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "tests/test_phase6_2.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_phase6_2.py",
+      "dependency": "time"
+    },
+    {
+      "consumer": "tests/test_phase6_3_dashboard.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "tests/test_phase6_3_dashboard.py",
+      "dependency": "btc_research.common"
+    },
+    {
+      "consumer": "tests/test_phase6_3_dashboard.py",
+      "dependency": "btc_research.dashboard_api"
+    },
+    {
+      "consumer": "tests/test_phase6_3_dashboard.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "tests/test_phase6_3_dashboard.py",
+      "dependency": "fastapi.testclient"
+    },
+    {
+      "consumer": "tests/test_phase6_3_dashboard.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "tests/test_phase6_3_dashboard.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "tests/test_phase6_3_dashboard.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_phase6_3_dashboard.py",
+      "dependency": "shutil"
+    },
+    {
+      "consumer": "tests/test_phase6_3_dashboard.py",
+      "dependency": "sqlite3"
+    },
+    {
+      "consumer": "tests/test_phase6_3_dashboard.py",
+      "dependency": "types"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "btc_research.common"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "btc_research.phase6_2"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "btc_research.phase6_4"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "btc_research.phase6_connectivity"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "btc_research.phase6_trading"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "btc_research.unified_intelligence"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "concurrent.futures"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "pathlib"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "shutil"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "sqlite3"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "threading"
+    },
+    {
+      "consumer": "tests/test_phase6_4.py",
+      "dependency": "types"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "btc_research.common"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "btc_research.dashboard_api"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "btc_research.features"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "btc_research.opportunity_research"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "btc_research.phase6_4"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "btc_research.phase6_decisions"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "btc_research.unified_intelligence"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "decimal"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "shutil"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "sqlite3"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "test_phase6_4"
+    },
+    {
+      "consumer": "tests/test_phase6_4_2.py",
+      "dependency": "types"
+    },
+    {
+      "consumer": "tests/test_phase6_decisions.py",
+      "dependency": "__future__"
+    },
+    {
+      "consumer": "tests/test_phase6_decisions.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "tests/test_phase6_decisions.py",
+      "dependency": "btc_research.phase6_1"
+    },
+    {
+      "consumer": "tests/test_phase6_decisions.py",
+      "dependency": "btc_research.phase6_decisions"
+    },
+    {
+      "consumer": "tests/test_phase6_decisions.py",
+      "dependency": "btc_research.phase6_runtime"
+    },
+    {
+      "consumer": "tests/test_phase6_decisions.py",
+      "dependency": "datetime"
+    },
+    {
+      "consumer": "tests/test_phase6_decisions.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "tests/test_phase6_decisions.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "tests/test_phase6_decisions.py",
+      "dependency": "types"
+    },
+    {
+      "consumer": "tests/test_phase6_websocket_recovery.py",
+      "dependency": "asyncio"
+    },
+    {
+      "consumer": "tests/test_phase6_websocket_recovery.py",
+      "dependency": "btc_research.live_market"
+    },
+    {
+      "consumer": "tests/test_phase6_websocket_recovery.py",
+      "dependency": "btc_research.phase6_decisions"
+    },
+    {
+      "consumer": "tests/test_phase6_websocket_recovery.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "tests/test_phase6_websocket_recovery.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "btc_research.audit"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "btc_research.backtesting"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "btc_research.decision"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "btc_research.external"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "btc_research.features"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "btc_research.ingestion"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "btc_research.labeling"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "btc_research.models"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "btc_research.phase2"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "btc_research.training"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "btc_research.validation"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "joblib"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "json"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "numpy"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "pandas"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "pandas.testing"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "pytest"
+    },
+    {
+      "consumer": "tests/test_pipeline.py",
+      "dependency": "zipfile"
+    }
+  ],
+  "product_sources": [
+    {
+      "path": "dashboard/frontend/next-env.d.ts",
+      "sha256": "0f70629890b72a0a82e91972cc032c04b658b26c265373cb711cf576bfbf8fcc"
+    },
+    {
+      "path": "dashboard/frontend/next.config.ts",
+      "sha256": "5fa04a810adc1aaac0575af373dd8b43b61690efb2e13f6a116c270782c6f791"
+    },
+    {
+      "path": "dashboard/frontend/package.json",
+      "sha256": "6c7ebfc2743dbbb930602f2eb9bf6917aab3ab5f946cb03acd016721f895a458"
+    },
+    {
+      "path": "dashboard/frontend/tsconfig.json",
+      "sha256": "50a53ec4a582bd0412678588a1d117f209edbbd50562f1b16b3ffa66be6bab7d"
+    },
+    {
+      "path": "dashboard/frontend/app/globals.css",
+      "sha256": "327f241df00eb392270ef5a001c0e9636873b50989434cd8c340eeefadc7ec6b"
+    },
+    {
+      "path": "dashboard/frontend/app/layout.tsx",
+      "sha256": "f0676a353aaafb6e4edd92a377e3831924c4a7b4b56f2da9a789dc9f378985fe"
+    },
+    {
+      "path": "dashboard/frontend/app/page.tsx",
+      "sha256": "45f409067128715ba8bd96fae267a4063758b1a73fd8672441484d8bdbc0dd67"
+    },
+    {
+      "path": "dashboard/frontend/components/dashboard-provider.tsx",
+      "sha256": "6e1392b2bad34233c2839f73db2fa9199612e8314e96fa360021422435b55f49"
+    },
+    {
+      "path": "dashboard/frontend/components/demo-session-controls.tsx",
+      "sha256": "a0e4218a9755d3f7ad3636f8e58f2fa0dec154340465ae61d7662f67eda0a66c"
+    },
+    {
+      "path": "dashboard/frontend/components/market-chart.tsx",
+      "sha256": "e38d73a659763ddd26a3553ba7e8b824166140288c8ccbf40e363ff1af4bc00c"
+    },
+    {
+      "path": "dashboard/frontend/components/sidebar.tsx",
+      "sha256": "514a1e0f2a5c6841c5c2a5412cf1ed00e566c7ab0b33082d6bb6f4f777ec30e6"
+    },
+    {
+      "path": "dashboard/frontend/components/topbar.tsx",
+      "sha256": "3d599bbaf9c9d1ad4149fa5f19d85318d6e216274ab9b50a63efe2c490a65a1c"
+    },
+    {
+      "path": "dashboard/frontend/components/ui.tsx",
+      "sha256": "6d8745fedeb311ab7644d7b8f0a903856e0909b0b4ebc096776c84cb6c69f8e4"
+    },
+    {
+      "path": "dashboard/frontend/components/unified-decisions.tsx",
+      "sha256": "05e5e3bf84e071f9bf88cad025c3980738ff21f1e9a25975613ac1f9c6e35999"
+    },
+    {
+      "path": "dashboard/frontend/lib/api.ts",
+      "sha256": "6d8d018465148e69a7b6bc25a7797790b35777e505c84a9a6d01b7816cf4e775"
+    },
+    {
+      "path": "dashboard/frontend/lib/labels.ts",
+      "sha256": "6908d15dc3c1106543ae5cdcff72c1ddc58f125329dee59d61dd81bf0ceaa1d9"
+    },
+    {
+      "path": "dashboard/frontend/lib/types.ts",
+      "sha256": "a80d77792c28ed8c450e6fbec054912be7e0dc076f06cc74c1578d8351fa374e"
+    },
+    {
+      "path": "dashboard/frontend/app/autonomous/page.tsx",
+      "sha256": "d20944f21bb89b3c32a92265ce38413ac90f8f115837e7f14a30da7da517bf1f"
+    },
+    {
+      "path": "dashboard/frontend/app/health/page.tsx",
+      "sha256": "b9b739b432c83584c81556c096aa5f71d3ae26fda58075e9f07be993a2a2030b"
+    },
+    {
+      "path": "dashboard/frontend/app/intelligence/page.tsx",
+      "sha256": "06fab209dc25fe1c2ae84ca6d48103bc527f60d8791153f3d8774e9c8679c999"
+    },
+    {
+      "path": "dashboard/frontend/app/markets/page.tsx",
+      "sha256": "779e4dbcc0e4ba685faddcad91cd8ac2eef8866bfd1c3b056b5955b812f401cf"
+    },
+    {
+      "path": "dashboard/frontend/app/news/page.tsx",
+      "sha256": "f806c275a78608a38334fca98b5dd8fe823391d052633de04b241d3afe7873c7"
+    },
+    {
+      "path": "dashboard/frontend/app/operations/page.tsx",
+      "sha256": "3d2055480961e3962f03da1315d5c67a0cc3036f1a309466e1f6466ad8c8bdbe"
+    },
+    {
+      "path": "dashboard/frontend/app/performance/page.tsx",
+      "sha256": "a4d27c8d32c7419b3ff0e762e751c6bd40bddb20598dec7bfb428faec926d70e"
+    }
+  ]
+}

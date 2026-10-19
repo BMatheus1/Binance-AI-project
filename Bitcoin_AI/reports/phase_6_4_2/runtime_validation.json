@@ -1,0 +1,142 @@
+{
+  "collected_at": "2026-10-19T21:06:17.194618+00:00",
+  "canonical_decisions": 81,
+  "first_canonical_at": "2026-10-19T20:43:00.425264+00:00",
+  "last_canonical_at": "2026-10-19T21:11:00.679451+00:00",
+  "latest_btc": {
+    "decision_id": "7bc38ac5343ee6fe1f8ab8f027ea14aa63fcdba6c42605e18358e8f2651df364",
+    "evaluated_at": "2026-10-19T21:06:00.633391+00:00",
+    "data_available_at": "2026-10-19T21:06:00.418599+00:00",
+    "decision": "NAO_COMPRAR",
+    "reasons": [
+      "frozen_signal_not_up",
+      "up_probability_below_frozen_threshold"
+    ]
+  },
+  "supervisor_pid": 27200,
+  "process_started_at": "2026-10-19T21:04:28.344974+00:00",
+  "healthy_reconciliation_cycles_current_process": 4,
+  "engine_state": "OBSERVE",
+  "orders_enabled": false,
+  "reconciliation": {
+    "state": "healthy",
+    "last_attempt_at": "2026-10-19T21:06:13.631394+00:00",
+    "last_success_at": "2026-10-19T21:06:14.518565+00:00",
+    "failure_count": 0,
+    "transient": null,
+    "category": null,
+    "next_retry_at": null,
+    "error": null,
+    "unresolved_intents": 0,
+    "open_orders": 0,
+    "account_can_trade": true,
+    "position_present": false,
+    "credentials_present": true
+  },
+  "kill_switch_engaged": true,
+  "authorized_sessions": 0,
+  "experimental_positions": 0,
+  "order_journal_before": {
+    "RECONCILED": 4
+  },
+  "order_journal_after": {
+    "RECONCILED": 4
+  },
+  "no_order_intents_added": true,
+  "observation_session_id": "obs-20261019T134818-5f0db660",
+  "observation_elapsed_seconds": 26270.069217,
+  "minimum_24h_completed": false,
+  "recent_60m": {
+    "first_sample_at": "2026-10-19T20:06:22.115285+00:00",
+    "last_sample_at": "2026-10-19T21:06:07.581525+00:00",
+    "samples": 111,
+    "worker_availability_fraction": 0.972972972972973,
+    "demo_public_availability_fraction": 1.0,
+    "latest_collectors": {
+      "BTCUSDT": {
+        "symbol": "BTCUSDT",
+        "messages": 902,
+        "connection_state": "connected",
+        "reconnections": 0,
+        "last_message_at": "2026-10-19T21:06:07.168063+00:00",
+        "last_reconnect_at": null,
+        "last_error": null,
+        "last_error_details": null,
+        "aggtrade_duplicates": 0,
+        "aggtrade_gap_events": 0,
+        "aggtrade_missing_ids": 0,
+        "depth_invalidations": 0,
+        "book_valid": true
+      },
+      "ETHUSDT": {
+        "symbol": "ETHUSDT",
+        "messages": 899,
+        "connection_state": "connected",
+        "reconnections": 0,
+        "last_message_at": "2026-10-19T21:06:07.310771+00:00",
+        "last_reconnect_at": null,
+        "last_error": null,
+        "last_error_details": null,
+        "aggtrade_duplicates": 0,
+        "aggtrade_gap_events": 0,
+        "aggtrade_missing_ids": 0,
+        "depth_invalidations": 0,
+        "book_valid": true
+      },
+      "SOLUSDT": {
+        "symbol": "SOLUSDT",
+        "messages": 485,
+        "connection_state": "connected",
+        "reconnections": 0,
+        "last_message_at": "2026-10-19T21:06:07.359664+00:00",
+        "last_reconnect_at": null,
+        "last_error": null,
+        "last_error_details": null,
+        "aggtrade_duplicates": 0,
+        "aggtrade_gap_events": 0,
+        "aggtrade_missing_ids": 0,
+        "depth_invalidations": 0,
+        "book_valid": true
+      }
+    },
+    "latest_engine": {
+      "state": "healthy",
+      "last_attempt_at": "2026-10-19T21:05:40.194439+00:00",
+      "last_success_at": "2026-10-19T21:05:41.198121+00:00",
+      "failure_count": 0,
+      "transient": null,
+      "category": null,
+      "next_retry_at": null,
+      "error": null,
+      "unresolved_intents": 0,
+      "open_orders": 0,
+      "account_can_trade": true,
+      "position_present": false,
+      "credentials_present": true
+    },
+    "basis": "sampled availability; whole-protocol failures remain preserved"
+  },
+  "current_quantitative_models": {
+    "1": "20261018T013856021255Z-phase4:1m:xgboost",
+    "5": "20261018T013856021255Z-phase4:5m:xgboost",
+    "15": "20261018T013856021255Z-phase4:15m:xgboost",
+    "30": "20261018T013856021255Z-phase4:30m:catboost"
+  },
+  "current_model_errors": {},
+  "shared_news_pipeline": true,
+  "verified_ledgers": {
+    "runtime/phase_6_1/quantitative_ledger.jsonl": {
+      "records": 132,
+      "head_hash": "27b3d29df0341ed5ec3fbf7b8a1cf3a2f9fe83a884ac871654951a198f8dcd47"
+    },
+    "runtime/phase_6_1/decision_ledger.jsonl": {
+      "records": 410,
+      "head_hash": "a9b096b9ebde1a7b68fbd22ba19b2e2c01317e96cfba5ce0e07a78c4c54afa81"
+    },
+    "runtime/phase_6_4/autonomous_ledger.jsonl": {
+      "records": 40,
+      "head_hash": "3ae4c6f4a779469d332a96732b5695d497426c91b34bb7ecc1dddcc6b91605ba"
+    }
+  },
+  "heartbeat_interval_seconds": 5
+}

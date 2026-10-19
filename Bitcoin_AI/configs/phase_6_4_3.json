@@ -1,0 +1,28 @@
+{
+  "version": "phase6.4.3-active-v1",
+  "mode": "DEMO_ACTIVE_EXPERIMENTAL",
+  "environment": "DEMO",
+  "policy": "BTC_UNIFIED_ACTIVE_V1",
+  "limits": {
+    "symbol": "BTCUSDT", "policy": "BTC_UNIFIED_ACTIVE_V1", "horizon_minutes": 5,
+    "quote_amount": 10.0, "maximum_open_positions": 1,
+    "maximum_entries_per_session": 6, "session_maximum_minutes": 60,
+    "maximum_loss_per_operation_quote": 0.10, "maximum_session_loss_quote": 0.50,
+    "maximum_total_exposure_quote": 10.0,
+    "maximum_spread_bps": 3.0, "maximum_slippage_bps": 5.0,
+    "planning_fee_ceiling_bps_per_side": 10.0,
+    "minimum_depth_quote": 10000.0, "maximum_signal_age_seconds": 90,
+    "minimum_up_probability": 0.53, "maximum_volatility_bps": 30.0,
+    "cooldown_minutes": 2, "planned_holding_minutes": 5,
+    "maximum_holding_minutes": 8, "maximum_absolute_minutes": 8,
+    "maximum_extension_minutes": 0, "stop_loss_bps": 50.0,
+    "take_profit_net_quote": 0.02, "adaptive_take_profit_cap_quote": 0.04,
+    "trailing_activation_net_quote": 0.015, "trailing_giveback_quote": 0.01,
+    "probe_after_seconds": 180, "maximum_probes_per_session": 2
+  },
+  "promotion": "experimental_only_no_economic_superiority_claim",
+  "ai_entry": "p_up_5m>=0.53 and p_up_5m>p_down_5m and momentum_5m_bps>0",
+  "probe_entry": "explicit_probe_authorization, >=180s without entry/after last close, healthy data and risk gates",
+  "confirmation_ai": "I_AUTHORIZE_60_MIN_10_USDT_DEMO_ACTIVE_AI_ONLY",
+  "confirmation_probes": "I_AUTHORIZE_60_MIN_10_USDT_DEMO_ACTIVE_WITH_PROBES"
+}

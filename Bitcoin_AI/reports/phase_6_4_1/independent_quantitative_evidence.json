@@ -1,0 +1,83 @@
+{
+  "captured_at": "2026-10-19T20:00:14.288480+00:00",
+  "engine": {
+    "boot_id": "6459a29ad7a24fb6bebe40b4224b61a9",
+    "pid": 31284,
+    "state": "AUTHORIZED_DEMO",
+    "last_error": null,
+    "updated_at": "2026-10-19T20:00:08.172894+00:00",
+    "orders_enabled": true,
+    "reconciliation": {
+      "state": "healthy",
+      "last_attempt_at": "2026-10-19T19:59:37.998053+00:00",
+      "last_success_at": "2026-10-19T19:59:40.605329+00:00",
+      "failure_count": 0,
+      "transient": null,
+      "category": null,
+      "next_retry_at": null,
+      "error": null,
+      "unresolved_intents": 0,
+      "open_orders": 0,
+      "account_can_trade": true,
+      "position_present": false,
+      "credentials_present": true
+    },
+    "environment": "DEMO",
+    "real_trading_supported": false
+  },
+  "kill_switch": {
+    "engaged": false,
+    "reason": "explicit_demo_authorization",
+    "updated_at": "2026-10-19T19:59:42.419607+00:00"
+  },
+  "quantitative_worker": {
+    "state": "abstaining",
+    "publication_path": "independent_quantitative_worker",
+    "last_evaluation_at": "2026-10-19T19:59:00.522755+00:00",
+    "cycles_completed": 1,
+    "queue_size": 0,
+    "last_error": null
+  },
+  "news_worker": {
+    "state": "analyzing",
+    "publication_path": "four_policy_news_worker",
+    "last_evaluation_at": null,
+    "cycles_completed": 0,
+    "queue_size": 0,
+    "last_error": null
+  },
+  "latest_policy_a": [
+    {
+      "evaluated_at": "2026-10-19T20:00:02.522366+00:00",
+      "market_time": "2026-10-19T19:59:59.999000+00:00",
+      "decision": "abstain",
+      "forecast_5m": {
+        "model_version": "20261018T013856021255Z-phase4:5m:xgboost",
+        "probabilities": {
+          "down": 0.4803857309337671,
+          "tie": 0.00099537399964506,
+          "up": 0.5186188950665879
+        },
+        "signal": "abstain",
+        "threshold": 0.6
+      }
+    },
+    {
+      "evaluated_at": "2026-10-19T19:59:00.522755+00:00",
+      "market_time": "2026-10-19T19:58:59.999000+00:00",
+      "decision": "abstain",
+      "forecast_5m": {
+        "model_version": "20261018T013856021255Z-phase4:5m:xgboost",
+        "probabilities": {
+          "down": 0.49787716425319395,
+          "tie": 0.0020673023396701982,
+          "up": 0.5000555334071359
+        },
+        "signal": "abstain",
+        "threshold": 0.6
+      }
+    }
+  ],
+  "tests_passed": 189,
+  "model_and_parameters_changed": false
+}

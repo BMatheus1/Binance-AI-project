@@ -1,0 +1,1112 @@
+{
+  "generated_at": "2026-10-19T20:42:52.441717+00:00",
+  "interpretation": "exploratory previously consumed development validation; no fitting",
+  "threshold_frozen": 0.6,
+  "source_sha256": "2495553bd5528906d33d9ef5e3a187cdbe973d975b7aa412cd7bc902ea6fa88f",
+  "horizons": {
+    "1": {
+      "finetuned_calibrated": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.52734375,
+          "log_loss": 0.8002812310439544,
+          "brier_multiclass": 0.5251984628433062,
+          "ece_10_bins": 0.06335197242281544,
+          "long_signals": 3,
+          "abstention_fraction": 0.98828125,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -8.937871770659699,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -12.937871770659697,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -18.9378717706597,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.5234375,
+          "log_loss": 0.7619383468913647,
+          "brier_multiclass": 0.5208864060317324,
+          "ece_10_bins": 0.06394684652953837,
+          "long_signals": 0,
+          "abstention_fraction": 1.0,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      },
+      "finetuned_raw": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.4921875,
+          "log_loss": 0.9002112165816158,
+          "brier_multiclass": 0.6001020408163266,
+          "ece_10_bins": 0.1863839285714286,
+          "long_signals": 81,
+          "abstention_fraction": 0.68359375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -9.506099007501792,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -13.506099007501795,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -19.506099007501795,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.5234375,
+          "log_loss": 0.7619383468913647,
+          "brier_multiclass": 0.5208864060317324,
+          "ece_10_bins": 0.06394684652953837,
+          "long_signals": 0,
+          "abstention_fraction": 1.0,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      },
+      "pretrained_calibrated": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.5,
+          "log_loss": 0.8000196273435417,
+          "brier_multiclass": 0.526301792687357,
+          "ece_10_bins": 0.05927276463073495,
+          "long_signals": 11,
+          "abstention_fraction": 0.95703125,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -6.953685636755895,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -10.953685636755894,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -16.953685636755893,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.5234375,
+          "log_loss": 0.7619383468913647,
+          "brier_multiclass": 0.5208864060317324,
+          "ece_10_bins": 0.06394684652953837,
+          "long_signals": 0,
+          "abstention_fraction": 1.0,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      },
+      "pretrained_raw": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.50390625,
+          "log_loss": 0.8983093262163978,
+          "brier_multiclass": 0.5971811224489795,
+          "ece_10_bins": 0.18381696428571437,
+          "long_signals": 84,
+          "abstention_fraction": 0.671875,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -9.324740690786447,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -13.324740690786447,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -19.324740690786445,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.5234375,
+          "log_loss": 0.7619383468913647,
+          "brier_multiclass": 0.5208864060317324,
+          "ece_10_bins": 0.06394684652953837,
+          "long_signals": 0,
+          "abstention_fraction": 1.0,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      }
+    },
+    "5": {
+      "finetuned_calibrated": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.5,
+          "log_loss": 0.710545703379623,
+          "brier_multiclass": 0.5090382461707812,
+          "ece_10_bins": 0.05372994731834978,
+          "long_signals": 43,
+          "abstention_fraction": 0.83203125,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -10.21179836571448,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -14.211798365714484,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -20.211798365714483,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.515625,
+          "log_loss": 0.6952149082648099,
+          "brier_multiclass": 0.49995694625508796,
+          "ece_10_bins": 0.018569484360837843,
+          "long_signals": 0,
+          "abstention_fraction": 1.0,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      },
+      "finetuned_raw": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.54296875,
+          "log_loss": 0.826087854894641,
+          "brier_multiclass": 0.5658801020408163,
+          "ece_10_bins": 0.12455357142857146,
+          "long_signals": 100,
+          "abstention_fraction": 0.609375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -10.203643091263649,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -14.203643091263652,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -20.203643091263654,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.515625,
+          "log_loss": 0.6952149082648099,
+          "brier_multiclass": 0.49995694625508796,
+          "ece_10_bins": 0.018569484360837843,
+          "long_signals": 0,
+          "abstention_fraction": 1.0,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      },
+      "pretrained_calibrated": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.51171875,
+          "log_loss": 0.7026507845535943,
+          "brier_multiclass": 0.5019453965639258,
+          "ece_10_bins": 0.011795840643172722,
+          "long_signals": 18,
+          "abstention_fraction": 0.9296875,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -10.070160040534196,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -14.070160040534198,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -20.070160040534194,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.515625,
+          "log_loss": 0.6952149082648099,
+          "brier_multiclass": 0.49995694625508796,
+          "ece_10_bins": 0.018569484360837843,
+          "long_signals": 0,
+          "abstention_fraction": 1.0,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      },
+      "pretrained_raw": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.53125,
+          "log_loss": 0.8686379805235221,
+          "brier_multiclass": 0.5935204081632652,
+          "ece_10_bins": 0.18515625000000005,
+          "long_signals": 104,
+          "abstention_fraction": 0.59375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -10.588080906478213,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -14.588080906478213,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -20.588080906478215,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.515625,
+          "log_loss": 0.6952149082648099,
+          "brier_multiclass": 0.49995694625508796,
+          "ece_10_bins": 0.018569484360837843,
+          "long_signals": 0,
+          "abstention_fraction": 1.0,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": null,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      }
+    },
+    "15": {
+      "finetuned_calibrated": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.5859375,
+          "log_loss": 0.6997860316642825,
+          "brier_multiclass": 0.5053824787212569,
+          "ece_10_bins": 0.10922101436827354,
+          "long_signals": 36,
+          "abstention_fraction": 0.859375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -11.326060523829016,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -15.32606052382902,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -21.326060523829014,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.4453125,
+          "log_loss": 0.6977412453565375,
+          "brier_multiclass": 0.504038019254515,
+          "ece_10_bins": 0.0865487583623228,
+          "long_signals": 1,
+          "abstention_fraction": 0.99609375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": 14.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": 10.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": 4.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      },
+      "finetuned_raw": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.58984375,
+          "log_loss": 0.9123447193507268,
+          "brier_multiclass": 0.568954081632653,
+          "ece_10_bins": 0.1342633928571429,
+          "long_signals": 110,
+          "abstention_fraction": 0.5703125,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -9.106317653533436,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -13.106317653533438,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -19.10631765353344,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.4453125,
+          "log_loss": 0.6977412453565375,
+          "brier_multiclass": 0.504038019254515,
+          "ece_10_bins": 0.0865487583623228,
+          "long_signals": 1,
+          "abstention_fraction": 0.99609375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": 14.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": 10.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": 4.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      },
+      "pretrained_calibrated": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.5703125,
+          "log_loss": 0.6980675397126226,
+          "brier_multiclass": 0.5041608045951076,
+          "ece_10_bins": 0.0670422217792066,
+          "long_signals": 38,
+          "abstention_fraction": 0.8515625,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -9.897009579732549,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -13.897009579732549,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -19.897009579732554,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.4453125,
+          "log_loss": 0.6977412453565375,
+          "brier_multiclass": 0.504038019254515,
+          "ece_10_bins": 0.0865487583623228,
+          "long_signals": 1,
+          "abstention_fraction": 0.99609375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": 14.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": 10.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": 4.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      },
+      "pretrained_raw": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.578125,
+          "log_loss": 0.9378591642532832,
+          "brier_multiclass": 0.5938010204081632,
+          "ece_10_bins": 0.18962053571428575,
+          "long_signals": 104,
+          "abstention_fraction": 0.59375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -9.95854481997154,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -13.95854481997154,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -19.958544819971543,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.4453125,
+          "log_loss": 0.6977412453565375,
+          "brier_multiclass": 0.504038019254515,
+          "ece_10_bins": 0.0865487583623228,
+          "long_signals": 1,
+          "abstention_fraction": 0.99609375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": 14.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": 10.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": 4.599131961229315,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "xgboost"
+        ]
+      }
+    },
+    "30": {
+      "finetuned_calibrated": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.50390625,
+          "log_loss": 0.7068851686815685,
+          "brier_multiclass": 0.513251636271575,
+          "ece_10_bins": 0.08508061173797432,
+          "long_signals": 29,
+          "abstention_fraction": 0.88671875,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -10.939034139704962,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -14.939034139704967,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -20.939034139704965,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.49609375,
+          "log_loss": 0.6946212730810585,
+          "brier_multiclass": 0.501313771234398,
+          "ece_10_bins": 0.0394745054661575,
+          "long_signals": 1,
+          "abstention_fraction": 0.99609375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": 10.393875749551427,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": 6.393875749551427,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": 0.3938757495514267,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "catboost"
+        ]
+      },
+      "finetuned_raw": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.49609375,
+          "log_loss": 1.0398178509132778,
+          "brier_multiclass": 0.6639030612244898,
+          "ece_10_bins": 0.2526785714285715,
+          "long_signals": 110,
+          "abstention_fraction": 0.5703125,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -11.76099171763519,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -15.76099171763519,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -21.760991717635182,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.49609375,
+          "log_loss": 0.6946212730810585,
+          "brier_multiclass": 0.501313771234398,
+          "ece_10_bins": 0.0394745054661575,
+          "long_signals": 1,
+          "abstention_fraction": 0.99609375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": 10.393875749551427,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": 6.393875749551427,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": 0.3938757495514267,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "catboost"
+        ]
+      },
+      "pretrained_calibrated": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.51953125,
+          "log_loss": 0.7037447552765713,
+          "brier_multiclass": 0.5102547915504954,
+          "ece_10_bins": 0.06760619949026261,
+          "long_signals": 28,
+          "abstention_fraction": 0.890625,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -10.154985673549357,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -14.154985673549357,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -20.154985673549355,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.49609375,
+          "log_loss": 0.6946212730810585,
+          "brier_multiclass": 0.501313771234398,
+          "ece_10_bins": 0.0394745054661575,
+          "long_signals": 1,
+          "abstention_fraction": 0.99609375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": 10.393875749551427,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": 6.393875749551427,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": 0.3938757495514267,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "catboost"
+        ]
+      },
+      "pretrained_raw": {
+        "same_observation_ids": "26e0f83a9a4cf4a272d1c30b0ce6b98ae3a86abe5529e138187f96892445e955",
+        "first_decision": "2026-04-01 00:30:00+00:00",
+        "last_decision": "2026-06-30 22:59:00+00:00",
+        "kronos": {
+          "observations": 256,
+          "accuracy": 0.515625,
+          "log_loss": 1.0539098958257422,
+          "brier_multiclass": 0.6753061224489796,
+          "ece_10_bins": 0.26573660714285724,
+          "long_signals": 109,
+          "abstention_fraction": 0.57421875,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": -14.159514100338683,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": -18.159514100338683,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": -24.159514100338676,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_specialist": {
+          "observations": 256,
+          "accuracy": 0.49609375,
+          "log_loss": 0.6946212730810585,
+          "brier_multiclass": 0.501313771234398,
+          "ece_10_bins": 0.0394745054661575,
+          "long_signals": 1,
+          "abstention_fraction": 0.99609375,
+          "spot_cost_sensitivity": {
+            "10": {
+              "assumed_round_trip_bps": 10,
+              "mean_net_bps_per_selected_opportunity": 10.393875749551427,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "14": {
+              "assumed_round_trip_bps": 14,
+              "mean_net_bps_per_selected_opportunity": 6.393875749551427,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            },
+            "20": {
+              "assumed_round_trip_bps": 20,
+              "mean_net_bps_per_selected_opportunity": 0.3938757495514267,
+              "source": "historical_candle_return_minus_cost_scenario_not_exchange_fills",
+              "overlapping_opportunities_are_not_a_portfolio_backtest": true
+            }
+          },
+          "always_abstain_net_quote": 0
+        },
+        "frozen_model": [
+          "catboost"
+        ]
+      }
+    }
+  },
+  "no_ensemble_promoted": true,
+  "holdout_reused": false,
+  "unavailable_comparisons": {
+    "stacking_and_calibrated_fusion": "no aligned OOF development predictions for all experts; arbitrary weights forbidden",
+    "news_microstructure_regime_timing_ablations": "no paired timestamped OOS forecasts with identical inputs and costs",
+    "adaptive_exit_ablation": "requires recorded executable bid/ask paths for identical prospective entries",
+    "momentum_mean_reversion": "not preregistered for historical comparisons; collect new forward observations"
+  }
+}

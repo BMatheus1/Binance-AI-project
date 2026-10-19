@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -11,7 +12,7 @@ if str(PROJECT_ROOT / "src") not in sys.path:
 
 from btc_research.common import ROOT, save_json
 from btc_research.phase6_2 import PersistentKillSwitch, load_local_dotenv
-from btc_research.phase6_4 import (AutonomousStore, ObservationStore,
+from btc_research.phase6_4 import (AutonomousStore, ObservationStore, SupervisedDemoEngine,
                                    authorize_session, economic_report,
                                    emergency_close, load_phase64_config,
                                    prepare_authorization, preservation_manifest,
@@ -173,6 +174,7 @@ def main() -> None:
     sub.add_parser("positions")
     sub.add_parser("results")
     sub.add_parser("prepare-session")
+    sub.add_parser("reconciliation-check")
     authorize = sub.add_parser("authorize-session")
     authorize.add_argument("--session-id", required=True)
     authorize.add_argument("--confirm", required=True)
@@ -212,6 +214,22 @@ def main() -> None:
               "diagnostic_results_are_separate": True})
     elif args.command == "prepare-session":
         emit(prepare_authorization(ROOT))
+    elif args.command == "reconciliation-check":
+        # A separate read-only audit; never changes the running engine boot ID
+        # or authorizes a session and never calls cycle()/entry/exit.
+        kill = PersistentKillSwitch(ROOT / "runtime/phase_6_2/kill_switch.json")
+        if not kill.status()["engaged"]:
+            raise RuntimeError("engage the kill switch before the read-only reconciliation audit")
+        checker = SupervisedDemoEngine(ROOT)
+        position = checker.store.open_position()
+        ok = checker._reconcile(None, position)
+        report = {"checked_at": datetime.now(timezone.utc).isoformat(),
+                  "healthy": ok, "reconciliation": checker.reconciliation,
+                  "kill_switch": kill.status(), "environment": "DEMO",
+                  "open_position": position, "orders_sent": False,
+                  "session_authorized": False, "real_trading_supported": False}
+        save_json(ROOT / "reports/phase_6_4_1/recovery/reconciliation_check.json", report)
+        emit(report)
     elif args.command == "authorize-session":
         emit(authorize_session(args.session_id, args.confirm, ROOT))
     elif args.command == "stop-session":
